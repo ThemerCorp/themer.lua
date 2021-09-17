@@ -18,7 +18,7 @@ local function hl(group, guifg, guibg, gui, guisp)
     if guisp then
         table.insert(parts, "guisp=" .. guisp)
     end
-    vim.api.nvim_command("highlight " .. table.concat(parts, " "))
+    vim.api.nvim_command("hi " .. table.concat(parts, " "))
 end
 
 local function high_link(group, link)
@@ -276,6 +276,26 @@ local function apply_base16_theme(theme)
     hl("LspDiagnosticsDefaultWarning", theme.base0A, nil, nil, nil)
     hl("LspDiagnosticsDefaultInformation", theme.base0D, nil, nil, nil)
     hl("LspDiagnosticsDefaultHint", theme.base0C, nil, nil, nil)
+	high_link('DiagnosticFloatingError', 'ErrorMsg')
+	high_link('DiagnosticFloatingWarn', 'Warning')
+	high_link('DiagnosticFloatingInfo', 'MoreMsg')
+	high_link('DiagnosticFloatingHint', 'Msg')
+	high_link('DiagnosticDefaultError', 'ErrorMsg')
+	high_link('DiagnosticDefaultWarn', 'WarningMsg')
+	high_link('DiagnosticDefaultInfo', 'MoreMsg')
+	high_link('DiagnosticDefaultHint', 'Msg')
+	high_link('DiagnosticVirtualTextError', 'ErrorMsg')
+	high_link('DiagnosticVirtualTextWarn', 'WarningMsg')
+	high_link('DiagnosticVirtualTextInfo', 'MoreMsg')
+	high_link('DiagnosticVirtualTextHint', 'Msg')
+	high_link('DiagnosticUnderlineError', 'ErrorMsgUnderline')
+	high_link('DiagnosticUnderlineWarn', 'WarningMsgUnderline')
+	high_link('DiagnosticUnderlineInfo', 'MoreMsgUnderline')
+	high_link('DiagnosticUnderlineHint', 'MsgUnderline')
+	high_link('DiagnosticSignError', 'ErrorMsg')
+	high_link('DiagnosticSignWarning', 'WarningMsg')
+	high_link('DiagnosticSignInformation', 'MoreMsg')
+	high_link('DiagnosticSignHint', 'Msg')
 
     --	┏━┓╻  ╻ ╻┏━╸╻┏┓╻┏━┓
     --	┣━┛┃  ┃ ┃┃╺┓┃┃┗┫┗━┓
