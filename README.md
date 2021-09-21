@@ -1,3 +1,5 @@
+# NOTE: BREAKING CHANGES ARE GOING TO HAPPEN
+
 # INTRODUCTION
 
 This is a base 16 nvim plugin uniformalizing colorschemes and highlights in neovim with a base 16 approch
