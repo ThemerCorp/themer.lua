@@ -5,7 +5,7 @@
 A simple fast highlight plugin using base 16 colors for neovim, written in lua.
 
 ### FEATURES
-- Fast (as it is written in lua)
+- Fast (as it is written completely in lua)
 - Small Codebase (just 351 lines of lua code)
 - Easy to use (as simple as doing `:colorscheme <fav colorscheme>`)
 - Using the standard base 16 colors
