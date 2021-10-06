@@ -157,7 +157,7 @@ theme.base = {
 	DiagnosticUnderlineInformation = { style = "undercurl", sp = p.base0D },
 	DiagnosticUnderlineWarning = { style = "undercurl", sp = p.base0A },
 	DiagnosticUnderlineWarn = { style = "undercurl", sp = p.base0A },
-	DiagnosticUderlineError = { style = "undercurl", sp = p.base09 },
+	DiagnosticUnderlineError = { style = "undercurl", sp = p.base09 },
 
 	DiagnosticVirtualTextHint = { fg = p.base0E },
 	DiagnosticVirtualTextInformation = { fg = p.base0D },
