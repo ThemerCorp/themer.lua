@@ -46,7 +46,7 @@ Example, you want to create `foo` colorscheme
 Here is what to do
 1. Create a file in `colors/foo.vim`
    The file content will look like
-```vimscript
+```vim-script
 lua << EOF
 package.loaded['base-16'] = nil
 package.loaded['base-16.functions'] = nil
