@@ -8,6 +8,7 @@ local available_themes = {
 	["nord"] = true,
 	["one-dark"] = true,
 	["javacafe"] = true,
+	["tokyonight"] = true,
 }
 
 --- checks if a theme exists then loads it using theme.lua and sets vim colorscheme variables
