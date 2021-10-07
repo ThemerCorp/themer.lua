@@ -5,6 +5,7 @@ local loader = {}
 local available_themes = {
 	["rose-pine"] = true,
 	["everforest"] = true,
+	["nord"] = true,
 }
 
 --- checks if a theme exists then loads it using theme.lua and sets vim colorscheme variables

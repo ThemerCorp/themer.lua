@@ -76,7 +76,7 @@ theme.base = {
 	Boolean = { fg = p.base0A },
 	Character = { fg = p.base0A },
 	Comment = {
-		fg = p.base04,
+		fg = p.base03,
 		style = maybe_italic,
 	},
 	Conditional = { fg = p.base0C },
@@ -138,30 +138,27 @@ theme.base = {
 
 	-- new syntax
 	DiagnosticDefaultHint = { fg = p.base0E },
-	DiagnosticDefaultInformation = { fg = p.base0D },
-	DiagnosticDefaultWarning = { fg = p.base0A },
+	DiagnosticDefaultInfo = { fg = p.base0D },
+	DiagnosticDefaultWarn = { fg = p.base0A },
 	DiagnosticDefaultError = { fg = p.base09 },
 
 	DiagnosticFloatingHint = { fg = p.base0E },
-	DiagnosticFloatingInformation = { fg = p.base0D },
-	DiagnosticFloatingWarning = { fg = p.base0A },
+	DiagnosticFloatingInfo = { fg = p.base0D },
+	DiagnosticFloatingWarn = { fg = p.base0A },
 	DiagnosticFloatingError = { fg = p.base09 },
 
 	DiagnosticSignHint = { fg = p.base0E },
-	DiagnosticSignInformation = { fg = p.base0D },
-	DiagnosticSignWarning = { fg = p.base0A },
+	DiagnosticSignInfo = { fg = p.base0D },
 	DiagnosticSignWarn = { fg = p.base0A },
 	DiagnosticSignError = { fg = p.base09 },
 
 	DiagnosticUnderlineHint = { style = "undercurl", sp = p.base0E },
-	DiagnosticUnderlineInformation = { style = "undercurl", sp = p.base0D },
-	DiagnosticUnderlineWarning = { style = "undercurl", sp = p.base0A },
+	DiagnosticUnderlineInfo = { style = "undercurl", sp = p.base0D },
 	DiagnosticUnderlineWarn = { style = "undercurl", sp = p.base0A },
 	DiagnosticUnderlineError = { style = "undercurl", sp = p.base09 },
 
 	DiagnosticVirtualTextHint = { fg = p.base0E },
-	DiagnosticVirtualTextInformation = { fg = p.base0D },
-	DiagnosticVirtualTextWarning = { fg = p.base0A },
+	DiagnosticVirtualTextInfo = { fg = p.base0D },
 	DiagnosticVirtualTextWarn = { fg = p.base0A },
 	DiagnosticVirtualTextError = { fg = p.base09 },
 
@@ -203,7 +200,7 @@ theme.treesitter = {
 	TSBoolean = { fg = p.base0B },
 	-- TSCharacter = {},
 	TSComment = {
-		fg = p.base04,
+		fg = p.base03,
 		style = maybe_italic,
 	},
 	-- TSConditional = {},
