@@ -6,6 +6,8 @@ local available_themes = {
 	["rose-pine"] = true,
 	["everforest"] = true,
 	["nord"] = true,
+	["one-dark"] = true,
+	["javacafe"] = true,
 }
 
 --- checks if a theme exists then loads it using theme.lua and sets vim colorscheme variables
