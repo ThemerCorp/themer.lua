@@ -21,6 +21,8 @@ use({
 	"narutoxy/base-16.nvim",
 	after = "packer.nvim",
 	config = function()
+		require("base-16.loader").override_available_themes({})
+
 		vim.cmd("colorscheme everforest")	-- ofc replace everforest with your fav colorscheme
 	end,
 })

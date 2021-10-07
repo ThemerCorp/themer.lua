@@ -1,4 +1,4 @@
---- class util
+--- @class util
 local util = {}
 
 --- Highlight on basis of given group and color
@@ -16,6 +16,14 @@ util.highlight = function(group, color)
 	if color.link then
 		vim.cmd("highlight! link " .. group .. " " .. color.link)
 	end
+end
+
+--- takes options and defaults and merges them
+--- @param options 
+--- @param defaults 
+util.setup = function (options, defaults)
+	defaults = vim.tbl_deep_extend("force", {}, defaults, options or {})
+	return defaults
 end
 
 return util

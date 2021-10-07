@@ -1,5 +1,7 @@
+--- @class loader
 local loader = {}
 
+local util = require("base-16.util")
 -- This contains all available themes
 -- setting bool to false will disable that theme
 local available_themes = {
@@ -11,12 +13,18 @@ local available_themes = {
 	["tokyonight"] = true,
 }
 
+loader.available_themes = {}
+
+loader.override_available_themes = function (options)
+	loader.available_themes = util.setup(options, available_themes)
+end
+
 --- checks if a theme exists then loads it using theme.lua and sets vim colorscheme variables
 --- @param theme_name: string
 --- @return theme and highlights
 function loader.main(theme_name)
 	-- Error if theme does not exist
-	if not available_themes[theme_name] == true then
+	if not loader.available_themes[theme_name] == true then
 		error("No such theme: " .. theme_name)
 	end
 

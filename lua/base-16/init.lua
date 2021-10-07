@@ -1,3 +1,4 @@
+--- @class load_functions
 local load_functions = {}
 
 --- init function to load themes

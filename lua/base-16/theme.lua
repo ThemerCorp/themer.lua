@@ -1,3 +1,4 @@
+--- @class theme
 local theme = {}
 local p = require("base-16.themes." .. vim.g.colors_name)
 local maybe_base = p.base00
