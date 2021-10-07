@@ -88,3 +88,6 @@ All highlights are in `lua/base-16/theme.lua`. You are welcome to refactor and a
 ## ROADMAP
 - [ ] Add support for galaxyline
 - [ ] Add support for lualine
+- [ ] Allow overriding defaults
+- [ ] Live reload themes
+- [ ] Export to a single file
