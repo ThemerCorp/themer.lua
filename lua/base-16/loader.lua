@@ -4,7 +4,7 @@ local loader = {}
 local util = require("base-16.util")
 -- This contains all available themes
 -- setting bool to false will disable that theme
-local available_themes = {
+loader.available_themes = {
 	["rose-pine"] = true,
 	["everforest"] = true,
 	["nord"] = true,
@@ -13,10 +13,8 @@ local available_themes = {
 	["tokyonight"] = true,
 }
 
-loader.available_themes = {}
-
 loader.override_available_themes = function (options)
-	loader.available_themes = util.setup(options, available_themes)
+	loader.available_themes = util.setup(options, loader.available_themes)
 end
 
 --- checks if a theme exists then loads it using theme.lua and sets vim colorscheme variables
