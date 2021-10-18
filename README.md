@@ -1,4 +1,4 @@
-# base-16.nvim
+### WARNING, THIS PLUGIN IS GOING TO HAVE SOME AWESOME BREAKING CHANGES
 
 ## INTRODUCTION
 
@@ -21,8 +21,6 @@ use({
 	"narutoxy/base-16.nvim",
 	after = "packer.nvim",
 	config = function()
-		require("base-16.loader").override_available_themes({})
-
 		vim.cmd("colorscheme everforest")	-- ofc replace everforest with your fav colorscheme
 	end,
 })
@@ -46,17 +44,15 @@ use({
 
 Example, you want to create `foo` colorscheme
 Here is what to do
-1. Create a file in `colors/foo.vim`
+1. Create a file in `colors/foo.lua`
    The file content will look like
-```vim-script
-lua << EOF
+```lua
 package.loaded['base-16'] = nil
 package.loaded['base-16.functions'] = nil
 package.loaded['base-16.theme'] = nil
 package.loaded['base-16.util'] = nil
 
 require("base-16").load("foo")
-EOF
 ```
 3. Then add the `theme_name` in the local `available_themes` table in `lua/base-16/loader.lua`.
 4. Then put the colors in `lua/base-16/themes/foo.lua`. Refer to official docs of the colorscheme, they would probably have base 16 colors list available.
@@ -88,7 +84,7 @@ and you are done, told ya it was very easy to do
 All highlights are in `lua/base-16/theme.lua`. You are welcome to refactor and add support for some more plugins 😄
 
 ## ROADMAP
-- [ ] Add support for galaxyline
+- [x] Add support for galaxyline
 - [ ] Add support for lualine
 - [ ] Allow overriding defaults
 - [ ] Live reload themes
