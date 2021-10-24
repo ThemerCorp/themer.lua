@@ -9,7 +9,7 @@ config.options = {
 		comments = { italic = true },
 		functions = { italic = true },
 		keywords = { italic = true },
-		strings = { italic = true },
+		strings = {},
 		variables = {},
 	},
 	integrations = {
@@ -23,10 +23,10 @@ config.options = {
 				information = { italic = true },
 			},
 			underlines = {
-				errors = { italic = true },
-				hints = { italic = true },
-				warnings = { italic = true },
-				information = { italic = true },
+				errors = { underline = true },
+				hints = { underline = true },
+				warnings = { underline = true },
+				information = { underline = true },
 			},
 		},
 		-- TODO: add all the remaining highlights ASAP

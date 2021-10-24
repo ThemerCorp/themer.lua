@@ -28,10 +28,10 @@ function M.get(cpt)
 		DiagnosticFloatingInfo   = { bg = cpt.bg_alt, fg = cpt.blue }, -- Used to color "Information" diagnostic messages in diagnostics float
 		DiagnosticFloatingHint          = { bg = cpt.bg_alt, fg = cpt.white_br }, -- Used to color "Hint" diagnostic messages in diagnostics float
 
-		DiagnosticVirtualTextError = vim.tbl_deep_extend("force", { fg = cpt.red_br }, underlines.errors),-- Used for "Error" diagnostic virtual text
-		DiagnosticVirtualTextWarn = vim.tbl_deep_extend("force", { fg = cpt.white_br }, underlines.warnings),-- Used for "Warning" diagnostic virtual text
-		DiagnosticVirtualTextInfo = vim.tbl_deep_extend("force", { fg = cpt.white_br }, underlines.information),-- Used for "Information" diagnostic virtual text
-		DiagnosticVirtualTextHint = vim.tbl_deep_extend("force", { fg = cpt.white_br }, underlines.hints),-- Used for "Hint" diagnostic virtual text
+		DiagnosticVirtualTextError = vim.tbl_deep_extend("force", { fg = cpt.red_br }, virtual_text.errors),-- Used for "Error" diagnostic virtual text
+		DiagnosticVirtualTextWarn = vim.tbl_deep_extend("force", { fg = cpt.white_br }, virtual_text.warnings),-- Used for "Warning" diagnostic virtual text
+		DiagnosticVirtualTextInfo = vim.tbl_deep_extend("force", { fg = cpt.white_br }, virtual_text.information),-- Used for "Information" diagnostic virtual text
+		DiagnosticVirtualTextHint = vim.tbl_deep_extend("force", { fg = cpt.white_br }, virtual_text.hints),-- Used for "Hint" diagnostic virtual text
 		DiagnosticUnderlineError = vim.tbl_deep_extend("force", { sp = cpt.white_br }, underlines.errors),-- Used to underline "Error" diagnostics
 		DiagnosticUnderlineWarn = vim.tbl_deep_extend("force", { sp = cpt.white_br }, underlines.warnings),-- Used to underline "Warning" diagnostics
 		DiagnosticUnderlineInfo = vim.tbl_deep_extend("force", { sp = cpt.white_br }, underlines.information),-- Used to underline "Information" diagnostics
