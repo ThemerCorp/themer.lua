@@ -9,7 +9,7 @@ local mapper = {}
 ---@return table
 local function get_base(cp)
 	local base = {
-		Comment = { fg = cp.comment, style = config.styles.comments }, -- any comment
+		Comment = vim.tbl_deep_extend("force", { fg = cp.comment }, config.styles.comments), -- any comment
 		ColorColumn = { bg = util.darken(cp.cyan, 0.2) }, -- used for the columns set with 'colorcolumn'
 		Conceal = { fg = cp.black }, -- placeholder characters substituted for concealed text (see 'conceallevel')
 		Cursor = { fg = cp.bg, bg = cp.fg }, -- character under the cursor
@@ -28,8 +28,8 @@ local function get_base(cp)
 		Substitute = { bg = cp.red, fg = cp.black }, -- |:substitute| replacement text highlighting
 		LineNr = { fg = cp.fg_gutter }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is secp.
 		CursorLineNr = { fg = cp.fg_alt }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line. highlights the number in numberline.
-		MatchParen = { fg = cp.orange, style = "bold" }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
-		ModeMsg = { fg = cp.fg_alt, style = "bold" }, -- 'showmode' message (e.g., "-- INSERT -- ")
+		MatchParen = { fg = cp.orange, bold = true }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+		ModeMsg = { fg = cp.fg_alt, bold = true }, -- 'showmode' message (e.g., "-- INSERT -- ")
 		MsgArea = { fg = cp.white_br }, -- Area for messages and cmdline
 		MsgSeparator = {}, -- Separator for scrolled messages, `msgsep` flag of 'display'
 		MoreMsg = { fg = cp.blue }, -- |more-prompt|
@@ -44,39 +44,39 @@ local function get_base(cp)
 		PmenuSbar = { bg = util.lighten(cp.bg_alt, 0.95) }, -- Popup menu: scrollbar.
 		PmenuThumb = { bg = cp.fg_gutter }, -- Popup menu: Thumb of the scrollbar.
 		Question = { fg = cp.blue }, -- |hit-enter| prompt and yes/no questions
-		QuickFixLine = { bg = util.darken(cp.cyan, 0.2), style = "bold" }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
+		QuickFixLine = { bg = util.darken(cp.cyan, 0.2), bold = true }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 		Search = { bg = util.darken(cp.cyan, 0.3), fg = cp.fg }, -- Last search patern highlighting (see 'hlsearch').  Also used for similar items that need to stand oucp.
 		IncSearch = { bg = cp.cyan, fg = cp.black }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 		SpecialKey = { fg = cp.fg }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
-		SpellBad = { sp = cp.red_br, style = "undercurl" }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-		SpellCap = { sp = cp.yellow, style = "undercurl" }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
-		SpellLocal = { sp = cp.blue, style = "undercurl" }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
-		SpellRare = { sp = cp.white_br, style = "undercurl" }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
+		SpellBad = { sp = cp.red_br, undercurl = true }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+		SpellCap = { sp = cp.yellow, undercurl = true }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
+		SpellLocal = { sp = cp.blue, undercurl = true }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
+		SpellRare = { sp = cp.white_br, undercurl = true }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
 		StatusLine = { fg = cp.fg_alt, bg = cp.bg_alt }, -- status line of current window
 		StatusLineNC = { fg = cp.fg_gutter, bg = cp.bg_alt }, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 		TabLine = { bg = cp.bg_alt, fg = cp.fg_gutter }, -- tab pages line, not active tab page label
 		TabLineFill = { bg = cp.black }, -- tab pages line, where there are no labels
 		TabLineSel = { fg = cp.fg_alt, bg = cp.fg_gutter }, -- tab pages line, active tab page label
-		Title = { fg = cp.blue, style = "bold" }, -- titles for output from ":set all", ":autocmd" etcp.
+		Title = { fg = cp.blue, bold = true }, -- titles for output from ":set all", ":autocmd" etcp.
 		Visual = { bg = util.darken(cp.cyan, 0.2) }, -- Visual mode selection
 		VisualNOS = { bg = util.darken(cp.cyan, 0.2) }, -- Visual mode selection when vim is "Not Owning the Selection".
 		WarningMsg = { fg = cp.yellow }, -- warning messages
 		Whitespace = { fg = cp.fg_gutter }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
 		WildMenu = { bg = util.darken(cp.cyan, 0.2) }, -- current match in 'wildmenu' completion
 		Constant = { fg = cp.orange }, -- (preferred) any constant
-		String = { fg = cp.green, style = config.styles.strings }, -- a string constant: "this is a string"
+		String = vim.tbl_deep_extend("force", { fg = cp.green }, config.styles.strings), -- a string constant: "this is a string"
 		Character = { fg = cp.green }, --  a character constant: 'c', '\n'
 		Number = { fg = cp.orange_br }, --   a number constant: 234, 0xff
 		Float = { fg = cp.orange_br }, --    a floating point constant: 2.3e10
 		Boolean = { fg = cp.orange_br }, --  a boolean constant: TRUE, false
-		Identifier = { fg = cp.cyan, style = config.styles.variables }, -- (preferred) any variable name
-		Function = { fg = cp.blue, style = config.styles.functions }, -- function name (also: methods for classes)
+		Identifier = vim.tbl_deep_extend("force", { fg = cp.cyan }, config.styles.variables), -- (preferred) any variable name
+		Function = vim.tbl_deep_extend("force", { fg = cp.blue }, config.styles.functions), -- function name (also: methods for classes)
 		Statement = { fg = cp.magenta_br }, -- (preferred) any statement
 		Conditional = { fg = cp.red }, --  if, then, else, endif, switch, etcp.
 		Repeat = { fg = cp.red }, --   for, do, while, etcp.
 		Label = { fg = cp.magenta_br }, --    case, default, etcp.
 		Operator = { fg = cp.fg_alt }, -- "sizeof", "+", "*", etcp.
-		Keyword = { fg = cp.magenta, style = config.styles.keywords }, --  any other keyword
+		Keyword = vim.tbl_deep_extend("force", { fg = cp.magenta }, config.styles.keywords), --  any other keyword
 		-- Exception     = { }, --  try, catch, throw
 
 		PreProc = { fg = cp.pink }, -- (preferred) generic Preprocessor
@@ -96,24 +96,24 @@ local function get_base(cp)
 		-- SpecialComment= { }, -- special things inside a comment
 		-- Debug         = { }, --    debugging statements
 
-		Underlined = { style = "underline" }, -- (preferred) text that stands out, HTML links
-		Bold = { style = "bold" },
-		Italic = { style = "italic" },
+		Underlined = { underline = true }, -- (preferred) text that stands out, HTML links
+		Bold = { bold = true },
+		Italic = { italic = true },
 		-- ("Ignore", below, may be invisible...)
 		-- Ignore = { }, -- (preferred) left blank, hidden  |hl-Ignore|
 
 		Error = { fg = cp.red_br }, -- (preferred) any erroneous construct
-		Todo = { bg = cp.yellow, fg = cp.bg, style = "bold" }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+		Todo = { bg = cp.yellow, fg = cp.bg, bold = true }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 		qfLineNr = { fg = cp.yellow },
 		qfFileName = { fg = cp.blue },
-		htmlH1 = { fg = cp.magenta, style = "bold" },
-		htmlH2 = { fg = cp.blue, style = "bold" },
-		-- mkdHeading = { fg = cp.orange, style = "bold" },
+		htmlH1 = { fg = cp.magenta, bold = true },
+		htmlH2 = { fg = cp.blue, bold = true },
+		-- mkdHeading = { fg = cp.orange, bold = true },
 		-- mkdCode = { bg = cp.terminal_black, fg = cp.fg },
 		mkdCodeDelimiter = { bg = cp.terminal_black, fg = cp.fg },
-		mkdCodeStart = { fg = cp.cyan, style = "bold" },
-		mkdCodeEnd = { fg = cp.cyan, style = "bold" },
-		mkdLink = { fg = cp.blue, style = "underline" },
+		mkdCodeStart = { fg = cp.cyan, bold = true },
+		mkdCodeEnd = { fg = cp.cyan, bold = true },
+		mkdLink = { fg = cp.blue, underline = true },
 
 		-- debugging
 		debugPC = { bg = cp.bg_alt }, -- used for highlighting the current line in terminal-debug

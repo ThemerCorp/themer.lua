@@ -1,7 +1,7 @@
 --- @class util
 local util = {}
-local ns = vim.api.nvim_create_namespace("themer")
 local g = vim.g
+local ns = vim.api.nvim_create_namespace('themer')
 
 util.bg = "#000000"
 util.fg = "#ffffff"
@@ -42,24 +42,29 @@ end
 
 function util.highlight(group, color)
 	-- Doc: :h highlight-gui
-	local style = color.style and "gui=" .. color.style or "gui=NONE"
-	local fg = color.fg and "guifg=" .. color.fg or "guifg=NONE"
-	local bg = color.bg and "guibg=" .. color.bg or "guibg=NONE"
-	local sp = color.sp and "guisp=" .. color.sp or ""
-	local blend = color.blend and "blend=" .. color.blend or ""
-	local hl = "highlight " .. group .. " " .. style .. " " .. fg .. " " .. bg .. " " .. sp .. " " .. blend
+	local fg = color.fg and table.concat({"guifg=",color.fg}) or "guifg=NONE"
+	local bg = color.bg and table.concat({"guibg=",color.bg}) or "guibg=NONE"
+	local hl = table.concat({"highlight",group,fg,bg}, " ")
 
 	vim.cmd(hl)
-	if color.link then
-		vim.cmd("highlight! link " .. group .. " " .. color.link)
-	end
 end
 
+---sets highlights
+---@param hl_group string kinda?
+---@param hl_value table
+function util.set_hl(hl_group, hl_value)
+	vim.api.nvim_set_hl(ns, hl_group, hl_value)
+end
+
+function util.check_change()
+	vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+	vim.api.nvim__set_hl_ns(0)
+end
 --- Highlight on basis of given group and color
 --- @param tbl table
 function util.syntax(tbl)
-	for hl_grp, hl_value in pairs(tbl) do
-		util.highlight(hl_grp, hl_value)
+	for hl_group, hl_value in pairs(tbl) do
+		util.set_hl(hl_group, hl_value)
 	end
 end
 
@@ -100,15 +105,17 @@ function util.load(theme)
 		vim.cmd("syntax reset")
 	end
 
-	g.colors_name = require("themer.config").options.colorscheme
-
 	util.properties(theme.properties)
 	util.syntax(theme.base)
 	util.syntax(theme.integrations)
+	util.highlight("Normal", theme.base.Normal)
 
 	if require("themer.config").options["term_colors"] then
 		util.terminal(theme.colors)
 	end
+	
+	vim.cmd [[au ColorSchemePre * :lua require"custom.noice_dark".check_change()]]
+	vim.api.nvim__set_hl_ns(ns)
 end
 
 return util

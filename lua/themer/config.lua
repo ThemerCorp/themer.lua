@@ -4,29 +4,29 @@ local config = {}
 config.options = {
     colorscheme = "dark_cpt", -- default colorscheme
     transparency = false,
-	term_colors = false,
+	term_colors = true,
 	styles = {
-		comments = "italic",
-		functions = "italic",
-		keywords = "italic",
-		strings = "NONE",
-		variables = "NONE",
+		comments = { italic = true },
+		functions = { italic = true },
+		keywords = { italic = true },
+		strings = { italic = true },
+		variables = {},
 	},
 	integrations = {
 		treesitter = true,
 		native_lsp = {
 			enabled = true,
 			virtual_text = {
-				errors = "italic",
-				hints = "italic",
-				warnings = "italic",
-				information = "italic",
+				errors = { italic = true },
+				hints = { italic = true },
+				warnings = { italic = true },
+				information = { italic = true },
 			},
 			underlines = {
-				errors = "underline",
-				hints = "underline",
-				warnings = "underline",
-				information = "underline",
+				errors = { italic = true },
+				hints = { italic = true },
+				warnings = { italic = true },
+				information = { italic = true },
 			},
 		},
 		-- TODO: add all the remaining highlights ASAP

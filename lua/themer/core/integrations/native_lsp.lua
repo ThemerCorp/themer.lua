@@ -12,68 +12,33 @@ function M.get(cpt)
 		LspReferenceText = { bg = cpt.fg_gutter }, -- used for highlighting "text" references
 		LspReferenceRead = { bg = cpt.fg_gutter }, -- used for highlighting "read" references
 		LspReferenceWrite = { bg = cpt.fg_gutter }, -- used for highlighting "write" references
-		
 		-- hightlight diagnostics in numberline
-		DiagnosticError = { fg = cpt.error }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
-		DiagnosticWarn = { fg = cpt.warn }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
-		DiagnosticInfo = { fg = cpt.info }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
-		DiagnosticHint = { fg = cpt.hint }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
+		DiagnosticError = { fg = cpt.red_br }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
+		DiagnosticWarn = { fg = cpt.yellow }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
+		DiagnosticInfo = { fg = cpt.blue }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
+		DiagnosticHint = { fg = cpt.white_br }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
 
-		DiagnosticDefaultError = { fg = cpt.error }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-		DiagnosticDefaultWarn = { fg = cpt.warn }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-		DiagnosticDefaultInfo = { fg = cpt.info }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-		DiagnosticDefaultHint = { fg = cpt.hint }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+		DiagnosticDefaultError = { fg = cpt.red_br }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+		DiagnosticDefaultWarn = { fg = cpt.yellow }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+		DiagnosticDefaultInfo = { fg = cpt.blue }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+		DiagnosticDefaultHint = { fg = cpt.white_br }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 		LspSignatureActiveParameter = { fg = cpt.orange },
-		DiagnosticFloatingError         = { fg = cpt.error }, -- Used to color "Error" diagnostic messages in diagnostics float
-		DiagnosticFloatingWarn       = { fg = cpt.warn }, -- Used to color"Warning" diagnostic messages in diagnostics float
-		DiagnosticFloatingInfo   = { }, -- Used to color "Information" diagnostic messages in diagnostics float
-		DiagnosticFloatingHint          = { }, -- Used to color "Hint" diagnostic messages in diagnostics float
+		DiagnosticFloatingError         = { bg = cpt.bg_alt, fg = cpt.red_br }, -- Used to color "Error" diagnostic messages in diagnostics float
+		DiagnosticFloatingWarn       = { bg = cpt.bg_alt, fg = cpt.yellow }, -- Used to color"Warning" diagnostic messages in diagnostics float
+		DiagnosticFloatingInfo   = { bg = cpt.bg_alt, fg = cpt.blue }, -- Used to color "Information" diagnostic messages in diagnostics float
+		DiagnosticFloatingHint          = { bg = cpt.bg_alt, fg = cpt.white_br }, -- Used to color "Hint" diagnostic messages in diagnostics float
 
-		DiagnosticError = { fg = cpt.error },
-		DiagnosticWarn = { fg = cpt.warn },
-		DiagnosticInfo = { fg = cpt.info },
-		DiagnosticHint = { fg = cpt.hint },
-		DiagnosticVirtualTextError = { fg = cpt.error, style = virtual_text.errors }, -- Used for "Error" diagnostic virtual text
-		DiagnosticVirtualTextWarn = { fg = cpt.warn, style = virtual_text.warnings }, -- Used for "Warning" diagnostic virtual text
-		DiagnosticVirtualTextInfo = { fg = cpt.info, style = virtual_text.Warns }, -- Used for "Information" diagnostic virtual text
-		DiagnosticVirtualTextHint = { fg = cpt.hint, style = virtual_text.hints }, -- Used for "Hint" diagnostic virtual text
-		DiagnosticUnderlineError = { style = underlines.errors, sp = cpt.error }, -- Used to underline "Error" diagnostics
-		DiagnosticUnderlineWarn = { style = underlines.warnings, sp = cpt.warn }, -- Used to underline "Warning" diagnostics
-		DiagnosticUnderlineInfo = { style = underlines.information, sp = cpt.info }, -- Used to underline "Information" diagnostics
-		DiagnosticUnderlineHint = { style = underlines.hints, sp = cpt.hint }, -- Used to underline "Hint" diagnostics
-		
-	
-		-- Legacy support (will remove after 0.6 release :P)	
-		LspDiagnosticError = { fg = cpt.error }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
-		LspDiagnosticWarn = { fg = cpt.warn }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
-		LspDiagnosticInfo = { fg = cpt.info }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
-		LspDiagnosticHint = { fg = cpt.hint }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
+		DiagnosticVirtualTextError = vim.tbl_deep_extend("force", { fg = cpt.red_br }, underlines.errors),-- Used for "Error" diagnostic virtual text
+		DiagnosticVirtualTextWarn = vim.tbl_deep_extend("force", { fg = cpt.white_br }, underlines.warnings),-- Used for "Warning" diagnostic virtual text
+		DiagnosticVirtualTextInfo = vim.tbl_deep_extend("force", { fg = cpt.white_br }, underlines.information),-- Used for "Information" diagnostic virtual text
+		DiagnosticVirtualTextHint = vim.tbl_deep_extend("force", { fg = cpt.white_br }, underlines.hints),-- Used for "Hint" diagnostic virtual text
+		DiagnosticUnderlineError = vim.tbl_deep_extend("force", { sp = cpt.white_br }, underlines.errors),-- Used to underline "Error" diagnostics
+		DiagnosticUnderlineWarn = vim.tbl_deep_extend("force", { sp = cpt.white_br }, underlines.warnings),-- Used to underline "Warning" diagnostics
+		DiagnosticUnderlineInfo = vim.tbl_deep_extend("force", { sp = cpt.white_br }, underlines.information),-- Used to underline "Information" diagnostics
+		DiagnosticUnderlineHint = vim.tbl_deep_extend("force", { sp = cpt.white_br }, underlines.hints), -- Used to underline "Hint" diagnostics
 
-		LspDiagnosticsDefaultError = { fg = cpt.error }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-		LspDiagnosticsDefaultWarning = { fg = cpt.warn }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-		LspDiagnosticsDefaultInformation = { fg = cpt.info }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-		LspDiagnosticsDefaultHint = { fg = cpt.hint }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-		LspLspSignatureActiveParameter = { fg = cpt.orange },
-		LspDiagnosticsFloatingError         = { }, -- Used to color "Error" diagnostic messages in diagnostics float
-		LspDiagnosticsFloatingWarning       = { }, -- Used to color"Warning" diagnostic messages in diagnostics float
-		LspDiagnosticsFloatingInformation   = { }, -- Used to color "Information" diagnostic messages in diagnostics float
-		LspDiagnosticsFloatingHint          = { }, -- Used to color "Hint" diagnostic messages in diagnostics float
-
-		LspDiagnosticsError = { fg = cpt.error },
-		LspDiagnosticsWarning = { fg = cpt.warn },
-		LspDiagnosticsInformation = { fg = cpt.info },
-		LspDiagnosticsHint = { fg = cpt.hint },
-		LspDiagnosticsVirtualTextError = { fg = cpt.error, style = virtual_text.errors }, -- Used for "Error" diagnostic virtual text
-		LspDiagnosticsVirtualTextWarning = { fg = cpt.warn, style = virtual_text.warnings }, -- Used for "Warning" diagnostic virtual text
-		LspDiagnosticsVirtualTextInformation = { fg = cpt.info, style = virtual_text.warnings }, -- Used for "Information" diagnostic virtual text
-		LspDiagnosticsVirtualTextHint = { fg = cpt.hint, style = virtual_text.hints }, -- Used for "Hint" diagnostic virtual text
-		LspDiagnosticsUnderlineError = { style = underlines.errors, sp = cpt.error }, -- Used to underline "Error" diagnostics
-		LspDiagnosticsUnderlineWarning = { style = underlines.warnings, sp = cpt.warn }, -- Used to underline "Warning" diagnostics
-		LspDiagnosticsUnderlineInformation = { style = underlines.information, sp = cpt.info }, -- Used to underline "Information" diagnostics
-		LspDiagnosticsUnderlineHint = { style = underlines.hints, sp = cpt.hint }, -- Used to underline "Hint" diagnostics
-	
 		LspCodeLens = { fg = cpt.comment }, -- virtual text of the codelens
 	}
 end
 
-return M 
+return M
