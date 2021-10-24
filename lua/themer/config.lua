@@ -41,9 +41,10 @@ config.options = {
 		--	},
 		--	which_key = false,
 		indent_blankline = {
-			enabled = true,
-			colored_indent_levels = true,
+			enabled = false,
+			colored_indent_levels = false,
 		},
+		galaxyline = false,
 		--	dashboard = false,
 		--	neogit = false,
 		--	vim_sneak = false,
