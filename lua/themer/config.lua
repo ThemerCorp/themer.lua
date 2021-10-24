@@ -44,7 +44,6 @@ config.options = {
 			enabled = false,
 			colored_indent_levels = false,
 		},
-		galaxyline = false,
 		--	dashboard = false,
 		--	neogit = false,
 		--	vim_sneak = false,
@@ -56,6 +55,7 @@ config.options = {
 		--	ts_rainbow = false,
 		--	hop = false,
 	},
+	galaxyline = true,
 }
 
 function config.set_options(opts)
