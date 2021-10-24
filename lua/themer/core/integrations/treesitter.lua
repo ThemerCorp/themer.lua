@@ -14,7 +14,7 @@ function hi.get(cp)
 		-- TSAttribute         = { };
 		-- TSBoolean           = { };    -- For booleans.
 		-- TSCharacter         = { };    -- For characters.
-		TSComment           = vim.tbl_deep_extend("force", { fg = cp.comment }, config.styles.comments), -- For comment blocks.
+		TSComment = vim.tbl_deep_extend("force", { fg = cp.comment }, config.styles.comments), -- For comment blocks.
 		TSNote = { fg = cp.bg, bg = cp.blue },
 		TSWarning = { fg = cp.bg, bg = cp.yellow },
 		TSDanger = { fg = cp.bg, bg = cp.red },

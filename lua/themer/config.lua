@@ -29,12 +29,13 @@ config.options = {
 				information = { underline = true },
 			},
 		},
+		cmp = false,
 		-- TODO: add all the remaining highlights ASAP
 		--	lsp_trouble = false,
 		--	lsp_saga = false,
 		--	gitgutter = false,
 		--	gitsigns = false,
-		--	telescope = false,
+		telescope = false,
 		--	nvimtree = {
 		--		enabled = false,
 		--		show_root = false,
@@ -48,14 +49,14 @@ config.options = {
 		--	neogit = false,
 		--	vim_sneak = false,
 		--	fern = false,
-		--	barbar = false,
-		--	bufferline = false,
-		--	markdown = false,
+		barbar = false,
+		bufferline = false,
+		markdown = false,
 		--	lightspeed = false,
 		--	ts_rainbow = false,
 		--	hop = false,
 	},
-	galaxyline = true,
+	galaxyline = false, -- extra integrations
 }
 
 function config.set_options(opts)
