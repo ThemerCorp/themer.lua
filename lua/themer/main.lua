@@ -17,7 +17,7 @@ function main.load_colorscheme(cs)
 	local theme = require("themer.core.mapper").apply(return_value.color_scheme)
 	
 	-- Support for galaxyline
-	if config.integrations.galaxyline then
+	if config.galaxyline then
 		require("themer.core.integrations.galaxyline").get(cs, theme)
 	end
 
