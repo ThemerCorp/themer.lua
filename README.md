@@ -4,12 +4,6 @@
 
 A simple fast highlight plugin for neovim, written in lua.
 
-### FEATURES
-- Fast (as it is written completely in lua)
-- Easy to use (as simple as doing `:colorscheme <fav colorscheme>`)
-- Integrates with many plugins (thanks to the integration with `:colorscheme`)
-
-
 ### INSTALLATION
 
 Using packer
