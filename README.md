@@ -172,4 +172,5 @@ require("themer.utils.util").hex2rgb(hex)
 | ✅			   | Dark Catppuccino | `dark_cpt` |
 | ✅               | Rose Pine        | `rose_pine`        |
 | ✅               | Dracula          | `dracula`          |
+| ✅               | Papa Darker      | `papa_darker`          |
 
