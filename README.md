@@ -163,7 +163,7 @@ require("themer.utils.util").hex2rgb(hex)
 
 |				   | Colorschemes     | Code Names         |
 | ---------------- | ---------------- | ------------------ |
-| ✅			   | Dark Catppuccino | `dark_catppuccino` |
+| ✅			   | Dark Catppuccino | `dark_cpt` |
 | ✅               | Rose Pine        | `rose_pine`        |
 | ✅               | Dracula          | `dracula`          |
 
