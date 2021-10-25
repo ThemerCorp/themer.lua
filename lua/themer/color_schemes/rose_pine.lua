@@ -13,7 +13,6 @@ local colors = {
     yellow = "#f6c177",
     blue = "#31748f",
     magenta = "#c4a7e7",
-    cyan = "#9ccfd8",
     white = "#e0def4",
     orange = "#ebbcba",
     pink = "#ebbcba",
@@ -22,6 +21,7 @@ local colors = {
 
 
 -- rose pine has no bright colors 😢
+colors.cyan = util.blend(colors.blue, colors.green, 0.7)
 colors.black_br = colors.black
 colors.red_br = colors.red
 colors.green_br = colors.green
