@@ -10,7 +10,7 @@ function main.load_colorscheme(cs)
 	vim.g.colors_name = cs or config.colorscheme
 
 	-- colorscheme gets evaluated from mapper.lua
-	local return_value, color_scheme = require("themer.api.colors").get_color_scheme(cs or config.colorscheme)
+	local return_value = require("themer.api.colors").get_color_scheme(cs or config.colorscheme)
 
 	if not return_value.status then
 		vim.api.nvim_err_writeln(return_value.msg)

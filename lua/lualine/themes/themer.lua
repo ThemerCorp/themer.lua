@@ -1,4 +1,4 @@
-local return_value, color_scheme = require("themer.api.colors").get_color_scheme(require("themer.config").options["colorscheme"])
+local return_value  = require("themer.api.colors").get_color_scheme(require("themer.config").options["colorscheme"])
 
 if not return_value.status then
 	vim.api.nvim_err_writeln(return_value.msg)
