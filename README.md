@@ -81,6 +81,7 @@ Here are the defaults:
 			},
 		},
 		cmp = false,
+		gitsigns = true,	
 		telescope = false,
 		indent_blankline = {
 			enabled = false,
@@ -158,6 +159,7 @@ require("themer.utils.util").hex2rgb(hex)
 - [Telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 - [Galaxyline.nvim](https://github.com/Ntbbloodbath/galaxyline.nvim)
 - [BufferLine.nvim](https://github.com/akinsho/bufferline.nvim)
+- [GitSigns](https://github.com/lewis6991/gitsigns.nvim)
 
 ## 🌹 Supported colorschemes
 
