@@ -3,7 +3,7 @@ local hig = {}
 function hig.get(cp)
 
 	local hi = {
-		IndentBlanklineChar = { fg = cp.gray },
+		IndentBlanklineChar = { fg = cp.gray, nocombine = true },
 	}
 
 	if require("themer.config").options.integrations.indent_blankline.colored_indent_levels then
