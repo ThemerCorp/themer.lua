@@ -91,7 +91,10 @@ Here are the defaults:
 		bufferline = false,
 		markdown = false,
 	},
-	galaxyline = false, -- extra integrations
+	extra_integrations = {
+		galaxyline = false,
+		lualine = false,
+	},
 }
 ```
 
@@ -160,6 +163,7 @@ require("themer.utils.util").hex2rgb(hex)
 - [Galaxyline.nvim](https://github.com/Ntbbloodbath/galaxyline.nvim)
 - [BufferLine.nvim](https://github.com/akinsho/bufferline.nvim)
 - [GitSigns](https://github.com/lewis6991/gitsigns.nvim)
+- [Lualine.nvim](https://github.com/hoob3rt/lualine.nvim)
 
 ## 🌹 Supported colorschemes
 

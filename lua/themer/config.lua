@@ -56,7 +56,10 @@ config.options = {
 		--	ts_rainbow = false,
 		--	hop = false,
 	},
-	galaxyline = false, -- extra integrations
+	extra_integrations = {
+		galaxyline = false,
+		lualine = false,
+	},
 }
 
 function config.set_options(opts)
