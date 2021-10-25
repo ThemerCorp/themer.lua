@@ -1,10 +1,10 @@
 # themer.lua
 
-A simple fast highlight plugin and colorcscheme creator for neovim, written in lua.
+A simple fast highlight plugin and colorscheme creator for neovim, written in lua.
 
 ## 🌟 Fetures
 - chaotic colorscheme ecosystem of neovim with every colorscheme it's own way of configuring and other stuff
-- lots of supported colorcschemes (will be done soon! 😃)
+- lots of supported colorschemes (will be done soon! 😃)
 - uses the `vim.api.nvim_set_hl()` instead of `vim.cmd[[]]` calls 🥳
 - using this plugin you will get a pure 100% lua experience, even without any extra taxes 🤣
 - supports most of the plugins (if it doesn't, you can open an issue 🐞 or make a pull)
@@ -164,4 +164,6 @@ require("themer.utils.util").hex2rgb(hex)
 |				   | Colorschemes     | Code Names         |
 | ---------------- | ---------------- | ------------------ |
 | ✅			   | Dark Catppuccino | `dark_catppuccino` |
+| ✅               | Rose Pine        | `rose_pine`        |
+| ✅               | Dracula          | `dracula`          |
 
