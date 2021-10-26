@@ -169,8 +169,8 @@ require("themer.utils.util").hex2rgb(hex)
 
 |				   | Colorschemes     | Code Names         |
 | ---------------- | ---------------- | ------------------ |
-| ✅			   | Dark Catppuccino | `dark_cpt` |
+| ✅			   | Dark Catppuccino | `dark_cpt`         |
 | ✅               | Rose Pine        | `rose_pine`        |
 | ✅               | Dracula          | `dracula`          |
-| ✅               | Papa Darker      | `papa_darker`          |
-
+| ✅               | Papa Darker      | `papa_darker`      |
+| ✅               | Doom One         | `doom_one`         |
