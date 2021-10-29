@@ -13,6 +13,18 @@ function hig.get(cp)
 		hi["IndentBlanklineIndent3"] = {nocombine = true, fg = cp.orange}
 		hi["IndentBlanklineIndent2"] = {nocombine = true, fg = cp.blue}
 		hi["IndentBlanklineIndent1"] = {nocombine = true, fg = cp.magenta}
+		
+		-- Configuring indent_blankline to set colored levels
+		require("indent_blankline").setup {
+		    char_highlight_list = {
+		        "IndentBlanklineIndent1",
+		        "IndentBlanklineIndent2",
+		        "IndentBlanklineIndent3",
+		        "IndentBlanklineIndent4",
+		        "IndentBlanklineIndent5",
+		        "IndentBlanklineIndent6",
+		    },
+		}
 	end
 
 	return hi

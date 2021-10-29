@@ -4,23 +4,19 @@ local hi = {}
 
 function hi.get(cp)
 	return {
-		BufferCurrent = { bg = cp.fg_gutter, fg = cp.fg },
-		BufferCurrentIndex = { bg = cp.fg_gutter, fg = cp.blue },
-		BufferCurrentMod = { bg = cp.fg_gutter, fg = cp.yellow },
-		BufferCurrentSign = { bg = cp.fg_gutter, fg = cp.blue },
-		BufferCurrentTarget = { bg = cp.fg_gutter, fg = cp.red },
-		BufferVisible = { bg = cp.bg_alt, fg = cp.fg },
-		BufferVisibleIndex = { bg = cp.bg_alt, fg = cp.blue },
-		BufferVisibleMod = { bg = cp.bg_alt, fg = cp.yellow },
-		BufferVisibleSign = { bg = cp.bg_alt, fg = cp.blue },
-		BufferVisibleTarget = { bg = cp.bg_alt, fg = cp.yellow },
-		BufferInactive = { bg = cp.bg_alt, fg = cp.comment },
-		BufferInactiveIndex = { bg = cp.bg_alt, fg = cp.comment },
-		BufferInactiveMod = { bg = cp.bg_alt, fg = util.darken(cp.yellow, 0.7) },
-		BufferInactiveSign = { bg = cp.bg_alt, fg = cp.blue },
-		BufferInactiveTarget = { bg = cp.bg_alt, fg = cp.red },
-		BufferTabpages = { bg = cp.bg_alt, fg = cp.none },
-		BufferTabpage = { bg = cp.bg_alt, fg = cp.blue },
+		BufferTabpageFill = { bg = cp.none },
+		BufferCurrent = { fg = cp.fg, bg = cp.bg_float },
+		BufferCurrentIndex = { fg = cp.fg, bg = cp.bg_float },
+		BufferCurrentMod = { fg = cp.green, bg = cp.bg_float },
+		BufferCurrentSign = { fg = cp.subtle, bg = cp.bg_float },
+		BufferInactive = { fg = cp.subtle },
+		BufferInactiveIndex = { fg = cp.subtle },
+		BufferInactiveMod = { fg = cp.green },
+		BufferInactiveSign = { fg = cp.subtle },
+		BufferVisible = { fg = cp.subtle },
+		BufferVisibleIndex = { fg = cp.subtle },
+		BufferVisibleMod = { fg = cp.green },
+		BufferVisibleSign = { fg = cp.subtle },
 	}
 end
 

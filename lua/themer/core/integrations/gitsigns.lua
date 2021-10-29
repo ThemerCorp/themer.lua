@@ -1,12 +1,14 @@
-local M = {}
-local config = require("themer.config").options
+local gitsigns = {}
 
-function M.get(cp)
+function gitsigns.get(cp)
 	return {
-		GitSignsAdd = { fg = cp.blue, bg = config.transparency and cp.none or cp.bg }, -- diff mode: Added line |diff.txt|
-		GitSignsChange = { fg = cp.yellow, bg = config.transparency and cp.none or cp.bg }, -- diff mode: Changed line |diff.txt|
-		GitSignsDelete = { fg = cp.red, bg = config.transparency and cp.none or cp.bg }, -- diff mode: Deleted line |diff.txt|
+	SignAdd = { fg = cp.green },
+	SignChange = { fg = cp.orange },
+	SignDelete = { fg = cp.red },
+	GitSignsAdd = { fg = cp.green },
+	GitSignsChange = { fg = cp.orange },
+	GitSignsDelete = { fg = cp.red },
 	}
 end
 
-return M
+return gitsigns

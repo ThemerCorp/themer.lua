@@ -1,14 +1,15 @@
-local M = {}
+local hi = {}
 
-function M.get(cp)
+function hi.get(cp)
 	return {
-		markdownHeadingDelimiter = { fg = cp.orange, bold = true },
-		markdownCode = { fg = cp.cyan },
-		markdownCodeBlock = { fg = cp.cyan },
-		markdownH1 = { fg = cp.magenta, bold = true },
-		markdownH2 = { fg = cp.blue, bold = true },
-		markdownLinkText = { fg = cp.blue, underline = true },
+		markdownHeadingDelimiter = { fg = cp.subtle },
+		markdownCode = { fg = cp.yellow },
+		markdownCodeDelimiter = { fg = cp.green },
+		markdownCodeBlock = { fg = cp.green },
+		markdownH1 = { fg = cp.red, bold = true },
+		markdownH2 = { fg = cp.red, bold = true },
+		markdownLinkText = { fg = cp.red },
 	}
 end
 
-return M
+return hi

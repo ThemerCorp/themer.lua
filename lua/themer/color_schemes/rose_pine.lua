@@ -1,42 +1,21 @@
-local util = require("themer.utils.util")
-
 local colors = {
-    none = "NONE",
-    bg = "#191724", -- nvim bg
-    bg_highlight = "#2a2837",
-    fg = "#e0def4", -- fg color (text)
-    fg_gutter = "#6e6a86",
-    black = "#211f2d",
-    gray = "#3a384a",
-    red = "#eb6f92",
-    green = "#9ccfd8",
-    yellow = "#f6c177",
-    blue = "#31748f",
-    magenta = "#c4a7e7",
-    white = "#e0def4",
-    orange = "#ebbcba",
-    pink = "#ebbcba",
-    comment = "#555169",
+	flavour = "dark", -- set type of colorscheme: dark/light
+	bg = "#191724", -- background
+	bg_alt = "#1f1d2e", -- alternate background
+	bg_float = "#26233a", -- for floating windows and statuslines and pum sidebar and pum selected and CursorColumn
+	inactive = "#555169", -- for stuff like empty folder(any inactive stuff)
+	subtle = "#6e6a86", -- for comments and float border and more...
+	fg = "#e0def4", -- the foreground/text color
+	red = "#eb6f92", -- for errors
+	yellow = "#f6c177", -- for warns
+	orange = "#ebbcba", -- mostly for booleans
+	blue = "#31748f", -- for keywords
+	green = "#9ccfd8", -- for info and constructors/labels and diffadd
+	magenta = "#c4a7e7", -- for hints and visual mode/search foreground/special comments/git stage and merge
+	highlight = "#2a2837", -- ofc for highlighting (it is the bg of highlighted text)
+	highlight_inactive = "#211f2d", -- same as highlight for inactive stuff and also cursor line
+	highlight_overlay = "#3a384a", -- same as highlight for overlays (floats)
+	none = "NONE",
 }
-
-
--- rose pine has no bright colors 😢
-colors.cyan = util.blend(colors.blue, colors.green, 0.7)
-colors.black_br = colors.black
-colors.red_br = colors.red
-colors.green_br = colors.green
-colors.yellow_br = colors.yellow
-colors.blue_br = colors.blue
-colors.magenta_br = colors.magenta
-colors.cyan_br = colors.cyan
-colors.white_br = colors.white
-colors.orange_br = colors.orange
-colors.pink_br = colors.pink
-
--- Some extra colors which require some util functions
-colors.bg_alt = util.darken(colors.bg, 0.75, "#000000")
-colors.fg_alt = util.darken(colors.fg, 0.80, "#000000")
-
-colors.black = util.darken(colors.bg, 0.8, "#000000")
 
 return colors

@@ -41,8 +41,8 @@ function util.lighten(hex, amount, fg)
 end
 
 function util.highlight(group, color)
-	-- Doc: :h highlight-gui
-	local fg = color.fg and table.concat({"guifg=",color.fg}) or "guifg=NONE"
+ 	-- Doc: :h highlight-gui
+ 	local fg = color.fg and table.concat({"guifg=",color.fg}) or "guifg=NONE"
 	local bg = color.bg and table.concat({"guibg=",color.bg}) or "guibg=NONE"
 	local hl = table.concat({"highlight",group,fg,bg}, " ")
 
@@ -60,6 +60,7 @@ function util.check_change()
 	vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
 	vim.api.nvim__set_hl_ns(0)
 end
+
 --- Highlight on basis of given group and color
 --- @param tbl table
 function util.syntax(tbl)
@@ -114,7 +115,7 @@ function util.load(theme)
 		util.terminal(theme.colors)
 	end
 	
-	vim.cmd [[au ColorSchemePre * :lua require("themer.utils.util").check_change()]]
+	-- vim.cmd [[au ColorSchemePre * :lua require("themer.utils.util").check_change()]]
 	vim.api.nvim__set_hl_ns(ns)
 end
 

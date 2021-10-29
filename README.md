@@ -17,7 +17,7 @@ Make sure to use Neovim version 0.5.x or higher (I use Neovim version 0.6+ so if
 use({
 	"narutoxy/themer.lua",
 	branch = "dev",	-- I recommend dev branch because it has more plugin support currently
-	after = "packer.nvim",
+	-- after = "packer.nvim", -- hmm for some reason this errors out also `themer.lua` is not a heavy plugin
 	config = function()
 		-- vim.cmd("colorscheme dark_cpt") -- you can also do this
 		require("themer").load("dark_cpt")
@@ -53,35 +53,46 @@ PS: Be sure to replace dark\_cpt with your favourite colorscheme :P
 
 Here are the defaults:
 ```lua
-    colorscheme = "dark_cpt", -- default colorscheme
+config.options = {
+    colorscheme = "rose_pine", -- default colorscheme
     transparency = false,
 	term_colors = true,
 	styles = {
 		comments = { italic = true },
-		functions = { italic = true },
-		keywords = { italic = true },
+		functions = {},
+		keywords = {},
 		strings = {},
 		variables = {},
+		parameters = {},
+		fields = {},
+	},
+	colors = {
+	--		hint = nil,
+	--		info = nil,
+	--		warn = nil,
+	--		error = nil,
+	--		punctuation = nil,
+	--		comment = nil,
 	},
 	integrations = {
 		treesitter = true,
 		native_lsp = {
 			enabled = true,
 			virtual_text = {
-				errors = { italic = true },
-				hints = { italic = true },
-				warnings = { italic = true },
-				information = { italic = true },
+				error = { italic = true },
+				hint = { italic = true },
+				warn = { italic = true },
+				info = { italic = true },
 			},
 			underlines = {
-				errors = { underline = true },
-				hints = { underline = true },
-				warnings = { underline = true },
-				information = { underline = true },
+				error = { underline = true },
+				hint = { underline = true },
+				warn = { underline = true },
+				info = { underline = true },
 			},
 		},
 		cmp = false,
-		gitsigns = true,	
+		gitsigns = false,
 		telescope = false,
 		indent_blankline = {
 			enabled = false,
@@ -171,6 +182,9 @@ require("themer.utils.util").hex2rgb(hex)
 | ---------------- | ---------------- | ------------------ |
 | ✅			   | Dark Catppuccino | `dark_cpt` |
 | ✅               | Rose Pine        | `rose_pine`        |
+| ✅               | Rose Pine Moon        | `rose_pine_moon`        |
+| ✅               | Doom One        | `doom_one`        |
+| ✅               | Rose Pine Dawn       | `rose_pine_dawn`        |
 | ✅               | Dracula          | `dracula`          |
-| ✅               | Papa Darker      | `papa_darker`          |
+| ✅               | Papa Dark      | `papa_dark`          |
 

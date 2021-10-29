@@ -2,31 +2,41 @@
 local config = {}
 
 config.options = {
-    colorscheme = "dark_cpt", -- default colorscheme
+    colorscheme = "rose_pine", -- default colorscheme
     transparency = false,
 	term_colors = true,
 	styles = {
 		comments = { italic = true },
-		functions = { italic = true },
-		keywords = { italic = true },
+		functions = {},
+		keywords = {},
 		strings = {},
 		variables = {},
+		parameters = {},
+		fields = {},
+	},
+	colors = {
+	--		hint = nil,
+	--		info = nil,
+	--		warn = nil,
+	--		error = nil,
+	--		punctuation = nil,
+	--		comment = nil,
 	},
 	integrations = {
 		treesitter = true,
 		native_lsp = {
 			enabled = true,
 			virtual_text = {
-				errors = { italic = true },
-				hints = { italic = true },
-				warnings = { italic = true },
-				information = { italic = true },
+				error = { italic = true },
+				hint = { italic = true },
+				warn = { italic = true },
+				info = { italic = true },
 			},
 			underlines = {
-				errors = { underline = true },
-				hints = { underline = true },
-				warnings = { underline = true },
-				information = { underline = true },
+				error = { underline = true },
+				hint = { underline = true },
+				warn = { underline = true },
+				info = { underline = true },
 			},
 		},
 		cmp = false,
@@ -51,7 +61,7 @@ config.options = {
 		--	fern = false,
 		barbar = false,
 		bufferline = false,
-		markdown = true,
+		markdown = false,
 		--	lightspeed = false,
 		--	ts_rainbow = false,
 		--	hop = false,

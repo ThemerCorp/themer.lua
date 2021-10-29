@@ -1,26 +1,23 @@
 local hi = {}
-local util = require("themer.utils.util")
 
 function hi.get(cp)
 
-	local inactive_clr = util.darken("#000000", 0.56)
-
 	return {
-		BufferLineFill = { bg = util.lighten(cp.bg, 0.05, "#ffffff") },
-		BufferLineBackground = { fg = cp.gray, bg = inactive_clr },
-		BufferLineBufferVisible = { fg = cp.gray, bg = inactive_clr },
+		BufferLineFill = { bg = cp.overlay },
+		BufferLineBackground = { fg = cp.subtle, bg = cp.inactive },
+		BufferLineBufferVisible = { fg = cp.subtle, bg = cp.inactive },
 		BufferLineBufferSelected = { fg = cp.fg, bg = cp.bg },
-		BufferLineTab = { fg = cp.gray, bg = cp.bg },
+		BufferLineTab = { fg = cp.subtle, bg = cp.bg },
 		BufferLineTabSelected = { fg = cp.red, bg = cp.blue },
-		BufferLineTabClose = { fg = cp.red, bg = inactive_clr },
+		BufferLineTabClose = { fg = cp.red, bg = cp.inactive },
 		BufferLineIndicatorSelected = { fg = cp.bg, bg = cp.bg },
 		-- separators
-		BufferLineSeparator = { fg = inactive_clr, bg = inactive_clr },
-		BufferLineSeparatorVisible = { fg = inactive_clr, bg = inactive_clr },
-		BufferLineSeparatorSelected = { fg = inactive_clr, bg = inactive_clr },
+		BufferLineSeparator = { fg = cp.inactive, bg = cp.inactive },
+		BufferLineSeparatorVisible = { fg = cp.inactive, bg = cp.inactive },
+		BufferLineSeparatorSelected = { fg = cp.inactive, bg = cp.inactive },
 		-- close buttons
-		BufferLineCloseButton = { fg = cp.gray, bg = inactive_clr },
-		BufferLineCloseButtonVisible = { fg = cp.gray, bg = inactive_clr },
+		BufferLineCloseButton = { fg = cp.subtle, bg = cp.inactive },
+		BufferLineCloseButtonVisible = { fg = cp.subtle, bg = cp.inactive },
 		BufferLineCloseButtonSelected = { fg = cp.red, bg = cp.bg },
 	}
 end

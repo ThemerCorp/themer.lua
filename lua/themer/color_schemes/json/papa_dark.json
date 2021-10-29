@@ -1,0 +1,21 @@
+{
+	"flavour": "dark",
+	"bg": "#2e3440",
+	"fg": "#e5e9f0",
+	"bg_alt": "#2b2e36",
+	"bg_float": "#3B4048",
+	"inactive": "#4C566A",
+	"subtle": "#4c566a",
+	"red": "#bf616a",
+	"yellow": "#d4d198",
+	"orange": "#d08770",
+	"blue": "#5d8ac2",
+	"green": "#98C379",
+	"magenta": "#c487b9",
+	"highlight": "#434c5e",
+	"highlight_overlay": "#434c5e",
+	"highlight_inactive": "#3e4452",
+	"comment": "#699856",
+	"light_blue": "#8fc6e3",
+	"cyan": "#4EC9B0"
+}
