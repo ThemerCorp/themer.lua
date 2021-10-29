@@ -180,11 +180,10 @@ require("themer.utils.util").hex2rgb(hex)
 
 |				   | Colorschemes     | Code Names         |
 | ---------------- | ---------------- | ------------------ |
-| ✅			   | Dark Catppuccino | `dark_cpt` |
+| ✅			   | Dark Catppuccino | `dark_cpt`         |
 | ✅               | Rose Pine        | `rose_pine`        |
 | ✅               | Rose Pine Moon        | `rose_pine_moon`        |
 | ✅               | Doom One        | `doom_one`        |
 | ✅               | Rose Pine Dawn       | `rose_pine_dawn`        |
 | ✅               | Dracula          | `dracula`          |
 | ✅               | Papa Dark      | `papa_dark`          |
-
