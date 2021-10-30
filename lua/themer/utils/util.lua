@@ -114,7 +114,7 @@ function util.load(theme)
     util.syntax(theme.integrations)
     util.highlight("Normal", theme.base.Normal)
 
-    -- vim.cmd [[au ColorSchemePre * :lua require("themer.utils.util").check_change()]]
+    vim.cmd([[au ColorSchemePre * :lua require("themer.utils.util").check_change()]])
     vim.api.nvim__set_hl_ns(ns)
 end
 
