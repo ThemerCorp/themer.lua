@@ -2,7 +2,7 @@
 
 A simple fast highlight plugin and colorscheme creator for neovim, written in lua.
 
-## 🌟 Fetures
+## 🌟 Features
 - chaotic colorscheme ecosystem of neovim with every colorscheme it's own way of configuring and other stuff
 - lots of supported colorschemes (will be done soon! 😃)
 - uses the `vim.api.nvim_set_hl()` instead of `vim.cmd[[]]` calls 🥳
