@@ -27,11 +27,12 @@ require("themer").remap_hl_group({
     NonText = { fg = colors.blue },
     Pmenu = { fg = colors.line_color },
     PmenuSbar = { fg = colors.visual_grey },
+    PmenuSel = { bg = colors.visual_grey},
     PmenuThumb = { fg = colors.fg },
     Search = { bg = colors.blue },
     TabLine = { fg = colors.comment },
     TabLineSel = { fg = colors.fg },
-    TabLineFill = { bg = colors.bg}, 
+    TabLineFill = { bg = colors.bg},
     Visual = { bg = colors.visual_grey },
     WarningMsg = { fg = colors.yellow },
     Whitespace = { fg = colors.fg },
@@ -79,7 +80,19 @@ require("themer").remap_hl_group({
     TSConditional = { link = "Keyword"},
     TSConstBuiltin = { link = "Keyword"},
 
-    CmpItemKind = { fg = colors.blue}
+    GitSignsAdd = { fg = colors.green, bg = colors.bg },
+    GitSignsChange = { fg = colors.yellow, bg = colors.bg },
+    GitSignsDelete = { fg = colors.red, bg = colors.bg },
+
+    CmpItemKind = { fg = colors.blue},
+
+    TroubleSignError = { fg = colors.red },
+    TroubleSignWarning = { fg = colors.yellow },
+
+    NvimTreeRootFolder = { fg = colors.light_blue },
+    NvimTreeFileDeleted = { fg = colors.red },
+    NvimTreeGitDeleted = { fg = colors.red },
+    NvimTreeGitDirty = { fg = colors.yellow },
 })
 
 return colors
