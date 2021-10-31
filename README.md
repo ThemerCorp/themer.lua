@@ -202,6 +202,7 @@ local decode = j.decode('../color_schemes/json/foo.json')
 | ✅			   | Dark Catppuccino | `dark_cpt`         |
 | ✅               | Rose Pine        | `rose_pine`        |
 | ✅               | Rose Pine Moon        | `rose_pine_moon`        |
+| ✅               | EverForest | `everforest`        |
 | ✅               | Doom One        | `doom_one`        |
 | ✅               | Rose Pine Dawn       | `rose_pine_dawn`        |
 | ✅               | Dracula          | `dracula`          |
