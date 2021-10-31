@@ -1,8 +1,11 @@
 name: formatting
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 1 * *'
+  push:
+    paths-ignore:
+      - ".github/**"
+      - "*.md"
+    branches: "**"
 
 jobs:
   stylua:
