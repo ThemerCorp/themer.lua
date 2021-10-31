@@ -1,7 +1,7 @@
 --- @class util
 local util = {}
 local g = vim.g
-local ns = vim.api.nvim_create_namespace("themer”)
+local ns = vim.api.nvim_create_namespace("themer")
 
 util.ns = ns
 util.bg = "#000000"
