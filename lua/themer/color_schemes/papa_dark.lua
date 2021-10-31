@@ -31,6 +31,7 @@ require("themer").remap_hl_group({
     Search = { bg = colors.blue },
     TabLine = { fg = colors.comment },
     TabLineSel = { fg = colors.fg },
+    TabLineFill = { bg = colors.bg}, 
     Visual = { bg = colors.visual_grey },
     WarningMsg = { fg = colors.yellow },
     Whitespace = { fg = colors.fg },
@@ -73,6 +74,12 @@ require("themer").remap_hl_group({
     TSKeyword = { fg = colors.blue },
     TSPunctBracket = { fg = colors.blue },
     TSConstructor = { fg = colors.blue },
+    TSMethod = { link = "Function"},
+    TSKeywordFunction = { link = "Keyword"},
+    TSConditional = { link = "Keyword"},
+    TSConstBuiltin = { link = "Keyword"},
+
+    CmpItemKind = { fg = colors.blue}
 })
 
 return colors
