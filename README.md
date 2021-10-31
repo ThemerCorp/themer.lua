@@ -208,6 +208,7 @@ local decode = j.decode('../color_schemes/json/foo.json')
 | ✅               | Dracula          | `dracula`          |
 | ✅               | Papa Dark      | `papa_dark`          |
 | ✅				| One Dark 		| `onedark`			|
+| ✅				| Nord 		| `nord`			|
 
 
 ## 🫂 Contributing

@@ -1,1 +1,1 @@
-require('themer').load('everforest')
+require("themer").load("everforest")
