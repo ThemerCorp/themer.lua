@@ -1,8 +1,9 @@
 --- @class util
 local util = {}
 local g = vim.g
-local ns = vim.api.nvim_create_namespace("themer")
+local ns = vim.api.nvim_create_namespace("
 
+util.ns = ns
 util.bg = "#000000"
 util.fg = "#ffffff"
 util.brightness = 0.3
@@ -52,11 +53,11 @@ end
 ---@param hl_group string kinda?
 ---@param hl_value table
 function util.set_hl(hl_group, hl_value)
-    vim.api.nvim_set_hl(ns, hl_group, hl_value)
+    vim.api.nvim_set_hl(util.ns, hl_group, hl_value)
 end
 
 function util.check_change()
-    vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+    vim.api.nvim_buf_clear_namespace(0, util.ns, 0, -1)
     vim.api.nvim__set_hl_ns(0)
 end
 
@@ -115,7 +116,7 @@ function util.load(theme)
     util.highlight("Normal", theme.base.Normal)
 
     vim.cmd([[au ColorSchemePre * :lua require("themer.utils.util").check_change()]])
-    vim.api.nvim__set_hl_ns(ns)
+    vim.api.nvim__set_hl_ns(util.ns)
 end
 
 return util
