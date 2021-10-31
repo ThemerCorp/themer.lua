@@ -210,7 +210,7 @@ local decode = j.decode('../color_schemes/json/foo.json')
 | ✅				| One Dark 		| `onedark`			|
 
 
-## 🫂 Contributing
+## Contributing
 
 ### Adding a new colorscheme
 Let's say we have to create a new colorsheme `foo`. Here is a brief guide on how to achieve that:
