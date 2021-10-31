@@ -1,21 +1,30 @@
 local json_utils = {}
 
--- https://stackoverflow.com/a/31857671
-local open = io.open
-
-json_utils.readfile = function(path)
-    local file = open(path, "rb") -- r read mode and b binary mode
-    if not file then
-        return nil
-    end
-    local content = file:read("*a") -- *a or *all reads the whole file
-    file:close()
-    return content
+-- for some 0.6 exclusive features :P
+json_utils.is_minimum_version = function(major, minor, patch)
+	local version = vim.version()
+	return major <= version.major and minor <= version.minor and patch <= version.patch
 end
 
+json_utils.get_cfd = function()
+	local cfd = string.sub(debug.getinfo(1, "S").source, 2):match("(.*/)")
+	return cfd
+end
+
+json_utils.encode_decode = function()
+	local json = {}
+	json.encode = json_utils.is_minimum_version(0, 6, 0) and vim.json.encode or vim.fn.json_encode()
+	json.decode = json_utils.is_minimum_version(0, 6, 0) and vim.json.decode or vim.fn.json_decode()
+	return json
+end
+
+---path relative to this file lol
+---@param path string
 json_utils.decode = function(path)
-    local json_content = json_utils.readfile(path)
-    return vim.json.decode(json_content)
+	local json_content = json_utils.encode_decode().decode(
+		table.concat(vim.fn.readfile(table.concat({ json_utils.get_cfd(), path })))
+	)
+	return json_content
 end
 
 return json_utils

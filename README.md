@@ -164,6 +164,25 @@ require("themer.utils.util").lighten(hex, amount, fg) -- "#ffffff" will be used 
 require("themer.utils.util").hex2rgb(hex)
 ```
 
+### JSON APIs
+All JSON utils are in `./lua/themer/utils/json.lua`. Here's a quick look on all the utils
+```lua
+local j = require("themer.utils.json")
+
+local version = j.is_minimum_version(0, 6, 0) -- true if neovim version is 0.6.0+
+
+local cfd = j.get_cfd() 					  -- returns absolute path of `./lua/themer/utils/json.lua`
+
+local codec = j.encode_decode()				  -- returns a table
+-- codec.encode will be using vim.json.encode or vim.fn.json_encode depending on the nvim version
+-- codec.decode will be using vim.json.decode or vim.fn.json_decode depending on the nvim version
+
+local decode = j.decode('../color_schemes/json/foo.json')
+-- parses the json content of given file using codec.decode and returns a lua table
+-- path of json file should be relative to `./lua/themer/utils/json.lua`
+-- see `./lua/themer/color_schemes/papa_dark.lua` for working example
+```
+
 ## 🍰 Supported Plugins
 - [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [LSP diagnostics](https://neovim.io/doc/user/lsp.html)
@@ -187,3 +206,67 @@ require("themer.utils.util").hex2rgb(hex)
 | ✅               | Rose Pine Dawn       | `rose_pine_dawn`        |
 | ✅               | Dracula          | `dracula`          |
 | ✅               | Papa Dark      | `papa_dark`          |
+| ✅				| One Dark 		| `onedark`			|
+
+
+## 🫂 Contributing
+
+### Adding a new colorscheme
+Let's say we have to create a new colorsheme `foo`. Here is a brief guide on how to achieve that:
+1. ```bash
+touch ./lua/themer/color_schemes/foo.lua
+```
+2. ```bash
+nvim ./lua/themer/color_schemes/foo.lua
+```
+3. Now comes the fun part of adding colors in the play. Here is a basic template for the color pallete
+
+```lua
+local colors = {
+	flavour = "dark", -- set type of colorscheme: dark/light
+	bg = "", -- background
+	bg_alt = "", -- alternate background
+	bg_float = "", -- for floating windows and statuslines and pum sidebar and pum selected and CursorColumn
+	inactive = "", -- for stuff like empty folder(any inactive stuff)
+	subtle = "", -- for comments and float border and more...
+	fg = "", -- the foreground/text color
+	red = "", -- for errors
+	yellow = "", -- for warns
+	orange = "", -- mostly for booleans
+	blue = "", -- for keywords
+	green = "", -- for info and constructors/labels and diffadd
+	magenta = "", -- for hints and visual mode/search foreground/special comments/git stage and merge
+	highlight = "", -- ofc for highlighting (it is the bg of highlighted text)
+	highlight_inactive = "", -- same as highlight for inactive stuff and also cursor line
+	highlight_overlay = "", -- same as highlight for overlays (floats)
+	none = "NONE",
+}
+
+return colors
+```
+You can also take a look at `./lua/themer/color_schemes/papa_dark.lua` to remap highlights and also use json for the color pallete. (Yes you read it right, `themer.lua` also supports `.json` 😎)
+
+4. ```bash
+echo "require('themer').load('foo')" >> ./colors/foo.lua # adding support for :colorscheme
+```
+
+5. And you are done, just open neovim and do `:colorscheme foo` to test your latest colorscheme. Don't forget to open a new pr and contribute this to upstream.
+
+### Fixing and adding new highlights
+Yea so all highlights are in `./lua/themer/core/mapper.lua` and all the highlights for plugin integration are in `./lua/themer/core/integrations/`.
+
+To add support for a new plugin `foo`, add highlights in `./lua/themer/core/integrations/foo.lua` like
+```lua
+local foo = {}
+
+foo.get = function(cp)
+	local hi = {
+		Foo = { fg = cp.magenta },
+	}
+	return hi
+end
+
+return foo
+```
+
+and also add the config option in `./lua/themer/config.lua`
