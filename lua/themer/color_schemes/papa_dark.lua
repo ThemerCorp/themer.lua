@@ -93,8 +93,6 @@ require("themer").remap_hl_group({
     NvimTreeFileDeleted = { fg = colors.red },
     NvimTreeGitDeleted = { fg = colors.red },
     NvimTreeGitDirty = { fg = colors.yellow },
-
-    CmpItemKind = { fg = colors.blue },
 })
 
 return colors
