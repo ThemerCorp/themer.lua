@@ -13,8 +13,8 @@ end
 
 json_utils.encode_decode = function()
     local json = {}
-    json.encode = json_utils.is_minimum_version(0, 6, 0) and vim.json.encode or vim.fn.json_encode()
-    json.decode = json_utils.is_minimum_version(0, 6, 0) and vim.json.decode or vim.fn.json_decode()
+    json.encode = json_utils.is_minimum_version(0, 6, 0) and vim.json.encode or vim.fn.json_encode
+    json.decode = json_utils.is_minimum_version(0, 6, 0) and vim.json.decode or vim.fn.json_decode
     return json
 end
 
