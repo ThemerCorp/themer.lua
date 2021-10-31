@@ -2,7 +2,7 @@ local colors = require("themer.utils.json").decode("../color_schemes/json/papa_d
 require("themer").setup({
     colors = {
         comment = colors.comment,
-        punctuation = colors.fg,
+        punctuation = colors.blue,
     },
     styles = {
         keywords = { fg = colors.blue },
@@ -10,6 +10,13 @@ require("themer").setup({
         parameters = { fg = colors.light_blue },
         string = { fg = colors.string },
         functions = { fg = colors.yellow },
+    },
+    integrations = {
+        native_lsp = {
+            virtual_text = {
+                hint = {fg = colors.blue}
+            }
+        }
     },
 })
 
@@ -67,6 +74,7 @@ require("themer").remap_hl_group({
     TSField = { fg = colors.light_blue },
     TSFunction = { link = "Function" },
     TSFuncBuiltin = { link = "Function" },
+    TSFuncMacro = { link = "Function"},
     TSNamespace = { fg = colors.cyan },
     TSType = { fg = colors.cyan },
     TSTypeBuiltin = { fg = colors.blue },
@@ -79,6 +87,10 @@ require("themer").remap_hl_group({
     TSKeywordFunction = { link = "Keyword" },
     TSConditional = { link = "Keyword" },
     TSConstBuiltin = { link = "Keyword" },
+    TSInclude = { link = "Keyword"},
+    TSVariableBuiltin = { link = "Keyword"},
+    TSTag = { link = "Keyword"},
+    TSTitle = { fg = colors.string},
 
     GitSignsAdd = { fg = colors.green, bg = colors.bg },
     GitSignsChange = { fg = colors.yellow, bg = colors.bg },
