@@ -75,10 +75,10 @@ require("themer").remap_hl_group({
     TSKeyword = { fg = colors.blue },
     TSPunctBracket = { fg = colors.blue },
     TSConstructor = { fg = colors.blue },
-    TSMethod = { link = "Function"},
-    TSKeywordFunction = { link = "Keyword"},
-    TSConditional = { link = "Keyword"},
-    TSConstBuiltin = { link = "Keyword"},
+    TSMethod = { link = "Function" },
+    TSKeywordFunction = { link = "Keyword" },
+    TSConditional = { link = "Keyword" },
+    TSConstBuiltin = { link = "Keyword" },
 
     GitSignsAdd = { fg = colors.green, bg = colors.bg },
     GitSignsChange = { fg = colors.yellow, bg = colors.bg },
@@ -93,6 +93,8 @@ require("themer").remap_hl_group({
     NvimTreeFileDeleted = { fg = colors.red },
     NvimTreeGitDeleted = { fg = colors.red },
     NvimTreeGitDirty = { fg = colors.yellow },
+
+    CmpItemKind = { fg = colors.blue },
 })
 
 return colors
