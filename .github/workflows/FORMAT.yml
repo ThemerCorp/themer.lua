@@ -1,11 +1,8 @@
 name: formatting
 on:
-  push:
-    paths-ignore:
-      - ".github/**"
-      - "*.md"
-      - "lua/themer/color_schemes/json/*"
-    branches: "dev"
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 1 * *'
 
 jobs:
   stylua:
@@ -15,7 +12,7 @@ jobs:
       - uses: JohnnyMorganz/stylua-action@1.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          args: --config-path=./.stylua.toml .
+          args: --config-path=./stylua.toml .
       - name: Commit files
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
