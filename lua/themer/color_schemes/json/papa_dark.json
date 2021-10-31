@@ -1,12 +1,12 @@
 {
 	"flavour": "dark",
 	"bg": "#2e3440",
-	"fg": "#E5E9F0",
+	"fg": "#e5e9f0",
 	"bg_alt": "#2b2e36",
 	"bg_float": "#3B4048",
 	"inactive": "#4C566A",
 	"subtle": "#4c566a",
-	"red": "#d94848",
+	"red": "#bf616a",
 	"yellow": "#d4d198",
 	"orange": "#d08770",
 	"blue": "#5d8ac2",
@@ -17,12 +17,5 @@
 	"highlight_inactive": "#3e4452",
 	"comment": "#699856",
 	"light_blue": "#8fc6e3",
-	"cyan": "#4EC9B0",
-    "vertsplit": "#373e4a",
-    "integer": "#B4CDA8",
-    "string": "#A3BE8C",
-    "line_number": "#4C566A",
-    "line_color": "#3B4252",
-    "visual_grey": "#3E4452",
-    "interface_color": "#84D9AA"
+	"cyan": "#4EC9B0"
 }
