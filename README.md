@@ -26,7 +26,7 @@ use({
 ```
 Resource the current file, and run `:PackerInstall` to install the plugin.
 
- [vim-plug](https://github.com/junegunn/vim-plug)
+- [vim-plug](https://github.com/junegunn/vim-plug)
 ```vim
 Plug 'NarutoXY/themer.lua', { 'branch': 'dev' } "dev branch has more plugin support
 ```
@@ -214,12 +214,8 @@ local decode = j.decode('../color_schemes/json/foo.json')
 
 ### Adding a new colorscheme
 Let's say we have to create a new colorsheme `foo`. Here is a brief guide on how to achieve that:
-1. ```bash
-touch ./lua/themer/color_schemes/foo.lua
-```
-2. ```bash
-nvim ./lua/themer/color_schemes/foo.lua
-```
+1. ```touch ./lua/themer/color_schemes/foo.lua```
+2. ```nvim ./lua/themer/color_schemes/foo.lua```
 3. Now comes the fun part of adding colors in the play. Here is a basic template for the color pallete
 
 ```lua
@@ -247,9 +243,7 @@ return colors
 ```
 You can also take a look at `./lua/themer/color_schemes/papa_dark.lua` to remap highlights and also use json for the color pallete. (Yes you read it right, `themer.lua` also supports `.json` 😎)
 
-4. ```bash
-echo "require('themer').load('foo')" >> ./colors/foo.lua # adding support for :colorscheme
-```
+4. ```echo "require('themer').load('foo')" >> ./colors/foo.lua # adding support for :colorscheme```
 
 5. And you are done, just open neovim and do `:colorscheme foo` to test your latest colorscheme. Don't forget to open a new pr and contribute this to upstream.
 
