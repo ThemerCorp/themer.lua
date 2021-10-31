@@ -51,7 +51,7 @@ function hi.get(cp)
         TSPunctSpecial = { fg = groups.punctuation },
         -- TSRepeat = {},
         -- TSStrike = {},
-        TSString = { fg = cp.green },
+        TSString = vim.tbl_deep_extend("force", { fg = cp.green }, config.styles.strings),
         TSStringEscape = { fg = cp.blue },
         -- TSStringRegex = {},
         -- TSSymbol = {},
