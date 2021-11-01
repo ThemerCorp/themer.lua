@@ -1,11 +1,8 @@
 -- Get path to json.lua
-local relative = require("lua.themer.utils.json").get_cfd()
--- Remove lua/themer/utils/json.lua substring for both OS
-relative = relative:gsub("lua\\themer\\utils\\json.lua", "")
-relative = relative:gsub("lua/themer/utils/json.lua", "")
+local relative = require("themer.utils.json").get_cfd()
 
 -- add wildcard to themes to path
-relative = table.concat({ relative, "colors/*.lua" })
+relative = table.concat({ relative, "../../../colors/*.lua" })
 
 -- expand wildcards; get all themes' pathes
 local themes = vim.fn.expand(relative)
