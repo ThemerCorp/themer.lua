@@ -91,20 +91,20 @@ config.options = {
 				info = { underline = true },
 			},
 		},
-		cmp = false,
-		gitsigns = false,
-		telescope = false,
+		cmp = true,
+		gitsigns = true,
+		telescope = true,
 		indent_blankline = {
-			enabled = false,
-			colored_indent_levels = false,
+			enabled = true,
+			colored_indent_levels = true,
 		},
-		barbar = false,
-		bufferline = false,
-		markdown = false,
+		barbar = true,
+		bufferline = true,
+		markdown = true,
 	},
 	extra_integrations = {
-		galaxyline = false,
-		lualine = false,
+		galaxyline = true,
+		lualine = true,
 	},
 }
 ```
@@ -131,6 +131,44 @@ require("themer").remap_colorscheme({})
 require("themer").remap_hl_group({})
 ```
 
+### 🖌️ Using your custom color pallete
+
+You can also just pass on your color pallete to themer and themer will use it to apply highlights
+
+```lua
+-- useful aliases
+local utils = require("themer.utils.util")
+local config = require("themer.config").options
+
+vim.g.colors_name = "foo"	-- your colorscheme name
+
+-- your colorscheme pallete
+
+-- See https://github.com/NarutoXY/themer.lua#adding-a-new-colorscheme
+local pallete = {
+    flavour = "light",
+    bg = "#faf4ed",
+    bg_alt = "#fffaf3",
+    bg_float = "#f2e9de",
+    inactive = "#9893a5",
+    subtle = "#6e6a86",
+    fg = "#575279",
+    red = "#b4637a",
+    yellow = "#ea9d34",
+    orange = "#d7827e",
+    blue = "#286983",
+    green = "#56949f",
+    magenta = "#907aa9",
+    highlight = "#eee9e6",
+    highlight_inactive = "#f2ede9",
+    highlight_overlay = "#e4dfde",
+}
+
+local theme = require("themer.core.mapper").apply(pallete)
+
+-- Sadly extra integrations dont match with custom pallete. Support coming soon 🚀
+utils.load(theme)
+```
 ## 🤖 Useful APIs
 Some useful APIs for other developers or for advanced configuration
 

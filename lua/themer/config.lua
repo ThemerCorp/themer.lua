@@ -2,7 +2,7 @@
 local config = {}
 
 config.options = {
-    colorscheme = "rose_pine", -- default colorscheme
+    colorscheme = "rose_pine_moon", -- default colorscheme
     transparency = false,
     term_colors = true,
     styles = {
@@ -15,12 +15,12 @@ config.options = {
         fields = {},
     },
     colors = {
-        --		hint = nil,
-        --		info = nil,
-        --		warn = nil,
-        --		error = nil,
-        --		punctuation = nil,
-        --		comment = nil,
+        -- hint = nil,
+        -- info = nil,
+        -- warn = nil,
+        -- error = nil,
+        -- punctuation = nil,
+        -- comment = nil,
     },
     integrations = {
         treesitter = true,
@@ -39,36 +39,36 @@ config.options = {
                 info = { underline = true },
             },
         },
-        cmp = false,
+        cmp = true,
         -- TODO: add all the remaining highlights ASAP
-        --	lsp_trouble = false,
-        --	lsp_saga = false,
-        --	gitgutter = false,
-        gitsigns = false,
-        telescope = false,
+        --	lsp_trouble = true,
+        --	lsp_saga = true,
+        --	gitgutter = true,
+        gitsigns = true,
+        telescope = true,
         --	nvimtree = {
-        --		enabled = false,
-        --		show_root = false,
+        --		enabled = true,
+        --		show_root = true,
         --	},
-        --	which_key = false,
+        --	which_key = true,
         indent_blankline = {
-            enabled = false,
-            colored_indent_levels = false,
+            enabled = true,
+            colored_indent_levels = true,
         },
-        --	dashboard = false,
-        --	neogit = false,
-        --	vim_sneak = false,
-        --	fern = false,
-        barbar = false,
-        bufferline = false,
-        markdown = false,
-        --	lightspeed = false,
-        --	ts_rainbow = false,
-        --	hop = false,
+        --	dashboard = true,
+        --	neogit = true,
+        --	vim_sneak = true,
+        --	fern = true,
+        barbar = true,
+        bufferline = true,
+        markdown = true,
+        --	lightspeed = true,
+        --	ts_rainbow = true,
+        --	hop = true,
     },
     extra_integrations = {
-        galaxyline = false,
-        lualine = false,
+        galaxyline = true,
+        lualine = true,
     },
 }
 
