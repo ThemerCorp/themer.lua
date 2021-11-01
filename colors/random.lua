@@ -5,7 +5,7 @@ relative = relative:gsub("lua\\themer\\utils\\json.lua", "")
 relative = relative:gsub("lua/themer/utils/json.lua", "")
 
 -- add wildcard to themes to path
-relative = table.concat({relative, "colors/*.lua"})
+relative = table.concat({ relative, "colors/*.lua" })
 
 -- expand wildcards; get all themes' pathes
 local themes = vim.fn.expand(relative)
@@ -24,11 +24,11 @@ themes = themes:gsub("random\n", "")
 
 -- split strings and create table
 local function split_table(s, delimiter)
-    local result = {};
-    for match in (s..delimiter):gmatch("(.-)"..delimiter) do
-        table.insert(result, match);
+    local result = {}
+    for match in (s .. delimiter):gmatch("(.-)" .. delimiter) do
+        table.insert(result, match)
     end
-    return result;
+    return result
 end
 
 -- create themes table
