@@ -14,7 +14,9 @@ function hig.get(cp)
         hi["IndentBlanklineIndent1"] = { nocombine = true, fg = cp.magenta }
 
         -- Configuring indent_blankline to set colored levels
-        require("indent_blankline").setup({
+        local present, indent = pcall(require, "indent_blankline")
+        if present then
+          indent.setup({
             char_highlight_list = {
                 "IndentBlanklineIndent1",
                 "IndentBlanklineIndent2",
@@ -24,6 +26,7 @@ function hig.get(cp)
                 "IndentBlanklineIndent6",
             },
         })
+        end
     end
 
     return hi

@@ -49,7 +49,7 @@ PS: Be sure to replace dark\_cpt with your favourite colorscheme :P
 ## 🧰 Configuration
 `themer.lua` provides tons of ways to customise it
 
-1. `themer.lua` uses `lua/themer/config.lua` for configuration
+1. `themer.lua` uses a config table for configuration
 
 Here are the defaults:
 ```lua
