@@ -16,16 +16,16 @@ function hig.get(cp)
         -- Configuring indent_blankline to set colored levels
         local present, indent = pcall(require, "indent_blankline")
         if present then
-          indent.setup({
-            char_highlight_list = {
-                "IndentBlanklineIndent1",
-                "IndentBlanklineIndent2",
-                "IndentBlanklineIndent3",
-                "IndentBlanklineIndent4",
-                "IndentBlanklineIndent5",
-                "IndentBlanklineIndent6",
-            },
-        })
+            indent.setup({
+                char_highlight_list = {
+                    "IndentBlanklineIndent1",
+                    "IndentBlanklineIndent2",
+                    "IndentBlanklineIndent3",
+                    "IndentBlanklineIndent4",
+                    "IndentBlanklineIndent5",
+                    "IndentBlanklineIndent6",
+                },
+            })
         end
     end
 
