@@ -2,64 +2,79 @@
 local config = {}
 
 config.options = {
-    colorscheme = "dark_cpt", -- default colorscheme
+    colorscheme = "rose_pine_moon", -- default colorscheme
     transparency = false,
-	term_colors = false,
-	styles = {
-		comments = "italic",
-		functions = "italic",
-		keywords = "italic",
-		strings = "NONE",
-		variables = "NONE",
-	},
-	integrations = {
-		treesitter = true,
-		native_lsp = {
-			enabled = true,
-			virtual_text = {
-				errors = "italic",
-				hints = "italic",
-				warnings = "italic",
-				information = "italic",
-			},
-			underlines = {
-				errors = "underline",
-				hints = "underline",
-				warnings = "underline",
-				information = "underline",
-			},
-		},
-		-- TODO: add all the remaining highlights ASAP
-		--	lsp_trouble = false,
-		--	lsp_saga = false,
-		--	gitgutter = false,
-		--	gitsigns = false,
-		--	telescope = false,
-		--	nvimtree = {
-		--		enabled = false,
-		--		show_root = false,
-		--	},
-		--	which_key = false,
-		indent_blankline = {
-			enabled = true,
-			colored_indent_levels = true,
-		},
-		--	dashboard = false,
-		--	neogit = false,
-		--	vim_sneak = false,
-		--	fern = false,
-		--	barbar = false,
-		--	bufferline = false,
-		--	markdown = false,
-		--	lightspeed = false,
-		--	ts_rainbow = false,
-		--	hop = false,
-	},
+    term_colors = true,
+    styles = {
+        comments = { italic = true },
+        functions = {},
+        keywords = {},
+        strings = {},
+        variables = {},
+        parameters = {},
+        fields = {},
+    },
+    colors = {
+        -- hint = nil,
+        -- info = nil,
+        -- warn = nil,
+        -- error = nil,
+        -- punctuation = nil,
+        -- comment = nil,
+    },
+    integrations = {
+        treesitter = true,
+        native_lsp = {
+            enabled = true,
+            virtual_text = {
+                error = { italic = true },
+                hint = { italic = true },
+                warn = { italic = true },
+                info = { italic = true },
+            },
+            underlines = {
+                error = { underline = true },
+                hint = { underline = true },
+                warn = { underline = true },
+                info = { underline = true },
+            },
+        },
+        cmp = true,
+        -- TODO: add all the remaining highlights ASAP
+        --	lsp_trouble = true,
+        --	lsp_saga = true,
+        --	gitgutter = true,
+        gitsigns = true,
+        telescope = true,
+        --	nvimtree = {
+        --		enabled = true,
+        --		show_root = true,
+        --	},
+        --	which_key = true,
+        indent_blankline = {
+            enabled = true,
+            colored_indent_levels = true,
+        },
+        --	dashboard = true,
+        --	neogit = true,
+        --	vim_sneak = true,
+        --	fern = true,
+        barbar = true,
+        bufferline = true,
+        markdown = true,
+        --	lightspeed = true,
+        --	ts_rainbow = true,
+        --	hop = true,
+    },
+    extra_integrations = {
+        galaxyline = true,
+        lualine = true,
+    },
 }
 
 function config.set_options(opts)
-	opts = opts or {}
-	config.options = vim.tbl_deep_extend("force", config.options, opts)
+    opts = opts or {}
+    config.options = vim.tbl_deep_extend("force", config.options, opts)
 end
 
 return config

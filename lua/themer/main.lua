@@ -7,16 +7,22 @@ local config = require("themer.config").options
 
 --- @param cs string colorscheme name
 function main.load_colorscheme(cs)
-	-- colorscheme gets evaluated from mapper.lua
-	local return_value, color_scheme = require("themer.api.colors").get_color_scheme(cs or config.colorscheme)
+    vim.g.colors_name = cs or config.colorscheme
 
-	if not return_value.status then
-		vim.api.nvim_err_writeln(return_value.msg)
-	end
+    -- colorscheme gets evaluated from mapper.lua
+    local return_value = require("themer.api.colors").get_color_scheme(cs or config.colorscheme)
 
-	local theme = require("themer.core.mapper").apply(return_value.color_scheme)
-	
-	utils.load(theme)
+    if not return_value.status then
+        vim.api.nvim_err_writeln(return_value.msg)
+    end
+
+    local theme = require("themer.core.mapper").apply(return_value.color_scheme)
+    -- Support for galaxyline and lualine
+    if config.extra_integrations.galaxyline then
+        require("themer.extras.galaxyline").get(cs, theme)
+    end
+
+    utils.load(theme)
 end
 
 return main
