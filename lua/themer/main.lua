@@ -22,12 +22,6 @@ function main.load_colorscheme(cs)
         require("themer.extras.galaxyline").get(cs, theme)
     end
 
-    if config.extra_integrations.lualine then
-        require("lualine").setup({
-            options = { theme = "themer" },
-        })
-    end
-
     utils.load(theme)
 end
 
