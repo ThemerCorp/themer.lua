@@ -3,7 +3,7 @@
 A simple fast highlight plugin and colorscheme creator for neovim, written in lua.
 
 ## 🌟 Features
-- chaotic colorscheme ecosystem of neovim with every colorscheme it's own way of configuring and other stuff
+- attempt to fix the chaotic colorscheme ecosystem of neovim with every colorscheme it's own way of configuring and other stuff
 - lots of supported colorschemes (will be done soon! 😃)
 - uses the `vim.api.nvim_set_hl()` instead of `vim.cmd[[]]` calls 🥳
 - using this plugin you will get a pure 100% lua experience, even without any extra taxes 🤣
@@ -17,7 +17,7 @@ Make sure to use Neovim version 0.5.x or higher (I use Neovim version 0.6+ so if
 use({
 	"narutoxy/themer.lua",
 	branch = "dev",	-- I recommend dev branch because it has more plugin support currently
-	-- after = "packer.nvim", -- hmm for some reason this errors out also `themer.lua` is not a heavy plugin
+	module = "themer",	-- load it as fast as possible
 	config = function()
 		-- vim.cmd("colorscheme dark_cpt") -- you can also do this
 		require("themer").load("dark_cpt")
@@ -49,7 +49,7 @@ PS: Be sure to replace dark\_cpt with your favourite colorscheme :P
 ## 🧰 Configuration
 `themer.lua` provides tons of ways to customise it
 
-1. `themer.lua` uses `lua/themer/config.lua` for configuration
+1. `themer.lua` uses a config table for configuration
 
 Here are the defaults:
 ```lua

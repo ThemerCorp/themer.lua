@@ -2,17 +2,16 @@ local config = require("themer.config").options
 
 local ok, lualine = pcall(require, "lualine")
 
-local remaps_lualine = {}
-local __lualine = {}
+if ok then
+    local remaps_lualine = {}
+    local __lualine = {}
 
-__lualine.remap = function(custom_opts)
-    remaps_lualine = vim.tbl_deep_extend("force", remaps_lualine, custom_opts or {})
-end
+    __lualine.remap = function(custom_opts)
+        remaps_lualine = vim.tbl_deep_extend("force", remaps_lualine, custom_opts or {})
+    end
 
-__lualine.get = function(cs)
-    if not ok then
-        local cs = cs or config.colorscheme
-        local cp = require("themer.api.colors").get_color_scheme(cs).color_scheme
+    __lualine.get = function(cs)
+        local cp = require("themer.api.colors").get_color_scheme(cs or config.colorscheme).color_scheme
         local themer = {}
         themer.normal = {
             a = { bg = cp.orange, fg = cp.bg, gui = "bold" },
@@ -49,6 +48,5 @@ __lualine.get = function(cs)
         end
         return themer
     end
+    return __lualine
 end
-
-return __lualine
