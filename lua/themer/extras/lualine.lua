@@ -48,6 +48,5 @@ if ok then
         end
         return themer
     end
-
     return __lualine
 end
