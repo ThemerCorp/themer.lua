@@ -17,17 +17,17 @@ local colors = {
     white = "#dfdfe0",
     orange = "#F4A261",
     subtle = "#526175",
-	funcbuiltin = "#63cdcf",
-	delimiter = "#58cd8b",
+    funcbuiltin = "#63cdcf",
+    delimiter = "#58cd8b",
 }
 
 -- Some extra colors which require some util functions
 colors.bg_alt = util.darken(colors.bg, 0.75, "#000000")
 
 require("themer").remap_hl_group({
-	TSPunctBracket = { fg = colors.red },
-	TSPunctDelimiter = { fg = colors.delimiter},
-	TSFuncBuiltin = { fg = colors.funcbuiltin},
-	TSOperator = { fg = colors.funcbuiltin},
+    TSPunctBracket = { fg = colors.red },
+    TSPunctDelimiter = { fg = colors.delimiter },
+    TSFuncBuiltin = { fg = colors.funcbuiltin },
+    TSOperator = { fg = colors.funcbuiltin },
 })
 return colors
