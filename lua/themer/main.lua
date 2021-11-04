@@ -9,15 +9,12 @@ local config = require("themer.config").options
 function main.load_colorscheme(cs)
     vim.g.colors_name = cs or config.colorscheme
 
-    -- colorscheme gets evaluated from mapper.lua
-    local return_value = require("themer.api.colors").get_color_scheme(cs or config.colorscheme)
-
-    if not return_value.status then
-        vim.api.nvim_err_writeln(return_value.msg)
-    end
-
-    local theme = require("themer.core.mapper").apply(return_value.color_scheme)
-    -- Support for galaxyline and lualine
+    local api = require("themer.api.colors").get_color_scheme(cs or config.colorscheme)
+	if not api.status then
+        vim.api.nvim_err_writeln(api.msg)
+    	end
+    local theme = require("themer.core.mapper").apply(api.color_scheme)
+	-- Support for galaxyline and lualine
     if config.extra_integrations.galaxyline then
         require("themer.extras.galaxyline").get(cs, theme)
     end
