@@ -8,8 +8,8 @@ require("themer").setup({
         keywords = { fg = colors.blue },
         variables = { fg = colors.light_blue },
         parameters = { fg = colors.light_blue },
-        string = { fg = colors.string },
         functions = { fg = colors.yellow },
+        strings = { fg = colors.string },
     },
     integrations = {
         native_lsp = {
@@ -17,6 +17,8 @@ require("themer").setup({
                 hint = { fg = colors.blue },
             },
         },
+        telescope = false,
+        barbar = false,
     },
 })
 
@@ -90,11 +92,10 @@ require("themer").remap_hl_group({
     TSInclude = { link = "Keyword" },
     TSVariableBuiltin = { link = "Keyword" },
     TSTag = { link = "Keyword" },
-    TSTitle = { fg = colors.string },
+    TSTitle = { link = "String" },
+    TSLabel = { link = "String" },
 
-    GitSignsAdd = { fg = colors.green, bg = colors.bg },
     GitSignsChange = { fg = colors.yellow, bg = colors.bg },
-    GitSignsDelete = { fg = colors.red, bg = colors.bg },
 
     CmpItemKind = { fg = colors.blue },
 
@@ -105,6 +106,11 @@ require("themer").remap_hl_group({
     NvimTreeFileDeleted = { fg = colors.red },
     NvimTreeGitDeleted = { fg = colors.red },
     NvimTreeGitDirty = { fg = colors.yellow },
+
+    TelescopeSelection = { bg = colors.highlight_overlay },
+    TelescopeMatching = { fg = colors.blue },
+
+    markdownCode = { fg = colors.string },
 })
 
 return colors
