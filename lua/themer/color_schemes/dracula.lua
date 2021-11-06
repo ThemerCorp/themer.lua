@@ -21,5 +21,5 @@ local colors = {
 
 -- Some extra colors which require some util functions
 colors.bg_alt = util.darken(colors.bg, 0.75, "#000000")
-require("themer.color_schemes.config").setup({ styles = { comment = { fg = colors.comment} } })
+require("themer.color_schemes.config").setup({ styles = { comment = { fg = colors.comment } } })
 return colors
