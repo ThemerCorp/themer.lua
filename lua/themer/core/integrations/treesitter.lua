@@ -1,24 +1,16 @@
 local hi = {}
 local config = require("themer.config").options
 function hi.get(cp)
-    local groups = {
-        punctuation = config.colors.punctuation or cp.subtle,
-        comment = config.colors.comment or cp.subtle,
-        hint = config.colors.hint or cp.magenta,
-        info = config.colors.info or cp.green,
-        warn = config.colors.warn or cp.yellow,
-        error = config.colors.error or cp.red,
-    }
-
+	local groups = require("themer.core.groups").get_groups(cp)
     return {
         -- TSAnnotation = {},
         -- TSAttribute = {},
         TSBoolean = { fg = cp.orange },
         -- TSCharacter = {},
-        TSComment = vim.tbl_deep_extend("force", { fg = groups.comment }, config.styles.comments),
-        TSNote = { fg = cp.bg, bg = groups.info },
-        TSWarning = { fg = cp.bg, bg = groups.warn },
-        TSDanger = { fg = cp.bg, bg = groups.error },
+        TSComment = groups.comment,
+        TSNote = { fg = cp.bg, bg = groups.info.fg },
+        TSWarning = { fg = cp.bg, bg = groups.warn.fg },
+        TSDanger = { fg = cp.bg, bg = groups.error.fg },
         TSConditional = { fg = cp.red },
         TSConstBuiltin = { fg = cp.red },
         -- TSConstMacro = {},
@@ -31,9 +23,9 @@ function hi.get(cp)
         -- TSFloat = {},
         TSFuncBuiltin = { fg = cp.blue },
         -- TSFuncMacro = {},
-        TSFunction = vim.tbl_deep_extend("force", { fg = cp.blue }, config.styles.functions),
+        TSFunction = groups.functions,
         TSInclude = { fg = cp.green },
-        TSKeyword = vim.tbl_deep_extend("force", { fg = cp.magenta }, config.styles.keywords),
+        TSKeyword = groups.keywords,
         TSKeywordFunction = { fg = cp.magenta },
         TSKeywordOperator = { fg = cp.blue },
         TSLabel = { fg = cp.green },
@@ -43,15 +35,15 @@ function hi.get(cp)
         -- TSNone = {},
         -- TSNumber = {},
         TSOperator = { fg = cp.blue },
-        TSParameter = vim.tbl_deep_extend("force", { fg = cp.yellow }, config.styles.parameters),
+        TSParameter = groups.parameters,
         -- TSParameterReference = {},
-        TSProperty = vim.tbl_deep_extend("force", { fg = cp.red }, config.styles.fields),
-        TSPunctBracket = { fg = groups.punctuation },
-        TSPunctDelimiter = { fg = groups.punctuation },
-        TSPunctSpecial = { fg = groups.punctuation },
+        TSProperty = groups.fields,
+        TSPunctBracket = groups.punctuation,
+        TSPunctDelimiter = groups.punctuation,
+        TSPunctSpecial =  groups.punctuation,
         -- TSRepeat = {},
         -- TSStrike = {},
-        TSString = vim.tbl_deep_extend("force", { fg = cp.green }, config.styles.strings),
+        TSString = groups.strings,
         TSStringEscape = { fg = cp.blue },
         -- TSStringRegex = {},
         -- TSSymbol = {},
@@ -63,7 +55,7 @@ function hi.get(cp)
         -- TSTypeBuiltin = {},
         TSURI = { fg = cp.blue, undercurl = true },
         -- TSUnderline = {},
-        TSVariable = vim.tbl_deep_extend("force", { fg = cp.fg }, config.styles.variables),
+        TSVariable = groups.variables,
         TSVariableBuiltin = { fg = cp.red },
     }
 end

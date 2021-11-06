@@ -1,4 +1,5 @@
 local util = require("themer.utils.util")
+util.ns = vim.api.nvim_create_namespace("dark_cpt")
 
 local colors = {
     none = "NONE",
