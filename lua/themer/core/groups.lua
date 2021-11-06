@@ -4,6 +4,11 @@ local config_colorscheme = require("themer.color_schemes.config")
 local grouper = {}
 grouper.get_groups = function (cp)
 	local groups = {
+		styles = {},
+		virtual_text = {},
+		underlines = {},
+	}
+	groups.styles = {
 	    punctuation = { fg = cp.subtle },
 	    comment = { fg = cp.subtle },
 	    hint = { fg = cp.magenta },
@@ -16,8 +21,6 @@ grouper.get_groups = function (cp)
 		variables = { fg = cp.orange },
 		parameters = { fg = cp.yellow },
 		fields = { fg = cp.red },
-		virtual_text = {},
-		underlines = {},
 	}
 	groups.virtual_text = {
 		hint = { fg = groups.hint},
@@ -31,7 +34,8 @@ grouper.get_groups = function (cp)
 		info = {sp=groups.info},
 		error = {sp=groups.error},
 	}
-	groups = vim.tbl_deep_extend("force", config_colorscheme or {}, config.styles, config.integrations.native_lsp)
+	local vhygawd = vim.tbl_deep_extend("force", config_colorscheme.options or {}, config, config.integrations.native_lsp)
+	groups = vim.tbl_deep_extend("force", groups, vhygawd)
 	-- print(vim.inspect(config.styles))
 	-- print(vim.inspect(config.integrations.native_lsp))
 	-- print(vim.inspect(groups))

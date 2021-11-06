@@ -7,7 +7,7 @@ local mapper = {}
 ---@param cp table
 ---@return table
 function mapper.get_base(cp)
-    local groups = require("themer.core.groups").get_groups(cp)
+    local groups = require("themer.core.groups").get_groups(cp).styles
 
     local maybe_bold_vert_split = config.bold_vertical_split_line and { fg = cp.bg_alt, bg = cp.bg_alt } or { fg = cp.bg_float }
     

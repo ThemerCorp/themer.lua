@@ -10,19 +10,19 @@ function hi.get(cp)
         LspReferenceRead = { bg = cp.bg_alt }, -- used for highlighting "read" references
         LspReferenceWrite = { bg = cp.bg_alt }, -- used for highlighting "write" references
         -- hightlight diagnostics in numberline
-        DiagnosticError = groups.error, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
-        DiagnosticWarn = groups.warn, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
-        DiagnosticInfo = groups.info, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
-        DiagnosticHint = groups.hint, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
+        DiagnosticError = groups.styles.error, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
+        DiagnosticWarn = groups.styles.warn, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
+        DiagnosticInfo = groups.styles.info, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
+        DiagnosticHint = groups.styles.hint, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
 
-        DiagnosticDefaultError = groups.error, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-        DiagnosticDefaultWarn = groups.warn, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-        DiagnosticDefaultInfo = groups.info, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-        DiagnosticDefaultHint = groups.hint, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-        DiagnosticFloatingError = { bg = cp.bg_alt, fg = groups.error.fg }, -- Used to color "Error" diagnostic messages in diagnostics float
-        DiagnosticFloatingWarn = { bg = cp.bg_alt, fg = groups.warn.fg }, -- Used to color"Warning" diagnostic messages in diagnostics float
-        DiagnosticFloatingInfo = { bg = cp.bg_alt, fg = groups.info.fg }, -- Used to color "Information" diagnostic messages in diagnostics float
-        DiagnosticFloatingHint = { bg = cp.bg_alt, fg = groups.hint.fg }, -- Used to color "Hint" diagnostic messages in diagnostics float
+        DiagnosticDefaultError = groups.styles.error, -- as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+        DiagnosticDefaultWarn = groups.styles.warn, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+        DiagnosticDefaultInfo = groups.styles.info, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+        DiagnosticDefaultHint = groups.styles.hint, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+        DiagnosticFloatingError = { bg = cp.bg_alt, fg = groups.styles.error.fg }, -- Used to color "Error" diagnostic messages in diagnostics float
+        DiagnosticFloatingWarn = { bg = cp.bg_alt, fg = groups.styles.warn.fg }, -- Used to color"Warning" diagnostic messages in diagnostics float
+        DiagnosticFloatingInfo = { bg = cp.bg_alt, fg = groups.styles.info.fg }, -- Used to color "Information" diagnostic messages in diagnostics float
+        DiagnosticFloatingHint = { bg = cp.bg_alt, fg = groups.styles.hint.fg }, -- Used to color "Hint" diagnostic messages in diagnostics float
 
         DiagnosticVirtualTextError = groups.virtual_text.error,
         DiagnosticVirtualTextWarn = groups.virtual_text.warn,
