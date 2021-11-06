@@ -56,7 +56,7 @@ config.options = {
 function config.set_options(opts)
     opts = opts or {}
     config.options = vim.tbl_deep_extend("force", config.options, opts)
-require("themer.main").load_colorscheme(config.options.colorscheme)
+    require("themer.main").load_colorscheme(config.options.colorscheme)
 end
 
 return config
