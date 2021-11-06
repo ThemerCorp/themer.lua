@@ -1,6 +1,6 @@
 local hi = {}
 function hi.get(cp)
-	local groups = require("themer.core.groups").get_groups(cp).styles
+    local groups = require("themer.core.groups").get_groups(cp).styles
     return {
         -- TSAnnotation = {},
         -- TSAttribute = {},
