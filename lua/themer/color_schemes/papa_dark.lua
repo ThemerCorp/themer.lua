@@ -11,10 +11,8 @@ require("themer.color_schemes.config").setup({
         parameters = { fg = colors.light_blue },
         functions = { fg = colors.yellow },
         strings = { fg = colors.string },
-    },
-    virtual_text = {
-        hint = { fg = colors.blue },
-    },
+    	hint = { fg = colors.blue }
+	},
 })
 
 require("themer.color_schemes.remaps").set_hig_remaps({
