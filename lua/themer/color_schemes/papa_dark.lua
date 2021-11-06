@@ -1,29 +1,21 @@
 local colors = require("themer.utils.json").decode("../color_schemes/json/papa_dark.json")
-require("themer").setup({
-    colors = {
-        comment = colors.comment,
-        punctuation = colors.blue,
-    },
+local utils = require("themer.utils.util")
+utils.ns = vim.api.nvim_create_namespace("papa_dark")
+
+require("themer.color_schemes.config").setup({
     styles = {
         keywords = { fg = colors.blue },
+        comment = { fg = colors.comment },
+        punctuation = { fg = colors.blue },
         variables = { fg = colors.light_blue },
         parameters = { fg = colors.light_blue },
         functions = { fg = colors.yellow },
         strings = { fg = colors.string },
-    },
-    integrations = {
-        native_lsp = {
-            virtual_text = {
-                hint = { fg = colors.blue },
-            },
-        },
-        telescope = false,
-        barbar = false,
+        hint = { fg = colors.blue },
     },
 })
 
-require("themer").remap_hl_group({
-    Normal = { fg = colors.fg, bg = colors.bg },
+require("themer.color_schemes.remaps").set_hig_remaps({
     ColorColumn = { fg = colors.red },
     CursorLine = { bg = colors.line_color },
     Directory = { fg = colors.blue },
@@ -65,9 +57,6 @@ require("themer").remap_hl_group({
     Special = { fg = colors.blue },
 
     Error = { fg = colors.red },
-
-    LspDiagnosticsDefaultError = { undercurl = true, sp = colors.red },
-    LspDiagnosticsDefaultWarning = { undercurl = true, sp = colors.yellow },
 
     TSBoolean = { link = "Boolean" },
     TSCharacter = { link = "Character" },
@@ -112,5 +101,4 @@ require("themer").remap_hl_group({
 
     markdownCode = { fg = colors.string },
 })
-
 return colors

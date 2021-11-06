@@ -1,8 +1,8 @@
----@class Config
+---@class config
 local config = {}
 
 config.options = {
-    colorscheme = "rose_pine_moon", -- default colorscheme
+    colorscheme = "rose_pine", -- default colorscheme
     transparency = false,
     term_colors = true,
     styles = {
@@ -13,14 +13,11 @@ config.options = {
         variables = {},
         parameters = {},
         fields = {},
-    },
-    colors = {
-        -- hint = nil,
-        -- info = nil,
-        -- warn = nil,
-        -- error = nil,
-        -- punctuation = nil,
-        -- comment = nil,
+        hint = {},
+        info = {},
+        error = {},
+        warn = {},
+        punctuation = {},
     },
     integrations = {
         treesitter = true,
@@ -40,31 +37,15 @@ config.options = {
             },
         },
         cmp = true,
-        -- TODO: add all the remaining highlights ASAP
-        --	lsp_trouble = true,
-        --	lsp_saga = true,
-        --	gitgutter = true,
         gitsigns = true,
         telescope = true,
-        --	nvimtree = {
-        --		enabled = true,
-        --		show_root = true,
-        --	},
-        --	which_key = true,
         indent_blankline = {
             enabled = true,
             colored_indent_levels = true,
         },
-        --	dashboard = true,
-        --	neogit = true,
-        --	vim_sneak = true,
-        --	fern = true,
         barbar = true,
         bufferline = true,
         markdown = true,
-        --	lightspeed = true,
-        --	ts_rainbow = true,
-        --	hop = true,
     },
     extra_integrations = {
         galaxyline = true,
@@ -75,6 +56,7 @@ config.options = {
 function config.set_options(opts)
     opts = opts or {}
     config.options = vim.tbl_deep_extend("force", config.options, opts)
+    require("themer.main").load_colorscheme(config.options.colorscheme)
 end
 
 return config

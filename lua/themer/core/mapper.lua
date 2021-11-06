@@ -7,19 +7,11 @@ local mapper = {}
 ---@param cp table
 ---@return table
 function mapper.get_base(cp)
-    local groups = {
-        punctuation = config.colors.punctuation or cp.subtle,
-        comment = config.colors.comment or cp.subtle,
-        hint = config.colors.hint or cp.magenta,
-        info = config.colors.info or cp.green,
-        warn = config.colors.warn or cp.yellow,
-        error = config.colors.error or cp.red,
-    }
+    local groups = require("themer.core.groups").get_groups(cp).styles
 
-    local maybe_bold_vert_split = { fg = cp.bg_float }
-    if config.bold_vertical_split_line then
-        maybe_bold_vert_split = { fg = cp.bg_alt, bg = cp.bg_alt }
-    end
+    local maybe_bold_vert_split = config.bold_vertical_split_line and { fg = cp.bg_alt, bg = cp.bg_alt }
+        or { fg = cp.bg_float }
+
     local base = {
         ColorColumn = { bg = cp.highlight_overlay },
         Conceal = { bg = cp.none },
@@ -38,7 +30,6 @@ function mapper.get_base(cp)
         EndOfBuffer = { bg = config.transparency and "NONE" or cp.bg },
         ErrorMsg = { fg = cp.red, bold = true },
         FloatBorder = { fg = cp.subtle },
-        FoldColumn = {},
         Folded = { fg = cp.fg, bg = config.transparency and "NONE" or cp.bg_alt },
         IncSearch = { bg = cp.highlight },
         LineNr = { fg = cp.inactive },
@@ -78,7 +69,7 @@ function mapper.get_base(cp)
         -- WildMenu = {},
         Boolean = { fg = cp.yellow },
         Character = { fg = cp.yellow },
-        Comment = vim.tbl_deep_extend("force", { fg = groups.comment }, config.styles.comments),
+        Comment = groups.comment,
         Conditional = { fg = cp.blue },
         Constant = { fg = cp.yellow },
         Debug = { fg = cp.orange },
@@ -87,11 +78,11 @@ function mapper.get_base(cp)
         Error = { fg = cp.red },
         Exception = { fg = cp.blue },
         Float = { fg = cp.yellow },
-        Function = vim.tbl_deep_extend("force", { fg = cp.orange }, config.styles.functions),
-        Identifier = vim.tbl_deep_extend("force", { fg = cp.orange }, config.styles.variables),
+        Function = groups.functions,
+        Identifier = groups.variables,
         -- Ignore = { fg = '' },
         Include = { fg = cp.magenta },
-        Keyword = vim.tbl_deep_extend("force", { fg = cp.orange }, config.styles.keywords),
+        Keyword = groups.keywords,
         Label = { fg = cp.green },
         Macro = { fg = cp.magenta },
         Number = { fg = cp.yellow },
@@ -104,7 +95,7 @@ function mapper.get_base(cp)
         SpecialComment = { fg = cp.magenta },
         Statement = { fg = cp.blue },
         StorageClass = { fg = cp.green },
-        String = vim.tbl_deep_extend("force", { fg = cp.yellow }, config.styles.strings),
+        String = groups.strings,
         Structure = { fg = cp.green },
         Tag = { fg = cp.orange },
         Todo = { fg = cp.magenta },
@@ -154,9 +145,12 @@ function mapper.get_integrations(cp)
     final_integrations = vim.tbl_deep_extend(
         "force",
         final_integrations,
+        require("themer.color_schemes.remaps").get_hig_remaps() or {},
         require("themer.core.remaps").get_hig_remaps() or {}
     )
-    return final_integrations
+    local extended_final_integrations = final_integrations
+    final_integrations = {}
+    return extended_final_integrations
 end
 
 ---get color scheme properties
