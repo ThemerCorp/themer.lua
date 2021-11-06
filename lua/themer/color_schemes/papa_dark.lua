@@ -17,7 +17,7 @@ require("themer.color_schemes.config").setup({
 
 require("themer.color_schemes.remaps").set_hig_remaps({
     Normal = { fg = colors.fg, bg = colors.bg },
-	ColorColumn = { fg = colors.red },
+    ColorColumn = { fg = colors.red },
     CursorLine = { bg = colors.line_color },
     Directory = { fg = colors.blue },
     EndOfBuffer = { fg = colors.bg },
