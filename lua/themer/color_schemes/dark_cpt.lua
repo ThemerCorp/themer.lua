@@ -24,7 +24,6 @@ local colors = {
 
 -- Some extra colors which require some util functions
 colors.bg_alt = util.darken(colors.bg, 0.75, "#000000")
-
 require("themer.color_schemes.remaps").set_hig_remaps({
     TSPunctBracket = { fg = colors.red },
     TSPunctDelimiter = { fg = colors.delimiter },
