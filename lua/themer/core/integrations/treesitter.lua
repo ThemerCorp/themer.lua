@@ -1,5 +1,4 @@
 local hi = {}
-local config = require("themer.config").options
 function hi.get(cp)
 	local groups = require("themer.core.groups").get_groups(cp).styles
     return {
@@ -40,7 +39,7 @@ function hi.get(cp)
         TSProperty = groups.fields,
         TSPunctBracket = groups.punctuation,
         TSPunctDelimiter = groups.punctuation,
-        TSPunctSpecial =  groups.punctuation,
+        TSPunctSpecial = groups.punctuation,
         -- TSRepeat = {},
         -- TSStrike = {},
         TSString = groups.strings,

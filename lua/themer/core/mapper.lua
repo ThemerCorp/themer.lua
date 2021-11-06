@@ -9,9 +9,10 @@ local mapper = {}
 function mapper.get_base(cp)
     local groups = require("themer.core.groups").get_groups(cp).styles
 
-    local maybe_bold_vert_split = config.bold_vertical_split_line and { fg = cp.bg_alt, bg = cp.bg_alt } or { fg = cp.bg_float }
-    
-	local base = {
+    local maybe_bold_vert_split = config.bold_vertical_split_line and { fg = cp.bg_alt, bg = cp.bg_alt }
+        or { fg = cp.bg_float }
+
+    local base = {
         ColorColumn = { bg = cp.highlight_overlay },
         Conceal = { bg = cp.none },
         -- Cursor = {},
@@ -144,11 +145,11 @@ function mapper.get_integrations(cp)
     final_integrations = vim.tbl_deep_extend(
         "force",
         final_integrations,
-		require("themer.color_schemes.remaps").get_hig_remaps() or {},
+        require("themer.color_schemes.remaps").get_hig_remaps() or {},
         require("themer.core.remaps").get_hig_remaps() or {}
     )
-	local extended_final_integrations = final_integrations
-	final_integrations = {}
+    local extended_final_integrations = final_integrations
+    final_integrations = {}
     return extended_final_integrations
 end
 

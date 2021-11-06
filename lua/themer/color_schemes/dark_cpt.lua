@@ -25,7 +25,7 @@ local colors = {
 -- Some extra colors which require some util functions
 colors.bg_alt = util.darken(colors.bg, 0.75, "#000000")
 
-require("themer").remap_hl_group({
+require("themer.color_schemes.remaps").set_hig_remaps({
     TSPunctBracket = { fg = colors.red },
     TSPunctDelimiter = { fg = colors.delimiter },
     TSFuncBuiltin = { fg = colors.funcbuiltin },

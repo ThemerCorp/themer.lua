@@ -59,7 +59,7 @@ end
 
 function util.check_change()
     vim.api.nvim_buf_clear_namespace(0, util.ns, 0, -1)
-	set_hl_ns(0)
+    set_hl_ns(0)
 end
 
 --- Highlight on basis of given group and color
@@ -111,18 +111,18 @@ function util.load(theme)
         util.terminal(theme.colors)
     end
 
-	-- print(vim.inspect(theme.base))
-	-- print(vim.inspect(theme.properties))
-	-- print(vim.inspect(theme.integrations))
-	-- print(vim.inspect(theme.colors))
+    -- print(vim.inspect(theme.base))
+    -- print(vim.inspect(theme.properties))
+    -- print(vim.inspect(theme.integrations))
+    -- print(vim.inspect(theme.colors))
     util.properties(theme.properties)
     util.syntax(theme.base)
     util.syntax(theme.integrations)
     util.highlight("Normal", theme.base.Normal)
 
     vim.cmd([[au ColorSchemePre * :lua require("themer.utils.util").check_change()]])
-	set_hl_ns(util.ns)
-	util.ns = ns
+    set_hl_ns(util.ns)
+    util.ns = ns
 end
 
 return util
