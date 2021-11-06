@@ -30,7 +30,7 @@ require("themer").remap_hl_group({
     TSPunctDelimiter = { fg = colors.delimiter },
     TSFuncBuiltin = { fg = colors.funcbuiltin },
     TSOperator = { fg = colors.funcbuiltin },
-	TSConstBuiltin = { fg = colors.yellow },
-	TSStringSpecial = { fg = colors.blue },	
+    TSConstBuiltin = { fg = colors.yellow },
+    TSStringSpecial = { fg = colors.blue },
 })
 return colors
