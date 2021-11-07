@@ -1,3 +1,4 @@
+![Themer logo](./assets/themer.jpg)
 # themer.lua
 
 A simple fast highlight plugin and colorscheme creator for neovim, written in lua.
