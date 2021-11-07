@@ -148,9 +148,7 @@ function mapper.get_integrations(cp)
         require("themer.color_schemes.remaps").get_hig_remaps() or {},
         require("themer.core.remaps").get_hig_remaps() or {}
     )
-    local extended_final_integrations = final_integrations
-    final_integrations = {}
-    return extended_final_integrations
+    return final_integrations
 end
 
 ---get color scheme properties

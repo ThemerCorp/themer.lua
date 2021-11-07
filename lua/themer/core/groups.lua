@@ -36,7 +36,7 @@ grouper.get_groups = function(cp)
     }
     local vhygawd = vim.tbl_deep_extend(
         "force",
-        config_colorscheme.options or {},
+        config_colorscheme.get_config() or {},
         config,
         config.integrations.native_lsp
     )

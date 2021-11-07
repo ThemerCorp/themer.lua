@@ -1,24 +1,12 @@
 local remaps = {}
-
-local cs_remaps -- colorscheme
 local hig_remaps -- highlight groups
-
----returns color remaps
----@return table
-function remaps.get_cs_remaps()
-    return cs_remaps
-end
-
----remaps colorscheme
----@param val table
-function remaps.set_cs_remaps(val)
-    cs_remaps = val
-end
 
 ---returns hig remaps
 ---@return table
 function remaps.get_hig_remaps()
-    return hig_remaps
+    local remapped_hig = hig_remaps
+	hig_remaps = {}
+	return remapped_hig
 end
 
 ---remaps hig groups
