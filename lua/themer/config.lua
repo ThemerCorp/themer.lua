@@ -52,6 +52,7 @@ config.options = {
         lualine = false,
     },
 	all = true,
+	use_vim_cmd = false, 	-- setting to true will use `vim.cmd[[hi ..]]` instead of `vim.api.nvim_set_hl()`
 }
 
 function config.set_options(opts)
