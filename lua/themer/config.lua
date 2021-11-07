@@ -36,21 +36,23 @@ config.options = {
                 info = { underline = true },
             },
         },
-        cmp = true,
-        gitsigns = true,
-        telescope = true,
+        cmp = false,
+        gitsigns = false,
+        telescope = false,
         indent_blankline = {
-            enabled = true,
-            colored_indent_levels = true,
+            enabled = false,
+            colored_indent_levels = false,
         },
-        barbar = true,
-        bufferline = true,
-        markdown = true,
+        barbar = false,
+        bufferline = false,
+        markdown = false,
     },
     extra_integrations = {
-        galaxyline = true,
-        lualine = true,
+        galaxyline = false,
+        lualine = false,
     },
+    all = false,
+    use_vim_cmd = false, -- setting to true will use `vim.cmd[[hi ..]]` instead of `vim.api.nvim_set_hl()`
 }
 
 function config.set_options(opts)

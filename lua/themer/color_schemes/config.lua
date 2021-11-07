@@ -36,4 +36,10 @@ function config.setup(opts)
     config.options = vim.tbl_deep_extend("force", config.options, opts)
 end
 
+function config.get_config()
+    local configuration = config.options
+    config.options = {}
+    return configuration
+end
+
 return config

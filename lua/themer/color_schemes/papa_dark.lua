@@ -1,6 +1,4 @@
 local colors = require("themer.utils.json").decode("../color_schemes/json/papa_dark.json")
-local utils = require("themer.utils.util")
-utils.ns = vim.api.nvim_create_namespace("papa_dark")
 
 require("themer.color_schemes.config").setup({
     styles = {
