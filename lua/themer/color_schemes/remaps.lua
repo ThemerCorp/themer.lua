@@ -5,8 +5,8 @@ local hig_remaps -- highlight groups
 ---@return table
 function remaps.get_hig_remaps()
     local remapped_hig = hig_remaps
-	hig_remaps = {}
-	return remapped_hig
+    hig_remaps = {}
+    return remapped_hig
 end
 
 ---remaps hig groups
