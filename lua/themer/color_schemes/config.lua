@@ -37,9 +37,9 @@ function config.setup(opts)
 end
 
 function config.get_config()
-	local configuration = config.options
-	config.options = {}
-	return configuration
+    local configuration = config.options
+    config.options = {}
+    return configuration
 end
 
 return config
