@@ -1,10 +1,8 @@
-local util = require("themer.utils.util")
-
 local hi = {}
 
 function hi.get(cp)
     return {
-        BufferTabpageFill = { bg = cp.none },
+        BufferTabpageFill = { bg = 'NONE' },
         BufferCurrent = { fg = cp.fg, bg = cp.bg_float },
         BufferCurrentIndex = { fg = cp.fg, bg = cp.bg_float },
         BufferCurrentMod = { fg = cp.green, bg = cp.bg_float },
