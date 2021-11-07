@@ -5,7 +5,7 @@ config.options = {
     colorscheme = "rose_pine", -- default colorscheme
     transparency = false,
     term_colors = true,
-	styles = {
+    styles = {
         comments = { italic = true },
         functions = {},
         keywords = {},
