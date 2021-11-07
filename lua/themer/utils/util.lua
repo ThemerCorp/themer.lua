@@ -2,6 +2,7 @@
 local util = {}
 local g = vim.g
 local ns = vim.api.nvim_create_namespace("themer")
+local set_hl_ns = vim.api.nvim__set_hl_ns or vim.api.nvim_set_hl_ns
 
 util.ns = ns
 util.bg = "#000000"
@@ -42,23 +43,42 @@ end
 
 function util.highlight(group, color)
     -- Doc: :h highlight-gui
-    local fg = color.fg and table.concat({ "guifg=", color.fg }) or "guifg=NONE"
-    local bg = color.bg and table.concat({ "guibg=", color.bg }) or "guibg=NONE"
-    local hl = table.concat({ "highlight", group, fg, bg }, " ")
+    local fg = color.fg and "guifg=" .. color.fg or "guifg=NONE"
+    local bg = color.bg and "guibg=" .. color.bg or "guibg=NONE"
+    local sp = color.sp and "guisp=" .. color.sp or "guisp=NONE"
+    local hl = "highlight" .. " " .. group .. " " .. fg .. " " .. bg .. " " .. sp
+    if color.italic then
+        hl = hl .. " " .. "gui='italic'"
+    end
+    if color.bold then
+        hl = hl .. " " .. "gui='bold'"
+    end
+    if color.nocombine then
+        hl = hl .. " " .. "blend='nocombine'"
+    end
 
     vim.cmd(hl)
+    if color.link then
+        vim.cmd("highlight! link " .. group .. " " .. color.link)
+    end
 end
 
 ---sets highlights
 ---@param hl_group string kinda?
 ---@param hl_value table
-function util.set_hl(hl_group, hl_value)
+function util.highlight_ns(hl_group, hl_value)
     vim.api.nvim_set_hl(util.ns, hl_group, hl_value)
 end
 
 function util.check_change()
     vim.api.nvim_buf_clear_namespace(0, util.ns, 0, -1)
-    vim.api.nvim__set_hl_ns(0)
+    set_hl_ns(0)
+end
+
+if require("themer.config").options.use_vim_cmd == true then
+    util.set_hl = util.highlight
+else
+    util.set_hl = util.highlight_ns
 end
 
 --- Highlight on basis of given group and color
@@ -115,8 +135,10 @@ function util.load(theme)
     util.syntax(theme.integrations)
     util.highlight("Normal", theme.base.Normal)
 
-    vim.cmd([[au ColorSchemePre * :lua require("themer.utils.util").check_change()]])
-    vim.api.nvim__set_hl_ns(util.ns)
+    if not require("themer.config").options.use_vim_cmd then
+        vim.cmd([[au ColorSchemePre * :lua require("themer.utils.util").check_change()]])
+        set_hl_ns(util.ns)
+    end
 end
 
 return util

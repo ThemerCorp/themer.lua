@@ -2,7 +2,7 @@ local hi = {}
 
 function hi.get(cp)
     return {
-        BufferLineFill = { bg = cp.overlay },
+        BufferLineFill = { bg = cp.bg_float },
         BufferLineBackground = { fg = cp.subtle, bg = cp.inactive },
         BufferLineBufferVisible = { fg = cp.subtle, bg = cp.inactive },
         BufferLineBufferSelected = { fg = cp.fg, bg = cp.bg },

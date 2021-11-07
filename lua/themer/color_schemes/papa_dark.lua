@@ -1,26 +1,19 @@
 local colors = require("themer.utils.json").decode("../color_schemes/json/papa_dark.json")
-require("themer").setup({
-    colors = {
-        comment = colors.comment,
-        punctuation = colors.blue,
-    },
+
+require("themer.color_schemes.config").setup({
     styles = {
         keywords = { fg = colors.blue },
+        comment = { fg = colors.comment },
+        punctuation = { fg = colors.blue },
         variables = { fg = colors.light_blue },
         parameters = { fg = colors.light_blue },
-        string = { fg = colors.string },
         functions = { fg = colors.yellow },
-    },
-    integrations = {
-        native_lsp = {
-            virtual_text = {
-                hint = { fg = colors.blue },
-            },
-        },
+        strings = { fg = colors.string },
+        hint = { fg = colors.blue },
     },
 })
 
-require("themer").remap_hl_group({
+require("themer.color_schemes.remaps").set_hig_remaps({
     Normal = { fg = colors.fg, bg = colors.bg },
     ColorColumn = { fg = colors.red },
     CursorLine = { bg = colors.line_color },
@@ -64,9 +57,6 @@ require("themer").remap_hl_group({
 
     Error = { fg = colors.red },
 
-    LspDiagnosticsDefaultError = { undercurl = true, sp = colors.red },
-    LspDiagnosticsDefaultWarning = { undercurl = true, sp = colors.yellow },
-
     TSBoolean = { link = "Boolean" },
     TSCharacter = { link = "Character" },
     TSConstant = { link = "Constant" },
@@ -90,11 +80,10 @@ require("themer").remap_hl_group({
     TSInclude = { link = "Keyword" },
     TSVariableBuiltin = { link = "Keyword" },
     TSTag = { link = "Keyword" },
-    TSTitle = { fg = colors.string },
+    TSTitle = { link = "String" },
+    TSLabel = { link = "String" },
 
-    GitSignsAdd = { fg = colors.green, bg = colors.bg },
     GitSignsChange = { fg = colors.yellow, bg = colors.bg },
-    GitSignsDelete = { fg = colors.red, bg = colors.bg },
 
     CmpItemKind = { fg = colors.blue },
 
@@ -105,6 +94,10 @@ require("themer").remap_hl_group({
     NvimTreeFileDeleted = { fg = colors.red },
     NvimTreeGitDeleted = { fg = colors.red },
     NvimTreeGitDirty = { fg = colors.yellow },
-})
 
+    TelescopeSelection = { bg = colors.highlight_overlay },
+    TelescopeMatching = { fg = colors.blue },
+
+    markdownCode = { fg = colors.string },
+})
 return colors

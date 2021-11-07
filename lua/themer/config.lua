@@ -1,8 +1,8 @@
----@class Config
+---@class config
 local config = {}
 
 config.options = {
-    colorscheme = "rose_pine_moon", -- default colorscheme
+    colorscheme = "rose_pine", -- default colorscheme
     transparency = false,
     term_colors = true,
     styles = {
@@ -13,14 +13,11 @@ config.options = {
         variables = {},
         parameters = {},
         fields = {},
-    },
-    colors = {
-        -- hint = nil,
-        -- info = nil,
-        -- warn = nil,
-        -- error = nil,
-        -- punctuation = nil,
-        -- comment = nil,
+        hint = {},
+        info = {},
+        error = {},
+        warn = {},
+        punctuation = {},
     },
     integrations = {
         treesitter = true,
@@ -39,42 +36,29 @@ config.options = {
                 info = { underline = true },
             },
         },
-        cmp = true,
-        -- TODO: add all the remaining highlights ASAP
-        --	lsp_trouble = true,
-        --	lsp_saga = true,
-        --	gitgutter = true,
-        gitsigns = true,
-        telescope = true,
-        --	nvimtree = {
-        --		enabled = true,
-        --		show_root = true,
-        --	},
-        --	which_key = true,
+        cmp = false,
+        gitsigns = false,
+        telescope = false,
         indent_blankline = {
-            enabled = true,
-            colored_indent_levels = true,
+            enabled = false,
+            colored_indent_levels = false,
         },
-        --	dashboard = true,
-        --	neogit = true,
-        --	vim_sneak = true,
-        --	fern = true,
-        barbar = true,
-        bufferline = true,
-        markdown = true,
-        --	lightspeed = true,
-        --	ts_rainbow = true,
-        --	hop = true,
+        barbar = false,
+        bufferline = false,
+        markdown = false,
     },
     extra_integrations = {
-        galaxyline = true,
-        lualine = true,
+        galaxyline = false,
+        lualine = false,
     },
+    all = false,
+    use_vim_cmd = false, -- setting to true will use `vim.cmd[[hi ..]]` instead of `vim.api.nvim_set_hl()`
 }
 
 function config.set_options(opts)
     opts = opts or {}
     config.options = vim.tbl_deep_extend("force", config.options, opts)
+    require("themer.main").load_colorscheme(config.options.colorscheme)
 end
 
 return config
