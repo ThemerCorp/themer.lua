@@ -8,20 +8,6 @@ main.check_all = function()
         -- Kinda? hard coded rn, coz the for loops were causing loop errors (one file was requiring other which was requiring itself)
         -- Pardon me for hard coding this 😐
         config.options = {
-            styles = {
-                comments = { italic = true },
-                functions = { italic = true },
-                keywords = { italic = true },
-                strings = {},
-                variables = {},
-                parameters = {},
-                fields = {},
-                hint = {},
-                info = {},
-                error = {},
-                warn = {},
-                punctuation = {},
-            },
             integrations = {
                 treesitter = true,
                 native_lsp = {

@@ -51,7 +51,7 @@ config.options = {
         galaxyline = false,
         lualine = false,
     },
-	all = true,
+	all = false,
 	use_vim_cmd = false, 	-- setting to true will use `vim.cmd[[hi ..]]` instead of `vim.api.nvim_set_hl()`
 }
 
