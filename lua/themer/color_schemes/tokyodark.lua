@@ -24,7 +24,7 @@ local colors = {
 
 require("themer.color_schemes.config").options = {
     styles = {
-        comments = { italic=true, bold=true },
+        comments = { italic = true, bold = true },
         functions = {},
         keywords = {},
         strings = {},
@@ -43,12 +43,12 @@ require("themer.color_schemes.config").options = {
 require("themer").remap_hl_group({
     -- TSPunctBracket = { fg = colors.red },
     -- TSPunctDelimiter = { fg = colors.delimiter },
-    TSFuncBuiltin = { fg = colors.funcbuiltin , italic=false},
-	TSKeyword = { fg = colors.orange },
-	TSType = { fg = colors.magenta },
-	TSRepeat = { fg = colors.orange },
-	TSParameter = { fg = colors.red },
-	MatchParen = { bg = colors.highlight }
+    TSFuncBuiltin = { fg = colors.funcbuiltin, italic = false },
+    TSKeyword = { fg = colors.orange },
+    TSType = { fg = colors.magenta },
+    TSRepeat = { fg = colors.orange },
+    TSParameter = { fg = colors.red },
+    MatchParen = { bg = colors.highlight },
     -- TSOperator = { fg = colors.funcbuiltin },
     -- TSConstBuiltin = { fg = colors.yellow },
     -- TSStringSpecial = { fg = colors.blue },
