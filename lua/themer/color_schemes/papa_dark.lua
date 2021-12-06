@@ -86,9 +86,9 @@ require("themer.color_schemes.remaps").set_hig_remaps({
     GitSignsChange = { fg = colors.yellow, bg = colors.bg },
 
     CmpItemKindFunction = { fg = colors.yellow },
-    CmpItemKindMethod = {fg = colors.yellow},
-    CmpItemKindVariable = {fg = colors.light_blue},
-    CmpItemKindKeyword = {fg = colors.blue},
+    CmpItemKindMethod = { fg = colors.yellow },
+    CmpItemKindVariable = { fg = colors.light_blue },
+    CmpItemKindKeyword = { fg = colors.blue },
 
     TroubleSignError = { fg = colors.red },
     TroubleSignWarning = { fg = colors.yellow },
