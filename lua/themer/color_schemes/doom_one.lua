@@ -1,4 +1,4 @@
-local util = require("themer.utils.util")
+local util = require("themer.utils")
 
 local colors = {
     none = "NONE",

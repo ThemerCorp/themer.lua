@@ -1,13 +1,15 @@
+--- @class api
 local api = {}
 
+--- returns the colorscheme array for the given colorscheme
+--- @param cs string
 api.get_color_scheme = function(cs)
     local ok, csc = pcall(require, table.concat({ "themer.color_schemes.", cs }))
-    local remaps = require("themer.core.remaps").get_cs_remaps() or {}
-
+    local remaps = require("themer.config").options.remaps.palette[cs] or {}
     if not ok then
         return {
             status = false,
-            msg = table.concat({ "Themer: The colorscheme", cs, "was not recognized" }, " "),
+            msg = "themer.lua: the colorscheme " .. cs .. "was not recognised",
         }
     end
 

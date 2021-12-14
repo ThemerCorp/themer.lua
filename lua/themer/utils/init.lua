@@ -1,26 +1,27 @@
 --- @class util
 local util = {}
+
 local g = vim.g
 local ns = vim.api.nvim_create_namespace("themer")
 local set_hl_ns = vim.api.nvim__set_hl_ns or vim.api.nvim_set_hl_ns
+local config = require('themer.config').options
 
 util.ns = ns
 util.bg = "#000000"
 util.fg = "#ffffff"
 util.brightness = 0.3
 
----@param hex string hexadecimal value of a color
+--- hex to rgb
+--- @param hex string
 function util.hex2rgb(hex)
     hex = hex:gsub("#", "")
     return { tonumber("0x" .. hex:sub(1, 2)), tonumber("0x" .. hex:sub(3, 4)), tonumber("0x" .. hex:sub(5, 6)) }
 end
 
--- Credits to Pocco81 for these blend, darken, and lighten functions
--- https://github.com/Pocco81/Catppuccino.nvim
-
---@param fg string
---@param bg string
---@param alpha number
+--- blend colors
+--- @param fg string
+--- @param bg string
+--- @param alpha number
 function util.blend(fg, bg, alpha)
     bg = util.hex2rgb(bg)
     fg = util.hex2rgb(fg)
@@ -33,39 +34,42 @@ function util.blend(fg, bg, alpha)
     return string.format("#%02X%02X%02X", blendChannel(1), blendChannel(2), blendChannel(3))
 end
 
+--- darken colors
+--- @param hex string
+--- @param amount number
+--- @param bg string
 function util.darken(hex, amount, bg)
     return util.blend(hex, bg or util.bg, math.abs(amount))
 end
 
+--- lighten colors
+--- @param hex string
+--- @param amount number
+--- @param fg string
 function util.lighten(hex, amount, fg)
     return util.blend(hex, fg or util.fg, math.abs(amount))
 end
 
+--- highlight using :highlight
+--- @param group string
+--- @param color table
 function util.highlight(group, color)
     -- Doc: :h highlight-gui
+    if color.link then
+        vim.cmd("highlight! link " .. group .. " " .. color.link)
+else
     local fg = color.fg and "guifg=" .. color.fg or "guifg=NONE"
     local bg = color.bg and "guibg=" .. color.bg or "guibg=NONE"
     local sp = color.sp and "guisp=" .. color.sp or "guisp=NONE"
-    local hl = "highlight" .. " " .. group .. " " .. fg .. " " .. bg .. " " .. sp
-    if color.italic then
-        hl = hl .. " " .. "gui='italic'"
-    end
-    if color.bold then
-        hl = hl .. " " .. "gui='bold'"
-    end
-    if color.nocombine then
-        hl = hl .. " " .. "blend='nocombine'"
-    end
-
+	local style = color.italic and "gui=italic" or color.bold and "gui=bold" or color.underline and "gui=underline" or color.undercurl and "gui=undercurl" or color.strikethrough and "gui=strikethrough" or color.reverse and "gui=reverse" or color.inverse and "gui=inverse" or color.standout and "gui=standout" or color.nocombine and "gui=nocombine" or "gui=NONE"
+    local hl = table.concat({"highlight", group, fg, bg, sp, style}, " ")
     vim.cmd(hl)
-    if color.link then
-        vim.cmd("highlight! link " .. group .. " " .. color.link)
     end
 end
 
----sets highlights
----@param hl_group string kinda?
----@param hl_value table
+--- sets highlights using nvim_set_hl()
+--- @param hl_group string
+--- @param hl_value table
 function util.highlight_ns(hl_group, hl_value)
     vim.api.nvim_set_hl(util.ns, hl_group, hl_value)
 end
@@ -73,12 +77,6 @@ end
 function util.check_change()
     vim.api.nvim_buf_clear_namespace(0, util.ns, 0, -1)
     set_hl_ns(0)
-end
-
-if require("themer.config").options.use_vim_cmd == true then
-    util.set_hl = util.highlight
-else
-    util.set_hl = util.highlight_ns
 end
 
 --- Highlight on basis of given group and color
@@ -89,6 +87,7 @@ function util.syntax(tbl)
     end
 end
 
+--- set properties
 --- @param tbl table
 function util.properties(tbl)
     for property, value in pairs(tbl) do
@@ -126,17 +125,20 @@ function util.load(theme)
         vim.cmd("syntax reset")
     end
 
-    if require("themer.config").options["term_colors"] then
+    if config.term_colors then
         util.terminal(theme.colors)
     end
 
-    util.properties(theme.properties)
-    util.syntax(theme.base)
-    util.syntax(theme.integrations)
-    util.highlight("Normal", theme.base.Normal)
+    util.set_hl = config.modes.use_vim_cmd and util.highlight or util.highlight_ns
 
-    if not require("themer.config").options.use_vim_cmd then
-        vim.cmd([[au ColorSchemePre * :lua require("themer.utils.util").check_change()]])
+    util.properties(theme.properties)
+    util.syntax(theme.hig_groups)
+
+    -- Let's hope gobal namespace will be merged soon :sadgepray:
+    util.highlight("Normal", theme.hig_groups.Normal)
+
+    if not config.modes.use_vim_cmd then
+        vim.cmd([[au ColorSchemePre * :lua require("themer.utils").check_change()]])
         set_hl_ns(util.ns)
     end
 end

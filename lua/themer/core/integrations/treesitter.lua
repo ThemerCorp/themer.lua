@@ -55,7 +55,7 @@ function hi.get(cp)
         TSURI = { fg = cp.blue, undercurl = true },
         -- TSUnderline = {},
         TSVariable = groups.variables,
-        TSVariableBuiltin = { fg = cp.red },
+        TSVariableBuiltin = groups.variables,
     }
 end
 

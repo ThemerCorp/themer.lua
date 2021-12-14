@@ -1,9 +1,36 @@
-local colors = require("themer.utils.json").decode("../color_schemes/json/papa_dark.json")
+local colors = {
+	flavour= "dark",
+	bg= "#2e3440",
+	fg= "#E5E9F0",
+	bg_alt= "#2b2e36",
+	bg_float= "#3B4048",
+	inactive= "#4C566A",
+	subtle= "#4c566a",
+	red= "#d94848",
+	yellow= "#d4d198",
+	orange= "#d08770",
+	blue= "#5d8ac2",
+	green= "#98C379",
+	magenta= "#c487b9",
+	highlight= "#434c5e",
+	highlight_overlay= "#434c5e",
+	highlight_inactive= "#3e4452",
+	comment= "#699856",
+	light_blue= "#8fc6e3",
+	cyan= "#4EC9B0",
+	vertsplit= "#373e4a",
+    	integer= "#B4CDA8",
+    	string= "#A3BE8C",
+    	line_number= "#4C566A",
+    	line_color= "#3B4252",
+    	visual_grey= "#3E4452",
+    	interface_color= "#84D9AA"
+}
 
 require("themer.color_schemes.config").setup({
     styles = {
         keywords = { fg = colors.blue },
-        comment = { fg = colors.comment },
+        comments = { fg = colors.comment },
         punctuation = { fg = colors.blue },
         variables = { fg = colors.light_blue },
         parameters = { fg = colors.light_blue },
@@ -11,10 +38,8 @@ require("themer.color_schemes.config").setup({
         strings = { fg = colors.string },
         hint = { fg = colors.blue },
     },
-})
-
-require("themer.color_schemes.remaps").set_hig_remaps({
-    Normal = { fg = colors.fg, bg = colors.bg },
+    remaps = {
+	Normal = { fg = colors.fg, bg = colors.bg },
     ColorColumn = { fg = colors.red },
     CursorLine = { bg = colors.line_color },
     Directory = { fg = colors.blue },
@@ -99,5 +124,7 @@ require("themer.color_schemes.remaps").set_hig_remaps({
     TelescopeMatching = { fg = colors.blue },
 
     markdownCode = { fg = colors.string },
+    },
 })
+
 return colors

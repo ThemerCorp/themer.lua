@@ -10,12 +10,11 @@ config.options = {
         variables = {},
         parameters = {},
         fields = {},
+        punctuation = {},
         hint = {},
         info = {},
         warn = {},
         error = {},
-        punctuation = {},
-        comment = {},
     },
     virtual_text = {
         error = { italic = true },
