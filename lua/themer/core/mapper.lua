@@ -40,7 +40,8 @@ local function remap_styles(cp, cs)
 		error = { sp = groups.error, style = "undercurl" },
 	}
 
-	groups = vim.tbl_deep_extend("force", groups or {}, cp.groups or {}, config or {})
+	groups = vim.tbl_deep_extend("force", groups, cp.groups or {}, config or {})
+	print(vim.inspect(groups.styles))
 	return groups
 end
 

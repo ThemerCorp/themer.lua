@@ -25,19 +25,20 @@ local colors = {
 	line_color = "#3B4252",
 	visual_grey = "#3E4452",
 	interface_color = "#84D9AA",
-	groups = {
+}
+colors.groups = {
 		styles = {
-			keywords = { fg = colors.blue },
-			comments = { fg = colors.comment },
-			punctuation = { fg = colors.blue },
-			variables = { fg = colors.light_blue },
-			parameters = { fg = colors.light_blue },
-			functions = { fg = colors.yellow },
-			strings = { fg = colors.string },
-			hint = { fg = colors.blue },
+			keyword = { fg = colors.blue },
+			comment = { fg = colors.comment },
+			punc = { fg = colors.blue },
+			variable = { fg = colors.light_blue },
+			parameter = { fg = colors.light_blue },
+			func = { fg = colors.yellow },
+			string = { fg = colors.string },
 		},
-	},
-	remaps = {
+		diagnostics = { colors = { hint = colors.blue }}
+}
+colors.remaps = {
 		Normal = { fg = colors.fg, bg = colors.bg },
 		ColorColumn = { fg = colors.red },
 		CursorLine = { bg = colors.line_color },
@@ -123,7 +124,6 @@ local colors = {
 		TelescopeMatching = { fg = colors.blue },
 
 		markdownCode = { fg = colors.string },
-	},
-}
+	}
 
 return colors

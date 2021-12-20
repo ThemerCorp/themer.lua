@@ -16,9 +16,8 @@ local colors = {
 	magenta = "#bd93f9",
 	white = "#abb2bf",
 	orange = "#ffb86c",
-	comment = "#6272A4",
 	groups = {
-		{ styles = { comment = { fg = colors.comment } } },
+		styles = { comment = { fg = "#6272A4" } },
 	},
 }
 

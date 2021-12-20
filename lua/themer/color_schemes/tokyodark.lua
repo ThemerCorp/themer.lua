@@ -20,7 +20,10 @@ local colors = {
 	inactive = "#393b44",
 	subtle = "#526175",
 	delimiter = "#58cd8b",
-	remaps = {
+
+}
+
+colors.remaps = {
 		-- TSPunctBracket = { fg = colors.red },
 		-- TSPunctDelimiter = { fg = colors.delimiter },
 		TSFuncBuiltin = { fg = colors.funcbuiltin, italic = false },
@@ -32,43 +35,12 @@ local colors = {
 		-- TSOperator = { fg = colors.funcbuiltin },
 		-- TSConstBuiltin = { fg = colors.yellow },
 		-- TSStringSpecial = { fg = colors.blue },
-	},
-	groups = {
+	}
+
+colors.groups = {
 		styles = {
-			comments = { italic = true, bold = true },
-			functions = {},
-			keywords = {},
-			strings = {},
-			variables = {},
-			parameters = {},
-			fields = {},
-			hint = {},
-			info = {},
-			warn = {},
-			error = {},
-			punctuation = {},
-			comment = {},
+			comment = { italic = true, bold = true },
 		},
-	},
-}
+	}
 
-require("themer.color_schemes.config").options = {
-	styles = {
-		comments = { italic = true, bold = true },
-		functions = {},
-		keywords = {},
-		strings = {},
-		variables = {},
-		parameters = {},
-		fields = {},
-		hint = {},
-		info = {},
-		warn = {},
-		error = {},
-		punctuation = {},
-		comment = {},
-	},
-}
-
-require("themer").remap_hl_group({})
 return colors

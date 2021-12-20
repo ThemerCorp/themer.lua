@@ -19,10 +19,9 @@ local colors = {
 	subtle = "#616E88", -- for float border and more...
 }
 
-require("themer").setup({
+colors.groups = {
 	styles = {
-		variables = { fg = colors.variable },
+		variable = { fg = colors.variable },
 	},
-})
-
+	}
 return colors
