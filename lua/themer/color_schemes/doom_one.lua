@@ -23,5 +23,4 @@ local colors = {
 colors.bg_alt = util.darken(colors.bg, 0.75, "#000000")
 colors.black = util.darken(colors.bg, 0.8, "#000000")
 
-require("themer").setup({ colors = { comment = colors.comment } })
 return colors
