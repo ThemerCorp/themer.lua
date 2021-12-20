@@ -20,8 +20,8 @@ local colors = {
 }
 
 colors.groups = {
-	styles = {
-		variable = { fg = colors.variable },
-	},
-	}
+    styles = {
+        variable = { fg = colors.variable },
+    },
+}
 return colors
