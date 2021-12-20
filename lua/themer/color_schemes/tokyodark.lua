@@ -13,33 +13,32 @@ local colors = {
     bg_float = "#06080A",
     -- funcbuiltin = "#63cdcf",
     funcbuiltin = "#A485DD",
-	highlight = "#1a1b2a",
-	highlight_overlay = "#1a1b2a",
-	highlight_inactive = "#1a1b2a",
-	inactive = "#393b44",
-	subtle = "#526175",
-	delimiter = "#58cd8b",
-
+    highlight = "#1a1b2a",
+    highlight_overlay = "#1a1b2a",
+    highlight_inactive = "#1a1b2a",
+    inactive = "#393b44",
+    subtle = "#526175",
+    delimiter = "#58cd8b",
 }
 
 colors.remaps = {
-		-- TSPunctBracket = { fg = colors.red },
-		-- TSPunctDelimiter = { fg = colors.delimiter },
-		TSFuncBuiltin = { fg = colors.funcbuiltin, italic = false },
-		TSKeyword = { fg = colors.orange },
-		TSType = { fg = colors.magenta },
-		TSRepeat = { fg = colors.orange },
-		TSParameter = { fg = colors.red },
-		MatchParen = { bg = colors.highlight },
-		-- TSOperator = { fg = colors.funcbuiltin },
-		-- TSConstBuiltin = { fg = colors.yellow },
-		-- TSStringSpecial = { fg = colors.blue },
-	}
+    -- TSPunctBracket = { fg = colors.red },
+    -- TSPunctDelimiter = { fg = colors.delimiter },
+    TSFuncBuiltin = { fg = colors.funcbuiltin, italic = false },
+    TSKeyword = { fg = colors.orange },
+    TSType = { fg = colors.magenta },
+    TSRepeat = { fg = colors.orange },
+    TSParameter = { fg = colors.red },
+    MatchParen = { bg = colors.highlight },
+    -- TSOperator = { fg = colors.funcbuiltin },
+    -- TSConstBuiltin = { fg = colors.yellow },
+    -- TSStringSpecial = { fg = colors.blue },
+}
 
 colors.groups = {
-		styles = {
-			comment = { italic = true, bold = true },
-		},
-	}
+    styles = {
+        comment = { italic = true, bold = true },
+    },
+}
 
 return colors
