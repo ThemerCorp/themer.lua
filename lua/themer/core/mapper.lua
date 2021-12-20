@@ -1,37 +1,63 @@
-local config = require("themer.config").options
+local config = require("themer.config")("get")
 
----@class mapper
-local mapper = {}
+---return a cleaned styles
+---@param cp table
+---@param cs string
+---@return table
+local function remap_styles(cp, cs)
+	local groups = {
+		styles = {
+			comment = { fg = cp.subtle, style = "italic" },
+			func = { fg = cp.blue },
+			keyword = { fg = cp.magenta },
+			string = { fg = cp.green },
+			variable = { fg = cp.fg },
+			parameter = { fg = cp.yellow },
+			field = { fg = cp.red },
+			punc = { fg = cp.subtle },
+		},
+		diagnostics = {
+			colors = { -- Also can be used for stuff like TSError
+				hint = cp.magenta,
+				info = cp.blue,
+				error = cp.red,
+				warn = cp.yellow,
+			},
+		},
+	}
 
----https://stackoverflow.com/a/1283608
----merge two tables
----@param t1 table
----@param t2 table
-function mapper.__mergeTables(t1,t2)
-    for k,v in pairs(t2) do
-        if type(v) == "table" then
-            if type(t1[k] or false) == "table" then
-                tableMerge(t1[k] or {}, t2[k] or {})
-            else
-                t1[k] = v
-            end
-        else
-            t1[k] = v
-        end
-    end
-    return t1
+	groups.diagnostics.virtual_text = {
+		hint = { fg = groups.hint, style = "italic" },
+		warn = { fg = groups.warn, style = "italic" },
+		info = { fg = groups.info, style = "italic" },
+		error = { fg = groups.error, style = "italic" },
+	}
+
+	groups.diagnostics.underlines = {
+		hint = { sp = groups.hint, style = "undercurl" },
+		warn = { sp = groups.warn, style = "undercurl" },
+		info = { sp = groups.info, style = "undercurl" },
+		error = { sp = groups.error, style = "undercurl" },
+	}
+
+	groups = vim.tbl_deep_extend("force", groups or {}, cp.groups or {}, config or {})
+	return groups
 end
 
 ---return the basic hig groups
 ---@param cp table
+---@param cs string
 ---@return table
-function mapper.__get_base(cp)
-	local groups = require("themer.core.groups").get_groups(cp).styles
+local function get_base(cp, cs)
+	local groups = remap_styles(cp, cs)
+	local maybe_transparent = config.transparent and "NONE" or cp.bg
+	return {
+		-- ---------------------
+		-- ░█▀▄░█▀█░█▀▀░█▀▀
+		-- ░█▀▄░█▀█░▀▀█░█▀▀
+		-- ░▀▀░░▀░▀░▀▀▀░▀▀▀
+		-- ---------------------
 
-	local maybe_bold_vert_split = config.bold_vertical_split_line and { fg = cp.bg_alt, bg = cp.bg_alt }
-		or { fg = cp.bg_float }
-
-	local base = {
 		ColorColumn = { bg = cp.highlight_overlay },
 		Conceal = { bg = cp.none },
 		-- Cursor = {},
@@ -46,17 +72,17 @@ function mapper.__get_base(cp)
 		DiffDelete = { fg = cp.red },
 		DiffText = { fg = cp.fg },
 		Directory = { fg = cp.green, bg = cp.none },
-		EndOfBuffer = { bg = config.transparency and "NONE" or cp.bg },
-		ErrorMsg = { fg = cp.red, bold = true },
+		EndOfBuffer = { bg = maybe_transparent },
+		ErrorMsg = { fg = cp.red, style = "bold" },
 		FloatBorder = { fg = cp.subtle },
-		Folded = { fg = cp.fg, bg = config.transparency and "NONE" or cp.bg_alt },
+		Folded = { fg = cp.fg, bg = maybe_transparent },
 		IncSearch = { bg = cp.highlight },
 		LineNr = { fg = cp.inactive },
 		MatchParen = { fg = cp.fg, bg = cp.bg_float },
 		-- ModeMsg = {},
 		MoreMsg = { fg = cp.magenta },
 		NonText = { fg = cp.inactive },
-		Normal = { fg = cp.fg, bg = config.transparency and cp.none or cp.bg },
+		Normal = { fg = cp.fg, bg = maybe_transparent },
 		NormalNC = { link = "Normal" },
 		-- NormalFloat = {},
 		Pmenu = { fg = cp.subtle, bg = cp.bg_alt },
@@ -67,11 +93,11 @@ function mapper.__get_base(cp)
 		-- QuickFixLine = {},
 		Search = { fg = cp.magenta, bg = cp.highlight_overlay },
 		SpecialKey = { fg = cp.green },
-		SpellBad = { undercurl = true, sp = cp.red },
-		SpellCap = { undercurl = true, sp = cp.subtle },
-		SpellLocal = { undercurl = true, sp = cp.subtle },
-		SpellRare = { undercurl = true, sp = cp.subtle },
-		SignColumn = { fg = cp.fg, bg = config.transparency and "NONE" or cp.bg },
+		SpellBad = { style = "undercurl", sp = cp.red },
+		SpellCap = { style = "undercurl", sp = cp.subtle },
+		SpellLocal = { style = "undercurl", sp = cp.subtle },
+		SpellRare = { style = "undercurl", sp = cp.subtle },
+		SignColumn = { fg = cp.fg, bg = maybe_transparent },
 		StatusLine = { fg = cp.fg, bg = cp.bg_alt },
 		StatusLineNC = { fg = cp.subtle, bg = cp.bg_alt },
 		-- StatusLineTerm = {},
@@ -80,7 +106,7 @@ function mapper.__get_base(cp)
 		TabLineFill = { bg = cp.bg_alt },
 		TabLineSel = { fg = cp.fg, bg = cp.inactive },
 		Title = { fg = cp.fg },
-		VertSplit = maybe_bold_vert_split,
+		VertSplit = { fg = cp.bg_alt, bg = cp.bg_alt },
 		Visual = { bg = cp.highlight },
 		-- VisualNOS = {},
 		WarningMsg = { fg = cp.yellow },
@@ -88,7 +114,7 @@ function mapper.__get_base(cp)
 		-- WildMenu = {},
 		Boolean = { fg = cp.yellow },
 		Character = { fg = cp.yellow },
-		Comment = groups.comment,
+		Comment = groups.styles.comment,
 		Conditional = { fg = cp.blue },
 		Constant = { fg = cp.yellow },
 		Debug = { fg = cp.orange },
@@ -97,11 +123,11 @@ function mapper.__get_base(cp)
 		Error = { fg = cp.red },
 		Exception = { fg = cp.blue },
 		Float = { fg = cp.yellow },
-		Function = groups.functions,
-		Identifier = groups.variables,
+		Function = groups.styles.func,
+		Identifier = groups.styles.variable,
 		-- Ignore = { fg = '' },
 		Include = { fg = cp.magenta },
-		Keyword = groups.keywords,
+		Keyword = groups.keyword,
 		Label = { fg = cp.green },
 		Macro = { fg = cp.magenta },
 		Number = { fg = cp.yellow },
@@ -114,13 +140,185 @@ function mapper.__get_base(cp)
 		SpecialComment = { fg = cp.magenta },
 		Statement = { fg = cp.blue },
 		StorageClass = { fg = cp.green },
-		String = groups.strings,
+		String = groups.string,
 		Structure = { fg = cp.green },
 		Tag = { fg = cp.orange },
 		Todo = { fg = cp.magenta },
 		Type = { fg = cp.green },
 		Typedef = { fg = cp.green },
-		Underlined = { fg = cp.green, underline = true },
+		Underlined = { fg = cp.green, style = "underline" },
+
+		---------------------------------------
+		-- ░█▀█░█░░░█░█░█▀▀░▀█▀░█▀█░█▀▀
+		-- ░█▀▀░█░░░█░█░█░█░░█░░█░█░▀▀█
+		-- ░▀░░░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀
+		---------------------------------------
+
+		BufferTabpageFill = { bg = "NONE" },
+		BufferCurrent = { fg = cp.fg, bg = cp.bg_float },
+		BufferCurrentIndex = { fg = cp.fg, bg = cp.bg_float },
+		BufferCurrentMod = { fg = cp.green, bg = cp.bg_float },
+		BufferCurrentSign = { fg = cp.subtle, bg = cp.bg_float },
+		BufferInactive = { fg = cp.subtle },
+		BufferInactiveIndex = { fg = cp.subtle },
+		BufferInactiveMod = { fg = cp.green },
+		BufferInactiveSign = { fg = cp.subtle },
+		BufferVisible = { fg = cp.subtle },
+		BufferVisibleIndex = { fg = cp.subtle },
+		BufferVisibleMod = { fg = cp.green },
+		BufferVisibleSign = { fg = cp.subtle },
+
+		BufferLineFill = { bg = cp.bg_float },
+		BufferLineBackground = { fg = cp.subtle, bg = cp.inactive },
+		BufferLineBufferVisible = { fg = cp.subtle, bg = cp.inactive },
+		BufferLineBufferSelected = { fg = cp.fg, bg = cp.bg },
+		BufferLineTab = { fg = cp.subtle, bg = cp.bg },
+		BufferLineTabSelected = { fg = cp.red, bg = cp.blue },
+		BufferLineTabClose = { fg = cp.red, bg = cp.inactive },
+		BufferLineIndicatorSelected = { fg = cp.bg, bg = cp.bg },
+		-- separators
+		BufferLineSeparator = { fg = cp.inactive, bg = cp.inactive },
+		BufferLineSeparatorVisible = { fg = cp.inactive, bg = cp.inactive },
+		BufferLineSeparatorSelected = { fg = cp.inactive, bg = cp.inactive },
+		-- close buttons
+		BufferLineCloseButton = { fg = cp.subtle, bg = cp.inactive },
+		BufferLineCloseButtonVisible = { fg = cp.subtle, bg = cp.inactive },
+		BufferLineCloseButtonSelected = { fg = cp.red, bg = cp.bg },
+
+		CmpItemKind = { fg = cp.magenta },
+		CmpItemAbbr = { fg = cp.subtle },
+		CmpItemAbbrMatch = { fg = cp.fg, style = "bold" },
+		CmpItemAbbrMatchFuzzy = { fg = cp.fg, style = "bold" },
+		CmpItemAbbrDeprecated = { fg = cp.subtle, style = "strikethrough" },
+
+		SignAdd = { fg = cp.green },
+		SignChange = { fg = cp.orange },
+		SignDelete = { fg = cp.red },
+		GitSignsAdd = { fg = cp.green },
+		GitSignsChange = { fg = cp.orange },
+		GitSignsDelete = { fg = cp.red },
+
+		IndentBlanklineChar = { fg = cp.gray, style = "nocombine" },
+		IndentBlanklineIndent6 = { style = "nocombine", fg = cp.yellow },
+		IndentBlanklineIndent5 = { style = "nocombine", fg = cp.red },
+		IndentBlanklineIndent4 = { style = "nocombine", fg = cp.green },
+		IndentBlanklineIndent3 = { style = "nocombine", fg = cp.orange },
+		IndentBlanklineIndent2 = { style = "nocombine", fg = cp.blue },
+		IndentBlanklineIndent1 = { style = "nocombine", fg = cp.magenta },
+
+		LspReferenceText = { bg = cp.bg_alt },
+		LspReferenceRead = { bg = cp.bg_alt },
+		LspReferenceWrite = { bg = cp.bg_alt },
+		DiagnosticError = { fg = groups.diagnostics.colors.error },
+		DiagnosticWarn = { fg = groups.diagnostics.colors.warn },
+		DiagnosticInfo = { fg = groups.diagnostics.colors.info },
+		DiagnosticHint = { fg = groups.diagnostics.colors.hint },
+		DiagnosticDefaultError = { fg = groups.diagnostics.colors.error },
+		DiagnosticDefaultWarn = { fg = groups.diagnostics.colors.warn },
+		DiagnosticDefaultInfo = { fg = groups.diagnostics.colors.info },
+		DiagnosticDefaultHint = { fg = groups.diagnostics.colors.hint },
+		DiagnosticFloatingError = { bg = cp.bg_alt, fg = groups.diagnostics.colors.error },
+		DiagnosticFloatingWarn = { bg = cp.bg_alt, fg = groups.diagnostics.colors.warn },
+		DiagnosticFloatingInfo = { bg = cp.bg_alt, fg = groups.diagnostics.colors.info },
+		DiagnosticFloatingHint = { bg = cp.bg_alt, fg = groups.diagnostics.colors.hint },
+		DiagnosticVirtualTextError = groups.diagnostics.virtual_text.error,
+		DiagnosticVirtualTextWarn = groups.diagnostics.virtual_text.warn,
+		DiagnosticVirtualTextInfo = groups.diagnostics.virtual_text.info,
+		DiagnosticVirtualTextHint = groups.diagnostics.virtual_text.hint,
+		DiagnosticUnderlineError = groups.diagnostics.underlines.error,
+		DiagnosticUnderlineWarn = groups.diagnostics.underlines.warn,
+		DiagnosticUnderlineInfo = groups.diagnostics.underlines.info,
+		DiagnosticUnderlineHint = groups.diagnostics.underlines.hint,
+
+		LspDiagnosticsError = { link = "DiagnosticError" },
+		LspDiagnosticsWarning = { link = "DiagnosticWarn" },
+		LspDiagnosticsInformation = { link = "DiagnosticInfo" },
+		LspDiagnosticsHint = { link = "DiagnosticHint" },
+		LspDiagnosticsDefaultError = { link = "DiagnosticDefaultError" },
+		LspDiagnosticsDefaultWarning = { link = "DiagnosticDefaultWarn" },
+		LspDiagnosticsDefaultInformation = { link = "DiagnosticDefaultInfo" },
+		LspDiagnosticsDefaultHint = { link = "DiagnosticDefaultHint" },
+		LspDiagnosticsFloatingError = { link = "DiagnosticFloatingError" },
+		LspDiagnosticsFloatingWarning = { link = "DiagnosticFloatingWarn" },
+		LspDiagnosticsFloatingInformation = { link = "DiagnosticFloatingInfo" },
+		LspDiagnosticsFloatingHint = { link = "DiagnosticFloatingHint" },
+		LspDiagnosticsVirtualTextError = { link = "DiagnosticVirtualTextError" },
+		LspDiagnosticsVirtualTextWarning = { link = "DiagnosticVirtualTextWarn" },
+		LspDiagnosticsVirtualTextInformation = { link = "DiagnosticVirtualTextInfo" },
+		LspDiagnosticsVirtualTextHint = { link = "DiagnosticVirtualTextHint" },
+		LspDiagnosticsUnderlineError = { link = "DiagnosticUnderlineError" },
+		LspDiagnosticsUnderlineWarning = { link = "DiagnosticUnderlineWarn" },
+		LspDiagnosticsUnderlineInformation = { link = "DiagnosticUnderlineInfo" },
+		LspDiagnosticsUnderlineHint = { link = "DiagnosticUnderlineHint" },
+
+		LspSignatureActiveParameter = { fg = cp.orange },
+		LspCodeLens = { fg = cp.subtle },
+
+		TelescopeBorder = { fg = cp.subtle },
+		TelescopeSelectionCaret = { fg = cp.green },
+		TelescopeSelection = { fg = cp.blue, bg = cp.highlight_overlay },
+		TelescopeMatching = { fg = cp.yellow },
+
+		-- TSAnnotation = {},
+		-- TSAttribute = {},
+		TSBoolean = { fg = cp.orange },
+		-- TSCharacter = {},
+		TSComment = groups.comment,
+		TSNote = { fg = cp.bg, bg = groups.diagnostics.colors.info },
+		TSWarning = { fg = cp.bg, bg = groups.diagnostics.colors.warn },
+		TSDanger = { fg = cp.bg, bg = groups.diagnostics.colors.error },
+		TSConditional = { fg = cp.red },
+		TSConstBuiltin = { fg = cp.red },
+		-- TSConstMacro = {},
+		TSConstant = { fg = cp.orange },
+		TSConstructor = { fg = cp.magenta },
+		-- TSEmphasis = {},
+		-- TSError = {},
+		-- TSException = {},
+		TSField = { fg = cp.red },
+		-- TSFloat = {},
+		TSFuncBuiltin = { fg = cp.blue },
+		-- TSFuncMacro = {},
+		TSFunction = groups.functions,
+		TSInclude = { fg = cp.green },
+		TSKeyword = groups.keywords,
+		TSKeywordFunction = { fg = cp.magenta },
+		TSKeywordOperator = { fg = cp.blue },
+		TSLabel = { fg = cp.green },
+		-- TSLiteral = {},
+		-- TSMethod = {},
+		-- TSNamespace = {},
+		-- TSNone = {},
+		-- TSNumber = {},
+		TSOperator = { fg = cp.blue },
+		TSParameter = groups.parameters,
+		-- TSParameterReference = {},
+		TSProperty = groups.field,
+		TSPunctBracket = groups.punc,
+		TSPunctDelimiter = groups.punc,
+		TSPunctSpecial = groups.punc,
+		-- TSRepeat = {},
+		-- TSStrike = {},
+		TSString = groups.string,
+		TSStringEscape = { fg = cp.blue },
+		-- TSStringRegex = {},
+		-- TSSymbol = {},
+		TSTag = { fg = cp.green },
+		TSTagDelimiter = { fg = cp.subtle },
+		TSText = { fg = cp.fg },
+		-- TSTitle = {},
+		-- TSType = {},
+		-- TSTypeBuiltin = {},
+		TSURI = { fg = cp.blue, style = "undercurl" },
+		-- TSUnderline = {},
+		TSVariable = groups.variable,
+		TSVariableBuiltin = groups.variable,
+
+		-----------------------------
+		-- ░█░░░█▀█░█▀█░█▀▀░█▀▀
+		-- ░█░░░█▀█░█░█░█░█░▀▀█
+		-- ░▀▀▀░▀░▀░▀░▀░▀▀▀░▀▀▀
+		-----------------------------
 
 		htmlArg = { fg = cp.magenta },
 		htmlEndTag = { fg = cp.subtle },
@@ -128,39 +326,38 @@ function mapper.__get_base(cp)
 		htmlTag = { fg = cp.subtle },
 		htmlTagN = { fg = cp.fg },
 		htmlTagName = { fg = cp.green },
-	}
 
-	return base
+		markdownHeadingDelimiter = { fg = cp.subtle },
+		markdownCode = { fg = cp.yellow },
+		markdownCodeDelimiter = { fg = cp.green },
+		markdownCodeBlock = { fg = cp.green },
+		markdownH1 = { fg = cp.red, style = "bold" },
+		markdownH2 = { fg = cp.red, style = "bold" },
+		markdownLinkText = { fg = cp.red },
+	}
 end
 
 --- return the final integrations table
 --- @param cp table
 --- @param cs string
 --- @return table
-function mapper.__get_hig_groups(cp, cs)
-	local hig_groups = mapper.__get_base(cp)
-	local integrations = {}
-
-	for integration in pairs(config.integrations) do
-		if integration.enabled or integration then
-            integrations = mapper.__mergeTables(integrations, require("themer.core.integrations." .. integration).get(cp))
-        end
-	end
-
+local function get_hig_groups(cp, cs)
+	local hig_groups = get_base(cp, cs)
 	hig_groups = vim.tbl_deep_extend(
 		"force",
-		hig_groups,
+		hig_groups or {},
 		config.remaps.highlights.globals or {},
+		cp.remaps or {},
 		config.remaps.highlights[cs] or {}
 	)
 
-    return hig_groups
+	return hig_groups
 end
 
 ---get color scheme properties
 ---@param cp table
 ---@return table
-function mapper.__get_properties(cp)
+local function get_properties(cp)
 	local props = {
 		termguicolors = true,
 		background = cp.flavour or "dark",
@@ -172,12 +369,10 @@ end
 ---@param cp table
 ---@param cs string
 ---@return table
-function mapper.apply(cp, cs)
+return setmetatable({}, { __call = function (_, cp, cs)
 	local theme = {}
 	theme.colors = cp
-	theme.hig_groups = mapper.__get_hig_groups(cp, cs)
-	theme.properties = mapper.__get_properties(cp)
+	theme.base = get_hig_groups(cp, cs)
+	theme.properties = get_properties(cp)
 	return theme
-end
-
-return mapper
+end})

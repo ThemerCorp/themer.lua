@@ -1,1 +1,1 @@
-require("themer").load("rose_pine")
+require("themer.main")("rose_pine")

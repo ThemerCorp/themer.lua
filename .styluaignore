@@ -1,3 +1,5 @@
-./README.md
-./LICENSE
-./stylua.toml
+README.md
+LICENSE
+stylua.toml
+assets/
+todo.norg

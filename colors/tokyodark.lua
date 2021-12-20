@@ -1,1 +1,1 @@
-require("themer").load("tokyodark")
+require("themer.main")("tokyodark")

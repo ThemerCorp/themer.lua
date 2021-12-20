@@ -1,2 +1,1 @@
--- package.loaded["themer"] = nil
-require("themer").load("dracula")
+require("themer.main")("dracula")

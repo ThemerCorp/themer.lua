@@ -1,1 +1,1 @@
-require("themer").load("onedark")
+require("themer.main")("onedark")
