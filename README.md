@@ -1,27 +1,24 @@
 <div align="center">
 
 <img src="./assets/themer.png" width=315>
-# THEMER - AN ORGANISED COLORSCHEME WORLD
+<h1>THEMER - AN ORGANISED COLORSCHEME WORLD</h1>
 
-Colorifying neovim editors since 2021
+<h5>Colorifying neovim editors since 2021</h5>
 
-> The pain... it won't stop. After so much oppression from other text editors, it's time we fight back. With the introduction of lua, we will fight back.
-
-	<h2> ━━━━━━  ❖  ━━━━━━ </h2>
+<h2> ━━━━━━  ❖  ━━━━━━ </h2>
 
 <!-- BADGES -->
-    <p></p>
-	<a href="https://github.com/neovim/neovim"> <img src="https://img.shields.io/badge/requires-neovim%200.6%2B-green?color=%238dc776&labelColor=%23101415&style=for-the-badge&logo=neovim"> </a>
-    <a href="https://github.com/narutoxy/themer.lua/stargazers">
-        <img src="https://img.shields.io/github/stars/narutoxy/themer.lua?color=%238dc776&labelColor=%23101415&style=for-the-badge">
-    </a>
-    <a href="https://github.com/narutoxy/themer.lua/network/members/">
-        <img src="https://img.shields.io/github/forks/narutoxy/themer.lua?color=%2384a0c6&labelColor=%23101415&style=for-the-badge">
-    </a>
-    <img src="https://img.shields.io/github/repo-size/narutoxy/themer.lua?color=%23f65b5b&labelColor=%23101415&style=for-the-badge">
-    <a href="https://discord.gg/X5e3z24u">
-      <img src="https://img.shields.io/discord/916917730542764062?color=bb8fe5&labelColor=101415&style=for-the-badge"/>
-   </a>
+<a href="https://github.com/neovim/neovim"> <img src="https://img.shields.io/badge/requires-neovim%200.6%2B-green?color=%238dc776&labelColor=%23101415&style=for-the-badge&logo=neovim"> </a>
+<a href="https://github.com/narutoxy/themer.lua/stargazers">
+    <img src="https://img.shields.io/github/stars/narutoxy/themer.lua?color=%238dc776&labelColor=%23101415&style=for-the-badge">
+</a>
+<a href="https://github.com/narutoxy/themer.lua/network/members/">
+    <img src="https://img.shields.io/github/forks/narutoxy/themer.lua?color=%2384a0c6&labelColor=%23101415&style=for-the-badge">
+</a>
+<img src="https://img.shields.io/github/repo-size/narutoxy/themer.lua?color=%23f65b5b&labelColor=%23101415&style=for-the-badge">
+<a href="https://discord.gg/X5e3z24u">
+  <img src="https://img.shields.io/discord/916917730542764062?color=bb8fe5&labelColor=101415&style=for-the-badge"/>
+</a>
 </div>
 
 [Credits: Logo by Binx](#green_heart-credits)
