@@ -16,24 +16,11 @@ local colors = {
     highlight_inactive = "#353b45",
     highlight_overlay = "#30343c",
     none = "NONE",
-}
-
-require("themer.color_schemes.config").options = {
+	groups = {
     styles = {
-        comments = { italic = true, bold = false },
-        functions = {},
-        keywords = {},
-        strings = {},
-        variables = {},
-        parameters = {},
-        fields = {},
-        hint = {},
-        info = {},
-        warn = {},
-        error = {},
-        punctuation = {},
-        comment = {},
+        comment = { italic = true, bold = false },
     },
+		},
 }
 
 return colors
