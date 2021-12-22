@@ -1,7 +1,6 @@
 --- returns the colorscheme array for the given colorscheme
 --- @param cs string
-return setmetatable({}, {
-    __call = function(_, cs)
+return function(cs)
         local ok, csc = pcall(require, "themer.color_schemes." .. cs)
         local remaps = require("themer.config")("get").remaps.palette[cs] or {}
 
@@ -14,5 +13,4 @@ return setmetatable({}, {
         else
             return csc
         end
-    end,
-})
+    end

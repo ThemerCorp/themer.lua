@@ -60,8 +60,7 @@ local options = {
 --- get: returns the options
 --- @param type string
 --- @param opts table
-return setmetatable({}, {
-    __call = function(_, type, opts)
+return function(type, opts)
         if type == "get" then
             return options
         elseif type == "internal" then
@@ -71,5 +70,4 @@ return setmetatable({}, {
             require("themer.main")(options.colorscheme)
             log.trace("Themer: options set and colorscheme loaded")
         end
-    end,
-})
+    end

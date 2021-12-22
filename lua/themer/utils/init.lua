@@ -59,8 +59,7 @@ end
 
 --- load a given theme
 --- @param theme table
-return setmetatable({}, {
-    __call = function(_, theme)
+return function(theme)
         exec("hi clear")
         if vim.fn.exists("syntax_on") then
             exec("syntax reset")
@@ -73,5 +72,4 @@ return setmetatable({}, {
         syntax(theme.base)
 
         exec("do ColorScheme")
-    end,
-})
+    end
