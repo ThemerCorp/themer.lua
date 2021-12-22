@@ -16,11 +16,11 @@ local colors = {
     highlight_inactive = "#353b45",
     highlight_overlay = "#30343c",
     none = "NONE",
-	groups = {
-    styles = {
-        comment = { italic = true, bold = false },
+    groups = {
+        styles = {
+            comment = { italic = true, bold = false },
+        },
     },
-		},
 }
 
 return colors
