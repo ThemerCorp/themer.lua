@@ -61,13 +61,13 @@ local options = {
 --- @param type string
 --- @param opts table
 return function(type, opts)
-        if type == "get" then
-            return options
-        elseif type == "internal" then
-            options = vim.tbl_deep_extend("force", options, opts or {})
-        elseif type == "user" then
-            options = vim.tbl_deep_extend("force", options, opts or {})
-            require("themer.main")(options.colorscheme)
-            log.trace("Themer: options set and colorscheme loaded")
-        end
+    if type == "get" then
+        return options
+    elseif type == "internal" then
+        options = vim.tbl_deep_extend("force", options, opts or {})
+    elseif type == "user" then
+        options = vim.tbl_deep_extend("force", options, opts or {})
+        require("themer.main")(options.colorscheme)
+        log.trace("Themer: options set and colorscheme loaded")
     end
+end

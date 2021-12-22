@@ -60,16 +60,16 @@ end
 --- load a given theme
 --- @param theme table
 return function(theme)
-        exec("hi clear")
-        if vim.fn.exists("syntax_on") then
-            exec("syntax reset")
-        end
-
-        if config.term_colors then
-            terminal(theme.colors)
-        end
-
-        syntax(theme.base)
-
-        exec("do ColorScheme")
+    exec("hi clear")
+    if vim.fn.exists("syntax_on") then
+        exec("syntax reset")
     end
+
+    if config.term_colors then
+        terminal(theme.colors)
+    end
+
+    syntax(theme.base)
+
+    exec("do ColorScheme")
+end

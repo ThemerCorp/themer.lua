@@ -370,10 +370,9 @@ end
 ---@param cs string
 ---@return table
 return function(cp, cs)
-        local theme = {}
-        theme.colors = cp
-        theme.base = get_hig_groups(cp, cs)
-        theme.properties = get_properties(cp)
-        return theme
-    end
-
+    local theme = {}
+    theme.colors = cp
+    theme.base = get_hig_groups(cp, cs)
+    theme.properties = get_properties(cp)
+    return theme
+end
