@@ -5,8 +5,8 @@ local colors = {
     red = "#F6955B",
     -- yellow = "#D7A65F",
     blue = "#95C561",
-    green = "#D7A65F",
-    yellow = "#95C561",
+    yellow = "#D7A65F",
+    green = "#95C561",
     orange = "#EE6D85",
     white = "#4A5057",
     magenta = "#A485DD",
@@ -21,8 +21,17 @@ local colors = {
     delimiter = "#58cd8b",
 }
 
+colors.groups = {
+	styles = {
+		string = { fg = colors.yellow },
+	}
+}
+
 colors.remaps = {
-    -- TSPunctBracket = { fg = colors.red },
+    PmenuSel = { fg = colors.inactive, bg = colors.green },
+	PmenuThumb = { bg = colors.subtle },
+	Pmenu = { fg = colors.highlight_overlay },
+	-- TSPunctBracket = { fg = colors.red },
     -- TSPunctDelimiter = { fg = colors.delimiter },
     TSFuncBuiltin = { fg = colors.funcbuiltin, italic = false },
     TSKeyword = { fg = colors.orange },
@@ -33,12 +42,8 @@ colors.remaps = {
     -- TSOperator = { fg = colors.funcbuiltin },
     -- TSConstBuiltin = { fg = colors.yellow },
     -- TSStringSpecial = { fg = colors.blue },
-}
-
-colors.groups = {
-    styles = {
-        comment = { italic = true, bold = true },
-    },
+	TSKeywordOperator = { fg = colors.orange },
+	TSPunctBracket = { fg = colors.fg },
 }
 
 return colors
