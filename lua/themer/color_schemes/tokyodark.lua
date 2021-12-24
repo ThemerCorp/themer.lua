@@ -22,16 +22,16 @@ local colors = {
 }
 
 colors.groups = {
-	styles = {
-		string = { fg = colors.yellow },
-	}
+    styles = {
+        string = { fg = colors.yellow },
+    },
 }
 
 colors.remaps = {
     PmenuSel = { fg = colors.inactive, bg = colors.green },
-	PmenuThumb = { bg = colors.subtle },
-	Pmenu = { fg = colors.highlight_overlay },
-	-- TSPunctBracket = { fg = colors.red },
+    PmenuThumb = { bg = colors.subtle },
+    Pmenu = { fg = colors.highlight_overlay },
+    -- TSPunctBracket = { fg = colors.red },
     -- TSPunctDelimiter = { fg = colors.delimiter },
     TSFuncBuiltin = { fg = colors.funcbuiltin, italic = false },
     TSKeyword = { fg = colors.orange },
@@ -42,8 +42,8 @@ colors.remaps = {
     -- TSOperator = { fg = colors.funcbuiltin },
     -- TSConstBuiltin = { fg = colors.yellow },
     -- TSStringSpecial = { fg = colors.blue },
-	TSKeywordOperator = { fg = colors.orange },
-	TSPunctBracket = { fg = colors.fg },
+    TSKeywordOperator = { fg = colors.orange },
+    TSPunctBracket = { fg = colors.fg },
 }
 
 return colors
