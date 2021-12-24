@@ -1,6 +1,6 @@
 local util = require("themer.utils.colors")
 
-local color= {
+local colors = {
     bg = "#232136",
     bg_alt = "#2a273f",
     bg_float = "#393552",
@@ -342,4 +342,4 @@ colors.remaps = {
 	SagaShadow = { bg = colors.bg_float },
 }
 
-return color
+return colors
