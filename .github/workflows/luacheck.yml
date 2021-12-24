@@ -21,4 +21,4 @@ jobs:
     - name: Install luacheck
       run: sudo apt-get install lua-check
     - name: Run luacheck
-      run: luacheck .
+      run: luacheck --config ./.luacheckrc .
