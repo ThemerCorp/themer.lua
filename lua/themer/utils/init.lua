@@ -72,7 +72,7 @@ return function(theme)
 
     syntax(theme.hig_groups.base)
     --	vim.defer_fn(function()
-	for lang, _ in pairs(theme.hig_groups.langs) do
+    for lang, _ in pairs(theme.hig_groups.langs) do
         syntax(theme.hig_groups.langs[lang])
     end
 
