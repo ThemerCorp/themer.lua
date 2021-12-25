@@ -60,6 +60,7 @@ end
 --- load a given theme
 --- @param theme table
 return function(theme)
+    -- vim.defer_fn(function()
     exec("hi clear")
     if vim.fn.exists("syntax_on") then
         exec("syntax reset")
@@ -69,7 +70,19 @@ return function(theme)
         terminal(theme.colors)
     end
 
-    syntax(theme.base)
+    syntax(theme.hig_groups.base)
+    --	vim.defer_fn(function()
+	for lang, _ in pairs(theme.hig_groups.langs) do
+        syntax(theme.hig_groups.langs[lang])
+    end
 
+    for plugin, _ in pairs(theme.hig_groups.plugins) do
+        syntax(theme.hig_groups.plugins[plugin])
+    end
+
+    --		vim.defer_fn(function()
     exec("do ColorScheme")
+    --		end, 0)
+    --	end, 0)
+    -- end, 0)
 end

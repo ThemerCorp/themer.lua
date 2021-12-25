@@ -6,14 +6,22 @@ local options = {
     term_colors = true,
     styles = {
         -- :h nvim_set_hl()
-        comment = { italic = true },
-        func = {},
+        comment = { style = "italic" },
+        func = { style = "italic" },
         keyword = {},
         string = {},
-        variable = {},
-        parameter = {},
+        variable = { style = "italic" },
+        parameter = { style = "italic" },
         field = {},
         punc = {},
+        heading = {
+            h1 = {},
+            h2 = {},
+            h3 = {},
+            h4 = {},
+            h5 = {},
+            h6 = {},
+        },
     },
     diagnostics = {
         colors = { -- Also can be used for stuff like TSError
@@ -23,16 +31,16 @@ local options = {
             warn = "",
         },
         virtual_text = {
-            error = { italic = true },
-            hint = { italic = true },
-            warn = { italic = true },
-            info = { italic = true },
+            error = { style = "italic" },
+            hint = { style = "italic" },
+            warn = { style = "italic" },
+            info = { style = "italic" },
         },
         underlines = {
-            error = { undercurl = true },
-            hint = { undercurl = true },
-            warn = { undercurl = true },
-            info = { undercurl = true },
+            error = { style = "undercurl" },
+            hint = { style = "undercurl" },
+            warn = { style = "undercurl" },
+            info = { style = "undercurl" },
         },
     },
     remaps = {
@@ -53,6 +61,22 @@ local options = {
         -- Also you can do remaps.highlights.globals  for global highlight remaps
         highlights = {},
     },
+	
+	langs = {
+		html = true,
+		md = true,
+	},
+
+	plugins = {
+		treesitter = true,
+		indentline = true,
+		barbar = true,
+		bufferline = true,
+		cmp = true,
+		gitsigns = true,
+		lsp = true,
+		telescope = true
+	},
 }
 
 --- internal: iterate given options over the default config (for internal purposes)

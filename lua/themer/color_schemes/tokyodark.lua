@@ -28,22 +28,29 @@ colors.groups = {
 }
 
 colors.remaps = {
-    PmenuSel = { fg = colors.inactive, bg = colors.green },
-    PmenuThumb = { bg = colors.subtle },
-    Pmenu = { fg = colors.highlight_overlay },
-    -- TSPunctBracket = { fg = colors.red },
-    -- TSPunctDelimiter = { fg = colors.delimiter },
-    TSFuncBuiltin = { fg = colors.funcbuiltin, italic = false },
-    TSKeyword = { fg = colors.orange },
-    TSType = { fg = colors.magenta },
-    TSRepeat = { fg = colors.orange },
-    TSParameter = { fg = colors.red },
-    MatchParen = { bg = colors.highlight },
-    -- TSOperator = { fg = colors.funcbuiltin },
-    -- TSConstBuiltin = { fg = colors.yellow },
-    -- TSStringSpecial = { fg = colors.blue },
-    TSKeywordOperator = { fg = colors.orange },
-    TSPunctBracket = { fg = colors.fg },
+    base = {
+        PmenuSel = { fg = colors.inactive, bg = colors.green },
+        PmenuThumb = { bg = colors.subtle, fg = "NONE" },
+        Pmenu = { fg = colors.fg, bg = colors.bg_alt },
+        PmenuSbar = { fg = "NONE", bg = colors.bg_float },
+        MatchParen = { bg = colors.highlight },
+    },
+    plugins = {
+        treesitter = {
+            -- TSPunctBracket = { fg = colors.red },
+            -- TSPunctDelimiter = { fg = colors.delimiter },
+            TSFuncBuiltin = { fg = colors.funcbuiltin, italic = false },
+            TSKeyword = { fg = colors.orange },
+            TSType = { fg = colors.magenta },
+            TSRepeat = { fg = colors.orange },
+            TSParameter = { fg = colors.red },
+            -- TSOperator = { fg = colors.funcbuiltin },
+            -- TSConstBuiltin = { fg = colors.yellow },
+            -- TSStringSpecial = { fg = colors.blue },
+            TSKeywordOperator = { fg = colors.orange },
+            TSPunctBracket = { fg = colors.fg },
+        },
+    },
 }
 
 return colors
