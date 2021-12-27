@@ -23,9 +23,9 @@ local colors = {
 colors.groups = {
     styles = {
         string = { fg = colors.yellow },
-    	field = { fg = colors.orange },
-		comment = { fg = colors.white },
-	},
+        field = { fg = colors.orange },
+        comment = { fg = colors.white },
+    },
 }
 
 colors.remaps = {
@@ -35,11 +35,11 @@ colors.remaps = {
         Pmenu = { fg = colors.fg, bg = colors.bg_alt },
         PmenuSbar = { fg = "NONE", bg = colors.bg_float },
         MatchParen = { bg = colors.highlight },
-    	Special = { fg = colors.magenta },
-	},
+        Special = { fg = colors.magenta },
+    },
     plugins = {
         treesitter = {
-			TSPunctBracket = { fg = colors.magenta },
+            TSPunctBracket = { fg = colors.magenta },
             TSPunctDelimiter = { fg = colors.fg },
             TSFuncBuiltin = { fg = colors.funcbuiltin, italic = false },
             TSKeyword = { fg = colors.red },
@@ -47,12 +47,12 @@ colors.remaps = {
             TSRepeat = { fg = colors.red },
             TSParameter = { fg = colors.orange },
             TSOperator = { fg = colors.red },
-			-- TSConstBuiltin = { fg = colors.yellow },
+            -- TSConstBuiltin = { fg = colors.yellow },
             -- TSStringSpecial = { fg = colors.blue },
             TSKeywordOperator = { fg = colors.red },
             TSPunctBracket = { fg = colors.fg },
-        	TSProperty = { fg = colors.orange },
-		},
+            TSProperty = { fg = colors.orange },
+        },
     },
 }
 
