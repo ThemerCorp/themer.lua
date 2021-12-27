@@ -36,7 +36,7 @@ colors.groups = {
         func = { fg = colors.yellow },
         string = { fg = colors.string },
     },
-    diagnostics = { colors = { hint = colors.blue } },
+    diagnostics = { colors = { hint = colors.blue, warning = colors.yellow } },
 }
 colors.remaps = {
     base = {
@@ -46,14 +46,14 @@ colors.remaps = {
         Directory = { fg = colors.blue },
         EndOfBuffer = { fg = colors.bg },
         ErrorMsg = { fg = colors.fg, bg = colors.red },
-        VertSplit = { fg = colors.vertsplit },
+        VertSplit = { fg = colors.vertsplit, bg = colors.bg },
         Folded = { fg = colors.comment },
         IncSearch = { fg = colors.yellow, bg = colors.comment },
         MatchParen = { fg = colors.fg, bg = colors.blue },
         NonText = { fg = colors.blue },
-        Pmenu = { fg = colors.line_color },
-        PmenuSbar = { fg = colors.visual_grey },
-        PmenuSel = { bg = colors.visual_grey },
+        Pmenu = { fg = colors.fg, bg = colors.bg },
+        PmenuSbar = { fg = colors.visual_grey, bg = colors.bg },
+        PmenuSel = { bg = colors.line_color },
         PmenuThumb = { fg = colors.fg },
         Search = { bg = colors.blue },
         TabLine = { fg = colors.comment },
