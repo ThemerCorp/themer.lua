@@ -1,5 +1,3 @@
-local util = require("themer.utils.colors")
-
 local colors = {
     flavour = "dark", -- set type of colorscheme: dark/light
     bg = "#191724", -- background
@@ -20,7 +18,26 @@ local colors = {
     none = "NONE",
 }
 
--- Copied directly from https://github.com/orange-blue/neovim/
-colors.remaps = {}
+colors.groups = {
+	styles = {
+		string = { fg = colors.yellow },
+		keyword = { fg = colors.blue },
+		func = { fg = colors.orange },
+	},
+}
+
+colors.remaps = {
+	plugins = {
+		treesitter = {
+			TSField = { fg = colors.green },
+			TSPunctBracket = { fg = colors.subtle },
+			TSConstructor = { fg = colors.green },
+			TSKeywordReturn = { fg = colors.blue },
+			TSProperty = { fg = colors.magenta },
+			TSParameter = { fg = colors.magenta },
+			TSFuncBuiltin = { fg = colors.red },
+		}
+	}
+}
 
 return colors
