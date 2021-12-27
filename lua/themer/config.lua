@@ -6,12 +6,12 @@ local options = {
     term_colors = true,
     styles = {
         -- :h nvim_set_hl()
-        comment = { style = "italic" },
-        func = { style = "italic" },
+        comment = {},
+        func = {},
         keyword = {},
         string = {},
-        variable = { style = "italic" },
-        parameter = { style = "italic" },
+        variable = {},
+        parameter = {},
         field = {},
         punc = {},
         heading = {

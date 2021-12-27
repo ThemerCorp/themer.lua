@@ -7,7 +7,7 @@ local config = require("themer.config")("get")
 local function remap_styles(cp, cs)
 	local groups = {
 		styles = {
-			comment = { fg = cp.subtle, style = "italic" },
+			comment = { fg = cp.subtle },
 			func = { fg = cp.blue },
 			keyword = { fg = cp.magenta },
 			string = { fg = cp.green },
@@ -291,9 +291,9 @@ local function get_base(cp, cs)
 			TSBoolean = { fg = cp.orange },
 			-- TSCharacter = {},
 			TSComment = groups.styles.comment,
-			TSNote = { fg = cp.bg, bg = groups.diagnostics.colors.info },
-			TSWarning = { fg = cp.bg, bg = groups.diagnostics.colors.warn },
-			TSDanger = { fg = cp.bg, bg = groups.diagnostics.colors.error },
+			TSNote = { bg = cp.blue, fg = groups.diagnostics.colors.info },
+			TSWarning = { bg = cp.bg, fg = groups.diagnostics.colors.warn },
+			TSDanger = { bg = cp.bg, fg = groups.diagnostics.colors.error },
 			TSConditional = { fg = cp.red },
 			TSConstBuiltin = { fg = cp.red },
 			-- TSConstMacro = {},
