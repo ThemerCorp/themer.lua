@@ -11,7 +11,7 @@ local colors = {
     white = "#4A5057",
     magenta = "#A485DD",
     bg_float = "#06080A",
-    funcbuiltin = "#63cdcf",
+    -- funcbuiltin = "#63cdcf",
     funcbuiltin = "#A485DD",
     highlight = "#1a1b2a",
     highlight_overlay = "#1a1b2a",
@@ -25,7 +25,8 @@ colors.groups = {
         string = { fg = colors.yellow },
         field = { fg = colors.orange },
         comment = { fg = colors.white },
-    },
+    	func = { fg = colors.green },
+	},
 }
 
 colors.remaps = {
@@ -52,7 +53,8 @@ colors.remaps = {
             TSKeywordOperator = { fg = colors.red },
             TSPunctBracket = { fg = colors.fg },
             TSProperty = { fg = colors.orange },
-        },
+        	TSKeywordFunction = { fg = colors.red },
+		},
     },
 }
 

@@ -5,7 +5,7 @@ return function(cs)
     local remaps = require("themer.config")("get").remaps.palette[cs] or {}
 
     if not ok then
-        require("themer.log").error("Themer: the colorscheme " .. cs .. " was not recognised")
+        require("themer.log")(string.format("Colorscheme %s was not recognised\nPlease check the theme name for typos\n\nIf this is a bug, report it at https://github.com/narutoxy/themer.lua", cs), "error", "themer.lua")
     end
 
     if not (next(remaps) == nil) then

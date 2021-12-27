@@ -92,6 +92,5 @@ return function(type, opts)
     elseif type == "user" then
         options = vim.tbl_deep_extend("force", options, opts or {})
         require("themer.main")(options.colorscheme)
-        log.trace("Themer: options set and colorscheme loaded")
     end
 end
