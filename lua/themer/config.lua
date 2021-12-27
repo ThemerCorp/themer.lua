@@ -61,22 +61,22 @@ local options = {
         -- Also you can do remaps.highlights.globals  for global highlight remaps
         highlights = {},
     },
-	
-	langs = {
-		html = true,
-		md = true,
-	},
 
-	plugins = {
-		treesitter = true,
-		indentline = true,
-		barbar = true,
-		bufferline = true,
-		cmp = true,
-		gitsigns = true,
-		lsp = true,
-		telescope = true
-	},
+    langs = {
+        html = true,
+        md = true,
+    },
+
+    plugins = {
+        treesitter = true,
+        indentline = true,
+        barbar = true,
+        bufferline = true,
+        cmp = true,
+        gitsigns = true,
+        lsp = true,
+        telescope = true,
+    },
 }
 
 --- internal: iterate given options over the default config (for internal purposes)
