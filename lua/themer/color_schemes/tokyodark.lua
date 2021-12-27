@@ -54,9 +54,9 @@ colors.remaps = {
             TSPunctBracket = { fg = colors.fg },
             TSProperty = { fg = colors.orange },
             TSKeywordFunction = { fg = colors.red },
-        	TSInclude = { fg = colors.red },
-			TSType = { fg = colors.blue },
-		},
+            TSInclude = { fg = colors.red },
+            TSType = { fg = colors.blue },
+        },
     },
 }
 
