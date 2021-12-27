@@ -99,6 +99,8 @@ colors.remaps = {
             TSProperty = { link = "TSField" },
             TSKeyword = { fg = colors.blue },
             TSPunctBracket = { fg = colors.blue },
+            TSBracketDelimeter = { fg = colors.blue },
+            TSOperator = { fg = colors.blue },
             TSConstructor = { fg = colors.blue },
             TSMethod = { link = "Function" },
             TSKeywordFunction = { link = "Keyword" },
