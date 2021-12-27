@@ -25,8 +25,8 @@ colors.groups = {
         string = { fg = colors.yellow },
         field = { fg = colors.orange },
         comment = { fg = colors.white },
-    	func = { fg = colors.green },
-	},
+        func = { fg = colors.green },
+    },
 }
 
 colors.remaps = {
@@ -53,8 +53,8 @@ colors.remaps = {
             TSKeywordOperator = { fg = colors.red },
             TSPunctBracket = { fg = colors.fg },
             TSProperty = { fg = colors.orange },
-        	TSKeywordFunction = { fg = colors.red },
-		},
+            TSKeywordFunction = { fg = colors.red },
+        },
     },
 }
 

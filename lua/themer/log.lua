@@ -3,10 +3,10 @@
 ---@param level string log level
 ---@param plugin string plugin name
 return function(msg, level, plugin)
-	vim.notify(msg, level, {
-		title = plugin,
-		timeout = 200,
-	})
+    vim.notify(msg, level, {
+        title = plugin,
+        timeout = 200,
+    })
 
-	return
+    return
 end
