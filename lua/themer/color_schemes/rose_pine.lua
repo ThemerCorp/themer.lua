@@ -36,6 +36,7 @@ colors.remaps = {
 			TSProperty = { fg = colors.magenta },
 			TSParameter = { fg = colors.magenta },
 			TSFuncBuiltin = { fg = colors.red },
+			TSInclude = { fg = colors.blue },
 		}
 	}
 }

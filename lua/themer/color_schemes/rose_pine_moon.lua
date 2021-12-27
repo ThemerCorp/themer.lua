@@ -31,6 +31,7 @@ colors.remaps = {
 			TSPunctBracket = { fg = colors.subtle },
 			TSConstructor = { fg = colors.green },
 			TSKeywordReturn = { fg = colors.blue },
+			TSInclude = { fg = colors.blue },
 			TSProperty = { fg = colors.magenta },
 			TSParameter = { fg = colors.magenta },
 			TSFuncBuiltin = { fg = colors.red },

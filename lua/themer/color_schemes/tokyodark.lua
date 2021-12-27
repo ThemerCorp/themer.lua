@@ -4,7 +4,7 @@ local colors = {
     fg = "#A0A8CD",
     orange = "#F6955B",
     yellow = "#D7A65F",
-    blue = "#63cdcf",
+    blue = "#7199EE",
     yellow = "#D7A65F",
     green = "#95C561",
     red = "#EE6D85",
@@ -54,7 +54,9 @@ colors.remaps = {
             TSPunctBracket = { fg = colors.fg },
             TSProperty = { fg = colors.orange },
             TSKeywordFunction = { fg = colors.red },
-        },
+        	TSInclude = { fg = colors.red },
+			TSType = { fg = colors.blue },
+		},
     },
 }
 
