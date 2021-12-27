@@ -1,21 +1,23 @@
-local api = {}
-
-api.get_color_scheme = function(cs)
-    local ok, csc = pcall(require, table.concat({ "themer.color_schemes.", cs }))
-    local remaps = require("themer.core.remaps").get_cs_remaps() or {}
+--- returns the colorscheme array for the given colorscheme
+--- @param cs string
+return function(cs)
+    local ok, csc = pcall(require, "themer.color_schemes." .. cs)
+    local remaps = require("themer.config")("get").remaps.palette[cs] or {}
 
     if not ok then
-        return {
-            status = false,
-            msg = table.concat({ "Themer: The colorscheme", cs, "was not recognized" }, " "),
-        }
+        require("themer.log")(
+            string.format(
+                "Colorscheme %s was not recognised\nPlease check the theme name for typos\n\nIf this is a bug, report it at https://github.com/narutoxy/themer.lua",
+                cs
+            ),
+            "error",
+            "themer.lua"
+        )
     end
 
     if not (next(remaps) == nil) then
-        return { status = true, color_scheme = vim.tbl_deep_extend("force", csc, remaps) }
+        return vim.tbl_deep_extend("force", csc, remaps)
     else
-        return { status = true, color_scheme = csc }
+        return csc
     end
 end
-
-return api

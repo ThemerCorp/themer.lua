@@ -1,4 +1,4 @@
-local util = require("themer.utils.util")
+local util = require("themer.utils.colors")
 
 local colors = {
     none = "NONE",
@@ -16,10 +16,11 @@ local colors = {
     magenta = "#bd93f9",
     white = "#abb2bf",
     orange = "#ffb86c",
-    comment = "#6272A4",
+    groups = {
+        styles = { comment = { fg = "#6272A4" } },
+    },
 }
 
 -- Some extra colors which require some util functions
 colors.bg_alt = util.darken(colors.bg, 0.75, "#000000")
-require("themer.color_schemes.config").setup({ styles = { comment = { fg = colors.comment } } })
 return colors

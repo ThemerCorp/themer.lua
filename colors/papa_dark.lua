@@ -1,1 +1,1 @@
-require("themer").load("papa_dark")
+require("themer.main")("papa_dark")

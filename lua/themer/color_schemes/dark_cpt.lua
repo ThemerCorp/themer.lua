@@ -1,4 +1,4 @@
-local util = require("themer.utils.util")
+local util = require("themer.utils.colors")
 
 local colors = {
     none = "NONE",
@@ -23,12 +23,16 @@ local colors = {
 
 -- Some extra colors which require some util functions
 colors.bg_alt = util.darken(colors.bg, 0.75, "#000000")
-require("themer.color_schemes.remaps").set_hig_remaps({
-    TSPunctBracket = { fg = colors.red },
-    TSPunctDelimiter = { fg = colors.delimiter },
-    TSFuncBuiltin = { fg = colors.funcbuiltin },
-    TSOperator = { fg = colors.funcbuiltin },
-    TSConstBuiltin = { fg = colors.yellow },
-    TSStringSpecial = { fg = colors.blue },
-})
+colors.remaps = {
+    plugins = {
+        treesitter = {
+            TSPunctBracket = { fg = colors.red },
+            TSPunctDelimiter = { fg = colors.delimiter },
+            TSFuncBuiltin = { fg = colors.funcbuiltin },
+            TSOperator = { fg = colors.funcbuiltin },
+            TSConstBuiltin = { fg = colors.yellow },
+            TSStringSpecial = { fg = colors.blue },
+        },
+    },
+}
 return colors

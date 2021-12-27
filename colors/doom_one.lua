@@ -1,1 +1,1 @@
-require("themer").load("doom_one")
+require("themer.main")("doom_one")

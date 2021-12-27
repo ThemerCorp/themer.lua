@@ -1,1 +1,1 @@
-require("themer").load("nord")
+require("themer.main")("nord")

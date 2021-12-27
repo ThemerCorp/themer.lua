@@ -1,2 +1,1 @@
--- package.loaded["themer"] = nil
-require("themer").load("dark_cpt")
+require("themer.main")("dark_cpt")

@@ -18,4 +18,27 @@ local colors = {
     none = "NONE",
 }
 
+colors.groups = {
+    styles = {
+        string = { fg = colors.yellow },
+        keyword = { fg = colors.blue },
+        func = { fg = colors.orange },
+    },
+}
+
+colors.remaps = {
+    plugins = {
+        treesitter = {
+            TSField = { fg = colors.green },
+            TSPunctBracket = { fg = colors.subtle },
+            TSConstructor = { fg = colors.green },
+            TSKeywordReturn = { fg = colors.blue },
+            TSProperty = { fg = colors.magenta },
+            TSParameter = { fg = colors.magenta },
+            TSFuncBuiltin = { fg = colors.red },
+            TSInclude = { fg = colors.blue },
+        },
+    },
+}
+
 return colors

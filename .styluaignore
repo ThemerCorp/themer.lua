@@ -1,4 +1,5 @@
-./README.md
-./LICENSE
-./stylua.toml
-./lua/themer/color_schemes/json/
+README.md
+LICENSE
+stylua.toml
+assets/
+todo.norg

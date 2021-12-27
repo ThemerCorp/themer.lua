@@ -1,4 +1,4 @@
-local palette = {
+local colors = {
     flavour = "light",
     bg = "#faf4ed",
     bg_alt = "#fffaf3",
@@ -12,9 +12,32 @@ local palette = {
     blue = "#286983",
     green = "#56949f",
     magenta = "#907aa9",
-    highlight = "#eee9e6",
-    highlight_inactive = "#f2ede9",
-    highlight_overlay = "#e4dfde",
+    highlight = "#f4ede8",
+    highlight_inactive = "#dfdad9",
+    highlight_bg_float = "#cecacd",
 }
 
-return palette
+colors.groups = {
+    styles = {
+        string = { fg = colors.yellow },
+        keyword = { fg = colors.blue },
+        func = { fg = colors.orange },
+    },
+}
+
+colors.remaps = {
+    plugins = {
+        treesitter = {
+            TSField = { fg = colors.green },
+            TSPunctBracket = { fg = colors.subtle },
+            TSConstructor = { fg = colors.green },
+            TSKeywordReturn = { fg = colors.blue },
+            TSProperty = { fg = colors.magenta },
+            TSParameter = { fg = colors.magenta },
+            TSFuncBuiltin = { fg = colors.red },
+            TSInclude = { fg = colors.blue },
+        },
+    },
+}
+
+return colors

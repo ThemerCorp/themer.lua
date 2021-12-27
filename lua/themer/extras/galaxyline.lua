@@ -9,7 +9,7 @@ function hi.get(cs, cp)
         return
     end
 
-    galaxyline_colors[cs or require("themer.config").options.colorscheme] = {
+    galaxyline_colors[cs or require("themer.config")("get").colorscheme] = {
         bg = cp.bg_highlight,
         fg = cp.fg,
         fg_alt = cp.fg_alt,
