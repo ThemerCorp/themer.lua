@@ -23,7 +23,7 @@ end
 --- @param tbl table
 local function syntax(tbl)
     for hl_group, hl_value in pairs(tbl) do
-        highlight(hl_group, hl_value)
+		highlight(hl_group, hl_value)
     end
 end
 
@@ -71,18 +71,22 @@ return function(theme)
     end
 
     syntax(theme.hig_groups.base)
-    --	vim.defer_fn(function()
-    for lang, _ in pairs(theme.hig_groups.langs) do
-        syntax(theme.hig_groups.langs[lang])
+    -- vim.defer_fn(function()
+    for lang, status in pairs(theme.hig_groups.langs) do
+		if type(status) == "table" then
+			syntax(theme.hig_groups.langs[lang])
+		end
     end
 
-    for plugin, _ in pairs(theme.hig_groups.plugins) do
-        syntax(theme.hig_groups.plugins[plugin])
-    end
+    for plugin, status in pairs(theme.hig_groups.plugins) do
+		if type(status) == "table" then
+			syntax(theme.hig_groups.plugins[plugin])
+		end
+	end
 
-    --		vim.defer_fn(function()
+    -- vim.defer_fn(function()
     exec("do ColorScheme")
-    --		end, 0)
-    --	end, 0)
-    -- end, 0)
+    -- end, 70)
+    -- end, 60)
+    -- end, 5)
 end
