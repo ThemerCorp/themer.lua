@@ -70,7 +70,7 @@ return function(theme)
         terminal(theme.colors)
     end
 
-	properties(theme.properties)
+    properties(theme.properties)
 
     syntax(theme.hig_groups.base)
     -- vim.defer_fn(function()
