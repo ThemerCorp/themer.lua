@@ -70,6 +70,8 @@ return function(theme)
         terminal(theme.colors)
     end
 
+	properties(theme.properties)
+
     syntax(theme.hig_groups.base)
     -- vim.defer_fn(function()
     for lang, status in pairs(theme.hig_groups.langs) do

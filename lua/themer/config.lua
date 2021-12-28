@@ -1,5 +1,3 @@
-local log = require("themer.log")
-
 local options = {
     colorscheme = "rose_pine", -- default colorscheme
     transparent = false,
