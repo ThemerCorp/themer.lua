@@ -40,11 +40,9 @@ colors.remaps = {
     },
     plugins = {
         treesitter = {
-            TSPunctBracket = { fg = colors.magenta },
             TSPunctDelimiter = { fg = colors.fg },
             TSFuncBuiltin = { fg = colors.funcbuiltin, italic = false },
             TSKeyword = { fg = colors.red },
-            TSType = { fg = colors.magenta },
             TSRepeat = { fg = colors.red },
             TSParameter = { fg = colors.orange },
             TSOperator = { fg = colors.red },

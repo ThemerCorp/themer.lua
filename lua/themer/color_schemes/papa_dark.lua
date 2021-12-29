@@ -119,6 +119,11 @@ colors.remaps = {
 
         cmp = {
             CmpItemKind = { fg = colors.blue },
+            CmpKindMethod = { fg = colors.yellow },
+            CmpKindVariable = { fg = colors.light_blue },
+            CmpItemKindProperty = { fg = colors.light_blue },
+            CmpItemKindFunction = { fg = colors.yellow },
+
         },
 
         trouble = {
@@ -137,6 +142,7 @@ colors.remaps = {
             TelescopeSelection = { bg = colors.highlight_overlay },
             TelescopeMatching = { fg = colors.blue },
         },
+        barbar = false,
     },
     langs = { md = { markdownCode = { fg = colors.string } } },
 }
