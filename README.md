@@ -81,6 +81,7 @@ colorscheme dark_cpt
 | ✅               | Papa Dark      | `papa_dark`          |
 | ✅				| One Dark 		| `onedark`			|
 | ✅				| Nord 		| `nord`			|
+| ✅ | Kurai | `kurai` |
 
 
 # :green_heart: Credits

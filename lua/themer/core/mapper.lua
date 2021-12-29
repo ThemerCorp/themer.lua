@@ -4,7 +4,7 @@ local config = require("themer.config")("get")
 ---@param cp table
 ---@param cs string
 ---@return table
-local function remap_styles(cp, cs)
+local function remap_styles(cp)
     local groups = {
         styles = {
             comment = { fg = cp.subtle },
