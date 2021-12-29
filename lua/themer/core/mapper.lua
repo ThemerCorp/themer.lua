@@ -84,7 +84,7 @@ local function get_base(cp, cs)
 		-- spell stuff
 		ThemerSpellBad = { style = config.styles.spell, sp = cp.spell.bad or "NONE"},
 		ThemerSpellCap = { style = config.styles.spell, sp = cp.spell.cap or "NONE"},
-		ThemerSpellLocal = { style = config.styles.spell, sp = cp.spell.local or "NONE"},
+		ThemerSpellLocal = { style = config.styles.spell, sp = cp.spell["local"] or "NONE"},
 		ThemerSpellRare = { style = config.styles.spell, sp = cp.spell.rare or "NONE"},
 
 		-- git diffs
@@ -99,8 +99,8 @@ local function get_base(cp, cs)
 
         -- syntax highlighting
 		ThemerBoolean = { fg = cp.boolean },
-        ThemerFunctions = { fg = cp.syntax.function },
-        ThemerFunctionsBuiltIn = { fg = cp.built_in.function },
+        ThemerFunctions = { fg = cp.syntax["function"] },
+        ThemerFunctionsBuiltIn = { fg = cp.built_in["function"] },
         ThemerVariables = { fg = cp.syntax.variable },
         ThemerVariablesBuiltIn = { fg = cp.built_in.variable },
         ThemerKeyword = { fg = cp.syntax.keyword },
