@@ -123,7 +123,6 @@ colors.remaps = {
             CmpKindVariable = { fg = colors.light_blue },
             CmpItemKindProperty = { fg = colors.light_blue },
             CmpItemKindFunction = { fg = colors.yellow },
-
         },
 
         trouble = {
