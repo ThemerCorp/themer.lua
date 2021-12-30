@@ -37,8 +37,8 @@ colors.remaps = {
             TelescopePromptNormal = { fg = colors.fg, bg = colors.bg_alt },
             TelescopePromptBorder = { fg = colors.highlight_inactive, bg = colors.bg_alt },
             TelescopeSelectionCaret = { fg = colors.bg_alt, bg = colors.bg_alt },
-        }
-    }
+        },
+    },
 }
 
 return colors
