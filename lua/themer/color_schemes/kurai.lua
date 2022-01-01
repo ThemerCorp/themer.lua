@@ -38,6 +38,12 @@ colors.remaps = {
             TelescopePromptBorder = { fg = colors.highlight_inactive, bg = colors.bg_alt },
             TelescopeSelectionCaret = { fg = colors.bg_alt, bg = colors.bg_alt },
         },
+        cmp = {
+            CmpItemAbbrDeprecated = { fg = colors.red },
+            CmpItemAbbrMatch = { fg = colors.magenta },
+            CmpItemAbbrMatchFuzzy = { fg = colors.magenta },
+            CmpItemMenu = { fg = colors.green },
+        },
     },
 }
 
