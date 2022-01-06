@@ -112,7 +112,7 @@ colors.remaps = {
             TSTag = { link = "Keyword" },
             TSTitle = { link = "String" },
             TSLabel = { link = "String" },
-            TSTagDelimiter = { link = "TSPunctBracket" }
+            TSTagDelimiter = { link = "TSPunctBracket" },
         },
 
         gitsigns = {
