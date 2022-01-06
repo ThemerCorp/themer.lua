@@ -85,7 +85,7 @@ return function(theme)
             syntax(theme.hig_groups.plugins[plugin])
         end
     end
-	
+
     -- vim.defer_fn(function()
     exec("do ColorScheme")
     -- end, 70)

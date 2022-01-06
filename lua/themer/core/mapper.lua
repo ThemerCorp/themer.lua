@@ -47,7 +47,7 @@ local function remap_styles(cp)
         error = { sp = groups.diagnostics.colors.error, style = "undercurl" },
     }
     groups = vim.tbl_deep_extend("force", groups, cp.groups or {}, config or {})
-	return groups
+    return groups
 end
 
 ---return the basic hig groups
@@ -57,7 +57,7 @@ local function get_base(cp)
     local groups = remap_styles(cp)
     local maybe_transparent = config.transparent and "NONE" or cp.bg
 
-	-- ---------------------
+    -- ---------------------
     -- ░█▀▄░█▀█░█▀▀░█▀▀
     -- ░█▀▄░█▀█░▀▀█░█▀▀
     -- ░▀▀░░▀░▀░▀▀▀░▀▀▀
