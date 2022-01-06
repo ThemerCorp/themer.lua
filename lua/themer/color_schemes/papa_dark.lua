@@ -36,7 +36,7 @@ colors.groups = {
         func = { fg = colors.yellow },
         string = { fg = colors.string },
     },
-    diagnostics = { colors = { hint = colors.blue } },
+    diagnostics = { colors = { hint = colors.blue, warn = colors.yellow } },
 }
 colors.remaps = {
     base = {
@@ -46,19 +46,20 @@ colors.remaps = {
         Directory = { fg = colors.blue },
         EndOfBuffer = { fg = colors.bg },
         ErrorMsg = { fg = colors.fg, bg = colors.red },
-        VertSplit = { fg = colors.vertsplit },
+        VertSplit = { fg = colors.vertsplit, bg = colors.bg },
         Folded = { fg = colors.comment },
         IncSearch = { fg = colors.yellow, bg = colors.comment },
         MatchParen = { fg = colors.fg, bg = colors.blue },
         NonText = { fg = colors.blue },
-        Pmenu = { fg = colors.line_color },
-        PmenuSbar = { fg = colors.visual_grey },
-        PmenuSel = { bg = colors.visual_grey },
+        Pmenu = { fg = colors.fg, bg = colors.bg },
+        PmenuSbar = { fg = colors.visual_grey, bg = colors.bg },
+        PmenuSel = { bg = colors.line_color },
         PmenuThumb = { fg = colors.fg },
         Search = { bg = colors.blue },
         TabLine = { fg = colors.comment },
         TabLineSel = { fg = colors.fg },
         TabLineFill = { bg = colors.bg },
+        fg = colors.bg_alt,
         Visual = { bg = colors.visual_grey },
         WarningMsg = { fg = colors.yellow },
         Whitespace = { fg = colors.fg },
@@ -99,6 +100,8 @@ colors.remaps = {
             TSProperty = { link = "TSField" },
             TSKeyword = { fg = colors.blue },
             TSPunctBracket = { fg = colors.blue },
+            TSBracketDelimeter = { fg = colors.blue },
+            TSOperator = { fg = colors.blue },
             TSConstructor = { fg = colors.blue },
             TSMethod = { link = "Function" },
             TSKeywordFunction = { link = "Keyword" },
@@ -109,6 +112,7 @@ colors.remaps = {
             TSTag = { link = "Keyword" },
             TSTitle = { link = "String" },
             TSLabel = { link = "String" },
+            TSTagDelimiter = { link = "TSPunctBracket" },
         },
 
         gitsigns = {
@@ -117,6 +121,10 @@ colors.remaps = {
 
         cmp = {
             CmpItemKind = { fg = colors.blue },
+            CmpKindMethod = { fg = colors.yellow },
+            CmpKindVariable = { fg = colors.light_blue },
+            CmpItemKindProperty = { fg = colors.light_blue },
+            CmpItemKindFunction = { fg = colors.yellow },
         },
 
         trouble = {
@@ -134,9 +142,19 @@ colors.remaps = {
         telescope = {
             TelescopeSelection = { bg = colors.highlight_overlay },
             TelescopeMatching = { fg = colors.blue },
+            TelescopeBorder = { fg = colors.bg_alt, bg = colors.bg_alt },
+            TelescopePromptPrefix = { fg = colors.blue, bg = colors.bg_alt },
+            TelescopeResultsTitle = { fg = colors.bg_alt, bg = colors.blue },
+            TelescopePreviewTitle = { fg = colors.bg_alt, bg = colors.green },
+            TelescopePromptTitle = { fg = colors.bg_alt, bg = colors.yellow },
+            TelescopePreviewNormal = { bg = colors.bg_alt },
+            TelescopeResultsNormal = { bg = colors.bg_alt },
+            TelescopePromptNormal = { fg = colors.fg, bg = colors.bg_alt },
+            TelescopePromptBorder = { fg = colors.bg, bg = colors.bg_alt },
+            TelescopeSelectionCaret = { fg = colors.bg_alt, bg = colors.bg_alt },
         },
+        barbar = false,
     },
-
     langs = { md = { markdownCode = { fg = colors.string } } },
 }
 
