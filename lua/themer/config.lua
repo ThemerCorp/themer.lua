@@ -23,10 +23,10 @@ local options = {
     },
     diagnostics = {
         colors = { -- Also can be used for stuff like TSError
-            hint = "",
-            info = "",
-            error = "",
-            warn = "",
+            hint = nil,
+            info = nil,
+            error = nil,
+            warn = nil,
         },
         virtual_text = {
             error = { style = "italic" },
