@@ -74,12 +74,12 @@ local function get_base(cp)
         ThemerFloat = { bg = cp.bg.alt },
         ThemerSelected = { bg = cp.bg.selected },
         ThemerCursor = { bg = cp.fg, fg = cp.bg.base },
-		ThemerText = { fg = cp.fg, bg = cp.bg.base },
-		ThemerTextFloat = { fg = cp.fg, bg = cp.bg.alt },
+        ThemerText = { fg = cp.fg, bg = cp.bg.base },
+        ThemerTextFloat = { fg = cp.fg, bg = cp.bg.alt },
 
-		-- search terms
-		ThemerSearchResult = cp.search_result,
-		ThemerMatchingSearchResult = cp.search_result,	-- see :h hlsearch and do :set hlserch to see it in action
+        -- search terms
+        ThemerSearchResult = cp.search_result,
+        ThemerMatchingSearchResult = cp.search_result, -- see :h hlsearch and do :set hlserch to see it in action
 
         -- git diffs
         DiffAdd = { bg = cp.diff.add },
@@ -90,13 +90,13 @@ local function get_base(cp)
         DiffDelete = { bg = cp.diff.delete },
         SignDelete = { fg = cp.diff.delete },
 
-		-- syntax highlighting
+        -- syntax highlighting
         ThemerFunction = { fg = cp.syntax["function"] },
         ThemerFunctionBuiltIn = { fg = cp.built_in["function"] },
         ThemerVariable = { fg = cp.syntax.variable },
         ThemerVariableBuiltIn = { fg = cp.built_in.variable },
-        ThemerInclude = { fg =cp.syntax.include },
-		ThemerKeyword = { fg = cp.syntax.keyword },
+        ThemerInclude = { fg = cp.syntax.include },
+        ThemerKeyword = { fg = cp.syntax.keyword },
         ThemerKeywordBuiltIn = { fg = cp.built_in.keyword },
         ThemerStruct = { fg = cp.syntax.struct },
         ThemerString = { fg = cp.syntax.string },
@@ -112,15 +112,15 @@ local function get_base(cp)
         ThemerConstant = { fg = cp.syntax.constant },
         ThemerConstantBuiltIn = { fg = cp.built_in.constant },
         ThemerTodo = { fg = cp.syntax.todo },
-		ThemerCharacter = { fg = cp.syntax.character },
-		ThemerConditional = { fg = cp.syntax.conditional },
-		ThemerPreProc = { fg = cp.syntax.preproc },
-		ThemerNumber = { fg = cp.syntax.number },
-		ThemerStatement = { fg = cp.syntax.statement },
+        ThemerCharacter = { fg = cp.syntax.character },
+        ThemerConditional = { fg = cp.syntax.conditional },
+        ThemerPreProc = { fg = cp.syntax.preproc },
+        ThemerNumber = { fg = cp.syntax.number },
+        ThemerStatement = { fg = cp.syntax.statement },
 
-		-- helpful groups
-		ThemerSubtle = { fg = cp.dimmed.subtle },
-		ThemerSubtleFloat = { fg = cp.dimmed.subtle, bg = cp.bg.alt },
+        -- helpful groups
+        ThemerSubtle = { fg = cp.dimmed.subtle },
+        ThemerSubtleFloat = { fg = cp.dimmed.subtle, bg = cp.bg.alt },
         ThemerDimmed = { fg = cp.dimmed.inactive },
         ThemerDimmedFloat = { fg = cp.dimmed.inactive, bg = cp.bg.alt },
 
@@ -141,7 +141,7 @@ local function get_base(cp)
         },
         ThemerSelection = { fg = cp.gui.fg_selected or cp.fg, bg = cp.gui.bg.selected or cp.bg.selected },
 
-		ColorColumn = { link = "ThemerFloat" },
+        ColorColumn = { link = "ThemerFloat" },
         Conceal = { bg = cp.conceal or "NONE" },
         Cursor = { link = "ThemerCursor" },
         CursorColumn = { link = "ThemerFloat" },
