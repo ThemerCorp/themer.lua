@@ -2,45 +2,45 @@ local options = {
     colorscheme = "rose_pine", -- default colorscheme
     transparent = false,
     term_colors = true,
-    styles = {
-        -- :h nvim_set_hl()
-        comment = {},
-        func = {},
-        keyword = {},
-        string = {},
-        variable = {},
-        parameter = {},
-        field = {},
-        punc = {},
-        heading = {
-            h1 = {},
-            h2 = {},
-            h3 = {},
-            h4 = {},
-            h5 = {},
-            h6 = {},
-        },
-    },
-    diagnostics = {
-        colors = { -- Also can be used for stuff like TSError
-            hint = "",
-            info = "",
-            error = "",
-            warn = "",
-        },
-        virtual_text = {
-            error = { style = "italic" },
-            hint = { style = "italic" },
-            warn = { style = "italic" },
-            info = { style = "italic" },
-        },
-        underlines = {
-            error = { style = "undercurl" },
-            hint = { style = "undercurl" },
-            warn = { style = "undercurl" },
-            info = { style = "undercurl" },
-        },
-    },
+		styles = {
+    	    -- :h nvim_set_hl()
+    	    comment = {},
+    	    func = {},
+    	    keyword = {},
+    	    string = {},
+    	    variable = {},
+    	    parameter = {},
+    	    field = {},
+    	    punc = {},
+    	    heading = {
+    	        h1 = {},
+    	        h2 = {},
+    	        h3 = {},
+    	        h4 = {},
+    	        h5 = {},
+    	        h6 = {},
+    	    },
+    	},
+    	diagnostics = {
+    	    colors = { -- Also can be used for stuff like TSError
+    	        hint = nil,
+    	        info = nil,
+    	        error = nil,
+    	        warn = nil,
+    	    },
+    	    virtual_text = {
+    	        error = { style = "italic" },
+    	        hint = { style = "italic" },
+    	        warn = { style = "italic" },
+    	        info = { style = "italic" },
+    	    },
+    	    underlines = {
+    	        error = { style = "undercurl" },
+    	        hint = { style = "undercurl" },
+    	        warn = { style = "undercurl" },
+    	        info = { style = "undercurl" },
+    	    },
+    	},
     remaps = {
         palette = {},
         -- per colorscheme palette remaps, for example:

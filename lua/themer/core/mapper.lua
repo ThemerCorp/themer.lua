@@ -2,7 +2,6 @@ local config = require("themer.config")("get")
 
 ---return a cleaned styles
 ---@param cp table
----@param cs string
 ---@return table
 local function remap_styles(cp)
     local groups = {
@@ -35,32 +34,30 @@ local function remap_styles(cp)
     }
 
     groups.diagnostics.virtual_text = {
-        hint = { fg = groups.hint, style = "italic" },
-        warn = { fg = groups.warn, style = "italic" },
-        info = { fg = groups.info, style = "italic" },
-        error = { fg = groups.error, style = "italic" },
+        hint = { fg = groups.diagnostics.colors.hint, style = "italic" },
+        warn = { fg = groups.diagnostics.colors.warn, style = "italic" },
+        info = { fg = groups.diagnostics.colors.info, style = "italic" },
+        error = { fg = groups.diagnostics.colors.error, style = "italic" },
     }
 
     groups.diagnostics.underlines = {
-        hint = { sp = groups.hint, style = "undercurl" },
-        warn = { sp = groups.warn, style = "undercurl" },
-        info = { sp = groups.info, style = "undercurl" },
-        error = { sp = groups.error, style = "undercurl" },
+        hint = { sp = groups.diagnostics.colors.hint, style = "undercurl" },
+        warn = { sp = groups.diagnostics.colors.warn, style = "undercurl" },
+        info = { sp = groups.diagnostics.colors.info, style = "undercurl" },
+        error = { sp = groups.diagnostics.colors.error, style = "undercurl" },
     }
-
     groups = vim.tbl_deep_extend("force", groups, cp.groups or {}, config or {})
-    return groups
+	return groups
 end
 
 ---return the basic hig groups
 ---@param cp table
----@param cs string
 ---@return table
-local function get_base(cp, cs)
-    local groups = remap_styles(cp, cs)
+local function get_base(cp)
+    local groups = remap_styles(cp)
     local maybe_transparent = config.transparent and "NONE" or cp.bg
 
-    -- ---------------------
+	-- ---------------------
     -- ░█▀▄░█▀█░█▀▀░█▀▀
     -- ░█▀▄░█▀█░▀▀█░█▀▀
     -- ░▀▀░░▀░▀░▀▀▀░▀▀▀
@@ -396,7 +393,7 @@ end
 --- @param cs string
 --- @return table
 local function get_hig_groups(cp, cs)
-    local hig_groups = get_base(cp, cs)
+    local hig_groups = get_base(cp)
     hig_groups = vim.tbl_deep_extend(
         "force",
         hig_groups or {},
