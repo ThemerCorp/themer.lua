@@ -2,7 +2,6 @@ local config = require("themer.config")("get")
 
 ---return a cleaned styles
 ---@param cp table
----@param cs string
 ---@return table
 local function remap_styles(cp)
     local groups = {
@@ -54,16 +53,14 @@ end
 
 ---return the basic hig groups
 ---@param cp table
----@param cs string
 ---@return table
-local function get_base(cp, cs)
-    local groups = remap_styles(cp, cs)
-    local maybe_transparent = config.transparent and "NONE" or cp.bg
+local function get_base(cp)
+    local groups = remap_styles(cp)
     cp.built_in = cp.built_in or cp.syntax
 
     -- Transparent
-    cp.bg.base = maybe_transparent and "NONE" or cp.bg.base
-    cp.bg.alt = maybe_transparent and "NONE" or cp.bg.base
+    cp.bg.base = config.transparency and "NONE" or cp.bg.base
+    cp.bg.alt = config.transparency and "NONE" or cp.bg.base
 
     -- ---------------------
     -- ░█▀▄░█▀█░█▀▀░█▀▀
@@ -77,33 +74,29 @@ local function get_base(cp, cs)
         ThemerFloat = { bg = cp.bg.alt },
         ThemerSelected = { bg = cp.bg.selected },
         ThemerCursor = { bg = cp.fg, fg = cp.bg.base },
+		ThemerText = { fg = cp.fg, bg = cp.bg.base },
+		ThemerTextFloat = { fg = cp.fg, bg = cp.bg.alt },
 
-        -- umm misc groups
-        ThemerDirectory = { fg = cp.directory or "NONE" },
-
-        -- spell stuff
-        ThemerSpellBad = { style = config.styles.spell, sp = cp.spell.bad or "NONE" },
-        ThemerSpellCap = { style = config.styles.spell, sp = cp.spell.cap or "NONE" },
-        ThemerSpellLocal = { style = config.styles.spell, sp = cp.spell["local"] or "NONE" },
-        ThemerSpellRare = { style = config.styles.spell, sp = cp.spell.rare or "NONE" },
+		-- search terms
+		ThemerSearchResult = cp.search_result,
+		ThemerMatchingSearchResult = cp.search_result,	-- see :h hlsearch and do :set hlserch to see it in action
 
         -- git diffs
-        ThemerDiffAdd = { bg = cp.diff.add },
-        ThemerSignAdd = { fg = cp.diff.add },
-        ThemerSignChange = { bg = cp.diff.change },
-        ThemerSignChange = { fg = cp.diff.change },
-        ThemerDiffText = { bg = cp.diff.text or cp.fg },
-        ThemerSignText = { fg = cp.diff.text or cp.fg },
-        ThemerDiffDelete = { bg = cp.diff.delete },
-        ThemerSignDelete = { fg = cp.diff.delete },
+        DiffAdd = { bg = cp.diff.add },
+        SignAdd = { fg = cp.diff.add },
+        DiffChange = { bg = cp.diff.change },
+        SignChange = { fg = cp.diff.change },
+        DiffText = { bg = cp.diff.text or cp.fg },
+        DiffDelete = { bg = cp.diff.delete },
+        SignDelete = { fg = cp.diff.delete },
 
-        -- syntax highlighting
-        ThemerBoolean = { fg = cp.boolean },
-        ThemerFunctions = { fg = cp.syntax["function"] },
-        ThemerFunctionsBuiltIn = { fg = cp.built_in["function"] },
-        ThemerVariables = { fg = cp.syntax.variable },
-        ThemerVariablesBuiltIn = { fg = cp.built_in.variable },
-        ThemerKeyword = { fg = cp.syntax.keyword },
+		-- syntax highlighting
+        ThemerFunction = { fg = cp.syntax["function"] },
+        ThemerFunctionBuiltIn = { fg = cp.built_in["function"] },
+        ThemerVariable = { fg = cp.syntax.variable },
+        ThemerVariableBuiltIn = { fg = cp.built_in.variable },
+        ThemerInclude = { fg =cp.syntax.include },
+		ThemerKeyword = { fg = cp.syntax.keyword },
         ThemerKeywordBuiltIn = { fg = cp.built_in.keyword },
         ThemerStruct = { fg = cp.syntax.struct },
         ThemerString = { fg = cp.syntax.string },
@@ -116,13 +109,22 @@ local function get_base(cp, cs)
         ThemerConstructor = { fg = cp.syntax.constructor or cp.syntax.punctuation },
         ThemerOperator = { fg = cp.syntax.operator or cp.sytax.punctuation },
         ThemerPuncDelimiter = { fg = cp.syntax.punc_delimiter or cp.syntax.punctuation },
-        ThemerSearchResult = { fg = cp.accent, style = "bold", bg = cp.bg.selected },
-        ThemerDimmed = { fg = cp.dimmed.inactive },
-        ThemerConstants = { fg = cp.syntax.constant },
-        ThemerConstantsBuiltIn = { fg = cp.built_in.constant },
-        ThemerSubtle = { fg = cp.dimmed.subtle },
+        ThemerConstant = { fg = cp.syntax.constant },
+        ThemerConstantBuiltIn = { fg = cp.built_in.constant },
+        ThemerTodo = { fg = cp.syntax.todo },
+		ThemerCharacter = { fg = cp.syntax.character },
+		ThemerConditional = { fg = cp.syntax.conditional },
+		ThemerPreProc = { fg = cp.syntax.preproc },
+		ThemerNumber = { fg = cp.syntax.number },
+		ThemerStatement = { fg = cp.syntax.statement },
 
-        -- gui and pum stuff
+		-- helpful groups
+		ThemerSubtle = { fg = cp.dimmed.subtle },
+		ThemerSubtleFloat = { fg = cp.dimmed.subtle, bg = cp.bg.alt },
+        ThemerDimmed = { fg = cp.dimmed.inactive },
+        ThemerDimmedFloat = { fg = cp.dimmed.inactive, bg = cp.bg.alt },
+
+        -- gui stuff
         ThemerButton = { fg = cp.gui.button.base or cp.fg, bg = cp.gui.bg.base or cp.bg.alt },
         ThemerInactiveButton = {
             fg = cp.gui.button.inactive or cp.dimmed.subtle,
@@ -132,123 +134,86 @@ local function get_base(cp, cs)
             fg = cp.gui.button.inactive_selected or cp.dimmed.subtle,
             bg = cp.gui.bg.selected or cp.bg.selected,
         },
-        ThemerSuccessButton = { fg = cp.gui.button.success or cp.diff.add, bg = cp.gui.bg.base or cp.bg.alt },
+        ThemerSuccessButton = { fg = cp.gui.button.success, bg = cp.gui.bg.base or cp.bg.alt },
         ThemerClosedSelectedButton = {
             fg = cp.gui.button.closed or cp.diff.delete,
             bg = cp.gui.bg.selected or cp.bg.selected,
         },
-        ThemerSel = { fg = cp.gui.pum.fg or cp.fg, bg = cp.gui.pum.selected or cp.bg.selected },
-        ThemerSbar = { fg = cp.gui.pum.sbar or cp.dimmed.inactive },
-        ThemerThumb = { fg = cp.gui.pum.thumb or cp.dimmed.subtle },
-        ThemerPum = { fg = cp.gui.pum.fg or cp.dimmed.subtle, bg = cp.gui.pum.bg or cp.bg.alt },
+        ThemerSelection = { fg = cp.gui.fg_selected or cp.fg, bg = cp.gui.bg.selected or cp.bg.selected },
 
-        -- lsp stuff
-        ThemerError = { fg = cp.diagnostic.error },
-        ThemerErrorVirtualText = { fg = cp.diagnostic.error, style = config.diagnostic.virtual_text },
-        ThemerErrorUnderline = { fg = cp.diagnostic.error, style = config.diagnostic.underline },
-        ThemerErrorFloat = { fg = cp.diagnostic.error, bg = cp.bg.alt },
-        ThemerHint = { fg = cp.diagnostic.hint },
-        ThemerHintVirtualText = { fg = cp.diagnostic.hint, style = config.diagnostic.virtual_text },
-        ThemerHintUnderline = { fg = cp.diagnostic.hint, style = config.diagnostic.underline },
-        ThemerHintFloat = { fg = cp.diagnostic.hint, bg = cp.bg.alt },
-        ThemerInfo = { fg = cp.diagnostic.info },
-        ThemerInfoVirtualText = { fg = cp.diagnostic.info, style = config.diagnostic.virtual_text },
-        ThemerInfoUnderline = { fg = cp.diagnostic.info, style = config.diagnostic.underline },
-        ThemerInfoFloat = { fg = cp.diagnostic.info, bg = cp.bg.alt },
-        ThemerWarn = { fg = cp.diagnostic.warn },
-        ThemerWarnVirtualText = { fg = cp.diagnostic.warn, style = config.styles.virtual_text },
-        ThemerWarnUnderline = { fg = cp.diagnostic.warn, style = config.styles.underline },
-        ThemerWarnFloat = { fg = cp.diagnostic.warn, bg = cp.bg.alt },
-
-        ColorColumn = { bg = cp.bg.selected },
-        Conceal = { bg = "NONE" },
-        -- Cursor = {},
-        CursorColumn = { bg = cp.bg.selected },
-        -- CursorIM = {},
-        CursorLine = { bg = cp.highlight_inactive },
-        CursorLineNr = { fg = cp.fg },
-        DarkenedPanel = { bg = cp.bg_alt },
-        DarkenedStatusline = { bg = cp.bg_alt },
-        DiffAdd = { fg = cp.green },
-        DiffChange = { fg = cp.orange },
-        DiffDelete = { fg = cp.red },
-        DiffText = { fg = cp.fg },
-        Directory = { fg = cp.green, bg = cp.none },
-        EndOfBuffer = { bg = maybe_transparent },
-        ErrorMsg = { fg = cp.red, style = "bold" },
-        FloatBorder = { fg = cp.subtle },
-        Folded = { fg = cp.fg, bg = maybe_transparent },
-        IncSearch = { bg = cp.highlight },
-        LineNr = { fg = cp.inactive },
-        MatchParen = { fg = cp.fg, bg = cp.bg_float },
+		ColorColumn = { link = "ThemerFloat" },
+        Conceal = { bg = cp.conceal or "NONE" },
+        Cursor = { link = "ThemerCursor" },
+        CursorColumn = { link = "ThemerFloat" },
+        CursorIM = { link = "ThemerCursor" },
+        CursorLine = { link = "ThemerSelected" },
+        CursorLineNr = { link = "ThemerText" },
+        DarkenedPanel = { link = "ThemerFloat" },
+        DarkenedStatusline = { link = "ThemerFloat" },
+        Directory = { link = "ThemerAccent" },
+        EndOfBuffer = { link = "ThemerText" },
+        ErrorMsg = { fg = cp.diagnostics.error, bold = true },
+        FloatBorder = { link = "ThemerSubtle" },
+        Folded = { link = "ThemerText" },
+        IncSearch = { link = "Themer" },
+        LineNr = { link = "ThemerDimmed" },
+        MatchParen = { link = "ThemerTextFloat" },
         -- ModeMsg = {},
         MoreMsg = { fg = cp.magenta },
-        NonText = { fg = cp.inactive },
-        Normal = { fg = cp.fg, bg = maybe_transparent },
-        NormalNC = { link = "Normal" },
-        -- NormalFloat = {},
-        Pmenu = { fg = cp.subtle, bg = cp.bg_alt },
-        PmenuSbar = { bg = cp.bg_float },
-        PmenuSel = { fg = cp.fg, bg = cp.bg_float },
-        PmenuThumb = { bg = cp.inactive },
-        Question = { fg = cp.yellow },
+        NonText = { link = "ThemerDimmed" },
+        Normal = { link = "ThemerText" },
+        NormalNC = { link = "ThemerText" },
+        NormalFloat = { link = "ThemerTextFloat" },
+        Pmenu = { fg = cp.pum.fg or cp.dimmed.subtle, bg = cp.pum.bg or cp.bg.alt },
+        PmenuSbar = { bg = cp.pum.sbar or cp.bg.selected },
+        PmenuSel = { link = "ThemerSearchResult" },
+        PmenuThumb = { bg = cp.pum.thumb or cp.dimmed.subtle },
+        Question = { link = "ThemerAccent" },
         -- QuickFixLine = {},
-        Search = { fg = cp.magenta, bg = cp.highlight_overlay },
-        SpecialKey = { fg = cp.green },
+        Search = { link = "ThemerMatchingSearchResult" },
+        SpecialKey = { link = "ThemerAccent" },
         SpellBad = { style = "undercurl", sp = cp.red },
         SpellCap = { style = "undercurl", sp = cp.subtle },
         SpellLocal = { style = "undercurl", sp = cp.subtle },
         SpellRare = { style = "undercurl", sp = cp.subtle },
-        SignColumn = { fg = cp.fg, bg = maybe_transparent },
-        StatusLine = { fg = cp.fg, bg = cp.bg_alt },
-        StatusLineNC = { fg = cp.subtle, bg = cp.bg_alt },
+        SignColumn = { link = "ThemerText" },
+        StatusLine = { link = "ThemerTextFloat" },
+        StatusLineNC = { link = "ThemerSubtleFloat" },
         -- StatusLineTerm = {},
         -- StatusLineTermNC = {},
-        TabLine = { fg = cp.subtle, bg = cp.bg_float },
-        TabLineFill = { bg = cp.bg_alt },
-        TabLineSel = { fg = cp.fg, bg = cp.inactive },
-        Title = { fg = cp.fg },
-        VertSplit = { fg = cp.bg_alt, bg = cp.bg_alt },
-        Visual = { bg = cp.highlight },
+        TabLine = { link = "ThemerTextFloat" },
+        TabLineFill = { link = "ThemerFloat" },
+        TabLineSel = { link = "ThemerSelection" },
+        Title = { link = "ThemerText" },
+        VertSplit = { fg = cp.bg.alt, bg = cp.bg.alt },
+        Visual = { link = "ThemerSelected" },
         -- VisualNOS = {},
-        WarningMsg = { fg = cp.yellow },
-        -- Whitespace = {},
-        -- WildMenu = {},
-        Boolean = { fg = cp.yellow },
-        Character = { fg = cp.yellow },
-        Comment = groups.styles.comment,
-        Conditional = { fg = cp.blue },
-        Constant = { fg = cp.yellow },
-        Debug = { fg = cp.orange },
-        Define = { fg = cp.magenta },
-        Delimiter = { fg = cp.orange },
-        Error = { fg = cp.red },
-        Exception = { fg = cp.blue },
-        Float = { fg = cp.yellow },
-        Function = groups.styles.func,
-        Identifier = groups.styles.variable,
-        -- Ignore = { fg = '' },
-        Include = { fg = cp.magenta },
-        Keyword = groups.styles.keyword,
-        Label = { fg = cp.green },
-        Macro = { fg = cp.magenta },
-        Number = { fg = cp.yellow },
-        Operator = { fg = cp.subtle },
-        PreCondit = { fg = cp.magenta },
-        PreProc = { fg = cp.magenta },
-        Repeat = { fg = cp.blue },
-        Special = { fg = cp.orange },
-        SpecialChar = { fg = cp.orange },
-        SpecialComment = { fg = cp.magenta },
-        Statement = { fg = cp.blue },
-        StorageClass = { fg = cp.green },
-        String = groups.styles.string,
-        Structure = { fg = cp.green },
-        Tag = { fg = cp.orange },
-        Todo = { fg = cp.magenta },
-        Type = { fg = cp.green },
-        Typedef = { fg = cp.green },
-        Underlined = { fg = cp.green, style = "underline" },
+        WarningMsg = { fg = cp.diagnostics.warn },
+        -- Boolean = { link = "ThemerConstant" },
+        Character = { link = "ThemerCharacter" },
+        Comment = { link = "ThemerSubtle" },
+        Conditional = { link = "ThemerConditional" },
+        Constant = { link = "ThemerConstant" },
+        -- Debug = { fg = cp.debug },
+        -- Define = { fg = cp.magenta },
+        Delimiter = { link = "ThemerPuncDelimiter" },
+        Error = { fg = cp.diagnostics.error },
+        -- Exception = { fg = cp.blue },
+        Float = { link = "ThemerNumber" },
+        Function = { link = "ThemerFunction" },
+        Identifier = { link = "ThemerVariable" },
+        Include = { link = "ThemerInclude" },
+        Keyword = { link = "ThemerKeyword" },
+        Number = { link = "ThemerNumber" },
+        Operator = { link = "ThemerOperator" },
+        PreProc = { link = "ThemerPreProc" },
+        Special = { link = "ThemerAccent" },
+        Statement = { link = "ThemerStatement" },
+        String = { link = "ThemerString" },
+        Todo = { link = "ThemerTodo" },
+        Type = { link = "ThemerType" },
+        Typedef = { link = "ThemerType" },
+        Underlined = { fg = cp.accent, style = "underline" },
     }
 
     ---------------------------------------
@@ -304,9 +269,6 @@ local function get_base(cp, cs)
         },
 
         gitsigns = {
-            SignAdd = { fg = cp.green },
-            SignChange = { fg = cp.orange },
-            SignDelete = { fg = cp.red },
             GitSignsAdd = { fg = cp.green },
             GitSignsChange = { fg = cp.orange },
             GitSignsDelete = { fg = cp.red },
@@ -490,7 +452,7 @@ end
 --- @param cs string
 --- @return table
 local function get_hig_groups(cp, cs)
-    local hig_groups = get_base(cp, cs)
+    local hig_groups = get_base(cp)
     hig_groups = vim.tbl_deep_extend(
         "force",
         hig_groups or {},
