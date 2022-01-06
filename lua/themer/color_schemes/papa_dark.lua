@@ -36,7 +36,7 @@ colors.groups = {
         func = { fg = colors.yellow },
         string = { fg = colors.string },
     },
-    diagnostics = { colors = { hint = colors.blue, warning = colors.yellow } },
+    diagnostics = { colors = { hint = colors.blue, warn = colors.yellow } },
 }
 colors.remaps = {
     base = {
@@ -112,6 +112,7 @@ colors.remaps = {
             TSTag = { link = "Keyword" },
             TSTitle = { link = "String" },
             TSLabel = { link = "String" },
+            TSTagDelimiter = { link = "TSPunctBracket" }
         },
 
         gitsigns = {
