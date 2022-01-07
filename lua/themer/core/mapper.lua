@@ -159,7 +159,7 @@ local function get_base(cp)
         LineNr = { link = "ThemerDimmed" },
         MatchParen = { link = "ThemerTextFloat" },
         -- ModeMsg = {},
-        MoreMsg = { fg = cp.magenta },
+        MoreMsg = { link = "ThemerAccent" },
         NonText = { link = "ThemerDimmed" },
         Normal = { link = "ThemerText" },
         NormalNC = { link = "ThemerText" },
@@ -225,21 +225,23 @@ local function get_base(cp)
     local plugins = {}
 
     local availablePlugins = {
-        barbar = {
-            BufferTabpageFill = { bg = "NONE" },
-            BufferCurrent = { fg = cp.fg, bg = cp.bg_float },
-            BufferCurrentIndex = { fg = cp.fg, bg = cp.bg_float },
-            BufferCurrentMod = { fg = cp.green, bg = cp.bg_float },
-            BufferCurrentSign = { fg = cp.subtle, bg = cp.bg_float },
-            BufferInactive = { fg = cp.subtle },
-            BufferInactiveIndex = { fg = cp.subtle },
-            BufferInactiveMod = { fg = cp.green },
-            BufferInactiveSign = { fg = cp.subtle },
-            BufferVisible = { fg = cp.subtle },
-            BufferVisibleIndex = { fg = cp.subtle },
-            BufferVisibleMod = { fg = cp.green },
-            BufferVisibleSign = { fg = cp.subtle },
-        },
+        -- I have disabled this as it seems to link to Normal groups 
+        -- and here we are doing same, lets see
+        -- barbar = {
+        --     -- BufferTabpageFill = { bg = "NONE" },
+        --     BufferCurrent = { link = "ThemerTextFloat" },
+        --     BufferCurrentIndex = { link = "ThemerTextFloat" },
+        --     BufferCurrentMod = { link = "ThemerCurrentMod" },
+        --     BufferCurrentSign = { link = "ThemerSubtleFloat" },
+        --     BufferInactive = { link = "ThemerSubtleFloat" },
+        --     BufferInactiveIndex = { link = "ThemerSubtleFloat" },
+        --     BufferInactiveMod = { link = "ThemerSubtleMod" },
+        --     BufferInactiveSign = { link = "ThemerSubtleFloat" },
+        --     BufferVisible = { link = "ThemerSubtleFloat" },
+        --     BufferVisibleIndex = { link = "ThemerSubtleFloat" },
+        --     BufferVisibleMod = { link = "ThemerSubtleMod" },
+        --     BufferVisibleSign = { link = "ThemerSubtleFloat"  },
+        -- },
 
         bufferline = {
             BufferLineFill = { bg = cp.bg_float },
