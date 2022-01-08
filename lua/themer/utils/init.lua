@@ -72,6 +72,7 @@ return function(theme)
 
     properties(theme.properties)
 
+    syntax(theme.hig_groups.themer)
     syntax(theme.hig_groups.base)
     -- vim.defer_fn(function()
     for lang, status in pairs(theme.hig_groups.langs) do
