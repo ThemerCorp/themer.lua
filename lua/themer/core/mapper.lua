@@ -83,12 +83,9 @@ local function get_base(cp)
 
         -- git diffs
         DiffAdd = { bg = cp.diff.add },
-        SignAdd = { fg = cp.diff.add },
         DiffChange = { bg = cp.diff.change },
-        SignChange = { fg = cp.diff.change },
         DiffText = { bg = cp.diff.text or cp.fg },
         DiffDelete = { bg = cp.diff.delete },
-        SignDelete = { fg = cp.diff.delete },
 
         -- syntax highlighting
         ThemerFunction = { fg = cp.syntax["function"] },
@@ -123,23 +120,6 @@ local function get_base(cp)
         ThemerSubtleFloat = { fg = cp.dimmed.subtle, bg = cp.bg.alt },
         ThemerDimmed = { fg = cp.dimmed.inactive },
         ThemerDimmedFloat = { fg = cp.dimmed.inactive, bg = cp.bg.alt },
-
-        -- gui stuff
-        ThemerButton = { fg = cp.gui.button.base or cp.fg, bg = cp.gui.bg.base or cp.bg.alt },
-        ThemerInactiveButton = {
-            fg = cp.gui.button.inactive or cp.dimmed.subtle,
-            bg = cp.gui.bg.inactive or cp.bg.alt,
-        },
-        ThemerInactiveSelectedButton = {
-            fg = cp.gui.button.inactive_selected or cp.dimmed.subtle,
-            bg = cp.gui.bg.selected or cp.bg.selected,
-        },
-        ThemerSuccessButton = { fg = cp.gui.button.success, bg = cp.gui.bg.base or cp.bg.alt },
-        ThemerClosedSelectedButton = {
-            fg = cp.gui.button.closed or cp.diff.delete,
-            bg = cp.gui.bg.selected or cp.bg.selected,
-        },
-        ThemerSelection = { fg = cp.gui.fg_selected or cp.fg, bg = cp.gui.bg.selected or cp.bg.selected },
 
         ColorColumn = { link = "ThemerFloat" },
         Conceal = { bg = cp.conceal or "NONE" },
@@ -262,17 +242,10 @@ local function get_base(cp)
         --     BufferLineCloseButtonSelected = { fg = cp.red, bg = cp.bg },
         -- },
 
-        cmp = {
-            CmpItemKind = { fg = cp.magenta },
-            CmpItemAbbr = { fg = cp.subtle },
-            CmpItemAbbrMatch = { fg = cp.fg, style = "bold" },
-            CmpItemAbbrMatchFuzzy = { fg = cp.fg, style = "bold" },
-            CmpItemAbbrDeprecated = { fg = cp.subtle, style = "strikethrough" },
-        },
+        cmp = {},
 
         gitsigns = {
             GitSignsAdd = { fg = cp.green },
-            GitSignsChange = { fg = cp.orange },
             GitSignsDelete = { fg = cp.red },
         },
 
