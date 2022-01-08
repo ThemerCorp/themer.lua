@@ -207,14 +207,14 @@ local function get_base(cp)
             CmpItemAbbrDeprecated = { fg = cp.subtle, style = "strikethrough" },
         },
 
-        gitsigns = {
-            SignAdd = { fg = cp.green },
-            SignChange = { fg = cp.orange },
-            SignDelete = { fg = cp.red },
-            GitSignsAdd = { fg = cp.green },
-            GitSignsChange = { fg = cp.orange },
-            GitSignsDelete = { fg = cp.red },
-        },
+        -- gitsigns = {
+        --     SignAdd = { fg = cp.green },
+        --     SignChange = { fg = cp.orange },
+        --     SignDelete = { fg = cp.red },
+        --     GitSignsAdd = { fg = cp.green },
+        --     GitSignsChange = { fg = cp.orange },
+        --     GitSignsDelete = { fg = cp.red },
+        -- },
 
         indentline = {
             IndentBlanklineChar = { fg = cp.subtle, style = "nocombine" },
