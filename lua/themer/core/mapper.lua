@@ -80,14 +80,16 @@ local function get_base(cp)
 		ThemerTextFloat = { fg = cp.fg, bg = cp.bg.alt },
 
 		-- search terms
-		ThemerSearchResult = cp.search_result,
-		ThemerMatchingSearchResult = cp.search_result, -- see :h hlsearch and do :set hlserch to see it in action
+		ThemerSearchResult = { bg = cp.search_result.bg, fg = cp.search_result.fg }, -- see :h hlsearch and do :set hlserch to see it in action
 
 		-- git diffs
 		DiffAdd = { bg = cp.diff.add },
 		DiffChange = { bg = cp.diff.change },
 		DiffText = { bg = cp.diff.text or cp.fg },
 		DiffDelete = { bg = cp.diff.delete },
+        GitSignsAdd = { fg = cp.diff.add },
+        GitSignsDelete = { fg = cp.diff.delete },
+        GitSignsChange = { fg = cp.diff.change },
 
 		-- syntax highlighting
 		ThemerFunction = groups["function"],
@@ -153,7 +155,7 @@ local function get_base(cp)
 		ErrorMsg = { fg = cp.diagnostics.error, style = "bold" },
 		FloatBorder = { link = "ThemerSubtle" },
 		Folded = { link = "ThemerText" },
-		IncSearch = { link = "Themer" },
+		IncSearch = { link = "ThemerSearchResult" },
 		LineNr = { link = "ThemerDimmed" },
 		MatchParen = { link = "ThemerTextFloat" },
 		-- ModeMsg = {},
@@ -164,16 +166,16 @@ local function get_base(cp)
 		NormalFloat = { link = "ThemerTextFloat" },
 		Pmenu = { fg = cp.pum.fg or cp.dimmed.subtle, bg = cp.pum.bg or cp.bg.alt },
 		PmenuSbar = { bg = cp.pum.sbar or cp.bg.selected },
-		PmenuSel = { link = "ThemerSearchResult" },
+		PmenuSel = { link = "ThemerMatch" },
 		PmenuThumb = { bg = cp.pum.thumb or cp.dimmed.subtle },
 		Question = { link = "ThemerAccent" },
 		-- QuickFixLine = {},
-		Search = { link = "ThemerMatchingSearchResult" },
+		Search = { link = "ThemerSearchResult" },
 		SpecialKey = { link = "ThemerAccent" },
-		SpellBad = { style = "undercurl", sp = cp.red },
-		SpellCap = { style = "undercurl", sp = cp.subtle },
-		SpellLocal = { style = "undercurl", sp = cp.subtle },
-		SpellRare = { style = "undercurl", sp = cp.subtle },
+		-- SpellBad = { style = "undercurl", sp = cp.red },
+		-- SpellCap = { style = "undercurl", sp = cp.subtle },
+		-- SpellLocal = { style = "undercurl", sp = cp.subtle },
+		-- SpellRare = { style = "undercurl", sp = cp.subtle },
 		SignColumn = { link = "ThemerText" },
 		StatusLine = { link = "ThemerTextFloat" },
 		StatusLineNC = { link = "ThemerSubtleFloat" },
