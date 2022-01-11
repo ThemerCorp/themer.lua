@@ -63,9 +63,8 @@ local function get_base(cp)
     cp.bg.base = config.transparent and "NONE" or cp.bg.base
     cp.bg.alt = config.transparent and "NONE" or cp.bg.alt
 
-
     local groups = remap_styles(cp)
-    
+
     local themer = {
         -- base groups
         ThemerAccent = { fg = cp.accent },
@@ -206,7 +205,7 @@ local function get_base(cp)
         Type = { link = "ThemerType" },
         Typedef = { link = "ThemerType" },
         Underlined = { fg = cp.accent, style = "underline" },
-        
+
         -- Neovim
         healthError = { link = "DiagnosticError" },
         healthWarning = { link = "DiagnosticWarn" },
