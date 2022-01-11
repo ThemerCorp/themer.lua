@@ -6,12 +6,8 @@ local config = require("themer.config")("get")
 local function remap_styles(cp)
     local groups = {
         heading = {
-            h1 = { style = "bold", fg = cp.heading.h1 },
-            h2 = { style = "bold", fg = cp.heading.h2 },
-            h3 = { style = "bold", fg = cp.heading.h3 },
-            h4 = { style = "bold", fg = cp.heading.h4 },
-            h5 = { style = "bold", fg = cp.heading.h5 },
-            h6 = { style = "bold", fg = cp.heading.h6 },
+            h1 = { style = "bold", fg = cp.heading.h1 or cp.fg },
+            h2 = { style = "bold", fg = cp.heading.h2 or cp.fg },
         },
         ["function"] = { fg = cp.syntax["function"] },
         functionBuiltIn = { fg = cp.built_in["function"] },
@@ -27,32 +23,31 @@ local function remap_styles(cp)
         type = { fg = cp.syntax.type },
         typeBuiltIn = { fg = cp.built_in.type },
         property = { fg = cp.syntax.property or cp.syntax.variable },
+        comment = { fg = cp.syntax.comment or cp.dimmed.subtle },
         punctuation = { fg = cp.syntax.punctuation },
         constructor = { fg = cp.syntax.constructor or cp.syntax.punctuation },
         operator = { fg = cp.syntax.operator or cp.sytax.punctuation },
-        puncDelimiter = { fg = cp.syntax.punc_delimiter or cp.syntax.punctuation },
         constant = { fg = cp.syntax.constant },
         constantBuiltIn = { fg = cp.built_in.constant },
-        todo = { fg = cp.syntax.todo },
+        todo = cp.syntax.todo,
         character = { fg = cp.syntax.character },
         conditional = { fg = cp.syntax.conditional },
         number = { fg = cp.syntax.number },
         statement = { fg = cp.syntax.statement },
         uri = { fg = cp.uri, style = "underline" },
-        diagnostics = {
+        diagnostic = {
             underline = {
 
-                error = { fg = cp.diagnostics.error, style = "undercurl" },
-                warn = { fg = cp.diagnostics.warn, style = "undercurl" },
-                info = { fg = cp.diagnostics.info, style = "undercurl" },
-                hint = { fg = cp.diagnostics.hint, style = "undercurl" },
+                error = { fg = cp.diagnostic.error, style = "undercurl" },
+                warn = { fg = cp.diagnostic.warn, style = "undercurl" },
+                info = { fg = cp.diagnostic.info, style = "undercurl" },
+                hint = { fg = cp.diagnostic.hint, style = "undercurl" },
             },
             virtual_text = {
-
-                error = { fg = cp.diagnostics.error, style = "italic" },
-                warn = { fg = cp.diagnostics.warn, style = "italic" },
-                info = { fg = cp.diagnostics.info, style = "italic" },
-                hint = { fg = cp.diagnostics.hint, style = "italic" },
+                error = { fg = cp.diagnostic.error, style = "italic" },
+                warn = { fg = cp.diagnostic.warn, style = "italic" },
+                info = { fg = cp.diagnostic.info, style = "italic" },
+                hint = { fg = cp.diagnostic.hint, style = "italic" },
             },
         },
     }
@@ -64,23 +59,26 @@ end
 ---@param cp table
 ---@return table
 local function get_base(cp)
-    local groups = remap_styles(cp)
-
     -- Transparent
-    cp.bg.base = config.transparency and "NONE" or cp.bg.base
-    cp.bg.alt = config.transparency and "NONE" or cp.bg.base
+    cp.bg.base = config.transparent and "NONE" or cp.bg.base
+    cp.bg.alt = config.transparent and "NONE" or cp.bg.alt
 
+
+    local groups = remap_styles(cp)
+    
     local themer = {
         -- base groups
         ThemerAccent = { fg = cp.accent },
         ThemerAccentFloat = { fg = cp.accent, bg = cp.bg.alt },
         ThemerFloat = { bg = cp.bg.alt },
+        ThemerMatchFloat = { fg = cp.match, style = "bold" },
         ThemerMatch = { fg = cp.match, style = "bold" },
-        ThemerText = { fg = cp.fg, bg = cp.bg.base },
-        ThemerTextFloat = { fg = cp.fg, bg = cp.bg.alt },
+        ThemerNormal = { fg = cp.fg, bg = cp.bg.base },
+        ThemerNormalFloat = { fg = cp.fg, bg = cp.bg.alt },
+        ThemerSelected = { bg = cp.bg.selected },
 
         -- search terms
-        ThemerSearchResult = { bg = cp.search_result.bg, fg = cp.search_result.fg }, -- see :h hlsearch and do :set hlserch to see it in action
+        ThemerSearchResult = { bg = cp.search_result.bg, fg = cp.search_result.fg, bold = true }, -- see :h hlsearch and do :set hlserch to see it in action
 
         -- git diffs
         DiffAdd = { bg = cp.diff.add },
@@ -101,6 +99,7 @@ local function get_base(cp)
         ThemerKeywordBuiltIn = groups.keywordBuiltIn,
         ThemerStruct = groups.struct,
         ThemerString = groups.string,
+        ThemerComment = groups.comment,
         ThemerParameter = groups.parameter,
         ThemerField = groups.field,
         ThemerType = groups.type,
@@ -109,7 +108,6 @@ local function get_base(cp)
         ThemerPunctuation = groups.punctuation,
         ThemerConstructor = groups.constructor,
         ThemerOperator = groups.operator,
-        ThemerPuncDelimiter = groups.puncDelimiter,
         ThemerConstant = groups.constant,
         ThemerConstantBuiltIn = groups.constantBuiltIn,
         ThemerTodo = groups.todo,
@@ -124,16 +122,12 @@ local function get_base(cp)
         ThemerSubtleFloat = { fg = cp.dimmed.subtle, bg = cp.bg.alt },
         ThemerDimmed = { fg = cp.dimmed.inactive },
         ThemerDimmedFloat = { fg = cp.dimmed.inactive, bg = cp.bg.alt },
-        ThemerBorder = { fg = cp.border, bg = cp.bg.alt },
+        ThemerBorder = { fg = cp.border },
         ThemerURI = groups.uri,
 
         -- headings
         ThemerHeadingH1 = groups.heading.h1,
         ThemerHeadingH2 = groups.heading.h2,
-        ThemerHeadingH3 = groups.heading.h3,
-        ThemerHeadingH4 = groups.heading.h4,
-        ThemerHeadingH5 = groups.heading.h5,
-        ThemerHeadingH6 = groups.heading.h6,
     }
     -- ---------------------
     -- ░█▀▄░█▀█░█▀▀░█▀▀
@@ -152,7 +146,8 @@ local function get_base(cp)
         DarkenedStatusline = { link = "ThemerFloat" },
         Directory = { link = "ThemerAccent" },
         EndOfBuffer = { link = "ThemerText" },
-        ErrorMsg = { fg = cp.diagnostics.error, style = "bold" },
+        ErrorMsg = { fg = cp.diagnostic.error, style = "bold" },
+        Todo = { link = "ThemerTodo" },
         FloatBorder = { link = "ThemerSubtle" },
         Folded = { link = "ThemerText" },
         IncSearch = { link = "ThemerSearchResult" },
@@ -161,9 +156,9 @@ local function get_base(cp)
         -- ModeMsg = {},
         MoreMsg = { link = "ThemerAccent" },
         NonText = { link = "ThemerDimmed" },
-        Normal = { link = "ThemerText" },
-        NormalNC = { link = "ThemerText" },
-        NormalFloat = { link = "ThemerTextFloat" },
+        Normal = { fg = cp.fg, bg = cp.bg.base },
+        NormalNC = { link = "Normal" },
+        NormalFloat = { fg = cp.fg, bg = cp.bg.alt },
         Pmenu = { fg = cp.pum.fg or cp.dimmed.subtle, bg = cp.pum.bg or cp.bg.alt },
         PmenuSbar = { bg = cp.pum.sbar or cp.bg.selected },
         PmenuSel = { link = "ThemerMatch" },
@@ -188,16 +183,16 @@ local function get_base(cp)
         VertSplit = { fg = cp.bg.alt, bg = cp.bg.alt },
         Visual = { link = "ThemerSelected" },
         -- VisualNOS = {},
-        WarningMsg = { fg = cp.diagnostics.warn },
+        WarningMsg = { fg = cp.diagnostic.warn },
         -- Boolean = { link = "ThemerConstant" },
         Character = { link = "ThemerCharacter" },
-        Comment = { link = "ThemerSubtle" },
+        Comment = { link = "ThemerComment" },
         Conditional = { link = "ThemerConditional" },
         Constant = { link = "ThemerConstant" },
         -- Debug = { fg = cp.debug },
         -- Define = { fg = cp.magenta },
-        Delimiter = { link = "ThemerPuncDelimiter" },
-        Error = { fg = cp.diagnostics.error },
+        Delimiter = { link = "ThemerPunctuation" },
+        Error = { fg = cp.diagnostic.error },
         -- Exception = { fg = cp.blue },
         Float = { link = "ThemerNumber" },
         Function = { link = "ThemerFunction" },
@@ -210,10 +205,14 @@ local function get_base(cp)
         Special = { link = "ThemerAccent" },
         Statement = { link = "ThemerStatement" },
         String = { link = "ThemerString" },
-        Todo = { link = "ThemerTodo" },
         Type = { link = "ThemerType" },
         Typedef = { link = "ThemerType" },
         Underlined = { fg = cp.accent, style = "underline" },
+        
+        -- Neovim
+        healthError = { link = "DiagnosticError" },
+        healthWarning = { link = "DiagnosticWarn" },
+        healthSuccess = { link = "DiagnosticInfo" },
     }
 
     ---------------------------------------
@@ -226,10 +225,10 @@ local function get_base(cp)
 
     local availablePlugins = {
         cmp = {
-            CmpDocumentation = { link = "ThemerTextFloat" },
+            CmpDocumentation = { fg = cp.fg },
             CmpDocumentationBorder = { link = "ThemerBorder" },
 
-            CmpItemAbbr = { link = "ThemerTextFloat" },
+            CmpItemAbbr = { fg = cp.fg },
             CmpItemAbbrDeprecated = { fg = cp.fg, bg = "NONE", style = "strikethrough" },
             CmpItemAbbrMatch = { link = "ThemerMatch" },
             CmpItemAbbrMatchFuzzy = { link = "ThemerMatch" },
@@ -276,10 +275,10 @@ local function get_base(cp)
             LspReferenceText = { link = "ThemerFloat" },
             LspReferenceRead = { link = "ThemerFloat" },
             LspReferenceWrite = { link = "ThemerFloat" },
-            DiagnosticError = { fg = cp.diagnostics.error },
-            DiagnosticWarn = { fg = cp.diagnostics.warn },
-            DiagnosticInfo = { fg = cp.diagnostics.info },
-            DiagnosticHint = { fg = cp.diagnostics.hint },
+            DiagnosticError = { fg = cp.diagnostic.error },
+            DiagnosticWarn = { fg = cp.diagnostic.warn },
+            DiagnosticInfo = { fg = cp.diagnostic.info },
+            DiagnosticHint = { fg = cp.diagnostic.hint },
             DiagnosticSignError = { link = "DiagnosticHint" },
             DiagnosticSignWarn = { link = "DiagnosticWarn" },
             DiagnosticSignInfo = { link = "DiagnosticInfo" },
@@ -289,14 +288,14 @@ local function get_base(cp)
             DiagnosticDefaultWarn = { link = "DiagnosticWarn" },
             DiagnosticDefaultInfo = { link = "DiagnosticInfo" },
             DiagnosticDefaultHint = { link = "DiagnosticHint" },
-            DiagnosticUnderlineError = groups.diagnostics.underline.error,
-            DiagnosticUnderlineWarn = groups.diagnostics.underline.warn,
-            DiagnosticUnderlineInfo = groups.diagnostics.underline.info,
-            DiagnosticUnderlineHint = groups.diagnostics.underline.hint,
-            DiagnosticVirtualTextError = groups.diagnostics.virtual_text.error,
-            DiagnosticVirtualTextWarn = groups.diagnostics.virtual_text.warn,
-            DiagnosticVirtualTextInfo = groups.diagnostics.virtual_text.info,
-            DiagnosticVirtualTextHint = groups.diagnostics.virtual_text.hint,
+            DiagnosticUnderlineError = groups.diagnostic.underline.error,
+            DiagnosticUnderlineWarn = groups.diagnostic.underline.warn,
+            DiagnosticUnderlineInfo = groups.diagnostic.underline.info,
+            DiagnosticUnderlineHint = groups.diagnostic.underline.hint,
+            DiagnosticVirtualTextError = groups.diagnostic.virtual_text.error,
+            DiagnosticVirtualTextWarn = groups.diagnostic.virtual_text.warn,
+            DiagnosticVirtualTextInfo = groups.diagnostic.virtual_text.info,
+            DiagnosticVirtualTextHint = groups.diagnostic.virtual_text.hint,
 
             LspSignatureActiveParameter = { link = "DiagnosticWarn" },
             LspCodeLens = { link = "ThemerSubtle" },
@@ -408,13 +407,8 @@ local function get_base(cp)
             markdownCodeBlock = { link = "ThemerInclude" },
             markdownCode = { link = "ThemerInclude" },
             markdownUrl = { link = "ThemerURI" },
-            markdownH3 = { link = "ThemerHeadingH3" },
-            markdownH4 = { link = "ThemerHeadingH4" },
-            markdownH5 = { link = "ThemerHeadingH5" },
-            markdownH6 = { link = "ThemerHeadingH6" },
             markdownItalic = { fg = cp.fg, style = "italic" },
             markdownBold = { fg = cp.fg, style = "bold" },
-            markdownBoldDelimiter = { link = "" },
         },
     }
 

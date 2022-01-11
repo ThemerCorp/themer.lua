@@ -38,7 +38,7 @@ end
 --- Set terminal colors
 --- @param clrs table
 local function terminal(clrs)
-    g.terminal_color_0 = clrs.bg
+    g.terminal_color_0 = clrs.bg.base
     g.terminal_color_1 = clrs.red
     g.terminal_color_2 = clrs.green
     g.terminal_color_3 = clrs.yellow
@@ -47,7 +47,7 @@ local function terminal(clrs)
     g.terminal_color_6 = clrs.green
     g.terminal_color_7 = clrs.fg
 
-    g.terminal_color_8 = clrs.bg
+    g.terminal_color_8 = clrs.bg.base
     g.terminal_color_9 = clrs.red
     g.terminal_color_10 = clrs.green
     g.terminal_color_11 = clrs.yellow
@@ -72,7 +72,6 @@ return function(theme)
 
     properties(theme.properties)
 
-    syntax(theme.hig_groups.themer)
     syntax(theme.hig_groups.base)
     -- vim.defer_fn(function()
     for lang, status in pairs(theme.hig_groups.langs) do
@@ -87,6 +86,8 @@ return function(theme)
         end
     end
 
+    syntax(theme.hig_groups.themer)
+    
     -- vim.defer_fn(function()
     exec("do ColorScheme")
     -- end, 70)
