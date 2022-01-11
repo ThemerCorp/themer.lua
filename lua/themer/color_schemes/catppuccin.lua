@@ -1,26 +1,26 @@
 local cpt = {
-	rosewater = "#F5E0DC", -- Rosewater
-	flamingo = "#F2CDCD", -- Flamingo
-	mauve = "#DDB6F2", -- Mauve
-	pink = "#F5C2E7", -- Pink
-	red = "#F28FAD", -- Red
-	maroon = "#E8A2AF", -- Maroon
-	peach = "#F8BD96", -- Peach
-	yellow = "#FAE3B0", -- Yellow
-	green = "#ABE9B3", -- Green
-	blue = "#96CDFB", -- Blue
-	sky = "#89DCEB", -- Sky
-	teal = "#B5E8E0", -- Teal
-	lavender = "#C9CBFF", -- Lavender
-	white = "#D9E0EE", -- White
-	gray2 = "#C3BAC6", -- Gray2
-	gray1 = "#988BA2", -- Gray1
-	gray0 = "#6E6C7E", -- Gray0
-	black4 = "#575268", -- Black4
-	black3 = "#302D41", -- Black3
-	black2 = "#1E1D2F", -- Black2
-	black1 = "#1A1823", -- Black1
-	black0 = "#131020", -- Black0
+    rosewater = "#F5E0DC", -- Rosewater
+    flamingo = "#F2CDCD", -- Flamingo
+    mauve = "#DDB6F2", -- Mauve
+    pink = "#F5C2E7", -- Pink
+    red = "#F28FAD", -- Red
+    maroon = "#E8A2AF", -- Maroon
+    peach = "#F8BD96", -- Peach
+    yellow = "#FAE3B0", -- Yellow
+    green = "#ABE9B3", -- Green
+    blue = "#96CDFB", -- Blue
+    sky = "#89DCEB", -- Sky
+    teal = "#B5E8E0", -- Teal
+    lavender = "#C9CBFF", -- Lavender
+    white = "#D9E0EE", -- White
+    gray2 = "#C3BAC6", -- Gray2
+    gray1 = "#988BA2", -- Gray1
+    gray0 = "#6E6C7E", -- Gray0
+    black4 = "#575268", -- Black4
+    black3 = "#302D41", -- Black3
+    black2 = "#1E1D2F", -- Black2
+    black1 = "#1A1823", -- Black1
+    black0 = "#131020", -- Black0
 }
 
 local cp = {
@@ -72,7 +72,7 @@ local cp = {
         todo = { fg = cpt.black4, bg = cpt.yellow },
         number = cpt.peach,
         comment = cpt.gray0,
-        type = cpt.yellow
+        type = cpt.yellow,
     },
     built_in = {
         ["function"] = cpt.peach,
@@ -92,7 +92,7 @@ local cp = {
         fg = cpt.gray2,
         bg = cpt.black3,
         sbar = cpt.black4,
-        thumb = cpt.gray0
+        thumb = cpt.gray0,
     },
     heading = {
         h1 = cpt.pink,
@@ -103,25 +103,25 @@ local cp = {
 cp.remaps = {
     plugins = {
         treesitter = {
-            		-- bash
-		bashTSFuncBuiltin = { fg = cpt.red, style = "italic" },
-		bashTSParameter = { fg = cpt.yellow, style = "italic" },
+            -- bash
+            bashTSFuncBuiltin = { fg = cpt.red, style = "italic" },
+            bashTSParameter = { fg = cpt.yellow, style = "italic" },
 
-		-- lua
-		luaTSField = { fg = cpt.lavender },
-		luaTSConstructor = { fg = cpt.flamingo }, -- For constructor calls and definitions: = { } in Lua, and Java constructors.
+            -- lua
+            luaTSField = { fg = cpt.lavender },
+            luaTSConstructor = { fg = cpt.flamingo }, -- For constructor calls and definitions: = { } in Lua, and Java constructors.
 
-		-- java
-		javaTSConstant = { fg = cpt.teal },
+            -- java
+            javaTSConstant = { fg = cpt.teal },
 
-		-- typescript
-		typescriptTSProperty = { fg = cpt.lavender, style = "italic" }, -- Same as TSField.
+            -- typescript
+            typescriptTSProperty = { fg = cpt.lavender, style = "italic" }, -- Same as TSField.
 
-		-- css
-		cssTSType = { fg = cpt.lavender },
-		cssTSProperty = { fg = cpt.yellow, style = "italic" }, -- Same as TSField.
-        } 
-    }
+            -- css
+            cssTSType = { fg = cpt.lavender },
+            cssTSProperty = { fg = cpt.yellow, style = "italic" }, -- Same as TSField.
+        },
+    },
 }
 
 return cp
