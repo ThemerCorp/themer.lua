@@ -301,7 +301,7 @@ local function get_base(cp)
         telescope = {
             TelescopeBorder = { link = "ThemerBorder" },
             TelescopeMatching = { fg = cp.search_result.telescope or cp.search_result.fg or cp.fg },
-            TelescopeSelection = { link = "ThemerSelected" }
+            TelescopeSelection = { link = "ThemerSelected" },
         },
 
         treesitter = {
