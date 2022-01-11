@@ -71,12 +71,10 @@ local function get_base(cp)
         ThemerAccent = { fg = cp.accent },
         ThemerAccentFloat = { fg = cp.accent, bg = cp.bg.alt },
         ThemerFloat = { bg = cp.bg.alt },
-        ThemerMatchFloat = { fg = cp.match, style = "bold" },
         ThemerMatch = { fg = cp.match, style = "bold" },
         ThemerNormal = { fg = cp.fg, bg = cp.bg.base },
         ThemerNormalFloat = { fg = cp.fg, bg = cp.bg.alt },
         ThemerSelected = { bg = cp.bg.selected },
-
         -- search terms
         ThemerSearchResult = { bg = cp.search_result.bg, fg = cp.search_result.fg, bold = true }, -- see :h hlsearch and do :set hlserch to see it in action
 
@@ -141,18 +139,18 @@ local function get_base(cp)
         CursorColumn = { link = "ThemerFloat" },
         CursorIM = { style = "reverse" },
         CursorLine = { link = "ThemerSelected" },
-        CursorLineNr = { link = "ThemerText" },
+        CursorLineNr = { fg = cp.cursorlinenr or cp.fg },
         DarkenedPanel = { link = "ThemerFloat" },
         DarkenedStatusline = { link = "ThemerFloat" },
         Directory = { link = "ThemerAccent" },
-        EndOfBuffer = { link = "ThemerText" },
+        EndOfBuffer = { fg = cp.fg },
         ErrorMsg = { fg = cp.diagnostic.error, style = "bold" },
         Todo = { link = "ThemerTodo" },
         FloatBorder = { link = "ThemerSubtle" },
-        Folded = { link = "ThemerText" },
+        Folded = { link = "ThemerNormalFloat" },
         IncSearch = { link = "ThemerSearchResult" },
         LineNr = { link = "ThemerDimmed" },
-        MatchParen = { link = "ThemerTextFloat" },
+        MatchParen = { link = "ThemerNormalFloat" },
         -- ModeMsg = {},
         MoreMsg = { link = "ThemerAccent" },
         NonText = { link = "ThemerDimmed" },
@@ -171,15 +169,15 @@ local function get_base(cp)
         -- SpellCap = { style = "undercurl", sp = cp.subtle },
         -- SpellLocal = { style = "undercurl", sp = cp.subtle },
         -- SpellRare = { style = "undercurl", sp = cp.subtle },
-        SignColumn = { link = "ThemerText" },
-        StatusLine = { link = "ThemerTextFloat" },
+        SignColumn = { link = "ThemerNormal" },
+        StatusLine = { link = "ThemerNormalFloat" },
         StatusLineNC = { link = "ThemerSubtleFloat" },
         -- StatusLineTerm = {},
         -- StatusLineTermNC = {},
-        TabLine = { link = "ThemerTextFloat" },
+        TabLine = { link = "ThemerNormalFloat" },
         TabLineFill = { link = "ThemerFloat" },
-        TabLineSel = { link = "ThemerSelection" },
-        Title = { link = "ThemerText" },
+        TabLineSel = { link = "ThemerSearchResult" },
+        Title = { fg = cp.title or cp.fg },
         VertSplit = { fg = cp.bg.alt, bg = cp.bg.alt },
         Visual = { link = "ThemerSelected" },
         -- VisualNOS = {},
@@ -303,9 +301,8 @@ local function get_base(cp)
 
         telescope = {
             TelescopeBorder = { link = "ThemerBorder" },
-            TelescopeSelection = { link = "ThemerSelection" },
-            TelescopeMatching = { link = "ThemerMatch" },
-            TelescopeNormal = { link = "ThemerTextFloat" },
+            TelescopeMatching = { fg = cp.search_result.telescope or cp.search_result.fg or cp.fg },
+            TelescopeSelection = { link = "ThemerSelected" }
         },
 
         treesitter = {

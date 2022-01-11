@@ -42,7 +42,7 @@ local cp = {
         change = cpt.yellow,
     },
     accent = cpt.blue,
-    search_result = { fg = cpt.pink, bg = cpt.black4 },
+    search_result = { fg = cpt.pink, bg = cpt.black4, telescope = cpt.blue },
     match = cpt.white,
     dimmed = {
         inactive = cpt.black4,
@@ -51,7 +51,7 @@ local cp = {
     bg = {
         base = cpt.black2,
         alt = cpt.black1,
-        selected = cpt.black4,
+        selected = cpt.black3,
     },
     border = cpt.blue,
     syntax = {
