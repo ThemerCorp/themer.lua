@@ -9,10 +9,10 @@ local clean_remaps = function(rmp)
             for bgrName,_ in pairs(rmp[groupName]) do
                 rmp[groupName][bgrName].link = rmp[groupName][bgrName].link or "NONE"
             end
-        else 
-            for plName,_ in pairs(rmp[groupName]) do
+        else
+            for plName, _ in pairs(rmp[groupName]) do
                 if type(rmp[groupName][plName]) == "table" then
-                    for inPlName,_ in pairs(rmp[groupName][plName]) do
+                    for inPlName, _ in pairs(rmp[groupName][plName]) do
                         rmp[groupName][plName][inPlName].link = rmp[groupName][plName][inPlName].link or "NONE"
                     end
                 end
