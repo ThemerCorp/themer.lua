@@ -1,5 +1,4 @@
 local colors = {
-    flavour = "dark",
     bg = "#2e3440",
     fg = "#E5E9F0",
     bg_alt = "#2b2e36",
@@ -19,26 +18,89 @@ local colors = {
     light_blue = "#8fc6e3",
     cyan = "#4EC9B0",
     vertsplit = "#373e4a",
-    integer = "#B4CDA8",
+    number = "#B4CDA8",
     string = "#A3BE8C",
     line_number = "#4C566A",
     line_color = "#3B4252",
     visual_grey = "#3E4452",
     interface_color = "#84D9AA",
 }
-colors.groups = {
-    styles = {
-        keyword = { fg = colors.blue },
-        comment = { fg = colors.comment },
-        punc = { fg = colors.blue },
-        variable = { fg = colors.light_blue },
-        parameter = { fg = colors.light_blue },
-        func = { fg = colors.yellow },
-        string = { fg = colors.string },
+
+local color_palette = {
+    red = colors.red,
+    yellow = colors.yellow,
+    orange = colors.orange,
+    magenta = colors.magenta,
+    blue = colors.blue,
+    green = colors.green,
+    cyan = colors.cyan,
+
+    diff = {
+        add = colors.green,
+        remove = colors.red,
+        text = colors.blue,
+        change = colors.yellow,
     },
-    diagnostics = { colors = { hint = colors.blue } },
+    accent = colors.blue,
+    search_result = { fg = colors.magenta, bg = colors.bg, telescope = colors.blue },
+    match = colors.fg,
+    dimmed = {
+        inactive = colors.inactive,
+        subtle = colors.subtle,
+    },
+    bg = {
+        base = colors.bg,
+        alt = colors.bg_alt,
+        selected = colors.line_color,
+    },
+    border = colors.blue,
+    syntax = {
+        ["function"] = colors.blue,
+        variable = colors.red,
+        include = colors.red,
+        keyword = colors.blue,
+        struct = colors.red,
+        string = colors.string,
+        field = colors.light_blue,
+        parameter = colors.light_blue,
+        property = colors.yellow,
+        punctuation = colors.blue,
+        constructor = colors.interface_color,
+        operator = colors.blue,
+        preproc = colors.red,
+        constant = colors.blue,
+        todo = { fg = colors.bg, bg = colors.yellow },
+        number = colors.number,
+        comment = colors.comment,
+        type = colors.red,
+    },
+    built_in = {
+        ["function"] = colors.yellow,
+        type = colors.yellow,
+        variable = colors.light_blue,
+        keyword = colors.blue,
+        constant = colors.blue,
+    },
+    diagnostic = {
+        error = colors.red,
+        warn = colors.yellow,
+        info = colors.red,
+        hint = colors.blue,
+    },
+    uri = colors.red,
+    pum = {
+        fg = colors.line_color,
+        bg = colors.bg,
+        sbar = colors.visual_grey,
+        thumb = colors.fg,
+        sel = { bg = colors.visual_grey },
+    },
+    heading = {
+        h1 = colors.red,
+        h2 = colors.red,
+    },
 }
-colors.remaps = {
+color_palette.remaps = {
     base = {
         Normal = { fg = colors.fg, bg = colors.bg },
         ColorColumn = { fg = colors.red },
@@ -46,15 +108,11 @@ colors.remaps = {
         Directory = { fg = colors.blue },
         EndOfBuffer = { fg = colors.bg },
         ErrorMsg = { fg = colors.fg, bg = colors.red },
-        VertSplit = { fg = colors.vertsplit },
+        VertSplit = { fg = colors.vertsplit, bg = colors.bg },
         Folded = { fg = colors.comment },
         IncSearch = { fg = colors.yellow, bg = colors.comment },
         MatchParen = { fg = colors.fg, bg = colors.blue },
         NonText = { fg = colors.blue },
-        Pmenu = { fg = colors.line_color },
-        PmenuSbar = { fg = colors.visual_grey },
-        PmenuSel = { bg = colors.visual_grey },
-        PmenuThumb = { fg = colors.fg },
         Search = { bg = colors.blue },
         TabLine = { fg = colors.comment },
         TabLineSel = { fg = colors.fg },
@@ -65,7 +123,7 @@ colors.remaps = {
         FloatBorder = { fg = colors.fg },
         Constant = { fg = colors.blue },
         Character = { link = "String" },
-        Number = { fg = colors.integer },
+        Number = { fg = colors.number },
         Boolean = { link = "Constant" },
         Float = { link = "Number" },
 
@@ -79,8 +137,6 @@ colors.remaps = {
         Type = { fg = colors.blue },
 
         Special = { fg = colors.blue },
-
-        Error = { fg = colors.red },
     },
     plugins = {
         treesitter = {
@@ -113,6 +169,7 @@ colors.remaps = {
 
         gitsigns = {
             GitSignsChange = { fg = colors.yellow, bg = colors.bg },
+            GitSignsDelete = { fg = colors.red },
         },
 
         cmp = {
@@ -134,10 +191,24 @@ colors.remaps = {
         telescope = {
             TelescopeSelection = { bg = colors.highlight_overlay },
             TelescopeMatching = { fg = colors.blue },
+            TelescopeBorder = { fg = colors.bg_alt, bg = colors.bg_alt },
+            TelescopePromptPrefix = { fg = colors.blue, bg = colors.bg_alt },
+            TelescopeResultsTitle = { fg = colors.bg_alt, bg = colors.blue },
+            TelescopePreviewTitle = { fg = colors.bg_alt, bg = colors.green },
+            TelescopePromptTitle = { fg = colors.bg_alt, bg = colors.yellow },
+            TelescopePreviewNormal = { bg = colors.bg_alt },
+            TelescopeResultsNormal = { bg = colors.bg_alt },
+            TelescopePromptNormal = { fg = colors.fg, bg = colors.bg_alt },
+            TelescopePromptBorder = { fg = colors.bg, bg = colors.bg_alt },
+            TelescopeSelectionCaret = { fg = colors.bg_alt, bg = colors.bg_alt },
+        },
+        lsp = {
+            DiagnosticUnderlineWarn = { fg = "NONE", style = "underline", sp = colors.yellow },
+            DiagnosticUnderlineHint = { fg = "NONE", style = "underline", sp = colors.light_blue },
         },
     },
 
     langs = { md = { markdownCode = { fg = colors.string } } },
 }
 
-return colors
+return color_palette
