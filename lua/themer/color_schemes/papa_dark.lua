@@ -95,6 +95,7 @@ local color_palette = {
         bg = colors.bg,
         sbar = colors.visual_grey,
         thumb = colors.fg,
+        sel = colors.red,
     },
     heading = {
         h1 = colors.red,
