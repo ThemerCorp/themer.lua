@@ -146,7 +146,7 @@ color_palette.remaps = {
 
         Error = { fg = colors.red },
 
-        DiagnosticUnderlineHint = { fg = colors.fg, gui = "undercurl" }
+        DiagnosticUnderlineHint = { fg = colors.fg, gui = "undercurl" },
     },
     plugins = {
         treesitter = {
