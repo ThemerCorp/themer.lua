@@ -87,7 +87,7 @@ local color_palette = {
         error = colors.red,
         warn = colors.yellow,
         info = colors.red,
-        hint = colors.red,
+        hint = colors.blue,
     },
     uri = colors.red,
     pum = {
@@ -145,6 +145,8 @@ color_palette.remaps = {
         Special = { fg = colors.blue },
 
         Error = { fg = colors.red },
+
+        DiagnosticUnderlineHint = { fg = colors.fg, gui = "undercurl" }
     },
     plugins = {
         treesitter = {
