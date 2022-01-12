@@ -53,7 +53,7 @@ local color_palette = {
     bg = {
         base = colors.bg,
         alt = colors.bg_alt,
-        selected = colors.bg_float,
+        selected = colors.line_color,
     },
     border = colors.blue,
     syntax = {
@@ -197,6 +197,16 @@ color_palette.remaps = {
         telescope = {
             TelescopeSelection = { bg = colors.highlight_overlay },
             TelescopeMatching = { fg = colors.blue },
+            TelescopeBorder = { fg = colors.bg_alt, bg = colors.bg_alt },
+            TelescopePromptPrefix = { fg = colors.blue, bg = colors.bg_alt },
+            TelescopeResultsTitle = { fg = colors.bg_alt, bg = colors.blue },
+            TelescopePreviewTitle = { fg = colors.bg_alt, bg = colors.green },
+            TelescopePromptTitle = { fg = colors.bg_alt, bg = colors.yellow },
+            TelescopePreviewNormal = { bg = colors.bg_alt },
+            TelescopeResultsNormal = { bg = colors.bg_alt },
+            TelescopePromptNormal = { fg = colors.fg, bg = colors.bg_alt },
+            TelescopePromptBorder = { fg = colors.bg, bg = colors.bg_alt },
+            TelescopeSelectionCaret = { fg = colors.bg_alt, bg = colors.bg_alt },
         },
     },
 
