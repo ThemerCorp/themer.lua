@@ -4,9 +4,9 @@ local config = require("themer.config")("get")
 ---@return table remaps
 ---@param rmp table
 local clean_remaps = function(rmp)
-    for groupName,_ in pairs(rmp) do
+    for groupName, _ in pairs(rmp) do
         if groupName == "base" or groupName == "themer" then
-            for bgrName,_ in pairs(rmp[groupName]) do
+            for bgrName, _ in pairs(rmp[groupName]) do
                 rmp[groupName][bgrName].link = rmp[groupName][bgrName].link or "NONE"
             end
         else
