@@ -178,7 +178,9 @@ local function get_base(cp)
         MoreMsg = { link = "DiagnosticInfo" },
         NonText = { link = "ThemerDimmed" },
         Normal = { fg = cp.fg, bg = cp.bg.base },
-        NormalNC = config.dim_inactive and { fg = cp.dimmed.subtle, bg = cp.bg.darker_bg or cp.bg.alt } or { link = "Normal" },
+        NormalNC = config.dim_inactive and { fg = cp.dimmed.subtle, bg = cp.bg.darker_bg or cp.bg.alt } or {
+            link = "Normal",
+        },
         NormalFloat = { fg = cp.fg, bg = cp.bg.alt },
         Pmenu = { fg = cp.pum.fg or cp.dimmed.subtle, bg = cp.pum.bg or cp.bg.alt },
         PmenuSbar = { bg = cp.pum.sbar or cp.bg.selected },
