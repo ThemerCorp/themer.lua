@@ -96,10 +96,10 @@ local cp = {
         bg = cpt.black3,
         sbar = cpt.black4,
         thumb = cpt.gray0,
-	sel = {
-		bg = cpt.black4,
-		fg = cpt.white,
-	},
+        sel = {
+            bg = cpt.black4,
+            fg = cpt.white,
+        },
     },
     heading = {
         h1 = cpt.pink,
