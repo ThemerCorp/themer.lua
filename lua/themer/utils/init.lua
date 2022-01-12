@@ -15,7 +15,7 @@ local function highlight(group, color)
     -- nvim.ex.highlight(parts)
     exec("highlight " .. table.concat(parts, " "))
     if color.link then
-        exec("highlight! link " .. group .. " " .. color.link)
+        exec("highlight link " .. group .. " " .. color.link)
     end
 end
 
