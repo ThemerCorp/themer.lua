@@ -44,7 +44,7 @@ local function terminal(clrs)
     g.terminal_color_3 = clrs.yellow
     g.terminal_color_4 = clrs.blue
     g.terminal_color_5 = clrs.magenta
-    g.terminal_color_6 = clrs.green
+    g.terminal_color_6 = clrs.cyan
     g.terminal_color_7 = clrs.fg
 
     g.terminal_color_8 = clrs.bg.base

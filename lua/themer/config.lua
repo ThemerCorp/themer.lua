@@ -2,6 +2,7 @@ local options = {
     colorscheme = "rose_pine", -- default colorscheme
     transparent = false,
     term_colors = true,
+    dim_inactive = false,
     styles = {
         -- :h nvim_set_hl()
         comment = {},

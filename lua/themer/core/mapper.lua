@@ -5,8 +5,8 @@ local config = require("themer.config")("get")
 ---@param rmp table
 local clean_remaps = function(rmp)
     for groupName,_ in pairs(rmp) do
-        if groupName == "base" then
-            for bgrName,_ in pairs(rmp.base) do
+        if groupName == "base" or groupName == "themer" then
+            for bgrName,_ in pairs(rmp[groupName]) do
                 rmp[groupName][bgrName].link = rmp[groupName][bgrName].link or "NONE"
             end
         else 
@@ -167,25 +167,25 @@ local function get_base(cp)
         EndOfBuffer = { fg = cp.fg },
         ErrorMsg = { fg = cp.diagnostic.error, style = "bold" },
         Todo = { link = "ThemerTodo" },
-        FloatBorder = { link = "ThemerSubtle" },
+        FloatBorder = { link = "ThemerBorder" },
         Folded = { link = "ThemerNormalFloat" },
         IncSearch = { link = "ThemerSearchResult" },
         LineNr = { link = "ThemerDimmed" },
         MatchParen = { link = "ThemerNormalFloat" },
         -- ModeMsg = {},
-        MoreMsg = { link = "ThemerAccent" },
+        MoreMsg = { link = "DiagnosticInfo" },
         NonText = { link = "ThemerDimmed" },
         Normal = { fg = cp.fg, bg = cp.bg.base },
-        NormalNC = { link = "Normal" },
+        NormalNC = config.dim_inactive and { link = "ThemerDimmed" } or { link = "Normal" },
         NormalFloat = { fg = cp.fg, bg = cp.bg.alt },
         Pmenu = { fg = cp.pum.fg or cp.dimmed.subtle, bg = cp.pum.bg or cp.bg.alt },
         PmenuSbar = { bg = cp.pum.sbar or cp.bg.selected },
         PmenuSel = { bg = cp.pum.sel.bg, fg = cp.pum.sel.fg },
         PmenuThumb = { bg = cp.pum.thumb or cp.dimmed.subtle },
-        Question = { link = "ThemerAccent" },
+        Question = { link = "MoreMsg" },
         -- QuickFixLine = {},
         Search = { link = "ThemerSearchResult" },
-        SpecialKey = { link = "ThemerAccent" },
+        SpecialKey = { link = "NonText" },
         -- SpellBad = { style = "undercurl", sp = cp.red },
         -- SpellCap = { style = "undercurl", sp = cp.subtle },
         -- SpellLocal = { style = "undercurl", sp = cp.subtle },
@@ -463,7 +463,6 @@ local function get_hig_groups(cp, cs)
         clean_remaps(cp.remaps or {}),
         clean_remaps(config.remaps.highlights[cs] or {})
     )
-
     return hig_groups
 end
 
