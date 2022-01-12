@@ -55,6 +55,7 @@ local cp = {
     },
     border = cpt.blue,
     syntax = {
+        statement = cpt.mauve,
         ["function"] = cpt.blue,
         variable = cpt.fg,
         include = cpt.pink,
@@ -73,6 +74,7 @@ local cp = {
         number = cpt.peach,
         comment = cpt.gray0,
         type = cpt.yellow,
+        conditional = cpt.pink,
     },
     built_in = {
         ["function"] = cpt.peach,
@@ -87,12 +89,17 @@ local cp = {
         info = cpt.sky,
         hint = cpt.rosewater,
     },
+    inc_search = { fg = cpt.white, bg = cpt.pink },
     uri = cpt.flamingo,
     pum = {
         fg = cpt.gray2,
         bg = cpt.black3,
         sbar = cpt.black4,
         thumb = cpt.gray0,
+        sel = {
+            bg = cpt.black4,
+            fg = cpt.white,
+        },
     },
     heading = {
         h1 = cpt.pink,
