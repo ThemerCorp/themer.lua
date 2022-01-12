@@ -1,5 +1,27 @@
 local config = require("themer.config")("get")
 
+---Add link = "NONE" to get rid of default links
+---@return table remaps
+---@param rmp table
+local clean_remaps = function(rmp)
+    for groupName,_ in pairs(rmp) do
+        if groupName == "base" then
+            for bgrName,_ in pairs(rmp.base) do
+                rmp[groupName][bgrName].link = rmp[groupName][bgrName].link or "NONE"
+            end
+        else 
+            for plName,_ in pairs(rmp[groupName]) do
+                if type(rmp[groupName][plName]) == "table" then
+                    for inPlName,_ in pairs(rmp[groupName][plName]) do
+                        rmp[groupName][plName][inPlName].link = rmp[groupName][plName][inPlName].link or "NONE"
+                    end
+                end
+            end
+        end
+    end
+    return rmp
+end
+
 ---@return table a cleaned styles
 ---@param cp table
 ---@return table
@@ -33,7 +55,7 @@ local function remap_styles(cp)
         character = { fg = cp.syntax.character },
         conditional = { fg = cp.syntax.conditional },
         number = { fg = cp.syntax.number },
-        statement = { fg = cp.syntax.statement },
+        statement = { fg = cp.syntax.statement or cp.accent },
         uri = { fg = cp.uri, style = "underline" },
         diagnostic = {
             underline = {
@@ -158,7 +180,7 @@ local function get_base(cp)
         NormalFloat = { fg = cp.fg, bg = cp.bg.alt },
         Pmenu = { fg = cp.pum.fg or cp.dimmed.subtle, bg = cp.pum.bg or cp.bg.alt },
         PmenuSbar = { bg = cp.pum.sbar or cp.bg.selected },
-        PmenuSel = { link = "ThemerMatch" },
+        PmenuSel = { bg = cp.pum.sel.bg, fg = cp.pum.sel.fg },
         PmenuThumb = { bg = cp.pum.thumb or cp.dimmed.subtle },
         Question = { link = "ThemerAccent" },
         -- QuickFixLine = {},
@@ -437,9 +459,9 @@ local function get_hig_groups(cp, cs)
     hig_groups = vim.tbl_deep_extend(
         "force",
         hig_groups or {},
-        config.remaps.highlights.globals or {},
-        cp.remaps or {},
-        config.remaps.highlights[cs] or {}
+        clean_remaps(config.remaps.highlights.globals or {}),
+        clean_remaps(cp.remaps or {}),
+        clean_remaps(config.remaps.highlights[cs] or {})
     )
 
     return hig_groups
