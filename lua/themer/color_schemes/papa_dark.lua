@@ -35,8 +35,6 @@ local color_palette = {
     green = colors.green,
     cyan = colors.cyan,
 
-    -- The new shiny boy
-    fg = colors.fg,
     diff = {
         add = colors.green,
         remove = colors.red,
@@ -95,7 +93,7 @@ local color_palette = {
         bg = colors.bg,
         sbar = colors.visual_grey,
         thumb = colors.fg,
-        sel = colors.red,
+        sel = { bg = colors.visual_grey },
     },
     heading = {
         h1 = colors.red,
@@ -110,15 +108,11 @@ color_palette.remaps = {
         Directory = { fg = colors.blue },
         EndOfBuffer = { fg = colors.bg },
         ErrorMsg = { fg = colors.fg, bg = colors.red },
-        VertSplit = { fg = colors.vertsplit },
+        VertSplit = { fg = colors.vertsplit, bg = colors.bg },
         Folded = { fg = colors.comment },
         IncSearch = { fg = colors.yellow, bg = colors.comment },
         MatchParen = { fg = colors.fg, bg = colors.blue },
         NonText = { fg = colors.blue },
-        Pmenu = { fg = colors.line_color },
-        PmenuSbar = { fg = colors.visual_grey },
-        PmenuSel = { bg = colors.visual_grey },
-        PmenuThumb = { fg = colors.fg },
         Search = { bg = colors.blue },
         TabLine = { fg = colors.comment },
         TabLineSel = { fg = colors.fg },
@@ -143,10 +137,6 @@ color_palette.remaps = {
         Type = { fg = colors.blue },
 
         Special = { fg = colors.blue },
-
-        Error = { fg = colors.red },
-
-        DiagnosticUnderlineHint = { fg = colors.fg, gui = "undercurl" }
     },
     plugins = {
         treesitter = {
@@ -179,6 +169,7 @@ color_palette.remaps = {
 
         gitsigns = {
             GitSignsChange = { fg = colors.yellow, bg = colors.bg },
+            GitSignsDelete = { fg = colors.red },
         },
 
         cmp = {
@@ -210,6 +201,10 @@ color_palette.remaps = {
             TelescopePromptNormal = { fg = colors.fg, bg = colors.bg_alt },
             TelescopePromptBorder = { fg = colors.bg, bg = colors.bg_alt },
             TelescopeSelectionCaret = { fg = colors.bg_alt, bg = colors.bg_alt },
+        },
+        lsp = {
+            DiagnosticUnderlineWarn = { fg = "NONE", style = "underline", sp = colors.yellow },
+            DiagnosticUnderlineHint = { fg = "NONE", style = "underline", sp = colors.light_blue },
         },
     },
 
