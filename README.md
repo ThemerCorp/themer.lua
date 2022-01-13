@@ -90,7 +90,7 @@ Massive shoutouts to the people who supported the project! These are:
     - [Github](https://github.com/Binx-Codes/)
     - [Reddit](https://www.reddit.com/u/binxatmachine)
 - Papa Megamind
-- Tarun Da Coder
+- TarunDaCoder
     - [Github](https://github.com/tarundacoder/)
 - Gilfoyle
     - [Github](https://github.com/tamton-aquib/)
