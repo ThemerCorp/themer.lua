@@ -211,7 +211,6 @@ local function get_base(cp)
         Underlined = { fg = cp.accent, style = "underline" },
 
         -- Neovim
-        
 
         healthError = { link = "DiagnosticError" },
         healthWarning = { link = "DiagnosticWarn" },
