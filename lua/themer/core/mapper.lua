@@ -1,27 +1,5 @@
 local config = require("themer.config")("get")
 
----Add link = "NONE" to get rid of default links
----@return table remaps
----@param rmp table
-local clean_remaps = function(rmp)
-    for groupName, _ in pairs(rmp) do
-        if groupName == "base" or groupName == "themer" then
-            for bgrName, _ in pairs(rmp[groupName]) do
-                rmp[groupName][bgrName].link = rmp[groupName][bgrName].link or "NONE"
-            end
-        else
-            for plName, _ in pairs(rmp[groupName]) do
-                if type(rmp[groupName][plName]) == "table" then
-                    for inPlName, _ in pairs(rmp[groupName][plName]) do
-                        rmp[groupName][plName][inPlName].link = rmp[groupName][plName][inPlName].link or "NONE"
-                    end
-                end
-            end
-        end
-    end
-    return rmp
-end
-
 ---@return table a cleaned styles
 ---@param cp table
 ---@return table
@@ -167,7 +145,7 @@ local function get_base(cp)
         DarkenedStatusline = { link = "ThemerFloat" },
         Directory = { link = "ThemerAccent" },
         EndOfBuffer = { fg = cp.bg.base },
-        ErrorMsg = { fg = cp.diagnostic.error, style = "bold" },
+        ErrorMsg = { fg = cp.diagnostic.error, bg = "NONE", style = "bold" },
         Todo = { link = "ThemerTodo" },
         FloatBorder = { link = "ThemerBorder" },
         Folded = { link = "ThemerNormalFloat" },
@@ -233,6 +211,8 @@ local function get_base(cp)
         Underlined = { fg = cp.accent, style = "underline" },
 
         -- Neovim
+        
+
         healthError = { link = "DiagnosticError" },
         healthWarning = { link = "DiagnosticWarn" },
         healthSuccess = { link = "DiagnosticInfo" },
@@ -463,9 +443,9 @@ local function get_hig_groups(cp, cs)
     hig_groups = vim.tbl_deep_extend(
         "force",
         hig_groups or {},
-        clean_remaps(config.remaps.highlights.globals or {}),
-        clean_remaps(cp.remaps or {}),
-        clean_remaps(config.remaps.highlights[cs] or {})
+        config.remaps.highlights.globals or {},
+        cp.remaps or {},
+        config.remaps.highlights[cs] or {}
     )
     return hig_groups
 end

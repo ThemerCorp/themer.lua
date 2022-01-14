@@ -7,15 +7,16 @@ local exec = vim.api.nvim_command
 --- @param color table
 local function highlight(group, color)
     local parts = { group }
-    parts[#parts + 1] = color.fg and "guifg=" .. color.fg or "guifg=NONE"
-    parts[#parts + 1] = color.bg and "guibg=" .. color.bg or "guibg=NONE"
-    parts[#parts + 1] = color.sp and "guisp=" .. color.sp or ""
-    parts[#parts + 1] = color.style and "gui=" .. color.style or "gui=NONE"
+    parts[#parts + 1] = color.fg and "guifg=" .. color.fg or nil
+    parts[#parts + 1] = color.bg and "guibg=" .. color.bg or nil
+    parts[#parts + 1] = color.sp and "guisp=" .. color.sp or nil
+    parts[#parts + 1] = color.style and "gui=" .. color.style or nil
 
-    -- nvim.ex.highlight(parts)
-    exec("highlight " .. table.concat(parts, " "))
-    if color.link then
+    if #parts == 1 and color.link or color.deflink then
+        color.link = color.link or color.deflink
         exec("highlight! link " .. group .. " " .. color.link)
+    elseif #parts ~= 1 then
+        exec("highlight " .. table.concat(parts, " "))
     end
 end
 
