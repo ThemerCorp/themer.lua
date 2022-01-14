@@ -1,4 +1,5 @@
-local base = {se00 = "272822",
+local base = {
+    se00 = "272822",
     base01 = "383830",
     base02 = "49483e",
     base03 = "75715e",
