@@ -119,7 +119,7 @@ local cp = {
     },
     diagnostic = {
         error = colors.samuraiRed,
-        warning = colors.roninYellow,
+        warn = colors.roninYellow,
         info = colors.dragonBlue,
         hint = colors.waveAqua1,
     },
