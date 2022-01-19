@@ -149,14 +149,14 @@ local function get_base(cp)
         Todo = { link = "ThemerTodo" },
         FloatBorder = { link = "ThemerBorder" },
         Folded = { link = "ThemerNormalFloat" },
-        IncSearch = { link = "ThemerSearchResult" },
+        IncSearch = cp.inc_search or { link = "ThemerSearchResult" },
         LineNr = { link = "ThemerDimmed" },
         MatchParen = { link = "ThemerNormalFloat" },
         -- ModeMsg = {},
         MoreMsg = { link = "DiagnosticInfo" },
         NonText = { link = "ThemerDimmed" },
         Normal = { fg = cp.fg, bg = cp.bg.base },
-        NormalNC = config.dim_inactive and { fg = cp.dimmed.subtle, bg = cp.bg.darker_bg or cp.bg.alt } or {
+        NormalNC = config.dim_inactive and { fg = cp.dimmed.subtle, bg = cp.bg.darker or cp.bg.alt } or {
             link = "Normal",
         },
         NormalFloat = { fg = cp.fg, bg = cp.bg.alt },

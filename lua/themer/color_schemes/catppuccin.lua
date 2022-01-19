@@ -89,7 +89,7 @@ local cp = {
         info = cpt.sky,
         hint = cpt.rosewater,
     },
-    inc_search = { fg = cpt.white, bg = cpt.pink },
+    inc_search = { fg = cpt.black4, bg = cpt.pink },
     uri = cpt.flamingo,
     pum = {
         fg = cpt.gray2,
