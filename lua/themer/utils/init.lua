@@ -11,7 +11,7 @@ local function highlight(group, color)
     parts[#parts + 1] = color.bg and "guibg=" .. color.bg or nil
     parts[#parts + 1] = color.sp and "guisp=" .. color.sp or nil
     parts[#parts + 1] = color.style and "gui=" .. color.style or nil
-    if group == "IncSearch" then print(vim.inspect(parts)) end
+    
     if #parts == 1 and color.link then
         color.link = color.link
         exec("highlight! link " .. group .. " " .. color.link)
