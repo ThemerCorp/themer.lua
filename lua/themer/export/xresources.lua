@@ -15,7 +15,7 @@ xres.scrape_current_scheme = function()
     local c = {}
     c["*.background"] = color_from_hl("Normal", "background")
     c["*.foreground"] = color_from_hl("Normal", "foreground")
-    for i = 0,15 do
+    for i = 0, 15 do
         c["*.color" .. i] = vim.g["terminal_color_" .. i]
     end
     return c
