@@ -16,7 +16,7 @@ local c = {
     green = "#a9dc76",
     yellow = "#ffd866",
     magenta = "#ab9df2",
-    cyan = "#78dce8"
+    cyan = "#78dce8",
 }
 
 local cp = {
@@ -31,12 +31,12 @@ local cp = {
 
     -- The new shiny boy
     fg = c.fg,
-  diff = {
-    add = c.green,
-    change = c.orange,
-    delete = c.red,
-    text = c.cyan,
-  },
+    diff = {
+        add = c.green,
+        change = c.orange,
+        delete = c.red,
+        text = c.cyan,
+    },
     accent = c.cyan,
     directory = c.cyan,
     search_result = { bg = c.gray, fg = c.fg, telescope = c.fg },
@@ -48,7 +48,7 @@ local cp = {
     },
     bg = {
         base = c.bg,
-        darker = c.bg_dark, 
+        darker = c.bg_dark,
         alt = c.bg_float,
         selected = c.bg_highlight,
     },
@@ -105,6 +105,5 @@ local cp = {
         h2 = c.yellow,
     },
 }
-
 
 return cp
