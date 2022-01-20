@@ -29,7 +29,7 @@
 - [Packer](https://github.com/wbthomason/packer.nvim)
 ```lua
     use({
-        "~/projects/themer",
+        "themercorp/themer.lua",
 	event = "BufEnter",
         config = function()
             require("themer").setup({
@@ -48,7 +48,7 @@
 
 - [vim-plug](https://github.com/junegunn/vim-plug)
 ```vim
-Plug 'NarutoXY/themer.lua'
+Plug 'themercorp/themer.lua'
 ```
 
 Now you can place this base configuration in your `init.vim` file:
