@@ -4,50 +4,58 @@ local options = {
     term_colors = true,
     dim_inactive = false,
     styles = {
-        -- :h nvim_set_hl()
-        comment = {},
-        func = {},
-        keyword = {},
-        string = {},
-        variable = {},
-        parameter = {},
-        field = {},
-        punc = {},
         heading = {
             h1 = {},
             h2 = {},
-            h3 = {},
-            h4 = {},
-            h5 = {},
-            h6 = {},
+        },
+        ["function"] = {},
+        functionBuiltIn = {},
+        variable = {},
+        variableBuiltIn = {},
+        include = {},
+        identifier = {},
+        keyword = {},
+        keywordBuiltIn = {},
+        struct = {},
+        string = {},
+        parameter = {},
+        field = {},
+        type = {},
+        typeBuiltIn = {},
+        property = {},
+        comment = {},
+        punctuation = {},
+        constructor = {},
+        operator = {},
+        constant = {},
+        constantBuiltIn = {},
+        todo = {},
+        character = {},
+        conditional = {},
+        number = {},
+        statement = {},
+        uri = {},
+        diagnostic = {
+            underline = {
+                error = {},
+                warn = {},
+                info = {},
+                hint = {},
+            },
+            virtual_text = {
+                error = {},
+                warn = {},
+                info = {},
+                hint = {},
+            },
         },
     },
-    diagnostics = {
-        colors = { -- Also can be used for stuff like TSError
-            hint = "",
-            info = "",
-            error = "",
-            warn = "",
-        },
-        virtual_text = {
-            error = { style = "italic" },
-            hint = { style = "italic" },
-            warn = { style = "italic" },
-            info = { style = "italic" },
-        },
-        underlines = {
-            error = { style = "undercurl" },
-            hint = { style = "undercurl" },
-            warn = { style = "undercurl" },
-            info = { style = "undercurl" },
-        },
-    },
-    remaps = {
+   remaps = {
         palette = {},
         -- per colorscheme palette remaps, for example:
         -- remaps.palette = {
         --     rose_pine = {
-        --     	base00 = "#000000"
+        --     	fg = "#000000"
         --     }
         -- },
         -- would recommend to look into vim.api.nvim_set_hl() docs before using this

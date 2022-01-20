@@ -25,7 +25,7 @@ local colors = {
     diff = {
         add = "#283B4D",
         change = "#272D43",
-        delete = "#3F2D3D",
+        remove = "#3F2D3D",
         text = "#394b70",
     },
     error = "#db4b4b",
