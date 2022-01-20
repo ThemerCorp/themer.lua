@@ -88,7 +88,7 @@ colorscheme themer_catppuccin
 
 |				   | Colorschemes     | Code Names         |
 | ---------------- | ---------------- | ------------------ |
-| ✅			   | Dark Catppuccino | `dark_cpt`         |
+| ✅			   | Catppuccin | `catppuccin`         |
 | ✅               | Rose Pine        | `rose_pine`        |
 | ✅               | Rose Pine Moon        | `rose_pine_moon`        |
 | ✅               | EverForest | `everforest`        |

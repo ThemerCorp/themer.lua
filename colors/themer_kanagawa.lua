@@ -1,1 +1,1 @@
-require("themer.main")("kanagawa")
+require('themer').setup({colorscheme = kanagawa.lua})

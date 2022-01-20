@@ -1,1 +1,1 @@
-require("themer.main")("catppuccin")
+require('themer').setup({colorscheme = catppuccin.lua})
