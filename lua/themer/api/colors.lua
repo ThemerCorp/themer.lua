@@ -7,7 +7,10 @@ return function(cs)
     if not ok then
         require("themer.log")(
             string.format(
-                "Colorscheme %s was not recognised\nPlease check the theme name for typos\n\nIf this is a bug, report it at https://github.com/narutoxy/themer.lua",
+                [[Colorscheme %s was not recognised\n
+				Please check the theme name for typos\n\n
+
+				If this is a bug, report it at https://github.com/narutoxy/themer.lua]],
                 cs
             ),
             "error",
