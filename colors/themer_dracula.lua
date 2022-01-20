@@ -1,1 +1,1 @@
-require("themer.main")("dracula")
+require("themer").setup({ colorscheme = "dracula" })

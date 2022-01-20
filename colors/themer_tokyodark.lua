@@ -1,1 +1,1 @@
-require("themer.main")("tokyodark")
+require("themer").setup({ colorscheme = "tokyodark" })

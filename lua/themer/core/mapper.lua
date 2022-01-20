@@ -1,157 +1,220 @@
 local config = require("themer.config")("get")
 
----return a cleaned styles
+---@return table a cleaned styles
 ---@param cp table
 ---@return table
 local function remap_styles(cp)
     local groups = {
-        styles = {
-            comment = { fg = cp.subtle },
-            func = { fg = cp.blue },
-            keyword = { fg = cp.magenta },
-            string = { fg = cp.green },
-            variable = { fg = cp.fg },
-            parameter = { fg = cp.yellow },
-            field = { fg = cp.fg },
-            punc = { fg = cp.subtle },
-            heading = {
-                h1 = { style = "bold", fg = cp.magenta },
-                h2 = { style = "bold", fg = cp.green },
-                h3 = { style = "bold", fg = cp.orange },
-                h4 = { style = "bold", fg = cp.yellow },
-                h5 = { style = "bold", fg = cp.green },
-                h6 = { style = "bold", fg = cp.blue },
+        heading = {
+            h1 = { style = "bold", fg = cp.heading.h1 or cp.fg },
+            h2 = { style = "bold", fg = cp.heading.h2 or cp.fg },
+        },
+        ["function"] = { fg = cp.syntax["function"] },
+        functionBuiltIn = { fg = cp.built_in["function"] },
+        variable = { fg = cp.syntax.variable },
+        variableBuiltIn = { fg = cp.built_in.variable },
+        include = { fg = cp.syntax.include },
+        identifier = { fg = cp.syntax.identifier or cp.syntax.identifier },
+        keyword = { fg = cp.syntax.keyword },
+        keywordBuiltIn = { fg = cp.built_in.keyword },
+        struct = { fg = cp.syntax.struct },
+        string = { fg = cp.syntax.string },
+        parameter = { fg = cp.syntax.parameter },
+        field = { fg = cp.syntax.field },
+        type = { fg = cp.syntax.type },
+        typeBuiltIn = { fg = cp.built_in.type },
+        property = { fg = cp.syntax.property or cp.syntax.variable },
+        comment = { fg = cp.syntax.comment or cp.dimmed.subtle },
+        punctuation = { fg = cp.syntax.punctuation },
+        constructor = { fg = cp.syntax.constructor or cp.syntax.punctuation },
+        operator = { fg = cp.syntax.operator or cp.sytax.punctuation },
+        constant = { fg = cp.syntax.constant },
+        constantBuiltIn = { fg = cp.built_in.constant },
+        todo = cp.syntax.todo,
+        character = { fg = cp.syntax.character },
+        conditional = { fg = cp.syntax.conditional },
+        number = { fg = cp.syntax.number },
+        statement = { fg = cp.syntax.statement or cp.accent },
+        uri = { fg = cp.uri, style = "underline" },
+        diagnostic = {
+            underline = {
+
+                error = { fg = cp.diagnostic.error, style = "undercurl" },
+                warn = { fg = cp.diagnostic.warn, style = "undercurl" },
+                info = { fg = cp.diagnostic.info, style = "undercurl" },
+                hint = { fg = cp.diagnostic.hint, style = "undercurl" },
+            },
+            virtual_text = {
+                error = { fg = cp.diagnostic.error, style = "italic" },
+                warn = { fg = cp.diagnostic.warn, style = "italic" },
+                info = { fg = cp.diagnostic.info, style = "italic" },
+                hint = { fg = cp.diagnostic.hint, style = "italic" },
             },
         },
-        diagnostics = {
-            colors = { -- Also can be used for stuff like TSError
-                hint = cp.magenta,
-                info = cp.blue,
-                error = cp.red,
-                warn = cp.yellow,
-            },
-        },
     }
-
-    groups.diagnostics.virtual_text = {
-        hint = { fg = groups.diagnostics.colors.hint, style = "italic" },
-        warn = { fg = groups.diagnostics.colors.warn, style = "italic" },
-        info = { fg = groups.diagnostics.colors.info, style = "italic" },
-        error = { fg = groups.diagnostics.colors.error, style = "italic" },
-    }
-
-    groups.diagnostics.underlines = {
-        hint = { sp = groups.diagnostics.colors.hint, style = "undercurl" },
-        warn = { sp = groups.diagnostics.colors.warn, style = "undercurl" },
-        info = { sp = groups.diagnostics.colors.info, style = "undercurl" },
-        error = { sp = groups.diagnostics.colors.error, style = "undercurl" },
-    }
-    groups = vim.tbl_deep_extend("force", groups, cp.groups or {}, config or {})
+    groups = vim.tbl_deep_extend("force", groups, cp.groups or {}, config.styles or {})
     return groups
 end
 
----return the basic hig groups
+---@return table hig groups
 ---@param cp table
 ---@return table
 local function get_base(cp)
-    local groups = remap_styles(cp)
-    local maybe_transparent = config.transparent and "NONE" or cp.bg
+    -- Transparent
+    cp.bg.base = config.transparent and "NONE" or cp.bg.base
+    cp.bg.alt = config.transparent and "NONE" or cp.bg.alt
 
+    local groups = remap_styles(cp)
+
+    local themer = {
+        -- base groups
+        ThemerAccent = { fg = cp.accent },
+        ThemerAccentFloat = { fg = cp.accent, bg = cp.bg.alt },
+        ThemerFloat = { bg = cp.bg.alt },
+        ThemerMatch = { fg = cp.match, style = "bold" },
+        ThemerNormal = { fg = cp.fg, bg = cp.bg.base },
+        ThemerNormalFloat = { fg = cp.fg, bg = cp.bg.alt },
+        ThemerSelected = { bg = cp.bg.selected },
+        -- search terms
+        ThemerSearchResult = { bg = cp.search_result.bg, fg = cp.search_result.fg, bold = true }, -- see :h hlsearch and do :set hlserch to see it in action
+
+        -- git diffs
+        DiffAdd = { bg = cp.diff.add },
+        DiffChange = { bg = cp.diff.change },
+        DiffText = { bg = cp.diff.text or cp.fg },
+        DiffDelete = { bg = cp.diff.remove },
+        GitSignsAdd = { fg = cp.diff.add },
+        GitSignsDelete = { fg = cp.diff.delete },
+        GitSignsChange = { fg = cp.diff.change },
+
+        -- syntax highlighting
+        ThemerFunction = groups["function"],
+        ThemerFunctionBuiltIn = groups.functionBuiltIn,
+        ThemerVariable = groups.variable,
+        ThemerVariableBuiltIn = groups.variableBuiltIn,
+        ThemerInclude = groups.include,
+        ThemerIdentifier = groups.identifier,
+        ThemerKeyword = groups.keyword,
+        ThemerKeywordBuiltIn = groups.keywordBuiltIn,
+        ThemerStruct = groups.struct,
+        ThemerString = groups.string,
+        ThemerComment = groups.comment,
+        ThemerParameter = groups.parameter,
+        ThemerField = groups.field,
+        ThemerType = groups.type,
+        ThemerTypeBuiltIn = groups.typeBuiltIn,
+        ThemerProperty = groups.property,
+        ThemerPunctuation = groups.punctuation,
+        ThemerConstructor = groups.constructor,
+        ThemerOperator = groups.operator,
+        ThemerConstant = groups.constant,
+        ThemerConstantBuiltIn = groups.constantBuiltIn,
+        ThemerTodo = groups.todo,
+        ThemerCharacter = groups.character,
+        ThemerConditional = groups.conditional,
+        ThemerPreProc = { fg = cp.syntax.preproc },
+        ThemerNumber = groups.number,
+        ThemerStatement = groups.statement,
+
+        -- helpful groups
+        ThemerSubtle = { fg = cp.dimmed.subtle },
+        ThemerSubtleFloat = { fg = cp.dimmed.subtle, bg = cp.bg.alt },
+        ThemerDimmed = { fg = cp.dimmed.inactive },
+        ThemerDimmedFloat = { fg = cp.dimmed.inactive, bg = cp.bg.alt },
+        ThemerBorder = { fg = cp.border },
+        ThemerURI = groups.uri,
+
+        -- headings
+        ThemerHeadingH1 = groups.heading.h1,
+        ThemerHeadingH2 = groups.heading.h2,
+    }
     -- ---------------------
     -- ░█▀▄░█▀█░█▀▀░█▀▀
     -- ░█▀▄░█▀█░▀▀█░█▀▀
     -- ░▀▀░░▀░▀░▀▀▀░▀▀▀
     -- ---------------------
     local base = {
-        ColorColumn = { bg = cp.highlight_overlay },
-        Conceal = { bg = cp.none },
-        -- Cursor = {},
-        CursorColumn = { bg = cp.highlight },
-        -- CursorIM = {},
-        CursorLine = { bg = cp.highlight_inactive },
-        CursorLineNr = { fg = cp.fg },
-        DarkenedPanel = { bg = cp.bg_alt },
-        DarkenedStatusline = { bg = cp.bg_alt },
-        DiffAdd = { fg = cp.green },
-        DiffChange = { fg = cp.orange },
-        DiffDelete = { fg = cp.red },
-        DiffText = { fg = cp.fg },
-        Directory = { fg = cp.green, bg = cp.none },
-        EndOfBuffer = { bg = maybe_transparent },
-        ErrorMsg = { fg = cp.red, style = "bold" },
-        FloatBorder = { fg = cp.subtle },
-        Folded = { fg = cp.fg, bg = maybe_transparent },
-        IncSearch = { bg = cp.highlight },
-        LineNr = { fg = cp.inactive },
-        MatchParen = { fg = cp.fg, bg = cp.bg_float },
+        ColorColumn = { link = "ThemerFloat" },
+        Conceal = { bg = cp.conceal or "NONE" },
+        Cursor = { style = "reverse" },
+        CursorColumn = { link = "ThemerFloat" },
+        CursorIM = { style = "reverse" },
+        CursorLine = { link = "ThemerSelected" },
+        CursorLineNr = { fg = cp.cursorlinenr or cp.fg },
+        DarkenedPanel = { link = "ThemerFloat" },
+        DarkenedStatusline = { link = "ThemerFloat" },
+        Directory = { link = "ThemerAccent" },
+        EndOfBuffer = { fg = cp.bg.base },
+        ErrorMsg = { link = "DiagnosticError" },
+        Todo = { link = "ThemerTodo" },
+        FloatBorder = { link = "ThemerBorder" },
+        Folded = { link = "ThemerNormalFloat" },
+        IncSearch = cp.inc_search or { link = "ThemerSearchResult" },
+        LineNr = { link = "ThemerDimmed" },
+        MatchParen = { link = "ThemerNormalFloat" },
         -- ModeMsg = {},
-        MoreMsg = { fg = cp.magenta },
-        NonText = { fg = cp.inactive },
-        Normal = { fg = cp.fg, bg = maybe_transparent },
-        NormalNC = { link = "Normal" },
-        -- NormalFloat = {},
-        Pmenu = { fg = cp.subtle, bg = cp.bg_alt },
-        PmenuSbar = { bg = cp.bg_float },
-        PmenuSel = { fg = cp.fg, bg = cp.bg_float },
-        PmenuThumb = { bg = cp.inactive },
-        Question = { fg = cp.yellow },
+        MoreMsg = { link = "DiagnosticInfo" },
+        NonText = { link = "ThemerDimmed" },
+        Normal = { fg = cp.fg, bg = cp.bg.base },
+        NormalNC = config.dim_inactive and { fg = cp.dimmed.subtle, bg = cp.bg.darker or cp.bg.alt } or {
+            link = "Normal",
+        },
+        NormalFloat = { fg = cp.fg, bg = cp.bg.alt },
+        Pmenu = { fg = cp.pum.fg or cp.dimmed.subtle, bg = cp.pum.bg or cp.bg.alt },
+        PmenuSbar = { bg = cp.pum.sbar or cp.bg.selected },
+        PmenuSel = { bg = cp.pum.sel.bg, fg = cp.pum.sel.fg },
+        PmenuThumb = { bg = cp.pum.thumb or cp.dimmed.subtle },
+        Question = { link = "MoreMsg" },
         -- QuickFixLine = {},
-        Search = { fg = cp.magenta, bg = cp.highlight_overlay },
-        SpecialKey = { fg = cp.green },
-        SpellBad = { style = "undercurl", sp = cp.red },
-        SpellCap = { style = "undercurl", sp = cp.subtle },
-        SpellLocal = { style = "undercurl", sp = cp.subtle },
-        SpellRare = { style = "undercurl", sp = cp.subtle },
-        SignColumn = { fg = cp.fg, bg = maybe_transparent },
-        StatusLine = { fg = cp.fg, bg = cp.bg_alt },
-        StatusLineNC = { fg = cp.subtle, bg = cp.bg_alt },
+        Search = { link = "ThemerSearchResult" },
+        SpecialKey = { link = "NonText" },
+        -- SpellBad = { style = "undercurl", sp = cp.red },
+        -- SpellCap = { style = "undercurl", sp = cp.subtle },
+        -- SpellLocal = { style = "undercurl", sp = cp.subtle },
+        -- SpellRare = { style = "undercurl", sp = cp.subtle },
+        SignColumn = { link = "ThemerNormal" },
+        StatusLine = { link = "ThemerNormalFloat" },
+        StatusLineNC = { link = "ThemerSubtleFloat" },
         -- StatusLineTerm = {},
         -- StatusLineTermNC = {},
-        TabLine = { fg = cp.subtle, bg = cp.bg_float },
-        TabLineFill = { bg = cp.bg_alt },
-        TabLineSel = { fg = cp.fg, bg = cp.inactive },
-        Title = { fg = cp.fg },
-        VertSplit = { fg = cp.bg_alt, bg = cp.bg_alt },
-        Visual = { bg = cp.highlight },
+        TabLine = { link = "ThemerNormalFloat" },
+        TabLineFill = { link = "ThemerFloat" },
+        TabLineSel = { link = "ThemerSearchResult" },
+        Title = { fg = cp.title or cp.fg },
+        VertSplit = { fg = cp.bg.alt, bg = cp.bg.alt },
+        Visual = { link = "ThemerSelected" },
         -- VisualNOS = {},
-        WarningMsg = { fg = cp.yellow },
-        -- Whitespace = {},
-        -- WildMenu = {},
-        Boolean = { fg = cp.yellow },
-        Character = { fg = cp.yellow },
-        Comment = groups.styles.comment,
-        Conditional = { fg = cp.blue },
-        Constant = { fg = cp.yellow },
-        Debug = { fg = cp.orange },
-        Define = { fg = cp.magenta },
-        Delimiter = { fg = cp.orange },
-        Error = { fg = cp.red },
-        Exception = { fg = cp.blue },
-        Float = { fg = cp.yellow },
-        Function = groups.styles.func,
-        Identifier = groups.styles.variable,
-        -- Ignore = { fg = '' },
-        Include = { fg = cp.magenta },
-        Keyword = groups.styles.keyword,
-        Label = { fg = cp.green },
-        Macro = { fg = cp.magenta },
-        Number = { fg = cp.yellow },
-        Operator = { fg = cp.subtle },
-        PreCondit = { fg = cp.magenta },
-        PreProc = { fg = cp.magenta },
-        Repeat = { fg = cp.blue },
-        Special = { fg = cp.orange },
-        SpecialChar = { fg = cp.orange },
-        SpecialComment = { fg = cp.magenta },
-        Statement = { fg = cp.blue },
-        StorageClass = { fg = cp.green },
-        String = groups.styles.string,
-        Structure = { fg = cp.green },
-        Tag = { fg = cp.orange },
-        Todo = { fg = cp.magenta },
-        Type = { fg = cp.green },
-        Typedef = { fg = cp.green },
-        Underlined = { fg = cp.green, style = "underline" },
+        WarningMsg = { link = "DiagnosticWarn" },
+        -- Boolean = { link = "ThemerConstant" },
+        Character = { link = "ThemerCharacter" },
+        Comment = { link = "ThemerComment" },
+        Conditional = { link = "ThemerConditional" },
+        Constant = { link = "ThemerConstant" },
+        -- Debug = { fg = cp.debug },
+        -- Define = { fg = cp.magenta },
+        Delimiter = { link = "ThemerPunctuation" },
+        Error = { link = "DiagnosticError" },
+        -- Exception = { fg = cp.blue },
+        Float = { link = "ThemerNumber" },
+        Function = { link = "ThemerFunction" },
+        Identifier = { link = "ThemerIdentifier" },
+        Include = { link = "ThemerInclude" },
+        Keyword = { link = "ThemerKeyword" },
+        Number = { link = "ThemerNumber" },
+        Operator = { link = "ThemerOperator" },
+        PreProc = { link = "ThemerPreProc" },
+        Special = { link = "ThemerAccent" },
+        Statement = { link = "ThemerStatement" },
+        String = { link = "ThemerString" },
+        Type = { link = "ThemerType" },
+        Typedef = { link = "ThemerType" },
+        Underlined = { fg = cp.accent, style = "underline" },
+
+        -- Neovim
+
+        healthError = { link = "DiagnosticError" },
+        healthWarning = { link = "DiagnosticWarn" },
+        healthSuccess = { link = "DiagnosticInfo" },
     }
 
     ---------------------------------------
@@ -163,181 +226,148 @@ local function get_base(cp)
     local plugins = {}
 
     local availablePlugins = {
-        -- I discovered they work better without setting these groups lmfao
-        -- barbar = {
-        --     BufferTabpageFill = { bg = "NONE" },
-        --     BufferCurrent = { fg = cp.fg, bg = cp.bg_float },
-        --     BufferCurrentIndex = { fg = cp.fg, bg = cp.bg_float },
-        --     BufferCurrentMod = { fg = cp.green, bg = cp.bg_float },
-        --     BufferCurrentSign = { fg = cp.subtle, bg = cp.bg_float },
-        --     BufferInactive = { fg = cp.subtle },
-        --     BufferInactiveIndex = { fg = cp.subtle },
-        --     BufferInactiveMod = { fg = cp.green },
-        --     BufferInactiveSign = { fg = cp.subtle },
-        --     BufferVisible = { fg = cp.subtle },
-        --     BufferVisibleIndex = { fg = cp.subtle },
-        --     BufferVisibleMod = { fg = cp.green },
-        --     BufferVisibleSign = { fg = cp.subtle },
-        -- },
-
-        -- bufferline = {
-        --     BufferLineFill = { bg = cp.bg_float },
-        --     BufferLineBackground = { fg = cp.subtle, bg = cp.inactive },
-        --     BufferLineBufferVisible = { fg = cp.subtle, bg = cp.inactive },
-        --     BufferLineBufferSelected = { fg = cp.fg, bg = cp.bg },
-        --     BufferLineTab = { fg = cp.subtle, bg = cp.bg },
-        --     BufferLineTabSelected = { fg = cp.red, bg = cp.blue },
-        --     BufferLineTabClose = { fg = cp.red, bg = cp.inactive },
-        --     BufferLineIndicatorSelected = { fg = cp.bg, bg = cp.bg },
-        --     -- separators
-        --     BufferLineSeparator = { fg = cp.inactive, bg = cp.inactive },
-        --     BufferLineSeparatorVisible = { fg = cp.inactive, bg = cp.inactive },
-        --     BufferLineSeparatorSelected = { fg = cp.inactive, bg = cp.inactive },
-        --     -- close buttons
-        --     BufferLineCloseButton = { fg = cp.subtle, bg = cp.inactive },
-        --     BufferLineCloseButtonVisible = { fg = cp.subtle, bg = cp.inactive },
-        --     BufferLineCloseButtonSelected = { fg = cp.red, bg = cp.bg },
-        -- },
-
         cmp = {
-            CmpItemKind = { fg = cp.magenta },
-            CmpItemAbbr = { fg = cp.subtle },
-            CmpItemAbbrMatch = { fg = cp.fg, style = "bold" },
-            CmpItemAbbrMatchFuzzy = { fg = cp.fg, style = "bold" },
-            CmpItemAbbrDeprecated = { fg = cp.subtle, style = "strikethrough" },
+            CmpDocumentation = { fg = cp.fg },
+            CmpDocumentationBorder = { link = "ThemerBorder" },
+
+            CmpItemAbbr = { fg = cp.fg },
+            CmpItemAbbrDeprecated = { fg = cp.fg, bg = "NONE", style = "strikethrough" },
+            CmpItemAbbrMatch = { link = "ThemerMatch" },
+            CmpItemAbbrMatchFuzzy = { link = "ThemerMatch" },
+
+            CmpItemKindDefault = { link = "ThemerSubtleFloat" },
+            CmpItemMenu = { link = "ThemerDimmedFloat" },
+
+            CmpItemKindKeyword = { link = "ThemerKeyword" },
+
+            CmpItemKindVariable = { link = "ThemerVariable" },
+            CmpItemKindConstant = { link = "ThemerConstant" },
+            CmpItemKindReference = { link = "ThemerInclude" },
+
+            CmpItemKindFunction = { link = "ThemerFunction" },
+            CmpItemKindMethod = { link = "ThemerFunction" },
+            CmpItemKindConstructor = { link = "ThemerConstructor" },
+
+            CmpItemKindClass = { link = "ThemerStruct" },
+            CmpItemKindInterface = { link = "ThemerStruct" },
+            CmpItemKindStruct = { link = "ThemerStruct" },
+            CmpItemKindEvent = { link = "ThemerStruct" },
+            CmpItemKindEnum = { link = "ThemerStruct" },
+            CmpItemKindUnit = { link = "ThemerStruct" },
+
+            CmpItemKindModule = { link = "ThemerInclude" },
+
+            CmpItemKindProperty = { link = "ThemerProperty" },
+            CmpItemKindField = { link = "ThemerField" },
+            CmpItemKindTypeParameter = { link = "ThemerParameter" },
+            CmpItemKindEnumMember = { link = "ThemerVariable" },
+            CmpItemKindOperator = { link = "ThemerOperator" },
+            CmpItemKindSnippet = { link = "ThemerSubtle" },
         },
 
-        -- gitsigns = {
-        --     SignAdd = { fg = cp.green },
-        --     SignChange = { fg = cp.orange },
-        --     SignDelete = { fg = cp.red },
-        --     GitSignsAdd = { fg = cp.green },
-        --     GitSignsChange = { fg = cp.orange },
-        --     GitSignsDelete = { fg = cp.red },
-        -- },
-
         indentline = {
-            IndentBlanklineChar = { fg = cp.subtle, style = "nocombine" },
-            IndentBlanklineIndent6 = { style = "nocombine", fg = cp.yellow },
-            IndentBlanklineIndent5 = { style = "nocombine", fg = cp.red },
-            IndentBlanklineIndent4 = { style = "nocombine", fg = cp.green },
-            IndentBlanklineIndent3 = { style = "nocombine", fg = cp.orange },
-            IndentBlanklineIndent2 = { style = "nocombine", fg = cp.blue },
-            IndentBlanklineIndent1 = { style = "nocombine", fg = cp.magenta },
+            IndentBlanklineChar = { fg = cp.dimmed.subtle, style = "nocombine" },
+            IndentBlanklineContextChar = { fg = cp.accent, style = "nocombine" },
+            IndentBlanklineSpaceChar = { link = "IndentBlanklineChar" },
+            IndentBlanklineSpaceCharBlankline = { link = "IndentBlanklineChar" },
+            IndentBlanklineContextStart = { style = "underline", sp = cp.accent },
         },
 
         lsp = {
-            LspReferenceText = { bg = cp.bg_alt },
-            LspReferenceRead = { bg = cp.bg_alt },
-            LspReferenceWrite = { bg = cp.bg_alt },
-            DiagnosticError = { fg = groups.diagnostics.colors.error },
-            DiagnosticWarn = { fg = groups.diagnostics.colors.warn },
-            DiagnosticInfo = { fg = groups.diagnostics.colors.info },
-            DiagnosticHint = { fg = groups.diagnostics.colors.hint },
-            DiagnosticDefaultError = { fg = groups.diagnostics.colors.error },
-            DiagnosticDefaultWarn = { fg = groups.diagnostics.colors.warn },
-            DiagnosticDefaultInfo = { fg = groups.diagnostics.colors.info },
-            DiagnosticDefaultHint = { fg = groups.diagnostics.colors.hint },
-            DiagnosticFloatingError = { bg = cp.bg_alt, fg = groups.diagnostics.colors.error },
-            DiagnosticFloatingWarn = { bg = cp.bg_alt, fg = groups.diagnostics.colors.warn },
-            DiagnosticFloatingInfo = { bg = cp.bg_alt, fg = groups.diagnostics.colors.info },
-            DiagnosticFloatingHint = { bg = cp.bg_alt, fg = groups.diagnostics.colors.hint },
-            DiagnosticVirtualTextError = groups.diagnostics.virtual_text.error,
-            DiagnosticVirtualTextWarn = groups.diagnostics.virtual_text.warn,
-            DiagnosticVirtualTextInfo = groups.diagnostics.virtual_text.info,
-            DiagnosticVirtualTextHint = groups.diagnostics.virtual_text.hint,
-            DiagnosticUnderlineError = groups.diagnostics.underlines.error,
-            DiagnosticUnderlineWarn = groups.diagnostics.underlines.warn,
-            DiagnosticUnderlineInfo = groups.diagnostics.underlines.info,
-            DiagnosticUnderlineHint = groups.diagnostics.underlines.hint,
+            LspReferenceText = { link = "ThemerFloat" },
+            LspReferenceRead = { link = "ThemerFloat" },
+            LspReferenceWrite = { link = "ThemerFloat" },
+            DiagnosticError = { fg = cp.diagnostic.error },
+            DiagnosticWarn = { fg = cp.diagnostic.warn },
+            DiagnosticInfo = { fg = cp.diagnostic.info },
+            DiagnosticHint = { fg = cp.diagnostic.hint },
+            DiagnosticSignError = { link = "DiagnosticHint" },
+            DiagnosticSignWarn = { link = "DiagnosticWarn" },
+            DiagnosticSignInfo = { link = "DiagnosticInfo" },
+            DiagnosticSignHint = { link = "DiagnosticHint" },
 
-            LspDiagnosticsError = { link = "DiagnosticError" },
-            LspDiagnosticsWarning = { link = "DiagnosticWarn" },
-            LspDiagnosticsInformation = { link = "DiagnosticInfo" },
-            LspDiagnosticsHint = { link = "DiagnosticHint" },
-            LspDiagnosticsDefaultError = { link = "DiagnosticDefaultError" },
-            LspDiagnosticsDefaultWarning = { link = "DiagnosticDefaultWarn" },
-            LspDiagnosticsDefaultInformation = { link = "DiagnosticDefaultInfo" },
-            LspDiagnosticsDefaultHint = { link = "DiagnosticDefaultHint" },
-            LspDiagnosticsFloatingError = { link = "DiagnosticFloatingError" },
-            LspDiagnosticsFloatingWarning = { link = "DiagnosticFloatingWarn" },
-            LspDiagnosticsFloatingInformation = { link = "DiagnosticFloatingInfo" },
-            LspDiagnosticsFloatingHint = { link = "DiagnosticFloatingHint" },
-            LspDiagnosticsVirtualTextError = { link = "DiagnosticVirtualTextError" },
-            LspDiagnosticsVirtualTextWarning = { link = "DiagnosticVirtualTextWarn" },
-            LspDiagnosticsVirtualTextInformation = { link = "DiagnosticVirtualTextInfo" },
-            LspDiagnosticsVirtualTextHint = { link = "DiagnosticVirtualTextHint" },
-            LspDiagnosticsUnderlineError = { link = "DiagnosticUnderlineError" },
-            LspDiagnosticsUnderlineWarning = { link = "DiagnosticUnderlineWarn" },
-            LspDiagnosticsUnderlineInformation = { link = "DiagnosticUnderlineInfo" },
-            LspDiagnosticsUnderlineHint = { link = "DiagnosticUnderlineHint" },
+            DiagnosticDefaultError = { link = "DiagnosticHint" },
+            DiagnosticDefaultWarn = { link = "DiagnosticWarn" },
+            DiagnosticDefaultInfo = { link = "DiagnosticInfo" },
+            DiagnosticDefaultHint = { link = "DiagnosticHint" },
+            DiagnosticUnderlineError = groups.diagnostic.underline.error,
+            DiagnosticUnderlineWarn = groups.diagnostic.underline.warn,
+            DiagnosticUnderlineInfo = groups.diagnostic.underline.info,
+            DiagnosticUnderlineHint = groups.diagnostic.underline.hint,
+            DiagnosticVirtualTextError = groups.diagnostic.virtual_text.error,
+            DiagnosticVirtualTextWarn = groups.diagnostic.virtual_text.warn,
+            DiagnosticVirtualTextInfo = groups.diagnostic.virtual_text.info,
+            DiagnosticVirtualTextHint = groups.diagnostic.virtual_text.hint,
 
-            LspSignatureActiveParameter = { fg = cp.orange },
-            LspCodeLens = { fg = cp.subtle },
+            LspSignatureActiveParameter = { link = "DiagnosticWarn" },
+            LspCodeLens = { link = "ThemerSubtle" },
         },
 
         telescope = {
-            TelescopeBorder = { fg = cp.subtle },
-            TelescopeSelectionCaret = { fg = cp.red },
-            TelescopeSelection = { fg = cp.fg, bg = cp.highlight_overlay },
-            TelescopeMatching = { fg = cp.fg, style = "bold" },
+            TelescopeBorder = { link = "ThemerBorder" },
+            TelescopeMatching = { fg = cp.search_result.telescope or cp.search_result.fg or cp.fg },
+            TelescopeSelection = { link = "ThemerSelected" },
         },
 
         treesitter = {
             -- TSAnnotation = {},
             -- TSAttribute = {},
-            TSBoolean = { fg = cp.orange },
+            -- TSBoolean = { fg = cp.orange },
             -- TSCharacter = {},
-            TSComment = groups.styles.comment,
-            TSNote = { bg = cp.blue, fg = groups.diagnostics.colors.info },
-            TSWarning = { bg = cp.bg, fg = groups.diagnostics.colors.warn },
-            TSDanger = { bg = cp.bg, fg = groups.diagnostics.colors.error },
-            TSConditional = { fg = cp.red },
-            TSConstBuiltin = { fg = cp.red },
+            -- TSComment = groups.styles.comment,
+            TSNote = { link = "DiagnosticInfo" },
+            TSWarning = { link = "DiagnosticWarn" },
+            TSDanger = { link = "DiagnosticError" },
+            TSConditional = { link = "ThemerConditional" },
+            TSConstBuiltin = { link = "ThemerConstantBuiltIn" },
             -- TSConstMacro = {},
-            TSConstant = { fg = cp.orange },
-            TSConstructor = { fg = cp.magenta },
+            TSConstant = { link = "ThemerConstant" },
+            TSConstructor = { link = "ThemerConstructor" },
             -- TSEmphasis = {},
             -- TSError = {},
             -- TSException = {},
-            TSField = groups.styles.field,
+            TSField = { link = "ThemerField" },
             -- TSFloat = {},
-            TSFuncBuiltin = { fg = cp.blue },
+            TSFuncBuiltin = { link = "ThemerFunctionBuiltIn" },
             -- TSFuncMacro = {},
-            TSFunction = groups.styles.func,
-            TSInclude = { fg = cp.green },
-            TSKeyword = groups.styles.keyword,
-            TSKeywordFunction = { fg = cp.magenta },
-            TSKeywordOperator = { fg = cp.blue },
-            TSLabel = { fg = cp.green },
+            TSFunction = { link = "ThemerFunction" },
+            TSInclude = { link = "ThemerInclude" },
+            TSKeyword = { link = "ThemerKeyword" },
+            TSKeywordFunction = { link = "ThemerKeywordBuiltIn" },
+            TSKeywordReturn = { link = "ThemerKeywordBuiltIn" },
+            TSKeywordOperator = { link = "ThemerOperator" },
+            -- TSLabel = {},
             -- TSLiteral = {},
             -- TSMethod = {},
             -- TSNamespace = {},
             -- TSNone = {},
             -- TSNumber = {},
-            TSOperator = { fg = cp.blue },
-            TSParameter = groups.styles.parameter,
+            TSOperator = { link = "ThemerOperator" },
+            TSParameter = { link = "ThemerParameter" },
             -- TSParameterReference = {},
-            TSProperty = groups.styles.field,
-            TSPunctBracket = groups.styles.punc,
-            TSPunctDelimiter = groups.styles.punc,
-            TSPunctSpecial = groups.styles.punc,
+            TSProperty = { link = "ThemerProperty" },
+            TSPunctBracket = { link = "ThemerPunctuation" },
+            TSPunctDelimiter = { link = "ThemerPunctuation" },
+            TSPunctSpecial = { link = "ThemerPunctuation" },
             -- TSRepeat = {},
             -- TSStrike = {},
-            TSString = groups.styles.string,
-            TSStringEscape = { fg = cp.blue },
+            TSString = { link = "ThemerString" },
+            -- TSStringEscape = { fg = cp.blue },
             -- TSStringRegex = {},
             -- TSSymbol = {},
-            TSTag = { fg = cp.green },
-            TSTagDelimiter = { fg = cp.subtle },
-            TSText = { fg = cp.fg },
-            -- TSTitle = {},
-            -- TSType = {},
-            -- TSTypeBuiltin = {},
-            TSURI = { fg = cp.blue, style = "undercurl" },
+            -- TSTag = { fg = cp.green },
+            TSTagDelimiter = { link = "ThemerSubtle" },
+            TSText = { link = "ThemerText" },
+            TSTitle = { link = "ThemerHeadingH1" },
+            TSType = { link = "ThemerType" },
+            TSTypeBuiltin = { link = "ThemerTypeBuiltIn" },
+            TSURI = { link = "ThemerURI" },
             -- TSUnderline = {},
-            TSVariable = groups.styles.variable,
-            TSVariableBuiltin = groups.variable,
+            TSVariable = { link = "ThemerVariable" },
+            TSVariableBuiltin = { link = "ThemerVariableBuiltIn" },
+            commentTSDanger = { link = "DiagnosticError" },
+            commentTSNote = { link = "ThemerTodo" },
+            commentTSWarning = { link = "DiagnosticWarn" },
         },
     }
 
@@ -351,22 +381,36 @@ local function get_base(cp)
 
     local availableLangs = {
         html = {
-            htmlArg = { fg = cp.magenta },
-            htmlEndTag = { fg = cp.subtle },
-            htmlLink = { fg = cp.fg },
-            htmlTag = { fg = cp.subtle },
-            htmlTagN = { fg = cp.fg },
-            htmlTagName = { fg = cp.green },
+            htmlH2 = { link = "ThemerHeadingH2" },
+            htmlH1 = { link = "ThemerHeadingH1" },
+            htmlH3 = { link = "ThemerHeadingH3" },
+            htmlH4 = { link = "ThemerHeadingH4" },
+            htmlH5 = { link = "ThemerHeadingH5" },
+            htmlH6 = { link = "ThemerHeadingH6" },
+            htmlLink = { link = "ThemerURI" },
+            htmlBold = { fg = cp.fg, style = "bold" },
+            htmlBoldUnderline = { fg = cp.fg, style = "bold,underline" },
+            htmlBoldItalic = { fg = cp.fg, style = "bold,italic" },
+            htmlBoldUnderlineItalic = { fg = cp.fg, style = "italic,bold,underline" },
+            htmlUnderline = { fg = cp.fg, style = "underline" },
+            htmlUnderlineItalic = { fg = cp.fg, style = "underline,italic" },
+            htmlItalic = { fg = cp.fg, style = "italic" },
+            htmlTag = { link = "ThemerField" },
+            htmlEndTag = { link = "ThemerField" },
+            htmlTagN = { link = "ThemerKeyword" },
+            htmlTagName = { link = "ThemerKeyword" },
+            htmlString = { link = "ThemerString" },
         },
 
         md = {
-            markdownHeadingDelimiter = { fg = cp.subtle },
-            markdownCode = { fg = cp.yellow },
-            markdownCodeDelimiter = { fg = cp.green },
-            markdownCodeBlock = { fg = cp.green },
-            markdownH1 = { fg = cp.red, style = "bold" },
-            markdownH2 = { fg = cp.red, style = "bold" },
-            markdownLinkText = { fg = cp.red },
+            markdownLinkText = { link = "ThemerURI" },
+            markdownH2 = { link = "ThemerHeadingH2" },
+            markdownH1 = { link = "ThemerHeadingH1" },
+            markdownCodeBlock = { link = "ThemerInclude" },
+            markdownCode = { link = "ThemerInclude" },
+            markdownUrl = { link = "ThemerURI" },
+            markdownItalic = { fg = cp.fg, style = "italic" },
+            markdownBold = { fg = cp.fg, style = "bold" },
         },
     }
 
@@ -383,13 +427,14 @@ local function get_base(cp)
     end
 
     return {
+        themer = themer,
         base = base,
         plugins = plugins,
         langs = langs,
     }
 end
 
---- return the final integrations table
+--- @return table the final integrations table
 --- @param cp table
 --- @param cs string
 --- @return table
@@ -402,13 +447,11 @@ local function get_hig_groups(cp, cs)
         cp.remaps or {},
         config.remaps.highlights[cs] or {}
     )
-
     return hig_groups
 end
 
----get color scheme properties
+---@return table color scheme properties
 ---@param cp table
----@return table
 local function get_properties(cp)
     local props = {
         termguicolors = true,
@@ -417,7 +460,7 @@ local function get_properties(cp)
     return props
 end
 
----return theme table containing highlights
+---@return table theme table containing highlights
 ---@param cp table
 ---@param cs string
 ---@return table

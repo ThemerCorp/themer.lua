@@ -1,1 +1,1 @@
-require("themer.main")("javacafe")
+require("themer").setup({ colorscheme = "javacafe" })

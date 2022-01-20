@@ -1,1 +1,1 @@
-require("themer.main")("kurai")
+require("themer").setup({ colorscheme = "kurai" })

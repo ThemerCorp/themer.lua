@@ -7,15 +7,14 @@ local exec = vim.api.nvim_command
 --- @param color table
 local function highlight(group, color)
     local parts = { group }
-    parts[#parts + 1] = color.fg and "guifg=" .. color.fg or "guifg=NONE"
-    parts[#parts + 1] = color.bg and "guibg=" .. color.bg or "guibg=NONE"
-    parts[#parts + 1] = color.sp and "guisp=" .. color.sp or ""
-    parts[#parts + 1] = color.style and "gui=" .. color.style or "gui=NONE"
-
-    -- nvim.ex.highlight(parts)
-    exec("highlight " .. table.concat(parts, " "))
-    if color.link then
+    parts[#parts + 1] = color.fg and "guifg=" .. color.fg or nil
+    parts[#parts + 1] = color.bg and "guibg=" .. color.bg or nil
+    parts[#parts + 1] = color.sp and "guisp=" .. color.sp or nil
+    parts[#parts + 1] = color.style and "gui=" .. color.style or nil
+    if #parts == 1 and color.link then
         exec("highlight! link " .. group .. " " .. color.link)
+    elseif #parts ~= 1 then
+        exec("highlight " .. table.concat(parts, " "))
     end
 end
 
@@ -38,16 +37,16 @@ end
 --- Set terminal colors
 --- @param clrs table
 local function terminal(clrs)
-    g.terminal_color_0 = clrs.bg
+    g.terminal_color_0 = clrs.bg.base
     g.terminal_color_1 = clrs.red
     g.terminal_color_2 = clrs.green
     g.terminal_color_3 = clrs.yellow
     g.terminal_color_4 = clrs.blue
     g.terminal_color_5 = clrs.magenta
-    g.terminal_color_6 = clrs.green
+    g.terminal_color_6 = clrs.cyan
     g.terminal_color_7 = clrs.fg
 
-    g.terminal_color_8 = clrs.bg
+    g.terminal_color_8 = clrs.bg.base
     g.terminal_color_9 = clrs.red
     g.terminal_color_10 = clrs.green
     g.terminal_color_11 = clrs.yellow
@@ -60,7 +59,6 @@ end
 --- load a given theme
 --- @param theme table
 return function(theme)
-    -- vim.defer_fn(function()
     exec("hi clear")
     if vim.fn.exists("syntax_on") then
         exec("syntax reset")
@@ -72,8 +70,9 @@ return function(theme)
 
     properties(theme.properties)
 
+    syntax(theme.hig_groups.themer)
     syntax(theme.hig_groups.base)
-    -- vim.defer_fn(function()
+
     for lang, status in pairs(theme.hig_groups.langs) do
         if type(status) == "table" then
             syntax(theme.hig_groups.langs[lang])
@@ -86,9 +85,5 @@ return function(theme)
         end
     end
 
-    -- vim.defer_fn(function()
     exec("do ColorScheme")
-    -- end, 70)
-    -- end, 60)
-    -- end, 5)
 end
