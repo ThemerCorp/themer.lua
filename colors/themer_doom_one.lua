@@ -1,1 +1,1 @@
-require('themer').setup({colorscheme = doom_one.lua})
+require('themer').setup({colorscheme = 'doom_one'})

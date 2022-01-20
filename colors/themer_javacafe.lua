@@ -1,1 +1,1 @@
-require('themer').setup({colorscheme = javacafe.lua})
+require('themer').setup({colorscheme = 'javacafe'})

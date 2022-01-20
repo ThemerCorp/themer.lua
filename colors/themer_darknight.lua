@@ -1,1 +1,1 @@
-require('themer').setup({colorscheme = darknight.lua})
+require('themer').setup({colorscheme = 'darknight'})

@@ -1,1 +1,1 @@
-require('themer').setup({colorscheme = everforest.lua})
+require('themer').setup({colorscheme = 'everforest'})

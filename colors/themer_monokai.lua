@@ -1,1 +1,1 @@
-require('themer').setup({colorscheme = monokai.lua})
+require('themer').setup({colorscheme = 'monokai'})
