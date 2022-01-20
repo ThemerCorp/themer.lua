@@ -1,1 +1,1 @@
-require('themer').setup({colorscheme = rose_pine.lua})
+require("themer").setup({ colorscheme = rose_pine.lua })

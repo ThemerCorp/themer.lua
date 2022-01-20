@@ -1,1 +1,1 @@
-require('themer').setup({colorscheme = gruvbox.lua})
+require("themer").setup({ colorscheme = gruvbox.lua })

@@ -1,1 +1,1 @@
-require('themer').setup({colorscheme = papa_dark.lua})
+require("themer").setup({ colorscheme = papa_dark.lua })

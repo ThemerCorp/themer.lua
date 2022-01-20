@@ -1,1 +1,1 @@
-require('themer').setup({colorscheme = kurai.lua})
+require("themer").setup({ colorscheme = kurai.lua })

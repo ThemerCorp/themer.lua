@@ -1,1 +1,1 @@
-require('themer').setup({colorscheme = nord.lua})
+require("themer").setup({ colorscheme = nord.lua })

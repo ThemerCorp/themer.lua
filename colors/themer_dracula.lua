@@ -1,1 +1,1 @@
-require('themer').setup({colorscheme = dracula.lua})
+require("themer").setup({ colorscheme = dracula.lua })

@@ -1,1 +1,1 @@
-require('themer').setup({colorscheme = tokyodark.lua})
+require("themer").setup({ colorscheme = tokyodark.lua })
