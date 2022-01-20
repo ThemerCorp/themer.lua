@@ -50,7 +50,7 @@ local options = {
             },
         },
     },
-   remaps = {
+    remaps = {
         palette = {},
         -- per colorscheme palette remaps, for example:
         -- remaps.palette = {

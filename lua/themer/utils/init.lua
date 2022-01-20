@@ -72,7 +72,7 @@ return function(theme)
 
     syntax(theme.hig_groups.themer)
     syntax(theme.hig_groups.base)
-    
+
     for lang, status in pairs(theme.hig_groups.langs) do
         if type(status) == "table" then
             syntax(theme.hig_groups.langs[lang])
@@ -84,7 +84,6 @@ return function(theme)
             syntax(theme.hig_groups.plugins[plugin])
         end
     end
-
 
     exec("do ColorScheme")
 end
