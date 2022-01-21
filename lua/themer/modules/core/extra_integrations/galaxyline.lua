@@ -4,10 +4,7 @@ local hi = {}
 ---@param cs string
 ---@param cp table
 function hi.get(cs, cp)
-    local present, galaxyline_colors = pcall(require, "galaxyline.themes.colors")
-    if not present then
-        return
-    end
+    local galaxyline_colors = require("galaxyline.themes.colors")
 
     galaxyline_colors[cs or require("themer.config")("get").colorscheme] = {
         bg = cp.bg.alt,

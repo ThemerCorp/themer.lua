@@ -1,11 +1,13 @@
+local api = {}
+
 --- returns the colorscheme array for the given colorscheme
 --- @param cs string
-return function(cs)
-    local ok, csc = pcall(require, "themer.color_schemes." .. cs)
+api.get_cp = function(cs)
+    local ok, csc = pcall(require, "themer.modules.themes." .. cs)
     local remaps = require("themer.config")("get").remaps.palette[cs] or {}
 
     if not ok then
-        require("themer.log")(
+        vim.notify(
             string.format(
                 [[Colorscheme %s was not recognised\n
 				Please check the theme name for typos\n\n
@@ -13,8 +15,7 @@ return function(cs)
 				If this is a bug, report it at https://github.com/narutoxy/themer.lua]],
                 cs
             ),
-            "error",
-            "themer.lua"
+            vim.log.levels.ERROR
         )
     end
 
@@ -24,3 +25,5 @@ return function(cs)
         return csc
     end
 end
+
+return api
