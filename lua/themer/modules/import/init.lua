@@ -11,41 +11,41 @@ local color_from_hl = function(hl_name, value)
 end
 
 local generate_cp = function()
-        local cp = {
-            red = vim.g.terminaL_color_1,
-            yellow = vim.g.terminal_color_3,
-            orange = vim.g.terminal_color_11,
-            magenta = vim.g.terminal_color_5,
-            blue = vim.g.terminal_color_4,
-            green = vim.g.terminal_color_2,
-            cyan = vim.g.terminal_color_6,
+    local cp = {
+        red = vim.g.terminaL_color_1,
+        yellow = vim.g.terminal_color_3,
+        orange = vim.g.terminal_color_11,
+        magenta = vim.g.terminal_color_5,
+        blue = vim.g.terminal_color_4,
+        green = vim.g.terminal_color_2,
+        cyan = vim.g.terminal_color_6,
 
-            fg = color_from_hl("Normal", "foreground"),
-            diff = {
-                add = color_from_hl("DiffAdd", "background"),
-                remove = color_from_hl("DiffDelete", "background"),
-                change = color_from_hl("DiffChange", "background"),
-                text = color_from_hl("DiffText", "background"),
-            },
-            accent = color_from_hl("Special", "foreground"),
-            search_result = {
-                fg = color_from_hl("Search", "foreground"),
-                telescope = color_from_hl("TelescopeMatching", "foreground"),
-                bg = color_from_hl("Search", "background"),
-            },
-            cursorlinenr = color_from_hl("CursorLineNr", "foreground"),
-            match = color_from_hl("CmpItemAbbrMatch", "foreground"),
-            dimmed = {
-                inactive = color_from_hl("NonText", "foreground"),
-                subtle = color_from_hl("StatuslineNC", "foreground"),
-            },
-            bg = {
-                base = color_from_hl("Normal", "background"),
-                alt = color_from_hl("NormalFloat", "background"),
-                selected = color_from_hl("CursorLine", "background"),
-            },
-            border = color_from_hl("FloatBorder", "foreground"),
-            syntax = {
+        fg = color_from_hl("Normal", "foreground"),
+        diff = {
+            add = color_from_hl("DiffAdd", "background"),
+            remove = color_from_hl("DiffDelete", "background"),
+            change = color_from_hl("DiffChange", "background"),
+            text = color_from_hl("DiffText", "background"),
+        },
+        accent = color_from_hl("Special", "foreground"),
+        search_result = {
+            fg = color_from_hl("Search", "foreground"),
+            telescope = color_from_hl("TelescopeMatching", "foreground"),
+            bg = color_from_hl("Search", "background"),
+        },
+        cursorlinenr = color_from_hl("CursorLineNr", "foreground"),
+        match = color_from_hl("CmpItemAbbrMatch", "foreground"),
+        dimmed = {
+            inactive = color_from_hl("NonText", "foreground"),
+            subtle = color_from_hl("StatuslineNC", "foreground"),
+        },
+        bg = {
+            base = color_from_hl("Normal", "background"),
+            alt = color_from_hl("NormalFloat", "background"),
+            selected = color_from_hl("CursorLine", "background"),
+        },
+        border = color_from_hl("FloatBorder", "foreground"),
+        syntax = {
             statement = color_from_hl("Statement", "foreground"),
             ["function"] = color_from_hl("TSFunction", "foreground"),
             variable = color_from_hl("TSVariable", "foreground"),
@@ -66,7 +66,7 @@ local generate_cp = function()
             comment = color_from_hl("TSComment", "foreground"),
             type = color_from_hl("TSType", "foreground"),
             conditional = color_from_hl("TSConditional", "foreground"),
-            },
+        },
         built_in = {
             ["function"] = color_from_hl("TSFuncBuiltin", "foreground"),
             type = color_from_hl("TSTypeBuiltin", "foreground"),
