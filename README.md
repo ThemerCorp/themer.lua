@@ -38,7 +38,7 @@
                   	["function"] = { style = 'italic' }, 
                    	functionbuiltin = { style = 'italic' }, 
                    	variable = { style = 'italic' }, 
-                    	variablebuiltin = { style = 'italic' }, 
+                    variableBuiltIn = { style = 'italic' }, 
                   	parameter  = { style = 'italic' }, 
                 },
             })
@@ -60,7 +60,7 @@ lua << EOF
                   	["function"] = { style = 'italic' }, 
                    	functionbuiltin = { style = 'italic' }, 
                    	variable = { style = 'italic' }, 
-                    	variablebuiltin = { style = 'italic' }, 
+                    variableBuiltIn = { style = 'italic' }, 
                   	parameter  = { style = 'italic' }, 
                 },
             })
@@ -165,7 +165,6 @@ Heres the default config table
         --     	fg = "#000000"
         --     }
         -- },
-        -- would recommend to look into vim.api.nvim_set_hl() docs before using this
         -- remaps.highlights = {
         --     rose_pine = { 
 	--	base = {
@@ -199,16 +198,16 @@ Heres the default config table
 # 🧸 Extra Goodies
 
 You can export current colorscheme to the following:
-- XResources `:lua require("themer.export.xres").write_config()`
-- Kitty `:lua require("themer.export.kitty").write_config()`
-- Alacritty `:lua require("themer.export.alacritty").write_config()`
-- Compiled Neovim colorscheme `:lua require("themer.export.nvim").write_config(require("themer.color_schemes.catppuccin"))` (PS: This one needs the color palette as the param)
+- XResources `:lua require("themer.modules.export.xres").write_config()`
+- Kitty `:lua require("themer.modules.export.kitty").write_config()`
+- Alacritty `:lua require("themer.modules.export.alacritty").write_config()`
+- Compiled Neovim colorscheme `:lua require("themer.modules.export.nvim").write_config(require("themer.color_schemes.catppuccin"))` (PS: This one needs the color palette as the param)
 
 # 🧑🏻‍🤝‍🧑🏼 Contributing
 
 ## Adding more plugin higs
 
-All plugin highlight groups are in [`core/mapper.lua`](https://github.com/ThemerCorp/themer.lua/blob/main/lua/themer/core/mapper.lua)
+All plugin highlight groups are in [`modules/core/mapper.lua`](https://github.com/ThemerCorp/themer.lua/blob/main/lua/themer/modules/core/mapper.lua)
 
 Feel free to add new plugin hig groups in `availablePlugins` table and then tweaking `config.options.plugins` to add plugin to the list.
 
@@ -303,7 +302,7 @@ Here's the palette you will need to follow
 Also add the theme name to `README` and add it to `colors/`
 
 ## Using themer to make your colorscheme plugin
-You can use `lua/themer/export/nvim.lua` to create a single file (with no dependancy on themer) and can use that for creating your colorscheme plugin easily.
+You can use `lua/themer/modules/export/nvim.lua` to create a single file (with no dependancy on themer) and can use that for creating your colorscheme plugin easily.
 Also contribute theme palette to themer, if possible.
 
 # :green_heart: Credits

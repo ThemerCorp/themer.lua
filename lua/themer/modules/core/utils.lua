@@ -58,7 +58,7 @@ end
 
 --- load a given theme
 --- @param theme table
-return function(theme)
+return function(theme, cs)
     exec("hi clear")
     if vim.fn.exists("syntax_on") then
         exec("syntax reset")
@@ -86,4 +86,6 @@ return function(theme)
     end
 
     exec("do ColorScheme")
+
+    vim.g.colors_name = cs
 end
