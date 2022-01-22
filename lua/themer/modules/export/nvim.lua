@@ -36,7 +36,7 @@ nv.generate_nv_config = function(cp)
     local conf = { "-- Put this in colors/theme_name.lua", "-- Themer Generated NeoVim Theme" }
 
     table.insert(conf, "local hig = " .. table_to_string(require("themer.modules.core.mapper")(cp)))
-    
+
     -- highlight function
     table.insert(conf, "local g, exec = vim.g, vim.cmd")
     table.insert(conf, [[local function highlight(group, color) local parts = {group}]])
