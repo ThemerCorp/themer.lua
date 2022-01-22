@@ -16,7 +16,7 @@
     <img src="https://img.shields.io/github/forks/narutoxy/themer.lua?color=%2384a0c6&labelColor=%23101415&style=for-the-badge">
 </a>
 <img src="https://img.shields.io/github/repo-size/narutoxy/themer.lua?color=%23f65b5b&labelColor=%23101415&style=for-the-badge">
-<a href="https://discord.gg/X5e3z24u">
+<a href="https://discord.gg/M8tYvn5BAG">
   <img src="https://img.shields.io/discord/916917730542764062?color=bb8fe5&labelColor=101415&style=for-the-badge"/>
 </a>
 </div>
