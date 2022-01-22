@@ -100,7 +100,7 @@ colorscheme themer_catppuccin
 | ✅				| Nord 		| `nord`			|
 | ✅ | Kurai | `kurai` |
 
-This list may not be updated. See [`lua/themer/color_schemes`](https://github.com/ThemerCorp/themer.lua/tree/main/lua/themer/color_schemes)
+This list may not be updated. See [`lua/themer/modules/themes`](https://github.com/ThemerCorp/themer.lua/tree/main/lua/themer/modules/themes)
 
 # 🧰 Configuring Themer
 Heres the default config table
@@ -202,7 +202,7 @@ You can export current colorscheme to the following:
 - XResources `:lua require("themer.modules.export.xres").write_config()`
 - Kitty `:lua require("themer.modules.export.kitty").write_config()`
 - Alacritty `:lua require("themer.modules.export.alacritty").write_config()`
-- Compiled Neovim colorscheme `:lua require("themer.modules.export.nvim").write_config(require("themer.color_schemes.catppuccin"))` (PS: This one needs the color palette as the param)
+- Compiled Neovim colorscheme `:lua require("themer.modules.export.nvim").write_config(require("themer.modules.themes.catppuccin"))` (PS: This one needs the color palette as the param)
 
 ## Using API to access colors
 You can use `colors` api to access color palette of given theme
