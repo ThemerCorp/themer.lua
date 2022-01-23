@@ -30,7 +30,6 @@
 ```lua
     use({
         "themercorp/themer.lua",
-	event = "BufEnter",
         config = function()
             require("themer").setup({
                 colorscheme = "kanagawa",
