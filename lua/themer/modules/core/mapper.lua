@@ -282,7 +282,7 @@ local function get_base(cp)
             DiagnosticWarn = { fg = cp.diagnostic.warn },
             DiagnosticInfo = { fg = cp.diagnostic.info },
             DiagnosticHint = { fg = cp.diagnostic.hint },
-            DiagnosticSignError = { link = "DiagnosticHint" },
+            DiagnosticSignError = { link = "DiagnosticError" },
             DiagnosticSignWarn = { link = "DiagnosticWarn" },
             DiagnosticSignInfo = { link = "DiagnosticInfo" },
             DiagnosticSignHint = { link = "DiagnosticHint" },
