@@ -51,7 +51,6 @@ return {
         ["fg"] = "#24292f",
         ["thumb"] = "#f0f1f3",
         ["sbar"] = "#f6f8fa",
-
     },
     ["search_result"] = { ["telescope"] = "#5cc5", ["fg"] = "#0", ["bg"] = "#fff2be" },
     ["blue"] = "#0366d6",
