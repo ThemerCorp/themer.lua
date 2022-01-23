@@ -203,7 +203,8 @@ You can export current colorscheme to the following:
 - XResources `:lua require("themer.modules.export.xres").write_config()`
 - Kitty `:lua require("themer.modules.export.kitty").write_config()`
 - Alacritty `:lua require("themer.modules.export.alacritty").write_config()`
-- Compiled Neovim colorscheme `:lua require("themer.modules.export.nvim").write_config(require("themer.modules.themes.catppuccin"))` (PS: This one needs the color palette as the param)
+- Compiled Neovim colorscheme `:lua require("themer.modules.export.nvim").write_colorscheme(require("themer.modules.themes.catppuccin"))` (PS: This one needs the color palette as the param)
+- Compiled Vim colorscheme `:lua require("themer.modules.export.vim").write_colorscheme(require("themer.modules.themes.catppuccin"))` (PS: This one also needs the color palette as the param)
 
 ## Using API to access colors
 You can use `colors` api to access color palette of given theme
@@ -211,7 +212,7 @@ You can use `colors` api to access color palette of given theme
 require("themer.modules.core.api").get_cp("catppuccin")
 ```
 
-# 🧑🏻‍🤝‍🧑🏼 Contributing
+# 🤝 Contributing
 
 ## Adding more plugin higs
 
@@ -311,9 +312,13 @@ Also add the theme name to `README` and add it to `colors/`
 
 ## Porting another vim/neovim theme
 You can use `lua/themer/modules/import/init.lua` to generate color palette and port that theme to themer
+```vim
+colorscheme my_awesome_theme
+lua require("themer.modules.import").write_colorscheme()
+```
 
 ## Using themer to make your colorscheme plugin
-You can use `lua/themer/modules/export/nvim.lua` to create a single file (with no dependancy on themer) and can use that for creating your colorscheme plugin easily.
+You can use `lua/themer/modules/export/nvim.lua` and `lua/themer/modules/export/vim.lua` to create a single vim file (with no dependancy on themer) and can use that for creating your colorscheme plugin easily.
 Also contribute theme palette to themer, if possible.
 
 # :green_heart: Credits
