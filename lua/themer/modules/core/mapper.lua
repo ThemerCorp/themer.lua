@@ -76,7 +76,8 @@ local function get_base(cp)
         ThemerNormalFloat = { fg = cp.fg, bg = cp.bg.alt },
         ThemerSelected = { bg = cp.bg.selected },
         -- search terms
-        ThemerSearchResult = { bg = cp.search_result.bg, fg = cp.search_result.fg, bold = true }, -- see :h hlsearch and do :set hlserch to see it in action
+        ThemerSearchResult = { bg = cp.search_result.bg, fg = cp.search_result.fg, bold = true },
+        -- see :h hlsearch and do :set hlserch to see it in action
 
         -- git diffs
         DiffAdd = { bg = cp.diff.add },
