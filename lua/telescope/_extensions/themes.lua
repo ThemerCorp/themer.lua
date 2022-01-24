@@ -10,38 +10,17 @@ local action_state = require("telescope.actions.state")
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 
--- Join dir paths
-local get_separator = function()
-    local is_windows
-    if jit ~= nil then
-        is_windows = jit.os == "Windows"
-    else
-        is_windows = package.config:sub(1, 1) == "\\"
-    end
-    if is_windows then
-        return "\\"
-    end
-    return "/"
-end
-
----@param tbl table
----@return string dir path
-local join_paths = function(tbl)
-    local separator = get_separator()
-    return table.concat(tbl, separator)
-end
-
 local function get_theme()
     local themes = {}
     local theme_dir = debug.getinfo(2, "S").source:sub(2)
-    theme_dir = theme_dir:gsub(join_paths({ "", "telescope", "_extensions", "themes.lua" }), "")
-    theme_dir = join_paths({ theme_dir, "themer", "modules", "themes", "" })
+    theme_dir = theme_dir:gsub("/telescope/_extensions/themes.lua", "")
+    theme_dir = theme_dir .. "/themer/modules/themes"
 
     local fd = scan.scan_dir(theme_dir)
     if fd then
         for _, file in ipairs(fd) do
             if string.find(file, "lua") then
-                table.insert(themes, (file:gsub(theme_dir .. get_separator(), ""):gsub(".lua", "")))
+                table.insert(themes, (file:gsub(theme_dir .. "/", ""):gsub(".lua", "")))
             end
         end
     end
