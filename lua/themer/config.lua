@@ -3,7 +3,6 @@ local options = {
     transparent = false,
     term_colors = true,
     dim_inactive = false,
-    telescope_mappings = {},
     styles = {
         heading = {
             h1 = {},
@@ -84,6 +83,22 @@ local options = {
         gitsigns = true,
         lsp = true,
         telescope = true,
+    },
+
+    -- Default telescope picker mappings
+    telescope_mappings = {
+      ["n"] = {
+        ["<CR>"] = "enter",
+        ["k"] = "prev_color",
+        ["j"] = "next_color",
+        ["p"] = "preview",
+      },
+      ["i"] = {
+        ["<CR>"] = "enter",
+        ["<S-Tab>"] = "prev_color",
+        ["<Tab>"] = "next_color",
+        ["<C-p>"] = "preview",
+      },
     },
 }
 
