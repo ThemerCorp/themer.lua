@@ -35,8 +35,8 @@ local function get_theme()
     local themes = {}
     local theme_dir = debug.getinfo(2, "S").source:sub(2)
     theme_dir = theme_dir:gsub(join_paths({ "", "telescope", "_extensions", "themes.lua" }), "")
-    theme_dir = join_paths({ theme_dir, "themer", "modules", "themes", ""})
-    
+    theme_dir = join_paths({ theme_dir, "themer", "modules", "themes", "" })
+
     local fd = scan.scan_dir(theme_dir)
     if fd then
         for _, file in ipairs(fd) do
