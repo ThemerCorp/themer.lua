@@ -87,18 +87,18 @@ local options = {
 
     -- Default telescope picker mappings
     telescope_mappings = {
-      ["n"] = {
-        ["<CR>"] = "enter",
-        ["k"] = "prev_color",
-        ["j"] = "next_color",
-        ["p"] = "preview",
-      },
-      ["i"] = {
-        ["<CR>"] = "enter",
-        ["<S-Tab>"] = "prev_color",
-        ["<Tab>"] = "next_color",
-        ["<C-p>"] = "preview",
-      },
+        ["n"] = {
+            ["<CR>"] = "enter",
+            ["k"] = "prev_color",
+            ["j"] = "next_color",
+            ["p"] = "preview",
+        },
+        ["i"] = {
+            ["<CR>"] = "enter",
+            ["<S-Tab>"] = "prev_color",
+            ["<Tab>"] = "next_color",
+            ["<C-p>"] = "preview",
+        },
     },
 }
 
