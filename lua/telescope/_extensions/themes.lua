@@ -1,3 +1,6 @@
+---@deps plenary
+local scan = require("plenary.scandir")
+
 local has_telescope, telescope = pcall(require, "telescope")
 if not has_telescope then
     vim.notify("Themer: The themes picker needs nvim-telescope/telescope.nvim", vim.log.levels.ERROR)
@@ -28,38 +31,20 @@ local join_paths = function(tbl)
     return table.concat(tbl, separator)
 end
 
--- Get Dir Info
-local function scandir(directory)
-    local i, t, popen = 0, {}, io.popen
-    local pfile = popen('ls "' .. directory .. '"')
-    for filename in pfile:lines() do
-        i = i + 1
-        t[i] = filename
-    end
-    pfile:close()
-    return t
-end
-
-local function insert_themes(theme_dir, themes)
-    local fd = scandir(theme_dir)
-    if fd then
-        for _, file in ipairs(fd) do
-            if string.find(file, "lua") then
-                table.insert(themes, (file:gsub(theme_dir, ""):gsub(".lua", "")))
-            end
-        end
-    end
-end
-
 local function get_theme()
     local themes = {}
     local theme_dir = debug.getinfo(2, "S").source:sub(2)
     theme_dir = theme_dir:gsub(join_paths({ "", "telescope", "_extensions", "themes.lua" }), "")
-    theme_dir = join_paths({ theme_dir, "themer", "modules", "themes" })
-    local theme_conf_dir = join_paths({ vim.fn.stdpath("config"), "lua", "themer", "modules", "themes" })
-
-    insert_themes(theme_dir, themes)
-    insert_themes(theme_conf_dir, themes)
+    theme_dir = join_paths({ theme_dir, "themer", "modules", "themes", ""})
+    
+    local fd = scan.scan_dir(theme_dir)
+    if fd then
+        for _, file in ipairs(fd) do
+            if string.find(file, "lua") then
+                table.insert(themes, (file:gsub(theme_dir .. get_separator(), ""):gsub(".lua", "")))
+            end
+        end
+    end
 
     return themes
 end
