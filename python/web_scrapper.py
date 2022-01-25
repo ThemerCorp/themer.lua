@@ -116,9 +116,9 @@ class Scrapping:
         url = (
             "https://raw.githubusercontent.com/rockerBOO/awesome-neovim/main/README.md"
         )
-        self.extract_color_schemes(
-            "https://github.com/rockerBOO/awesome-neovim/blob/main/README.md"
-        )
+        # self.extract_color_schemes(
+        #     "https://github.com/rockerBOO/awesome-neovim/blob/main/README.md"
+        # )
         self.extract_color_scheme_regex(url)
         self.dict_to_json()
         if self.get_info:
