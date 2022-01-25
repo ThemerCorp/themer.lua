@@ -77,7 +77,7 @@ class Scrapping:
             name_url = pattern.findall(i)
             # Add everything into self.contianer - OrdeeredDict
             for j in name_url:
-                self.container[f" {j[0]} "] = j[1]
+                self.container[j[0]] = j[1]
 
     def extract_color_schemes(self, url: str) -> None:
         """Extract color schemes from a given url
