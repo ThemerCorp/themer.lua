@@ -13,14 +13,14 @@ local finders = require("telescope.finders")
 local function get_theme()
     local themes = {}
     local theme_dir = debug.getinfo(2, "S").source:sub(2)
-    theme_dir = theme_dir:gsub("/telescope/_extensions/themes.lua", "")
-    theme_dir = theme_dir .. "/themer/modules/themes"
+    theme_dir = theme_dir:gsub("lua/telescope/_extensions/themes.lua", "")
+    theme_dir = theme_dir .. "lua/themer/modules/themes"
 
     local fd = scan.scan_dir(theme_dir)
     if fd then
         for _, file in ipairs(fd) do
             if string.find(file, "lua") then
-                table.insert(themes, (file:gsub(theme_dir .. "/", ""):gsub(".lua", "")))
+                table.insert(themes, (file:gsub(theme_dir .. ".", ""):gsub(".lua", "")))
             end
         end
     end
@@ -50,7 +50,7 @@ end
 
 local function preview(prompt_bufnr)
     local selection = action_state.get_selected_entry()
-    require("themer").setup({ colorscheme = selection[1] })
+    require("themer.modules.core")(selection[1])
 end
 
 local function themer(opts)
