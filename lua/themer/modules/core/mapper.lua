@@ -82,9 +82,9 @@ local function get_base(cp)
         DiffAdd = { bg = cp.diff.add },
         DiffChange = { bg = cp.diff.change },
         DiffText = { bg = cp.diff.text or cp.fg },
-        DiffDelete = { bg = cp.diff.remove },
+        DiffDelete = { bg = cp.diff.remove or cp.diff.delete },
         GitSignsAdd = { fg = cp.diff.add },
-        GitSignsDelete = { fg = cp.diff.delete },
+        GitSignsDelete = { fg = cp.diff.remove or cp.diff.delete },
         GitSignsChange = { fg = cp.diff.change },
 
         -- syntax highlighting

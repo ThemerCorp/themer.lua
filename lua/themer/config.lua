@@ -1,5 +1,5 @@
 local options = {
-    colorscheme = "rose_pine", -- default colorscheme
+    colorscheme = nil, -- default colorscheme
     transparent = false,
     term_colors = true,
     dim_inactive = false,
@@ -84,6 +84,22 @@ local options = {
         lsp = true,
         telescope = true,
     },
+
+    -- Default telescope picker mappings
+    telescope_mappings = {
+        ["n"] = {
+            ["<CR>"] = "enter",
+            ["k"] = "prev_color",
+            ["j"] = "next_color",
+            ["p"] = "preview",
+        },
+        ["i"] = {
+            ["<CR>"] = "enter",
+            ["<S-Tab>"] = "prev_color",
+            ["<Tab>"] = "next_color",
+            ["<C-p>"] = "preview",
+        },
+    },
 }
 
 --- internal: iterate given options over the default config (for internal purposes)
@@ -98,6 +114,8 @@ return function(type, opts)
         options = vim.tbl_deep_extend("force", options, opts or {})
     elseif type == "user" then
         options = vim.tbl_deep_extend("force", options, opts or {})
-        require("themer.modules.core")(options.colorscheme)
+        if options.colorscheme then
+            require("themer.modules.core")(options.colorscheme)
+        end
     end
 end

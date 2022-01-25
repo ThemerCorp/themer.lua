@@ -9,14 +9,15 @@ api.get_cp = function(cs)
     if not ok then
         vim.notify(
             string.format(
-                [[Colorscheme %s was not recognised\n
-				Please check the theme name for typos\n\n
+                [[Colorscheme %s was not recognised
+				        Please check the theme name for typos
 
-				If this is a bug, report it at https://github.com/narutoxy/themer.lua]],
+				        If this is a bug, report it at https://github.com/narutoxy/themer.lua]],
                 cs
             ),
             vim.log.levels.ERROR
         )
+        return false
     end
 
     if not (next(remaps) == nil) then
