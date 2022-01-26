@@ -100,7 +100,6 @@ local cp = {
         todo = { fg = base.base0A, bg = base.base01 },
         number = base.base09,
         comment = base.base03,
-        type = base.base0A,
         conditional = base.base0E,
     },
     built_in = {
