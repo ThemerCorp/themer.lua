@@ -1,23 +1,18 @@
 local M = {}
--- TODO: A way to display installed themes
--- TODO: Check rtp before adding (usually duplicates arent allowed)
--- TODO: Faster and cleaner themes_list retrieval
--- TODO: change prints to vim.notify
 -- TODO: a way to unify vim.g variables
 -- TODO: a way to acknowldge the real plugin authors and link to og repo
 
 local utils = require("themer.modules.installer.utils")
-
-local themes_list = utils.parse_readme()
 local data_path = vim.fn.stdpath("data").."/themer/"
 
-local pickers = require "telescope.pickers"
-local finders = require "telescope.finders"
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
 local conf = require("telescope.config").values
-local actions = require "telescope.actions"
-local action_state = require "telescope.actions.state"
+local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
 
 M.fuzzy_install = function(opts)
+	local themes_list = utils.parse_readme()
     pickers.new(opts, {
         prompt_title = "Install Themes",
         finder = finders.new_table {
@@ -27,8 +22,8 @@ M.fuzzy_install = function(opts)
         attach_mappings = function(prompt_bufnr, _map)
             actions.select_default:replace(function()
                 actions.close(prompt_bufnr)
-                local name = action_state.get_selected_entry()[1]
-				utils.install(name)
+                local theme = action_state.get_selected_entry()[1]
+				utils.install(theme)
             end)
             return true
         end,
@@ -37,7 +32,7 @@ end
 
 M.fuzzy_uninstall = function(opts)
 	if #utils.installed_themes() == 0 then
-		print("No Themes installed to delete!")
+		vim.notify("No Themes installed to delete!", "warn")
 		return
 	end
 
