@@ -116,7 +116,7 @@ cp.remaps = {
 
             -- lua
             luaTSField = { fg = cpt.lavender },
-            luaTSConstructor = { fg = cpt.flamingo }, -- For constructor calls and definitions: = { } in Lua, and Java constructors.
+            luaTSConstructor = { fg = cpt.flamingo },
 
             -- java
             javaTSConstant = { fg = cpt.teal },

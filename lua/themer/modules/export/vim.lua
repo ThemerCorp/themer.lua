@@ -1,7 +1,7 @@
 local c = {} ---Stores the colorscheme
 
 ---@class nv
-local nv = {}
+local v = {}
 
 --- highlight using :highlight
 --- @param group string
@@ -30,7 +30,7 @@ end
 ---Last step before writing to buffer
 ---@param cp the color palette
 ---@return table conlorscheme
-nv.generate_nv_colorscheme = function(cp)
+v.generate_nv_colorscheme = function(cp)
     local theme = require("themer.modules.core.mapper")(cp)
     table.insert(c, "set termguicolors")
     syntax(theme.hig_groups.themer)
@@ -47,18 +47,16 @@ nv.generate_nv_colorscheme = function(cp)
             syntax(theme.hig_groups.plugins[plugin])
         end
     end
-
-    table.insert(c, "doautocmd ColorScheme")
     return c
 end
 
 ---Writes colorscheme to a buffer
 ---@param cp the color palette
 ---@return nil
-nv.write_colorscheme = function(cp)
+v.write_colorscheme = function(cp)
     local buf = vim.api.nvim_create_buf(true, true)
-    vim.api.nvim_buf_set_name(buf, "Compiled NeoVim Theme")
-    vim.api.nvim_buf_set_lines(buf, 0, 1, true, nv.generate_nv_colorscheme(cp))
+    vim.api.nvim_buf_set_name(buf, "Compiled Vim Theme")
+    vim.api.nvim_buf_set_lines(buf, 0, 1, true, v.generate_nv_colorscheme(cp))
     vim.api.nvim_buf_set_option(buf, "modifiable", false)
     vim.api.nvim_buf_set_option(buf, "readonly", true)
     vim.api.nvim_buf_set_option(buf, "bufhidden", "wipe")
@@ -66,4 +64,4 @@ nv.write_colorscheme = function(cp)
     vim.api.nvim_exec("buffer " .. buf, false)
 end
 
-return nv
+return v
