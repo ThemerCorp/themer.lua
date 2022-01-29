@@ -3,6 +3,7 @@ local options = {
     transparent = false,
     term_colors = true,
     dim_inactive = false,
+    disable_telescope_themes = {},
     styles = {
         heading = {
             h1 = {},
