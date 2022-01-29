@@ -160,7 +160,7 @@ local function get_base(cp)
         FloatBorder = { link = "ThemerBorder" },
         Folded = { link = "ThemerNormalFloat" },
         IncSearch = cp.inc_search or { link = "ThemerSearchResult" },
-        LineNr = { link = "ThemerDimmed" },
+        LineNr = { link = "ThemerSubtle" },
         MatchParen = { link = "ThemerNormalFloat" },
         -- ModeMsg = {},
         MoreMsg = { link = "DiagnosticInfo" },
@@ -296,7 +296,7 @@ local function get_base(cp)
             DiagnosticSignInfo = { link = "DiagnosticInfo" },
             DiagnosticSignHint = { link = "DiagnosticHint" },
 
-            DiagnosticDefaultError = { link = "DiagnosticHint" },
+            DiagnosticDefaultError = { link = "DiagnosticError" },
             DiagnosticDefaultWarn = { link = "DiagnosticWarn" },
             DiagnosticDefaultInfo = { link = "DiagnosticInfo" },
             DiagnosticDefaultHint = { link = "DiagnosticHint" },
