@@ -134,7 +134,7 @@ cp.remaps = {
             TelescopePromptBorder = { fg = palette.reflex, bg = palette.void },
             TelescopeSelectionCaret = { fg = palette.nebula_void, bg = palette.void },
         },
-    }
+    },
 }
 
 return cp
