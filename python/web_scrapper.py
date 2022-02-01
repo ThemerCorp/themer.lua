@@ -72,9 +72,10 @@ class Scrapping:
         data = pattern.findall(req.text)
 
         for i in data:
-            # get Name Repo/name and url of the color scheme
-            pattern = re.compile(r"\[(.*?)\]\((.*?)\)", re.DOTALL | re.MULTILINE)
+            # ignore everything  after " - " onwards
+            pattern = re.compile(r"- \[(.*?)\]\((.*?)\)", re.DOTALL | re.MULTILINE)
             name_url = pattern.findall(i)
+
             # Add everything into self.contianer - OrdeeredDict
             for j in name_url:
                 self.container[j[0]] = j[1]
