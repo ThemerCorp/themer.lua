@@ -11,24 +11,24 @@ local function table_to_str(tbl)
     for k, v in pairs(tbl) do
         -- Check the key type (ignore any numerical keys - assume its an array)
         if type(k) == "string" then
-            result = result.."[\\\""..k.."\\\"]".."="
+            result = result .. '[\\"' .. k .. '\\"]' .. "="
         end
 
         -- Check the value type
         if type(v) == "table" then
-            result = result..table_to_str(v)
+            result = result .. table_to_str(v)
         elseif type(v) == "boolean" then
-            result = result..tostring(v)
+            result = result .. tostring(v)
         else
-            result = result.."\""..v.."\""
+            result = result .. '"' .. v .. '"'
         end
-        result = result..","
+        result = result .. ","
     end
     -- Remove leading commas from the result
     if result ~= "" then
-        result = result:sub(1, result:len()-1)
+        result = result:sub(1, result:len() - 1)
     end
-    return result.."}"
+    return result .. "}"
 end
 
 --- highlight using :highlight
@@ -89,18 +89,18 @@ end
 ---@param cp_remaps table color palette remaps
 ---@param cfg_remaps table config remaps
 ---@param cs string colorscheme name
-utils.load_user_higs = function (cp_remaps, cfg_remaps, cs)
-  if not(next(cp_remaps or {}) ==  nil) then
-    syntax(cp_remaps)
-  end
-  
-  if not(next(cfg_remaps.globals or {}) ==  nil) then
-    syntax(cfg_remaps.globals)
-  end
+utils.load_user_higs = function(cp_remaps, cfg_remaps, cs)
+    if not (next(cp_remaps or {}) == nil) then
+        syntax(cp_remaps)
+    end
 
-  if not(next(cfg_remaps[cs] or {}) ==  nil) then
-    syntax(cfg_remaps[cs])
-  end
+    if not (next(cfg_remaps.globals or {}) == nil) then
+        syntax(cfg_remaps.globals)
+    end
+
+    if not (next(cfg_remaps[cs] or {}) == nil) then
+        syntax(cfg_remaps[cs])
+    end
 end
 
 --- load a given theme
@@ -131,7 +131,7 @@ utils.load_mapper_higs = function(theme, cs)
             syntax(theme.hig_groups.plugins[plugin])
         end
     end
-    
+
     utils.load_user_higs(theme.colors.remaps or {}, config.remaps.highlights or {}, cs)
 
     exec("do ColorScheme")

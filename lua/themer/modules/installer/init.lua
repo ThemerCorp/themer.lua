@@ -53,6 +53,4 @@ M.fuzzy_uninstall = function(opts)
     }):find()
 end
 
-
-
 return M
