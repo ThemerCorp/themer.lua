@@ -1,11 +1,40 @@
+local utils = {}
+
 local g = vim.g
 local config = require("themer.config")("get")
 local exec = vim.api.nvim_command
 
+---Convert table to string
+---@param tbl table
+local function table_to_str(tbl)
+    local result = "{"
+    for k, v in pairs(tbl) do
+        -- Check the key type (ignore any numerical keys - assume its an array)
+        if type(k) == "string" then
+            result = result.."[\\\""..k.."\\\"]".."="
+        end
+
+        -- Check the value type
+        if type(v) == "table" then
+            result = result..table_to_str(v)
+        elseif type(v) == "boolean" then
+            result = result..tostring(v)
+        else
+            result = result.."\""..v.."\""
+        end
+        result = result..","
+    end
+    -- Remove leading commas from the result
+    if result ~= "" then
+        result = result:sub(1, result:len()-1)
+    end
+    return result.."}"
+end
+
 --- highlight using :highlight
 --- @param group string
 --- @param color table
-local function highlight(group, color)
+utils.highlight_legacy = function(group, color)
     local parts = { group }
     parts[#parts + 1] = color.fg and "guifg=" .. color.fg or nil
     parts[#parts + 1] = color.bg and "guibg=" .. color.bg or nil
@@ -22,7 +51,7 @@ end
 --- @param tbl table
 local function syntax(tbl)
     for hl_group, hl_value in pairs(tbl) do
-        highlight(hl_group, hl_value)
+        utils.highlight_legacy(hl_group, hl_value)
     end
 end
 
@@ -56,9 +85,27 @@ local function terminal(clrs)
     g.terminal_color_15 = clrs.fg
 end
 
+---Load user and cp remaps hig groups
+---@param cp_remaps table color palette remaps
+---@param cfg_remaps table config remaps
+---@param cs string colorscheme name
+utils.load_user_higs = function (cp_remaps, cfg_remaps, cs)
+  if not(next(cp_remaps or {}) ==  nil) then
+    syntax(cp_remaps)
+  end
+  
+  if not(next(cfg_remaps.globals or {}) ==  nil) then
+    syntax(cfg_remaps.globals)
+  end
+
+  if not(next(cfg_remaps[cs] or {}) ==  nil) then
+    syntax(cfg_remaps[cs])
+  end
+end
+
 --- load a given theme
 --- @param theme table
-return function(theme, cs)
+utils.load_mapper_higs = function(theme, cs)
     exec("hi clear")
     if vim.fn.exists("syntax_on") then
         exec("syntax reset")
@@ -84,8 +131,12 @@ return function(theme, cs)
             syntax(theme.hig_groups.plugins[plugin])
         end
     end
+    
+    utils.load_user_higs(theme.colors.remaps or {}, config.remaps.highlights or {}, cs)
 
     exec("do ColorScheme")
 
     vim.g.colors_name = cs
 end
+
+return utils

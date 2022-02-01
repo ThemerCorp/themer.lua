@@ -428,13 +428,6 @@ end
 --- @return table
 local function get_hig_groups(cp, cs)
     local hig_groups = get_base(cp)
-    hig_groups = vim.tbl_deep_extend(
-        "force",
-        hig_groups or {},
-        config.remaps.highlights.globals or {},
-        cp.remaps or {},
-        config.remaps.highlights[cs] or {}
-    )
     return hig_groups
 end
 
