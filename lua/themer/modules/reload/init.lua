@@ -78,7 +78,7 @@ reload.load_color_palette = function()
         }
         cp = vim.tbl_deep_extend("force", default_cp, cp)
         local theme = require("themer.modules.core.mapper")(cp, "reload_colorscheme")
-        require("themer.modules.core.utils")(theme, "reload_colorscheme")
+        require("themer.modules.core.utils").load_mapper_higs(theme, "reload_colorscheme")
     end
 end
 

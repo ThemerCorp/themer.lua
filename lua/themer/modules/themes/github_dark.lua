@@ -54,5 +54,5 @@ return {
     },
     ["search_result"] = { ["telescope"] = "#79b8ff", ["fg"] = "#0", ["bg"] = "#404030" },
     ["blue"] = "#2188ff",
-    ["dimmed"] = { ["inactive"] = "#24292e", ["subtle"] = "#24292e" },
+    ["dimmed"] = { ["inactive"] = "#666666", ["subtle"] = "#666666" },
 }
