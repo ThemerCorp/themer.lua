@@ -9,7 +9,7 @@ local function remap_styles(cp)
             h1 = { style = "bold", fg = cp.heading.h1 or cp.fg },
             h2 = { style = "bold", fg = cp.heading.h2 or cp.fg },
         },
-       ["function"] = { fg = cp.syntax["function"] },
+        ["function"] = { fg = cp.syntax["function"] },
         functionBuiltIn = { fg = cp.built_in["function"] },
         variable = { fg = cp.syntax.variable },
         variableBuiltIn = { fg = cp.built_in.variable },
