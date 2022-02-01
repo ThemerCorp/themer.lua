@@ -10,9 +10,9 @@ api.get_cp = function(cs)
         vim.notify(
             string.format(
                 [[Colorscheme %s was not recognised
-				        Please check the theme name for typos
+Please check the theme name for typos
 
-				        If this is a bug, report it at https://github.com/narutoxy/themer.lua]],
+If this is a bug, report it at https://github.com/narutoxy/themer.lua]],
                 cs
             ),
             vim.log.levels.ERROR
