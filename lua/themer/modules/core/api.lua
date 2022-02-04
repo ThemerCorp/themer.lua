@@ -1,7 +1,7 @@
 local api = {}
 
---- returns the colorscheme array for the given colorscheme
---- @param cs string
+---Returns the colorscheme array for the given colorscheme
+---@param cs string
 api.get_cp = function(cs)
   local ok, csc = pcall(require, "themer.modules.themes." .. cs)
   local remaps = require("themer.config")("get").remaps.palette[cs] or {}

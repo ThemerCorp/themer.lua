@@ -50,9 +50,8 @@ v.generate_nv_colorscheme = function(cp)
   return c
 end
 
----Writes colorscheme to a buffer
----@param cp the color palette
----@return nil
+---Writes compiled vim colorscheme to a buffer
+---@param cp table color palette
 v.write_colorscheme = function(cp)
   local buf = vim.api.nvim_create_buf(true, true)
   vim.api.nvim_buf_set_name(buf, "Compiled Vim Theme")

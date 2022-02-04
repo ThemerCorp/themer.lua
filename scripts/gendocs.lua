@@ -10,11 +10,12 @@ docs.test = function()
     "./lua/themer/modules/import/init.lua",
     "./lua/themer/modules/export/nvim.lua",
     "./lua/themer/modules/export/vim.lua",
-    "./lua/themer/modules/export/xres.lua",
+    "./lua/themer/modules/export/xresources.lua",
     "./lua/themer/modules/export/kitty.lua",
     "./lua/themer/modules/export/alacritty.lua",
     "./lua/themer/modules/core/api.lua",
     "./lua/themer/modules/core/init.lua",
+    "./lua/themer/modules/reload/init.lua"
   }
 
   local output_file = "./doc/themer.txt"

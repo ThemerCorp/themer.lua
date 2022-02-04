@@ -135,6 +135,7 @@ local generate_cp = function()
   return cp
 end
 
+--- Write current colorscheme in a new buffer with the themer palette
 import.write_colorscheme = function()
   local buf = vim.api.nvim_create_buf(true, true)
   vim.api.nvim_buf_set_name(buf, vim.g.colors_name)

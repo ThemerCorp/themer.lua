@@ -53,8 +53,7 @@ kitty.generate_kitty_config = function()
   return config
 end
 
----Writes config to a buffer
----@return nil
+---Writes kitty config to a buffer
 kitty.write_config = function()
   local buf = vim.api.nvim_create_buf(true, true)
   vim.api.nvim_buf_set_name(buf, "Kitty")

@@ -11,6 +11,8 @@ local color_from_hl = function(hl_name, value)
   return color
 end
 
+---Returns the hex of the term color
+---@param number number
 ---@return string term color
 local get_term_color = function(number)
   local col = vim.g["terminal_color_" .. number]
@@ -53,8 +55,7 @@ alacritty.generate_alacritty_config = function()
   return config
 end
 
----Writes config to a buffer
----@return nil
+---Writes alacritty config to a buffer
 alacritty.write_config = function()
   local buf = vim.api.nvim_create_buf(true, true)
   vim.api.nvim_buf_set_name(buf, "alacritty")
