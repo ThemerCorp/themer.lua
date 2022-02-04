@@ -49,6 +49,11 @@ local generate_cp = function()
         cyan = vim.g.terminal_color_6,
 
         fg = color_from_hl("Normal", "foreground"),
+        gitsigns = {
+            add = color_from_hl("GitSignsAdd", "foreground"),
+            remove = color_from_hl("GitSignsDelete", "foreground"),
+            change = color_from_hl("GitSignsChange", "foreground"),
+        },
         diff = {
             add = color_from_hl("DiffAdd", "background"),
             remove = color_from_hl("DiffDelete", "background"),
