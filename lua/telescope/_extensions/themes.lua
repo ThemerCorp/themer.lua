@@ -30,9 +30,9 @@ local function get_theme()
     --     end
     -- end
     local themes = vim.fn.getcompletion("themer_", "color")
-    
+
     for i = 1, #themes do
-      themes[i] = themes[i]:gsub("themer_", "")
+        themes[i] = themes[i]:gsub("themer_", "")
     end
 
     return themes
