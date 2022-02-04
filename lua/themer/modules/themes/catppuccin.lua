@@ -108,27 +108,23 @@ local cp = {
 }
 
 cp.remaps = {
-  plugins = {
-    treesitter = {
-      -- bash
-      bashTSFuncBuiltin = { fg = cpt.red, style = "italic" },
-      bashTSParameter = { fg = cpt.yellow, style = "italic" },
+  -- bash
+  bashTSFuncBuiltin = { fg = cpt.red, style = "italic" },
+  bashTSParameter = { fg = cpt.yellow, style = "italic" },
 
-      -- lua
-      luaTSField = { fg = cpt.lavender },
-      luaTSConstructor = { fg = cpt.flamingo },
+  -- lua
+  luaTSField = { fg = cpt.lavender },
+  luaTSConstructor = { fg = cpt.flamingo },
 
-      -- java
-      javaTSConstant = { fg = cpt.teal },
+  -- java
+  javaTSConstant = { fg = cpt.teal },
 
-      -- typescript
-      typescriptTSProperty = { fg = cpt.lavender, style = "italic" }, -- Same as TSField.
+  -- typescript
+  typescriptTSProperty = { fg = cpt.lavender, style = "italic" }, -- Same as TSField.
 
-      -- css
-      cssTSType = { fg = cpt.lavender },
-      cssTSProperty = { fg = cpt.yellow, style = "italic" }, -- Same as TSField.
-    },
-  },
+  -- css
+  cssTSType = { fg = cpt.lavender },
+  cssTSProperty = { fg = cpt.yellow, style = "italic" }, -- Same as TSField.
 }
 
 return cp
