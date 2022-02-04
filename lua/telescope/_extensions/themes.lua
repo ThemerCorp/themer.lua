@@ -8,6 +8,7 @@ local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 
 local function get_theme()
+  local disable_themes = require("themer.config")("get").disable_telescope_themes
   -- local themes = {}
   -- local theme_dir = debug.getinfo(2, "S").source:sub(2)
   -- theme_dir = theme_dir:gsub("lua/telescope/_extensions/themes.lua", "")
@@ -27,12 +28,16 @@ local function get_theme()
   --     end
   -- end
   local themes = vim.fn.getcompletion("themer_", "color")
+  local sorted_themes = {}
 
   for i = 1, #themes do
-    themes[i] = themes[i]:gsub("themer_", "")
+    local theme = themes[i]:gsub("themer_", "")
+    if not vim.tbl_contains(disable_themes, theme) then
+      table.insert(sorted_themes, theme)
+    end
   end
 
-  return themes
+  return sorted_themes
 end
 
 local function enter(prompt_bufnr)
