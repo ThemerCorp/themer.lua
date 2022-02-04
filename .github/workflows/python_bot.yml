@@ -1,7 +1,9 @@
 name: update colorscheme list (installer)
 
-on: workflow_dispatch
-
+on: 
+  workflow_dispatch:
+  schedule:
+    - cron: '0 1 * * *'
 jobs:
   update_list:
     runs-on: ubuntu-latest
