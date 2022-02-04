@@ -8,16 +8,16 @@
 <h2> ━━━━━━  ❖  ━━━━━━ </h2>
 
 <!-- BADGES -->
-<a href="https://github.com/neovim/neovim"> <img src="https://img.shields.io/badge/requires-neovim%200.6%2B-green?color=%238dc776&labelColor=%23101415&style=for-the-badge&logo=neovim"> </a>
+<a href="https://github.com/neovim/neovim"> <img src="https://img.shields.io/badge/requires-neovim%200.6%2B-green?color=76946A&labelColor=16161D&style=for-the-badge&logo=neovim"> </a>
 <a href="https://github.com/narutoxy/themer.lua/stargazers">
-    <img src="https://img.shields.io/github/stars/narutoxy/themer.lua?color=%238dc776&labelColor=%23101415&style=for-the-badge">
+    <img src="https://img.shields.io/github/stars/narutoxy/themer.lua?color=6A9589&labelColor=16161D&style=for-the-badge">
 </a>
 <a href="https://github.com/narutoxy/themer.lua/network/members/">
-    <img src="https://img.shields.io/github/forks/narutoxy/themer.lua?color=%2384a0c6&labelColor=%23101415&style=for-the-badge">
+    <img src="https://img.shields.io/github/forks/narutoxy/themer.lua?color=6A9589&labelColor=16161D&style=for-the-badge">
 </a>
-<img src="https://img.shields.io/github/repo-size/narutoxy/themer.lua?color=%23f65b5b&labelColor=%23101415&style=for-the-badge">
+<img src="https://img.shields.io/github/repo-size/narutoxy/themer.lua?color=C34043&labelColor=16161D&style=for-the-badge">
 <a href="https://discord.gg/M8tYvn5BAG">
-  <img src="https://img.shields.io/discord/916917730542764062?color=bb8fe5&labelColor=101415&style=for-the-badge"/>
+  <img src="https://img.shields.io/discord/916917730542764062?color=2D4F67&labelColor=16161D&style=for-the-badge"/>
 </a>
 </div>
 
