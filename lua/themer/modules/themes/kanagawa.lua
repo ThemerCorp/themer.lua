@@ -104,7 +104,7 @@ local cp = {
         operator = colors.boatYellow2,
         preproc = colors.surimiOrange,
         constant = colors.surimiOrange,
-        todo = { fg = colors.waveBlue1, bg = colors.dragonBlue },
+        todo = { bg = "NONE", fg = colors.dragonBlue },
         number = colors.sakuraPink,
         comment = colors.fujiGray,
         type = colors.waveAqua2,

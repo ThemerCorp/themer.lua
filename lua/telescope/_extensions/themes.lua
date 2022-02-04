@@ -11,23 +11,28 @@ local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 
 local function get_theme()
-    local themes = {}
-    local theme_dir = debug.getinfo(2, "S").source:sub(2)
-    theme_dir = theme_dir:gsub("lua/telescope/_extensions/themes.lua", "")
-    theme_dir = theme_dir .. "lua/themer/modules/themes"
+    -- local themes = {}
+    -- local theme_dir = debug.getinfo(2, "S").source:sub(2)
+    -- theme_dir = theme_dir:gsub("lua/telescope/_extensions/themes.lua", "")
+    -- theme_dir = theme_dir .. "lua/themer/modules/themes"
 
-    local fd = scan.scan_dir(theme_dir)
+    -- local fd = scan.scan_dir(theme_dir)
 
-    if fd then
-        for _, file in ipairs(fd) do
-            if string.find(file, "lua") then
-                local theme = file:gsub(theme_dir .. ".", ""):gsub(".lua", "")
-                local disable_themes = require("themer.config")("get").disable_telescope_themes
-                if not vim.tbl_contains(disable_themes, theme) then
-                    table.insert(themes, theme)
-                end
-            end
-        end
+    -- if fd then
+    --     for _, file in ipairs(fd) do
+    --         if string.find(file, "lua") then
+    --             local theme = file:gsub(theme_dir .. ".", ""):gsub(".lua", "")
+    --             local disable_themes = require("themer.config")("get").disable_telescope_themes
+    --             if not vim.tbl_contains(disable_themes, theme) then
+    --                 table.insert(themes, theme)
+    --             end
+    --         end
+    --     end
+    -- end
+    local themes = vim.fn.getcompletion("themer_", "color")
+    
+    for i = 1, #themes do
+      themes[i] = themes[i]:gsub("themer_", "")
     end
 
     return themes
