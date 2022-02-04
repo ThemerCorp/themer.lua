@@ -1,6 +1,3 @@
----@deps plenary
-local scan = require("plenary.scandir")
-
 local has_telescope, telescope = pcall(require, "telescope")
 if not has_telescope then
   vim.notify("Themer: The themes picker needs nvim-telescope/telescope.nvim", vim.log.levels.ERROR)
@@ -58,13 +55,16 @@ local function prev_color(prompt_bufnr)
   require("themer").setup({ colorscheme = selection[1] })
 end
 
+-- selene: allow(unused_variable)
 local function preview(prompt_bufnr)
   local selection = action_state.get_selected_entry()
   require("themer.modules.core")(selection[1])
 end
 
+-- selene: allow(unused_variable)
 local function themer(opts)
   local colors = get_theme()
+  -- selene: allow(shadowing)
   local opts = require("telescope.themes").get_dropdown({
     prompt_title = "Themer ColorScheme",
     results_title = "Change colorscheme",

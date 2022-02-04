@@ -426,9 +426,8 @@ end
 
 --- @return table the final integrations table
 --- @param cp table
---- @param cs string
 --- @return table
-local function get_hig_groups(cp, cs)
+local function get_hig_groups(cp)
   local hig_groups = get_base(cp)
   return hig_groups
 end
@@ -445,12 +444,11 @@ end
 
 ---@return table theme table containing highlights
 ---@param cp table
----@param cs string
 ---@return table
-return function(cp, cs)
+return function(cp)
   local theme = {}
   theme.colors = cp
-  theme.hig_groups = get_hig_groups(cp, cs)
+  theme.hig_groups = get_hig_groups(cp)
   theme.properties = get_properties(cp)
   return theme
 end

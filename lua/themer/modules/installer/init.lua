@@ -3,7 +3,6 @@ local M = {}
 -- TODO: a way to acknowldge the real plugin authors and link to og repo
 
 local utils = require("themer.modules.installer.utils")
-local data_path = vim.fn.stdpath("data") .. "/themer/"
 
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
@@ -19,6 +18,7 @@ M.fuzzy_install = function(opts)
       results = vim.tbl_keys(themes_list),
     }),
     sorter = conf.generic_sorter(opts),
+    -- selene: allow(unused_variable)
     attach_mappings = function(prompt_bufnr, _map)
       actions.select_default:replace(function()
         actions.close(prompt_bufnr)
@@ -42,6 +42,7 @@ M.fuzzy_uninstall = function(opts)
       results = utils.installed_themes(),
     }),
     sorter = conf.generic_sorter(opts),
+    -- selene: allow(unused_variable)
     attach_mappings = function(prompt_bufnr, _map)
       actions.select_default:replace(function()
         actions.close(prompt_bufnr)
