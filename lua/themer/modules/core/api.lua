@@ -5,6 +5,7 @@ local api = {}
 api.get_cp = function(cs)
   local ok, csc = pcall(require, "themer.modules.themes." .. cs)
   local remaps = require("themer.config")("get").remaps.palette[cs] or {}
+  local remaps_global = require("themer.config")("get").remaps.palette.globals or {}
 
   if not ok then
     vim.notify(
@@ -20,8 +21,8 @@ If this is a bug, report it at https://github.com/narutoxy/themer.lua]],
     return false
   end
 
-  if not (next(remaps) == nil) then
-    return vim.tbl_deep_extend("force", csc, remaps)
+  if not (next(remaps or remaps_global) == nil) then
+    return vim.tbl_deep_extend("force", csc, remaps_global, remaps)
   else
     return csc
   end

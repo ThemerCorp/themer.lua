@@ -30,7 +30,7 @@ return {
     ["variable"] = "#0",
     ["number"] = "#d27e99",
     ["statement"] = "#957fb8",
-    ["todo"] = { ["bg"] = "#658594", ["fg"] = "#223249" },
+    ["todo"] = { ["fg"] = "#658594", ["bg"] = "#223249" },
     ["function"] = "#7e9cd8",
     ["punctuation"] = "#9cabca",
     ["struct"] = "#7aa89f",
