@@ -103,7 +103,7 @@ local options = {
   },
 }
 
---- [[ 
+--- [[
 --- internal: iterate given options over the default config (for internal purposes)
 --- user: iterate given options over the default config and loads the colorscheme
 --- get: returns the options

@@ -15,7 +15,7 @@ docs.test = function()
     "./lua/themer/modules/export/alacritty.lua",
     "./lua/themer/modules/core/api.lua",
     "./lua/themer/modules/core/init.lua",
-    "./lua/themer/modules/reload/init.lua"
+    "./lua/themer/modules/reload/init.lua",
   }
 
   local output_file = "./doc/themer.txt"
