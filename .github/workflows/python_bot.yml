@@ -15,8 +15,8 @@ jobs:
           pip3 install pipenv
       - name: Update the list
         run: |
-          cd python/
-          pipenv install
+          cd python
+          pipenv install --python python3
           pipenv run python3 -m web_scrapper
       - name: Push Changes
         env:
