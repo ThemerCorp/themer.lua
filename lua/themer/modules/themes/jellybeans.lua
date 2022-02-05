@@ -55,4 +55,7 @@ return {
   ["fg"] = "#e8e8d3",
   ["blue"] = "#7aa2f7",
   ["diff"] = { ["add"] = "#437019", ["text"] = "#0", ["change"] = "#2b5b77", ["remove"] = "#700009" },
+  ["remaps"] = {
+    LineNr = "#606060",
+  },
 }
