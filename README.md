@@ -35,11 +35,11 @@
                 colorscheme = "kanagawa",
                 styles = {
 			comment = { style = 'italic' },
-                  	["function"] = { style = 'italic' }, 
-                   	functionbuiltin = { style = 'italic' }, 
-                   	variable = { style = 'italic' }, 
-                    	variableBuiltIn = { style = 'italic' }, 
-                  	parameter  = { style = 'italic' }, 
+                  	["function"] = { style = 'italic' },
+                   	functionbuiltin = { style = 'italic' },
+                   	variable = { style = 'italic' },
+                    	variableBuiltIn = { style = 'italic' },
+                  	parameter  = { style = 'italic' },
                 },
             })
         end
@@ -57,11 +57,11 @@ lua << EOF
             require("themer").setup({
                 colorscheme = "kanagawa",
                 styles = {
-                  	["function"] = { style = 'italic' }, 
-                   	functionbuiltin = { style = 'italic' }, 
-                   	variable = { style = 'italic' }, 
-                    	variableBuiltIn = { style = 'italic' }, 
-                  	parameter  = { style = 'italic' }, 
+                  	["function"] = { style = 'italic' },
+                   	functionbuiltin = { style = 'italic' },
+                   	variable = { style = 'italic' },
+                    	variableBuiltIn = { style = 'italic' },
+                  	parameter  = { style = 'italic' },
                 },
             })
 EOF
@@ -99,6 +99,7 @@ colorscheme themer_catppuccin
 | ✅				| One Dark 		| `onedark`			|
 | ✅				| Nord 		| `nord`			|
 | ✅ | Kurai | `kurai` |
+| ✅ | Amora | `amora` |
 
 This list may not be updated. See [`lua/themer/modules/themes`](https://github.com/ThemerCorp/themer.lua/tree/main/lua/themer/modules/themes)
 
@@ -167,7 +168,7 @@ Heres the default config table
         --     }
         -- },
         -- remaps.highlights = {
-        --     rose_pine = { 
+        --     rose_pine = {
 	--	base = {
         --     	  Normal = { bg = "#000000" }
        	--	},
