@@ -99,7 +99,6 @@ colorscheme themer_catppuccin
 | ✅				| One Dark 		| `onedark`			|
 | ✅				| Nord 		| `nord`			|
 | ✅ | Kurai | `kurai` |
-| ✅ | Amora | `amora` |
 
 This list may not be updated. See [`lua/themer/modules/themes`](https://github.com/ThemerCorp/themer.lua/tree/main/lua/themer/modules/themes)
 
