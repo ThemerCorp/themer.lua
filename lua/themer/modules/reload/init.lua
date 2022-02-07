@@ -1,5 +1,6 @@
 local reload = {}
 
+--- Load the autocmds. Run this to start reload, whenever you leave insert mode, the colorscheme gets reloaded
 reload.load_au = function()
   vim.cmd([[
     augroup themer_reload

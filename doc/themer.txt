@@ -1,0 +1,66 @@
+================================================================================
+init.setup({opts})                                              *init.setup()*
+    Load the theme with given config and load installed themes
+
+
+    Parameters: ~
+        {opts} (table)
+
+
+
+================================================================================
+
+================================================================================
+import.write_colorscheme()                        *import.write_colorscheme()*
+    Write current colorscheme in a new buffer with the themer palette
+
+
+
+
+================================================================================
+
+================================================================================
+
+================================================================================
+xres                                                                    *xres*
+
+
+
+xres.write_config()                                      *xres.write_config()*
+    Writes xresources config to a buffer
+
+
+
+
+================================================================================
+alacritty                                                          *alacritty*
+
+
+
+alacritty.write_config()                            *alacritty.write_config()*
+    Writes alacritty config to a buffer
+
+
+
+
+================================================================================
+api.get_cp({cs})                                                *api.get_cp()*
+    Returns the colorscheme array for the given colorscheme
+
+
+    Parameters: ~
+        {cs} (string)
+
+
+
+================================================================================
+
+================================================================================
+reload.load_au()                                            *reload.load_au()*
+    Load the autocmds. Run this to start reload, whenever you leave insert
+    mode, the colorscheme gets reloaded
+
+
+
+
+ vim:tw=78:ts=8:ft=help:norl:

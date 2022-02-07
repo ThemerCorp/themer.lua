@@ -104,12 +104,14 @@ local options = {
   },
 }
 
+--- [[
 --- internal: iterate given options over the default config (for internal purposes)
 --- user: iterate given options over the default config and loads the colorscheme
 --- get: returns the options
+--- ]]
 --- @param type string
 --- @param opts table
-return function(type, opts)
+local setup = function(type, opts)
   if type == "get" then
     return options
   elseif type == "internal" then
@@ -121,3 +123,5 @@ return function(type, opts)
     end
   end
 end
+
+return setup
