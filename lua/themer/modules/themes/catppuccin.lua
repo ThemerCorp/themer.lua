@@ -108,6 +108,7 @@ local cp = {
 }
 
 cp.remaps = {
+  plugins = { treesitter = {
   -- bash
   bashTSFuncBuiltin = { fg = cpt.red, style = "italic" },
   bashTSParameter = { fg = cpt.yellow, style = "italic" },
@@ -125,6 +126,7 @@ cp.remaps = {
   -- css
   cssTSType = { fg = cpt.lavender },
   cssTSProperty = { fg = cpt.yellow, style = "italic" }, -- Same as TSField.
+  },}
 }
 
 return cp

@@ -168,7 +168,7 @@ Heres the default config table
         -- },
         -- remaps.highlights = {
         --     rose_pine = { 
-	--	base = {
+	      --	base = {
         --     	  Normal = { bg = "#000000" }
        	--	},
        	--     }

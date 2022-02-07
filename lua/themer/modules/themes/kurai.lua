@@ -112,23 +112,29 @@ local cp = {
 }
 
 cp.remaps = {
-  CmpItemAbbrDeprecated = { fg = palette.wild_rose },
-  CmpItemAbbrMatch = { fg = palette.nebula_vibrant },
-  CmpItemAbbrMatchFuzzy = { fg = palette.nebula_vibrant },
-  CmpItemMenu = { fg = palette.summer_grass },
-  TelescopeSelection = { bg = palette.steel },
-  TelescopeMatching = { bg = palette.water_splash },
-  TelescopeBorder = { fg = palette.void, bg = palette.void },
-  TelescopePromptCounter = { fg = palette.nebula_vibrant },
-  TelescopePromptPrefix = { fg = palette.fresh_orange },
-  TelescopeResultsTitle = { fg = palette.void, bg = palette.water_wave },
-  TelescopePreviewTitle = { fg = palette.void, bg = palette.spring_grass },
-  TelescopePromptTitle = { fg = palette.void, bg = palette.dry_sand },
-  TelescopePreviewNormal = { bg = palette.void },
-  TelescopeResultsNormal = { bg = palette.void },
-  TelescopePromptNormal = { fg = palette.reflex, bg = palette.void },
-  TelescopePromptBorder = { fg = palette.reflex, bg = palette.void },
-  TelescopeSelectionCaret = { fg = palette.nebula_void, bg = palette.void },
+  plugins = {
+    cmp = {
+      CmpItemAbbrDeprecated = { fg = palette.wild_rose },
+      CmpItemAbbrMatch = { fg = palette.nebula_vibrant },
+      CmpItemAbbrMatchFuzzy = { fg = palette.nebula_vibrant },
+      CmpItemMenu = { fg = palette.summer_grass },
+    },
+    telescope = {
+      TelescopeSelection = { bg = palette.steel },
+      TelescopeMatching = { bg = palette.water_splash },
+      TelescopeBorder = { fg = palette.void, bg = palette.void },
+      TelescopePromptCounter = { fg = palette.nebula_vibrant },
+      TelescopePromptPrefix = { fg = palette.fresh_orange },
+      TelescopeResultsTitle = { fg = palette.void, bg = palette.water_wave },
+      TelescopePreviewTitle = { fg = palette.void, bg = palette.spring_grass },
+      TelescopePromptTitle = { fg = palette.void, bg = palette.dry_sand },
+      TelescopePreviewNormal = { bg = palette.void },
+      TelescopeResultsNormal = { bg = palette.void },
+      TelescopePromptNormal = { fg = palette.reflex, bg = palette.void },
+      TelescopePromptBorder = { fg = palette.reflex, bg = palette.void },
+      TelescopeSelectionCaret = { fg = palette.nebula_void, bg = palette.void },
+    },
+  },
 }
 
 return cp

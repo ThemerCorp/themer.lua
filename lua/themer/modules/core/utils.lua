@@ -58,24 +58,6 @@ local function terminal(clrs)
   g.terminal_color_15 = clrs.fg
 end
 
----Load user and cp remaps hig groups
----@param cp_remaps table color palette remaps
----@param cfg_remaps table config remaps
----@param cs string colorscheme name
-utils.load_user_higs = function(cp_remaps, cfg_remaps, cs)
-  if not (next(cp_remaps or {}) == nil) then
-    syntax(cp_remaps)
-  end
-
-  if not (next(cfg_remaps.globals or {}) == nil) then
-    syntax(cfg_remaps.globals)
-  end
-
-  if not (next(cfg_remaps[cs] or {}) == nil) then
-    syntax(cfg_remaps[cs])
-  end
-end
-
 --- load a given theme
 --- @param theme table
 utils.load_mapper_higs = function(theme, cs)
@@ -104,8 +86,6 @@ utils.load_mapper_higs = function(theme, cs)
       syntax(theme.hig_groups.plugins[plugin])
     end
   end
-
-  utils.load_user_higs(theme.colors.remaps or {}, config.remaps.highlights or {}, cs)
 
   exec("do ColorScheme")
 

@@ -426,9 +426,17 @@ end
 
 --- @return table the final integrations table
 --- @param cp table
+--- @param cs string
 --- @return table
-local function get_hig_groups(cp)
+local function get_hig_groups(cp, cs)
   local hig_groups = get_base(cp)
+  hig_groups = vim.tbl_deep_extend(
+   "force",
+   hig_groups or {},
+   cp.remaps or {},
+   config.remaps.highlights.globals or {},
+   config.remaps.highlights[cs] or {}
+  )
   return hig_groups
 end
 
@@ -444,11 +452,12 @@ end
 
 ---@return table theme table containing highlights
 ---@param cp table
+---@param cs string
 ---@return table
-return function(cp)
+return function(cp, cs)
   local theme = {}
   theme.colors = cp
-  theme.hig_groups = get_hig_groups(cp)
+  theme.hig_groups = get_hig_groups(cp, cs)
   theme.properties = get_properties(cp)
   return theme
 end

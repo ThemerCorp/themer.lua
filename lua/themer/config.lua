@@ -59,10 +59,11 @@ local options = {
     --     	fg = "#000000"
     --     }
     -- },
-    -- would recommend to look into vim.api.nvim_set_hl() docs before using this
     -- remaps.highlights = {
     --     rose_pine = {
-    --     	Normal = { bg = "#000000" }
+    --     	base = {
+    --     	  Normal = { bg = "#000000" }
+    --      },
     --     }
     -- },
     --
