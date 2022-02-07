@@ -60,7 +60,7 @@ local cp = {
     change = base.sun,
   },
 	-- cursorlinenr = base.line,
-  accent = base.line,
+  accent = base.base0D,
   search_result = { fg = base.darker_black, bg = base.red, telescope = base.darker_black },
   match = base.lightbg2,
   dimmed = {
