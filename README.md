@@ -193,6 +193,7 @@ Heres the default config table
         lsp = true,
         telescope = true,
     },
+    enable_installer = false, -- enable installer module
 }
 ```
 
@@ -213,10 +214,21 @@ Telescope themes
 ## Reload
 While developing your own colorscheme with themer, you can use the `reload` module to reload the colors on the fly.
 
-To start the reload module
-```vim
-lua require("themer.modules.reload").load_au()
+To start the reload module `:ThemerReload` and start editing. 
+Whenever you leave Insert mode, themer will try to load the theme as per table returned by the current buffer lua file.
+
+## Installer
+You can use themer to install other themes which are yet to be ported to themer (or can just port them with import api to themer 😉)
+
+To enable installer add this to your config
+```lua
+require("themer").setup({ enable_installer = true })
 ```
+
+You can use `:ThemerInstall` to browse and install themes. (using telescope 🔭)
+And can do `:ThemerUnInstall` to uninstall installed themes.
+
+Themer will load installed themes along with setup.
 
 ## Exporting theme to other stuff
 You can export current colorscheme to the following:
