@@ -1,7 +1,7 @@
 local base = {
   white = "#D3C6AA",
   darker_black = "#272f35",
-  black = "#2b3339", --  nvim bg
+  black = "#2b3339",
   black2 = "#323a40",
   one_bg = "#333b41",
   one_bg2 = "#363e44",
@@ -13,7 +13,7 @@ local base = {
   red = "#e67e80",
   baby_pink = "#ce8196",
   pink = "#ff75a0",
-  line = "#3a4248", -- for lines like vertsplit
+  line = "#3a4248",
   green = "#83c092",
   vibrant_green = "#a7c080",
   nord_blue = "#78b4ac",
@@ -49,7 +49,6 @@ local base = {
 }
 
 local cp = {
-  -- Legacy colors for compatibility
   red = base.red,
   yellow = base.yellow,
   orange = base.orange,
@@ -58,7 +57,6 @@ local cp = {
   green = base.green,
   cyan = base.teal,
 
-  -- The new shiny boy
   directory = base.folder_bg,
   fg = base.white,
   diff = {

@@ -11,8 +11,9 @@ reload.load_au = function()
 end
 
 reload.load_color_palette = function()
-  local ok, cp = pcall(loadstring(table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false))))
-  if ok and cp ~= nil then
+  local text = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), "\n")
+  local ok, cp = pcall(loadstring(text))
+  if ok then
     local default_cp = {
       ["border"] = "#0",
       ["uri"] = "#80a0ff",
@@ -77,7 +78,7 @@ reload.load_color_palette = function()
       ["yellow"] = "#C0A36E",
       ["cyan"] = "#6A9589",
     }
-    cp = vim.tbl_deep_extend("force", default_cp, cp)
+    cp = vim.tbl_deep_extend("force", default_cp, cp or {})
     local theme = require("themer.modules.core.mapper")(cp, "reload_colorscheme")
     require("themer.modules.core.utils").load_mapper_higs(theme, "reload_colorscheme")
   end
