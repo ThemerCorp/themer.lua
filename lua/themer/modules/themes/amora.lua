@@ -61,7 +61,7 @@ local cp = {
   },
   -- cursorlinenr = base.line,
   accent = base.base0D,
-  search_result = { fg = base.darker_black, bg = base.red, telescope = base.darker_black },
+  search_result = { fg = base.darker_black, bg = base.red, telescope = base.base05 },
   match = base.lightbg2,
   dimmed = {
     inactive = base.base00,
