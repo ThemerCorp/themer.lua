@@ -13,7 +13,7 @@ jobs:
 
       - name: Update the list
         run: |
-          for i in $(\ls /lua/themer/modules/themes/); do if [ ! -f "themer_$i" ]; then echo "require(\"themer\").setup({ colorscheme = \"$(echo $i | sed 's/\.lua//g')\" })" >> "colors/themer_$i"; fi; done
+          for i in $(\ls lua/themer/modules/themes/); do if [ ! -f "themer_$i" ]; then echo "require(\"themer\").setup({ colorscheme = \"$(echo $i | sed 's/\.lua//g')\" })" >> "colors/themer_$i"; fi; done
       - name: Push Changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
