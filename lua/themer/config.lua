@@ -102,6 +102,8 @@ local options = {
       ["<C-p>"] = "preview",
     },
   },
+
+  enable_installer = false, -- toggle to enable installer
 }
 
 --- [[
@@ -120,6 +122,15 @@ local setup = function(type, opts)
     options = vim.tbl_deep_extend("force", options, opts or {})
     if options.colorscheme then
       require("themer.modules.core")(options.colorscheme)
+    end
+    -- Load installed themes
+    if options.enable_installer then
+      if require("themer.utils.fs").exists(vim.fn.stdpath("data") .. "/themer") ~= true then
+        os.execute("mkdir " .. vim.fn.stdpath("data") .. "/themer")
+      end
+      vim.cmd([[command! -nargs=0 ThemerInstall :lua require("themer.modules.installer").fuzzy_install()]])
+      vim.cmd([[command! -nargs=0 ThemerUnInstall :lua require("themer.modules.installer").fuzzy_uninstall()]])
+      require("themer.modules.installer.load_installed").load_installed_themes()
     end
   end
 end
