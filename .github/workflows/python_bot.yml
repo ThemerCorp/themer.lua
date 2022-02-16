@@ -1,0 +1,34 @@
+name: update colorscheme list (installer)
+
+on: 
+  workflow_dispatch:
+  schedule:
+    - cron: '0 1 * * *'
+jobs:
+  update_list:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install pipenv
+        run: |
+          sudo apt install python3 python3-pip > /dev/null
+          pip3 install pipenv
+      - name: Update the list
+        run: |
+          cd python
+          pipenv install --python python3
+          pipenv run python3 -m web_scrapper
+      - name: Push Changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_MSG: |
+            [python_bot] update colors list
+        run: |
+          git config user.email "actions@github"
+          git config user.name "Github Actions"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          git add python/json/color_schemes.json
+          # Only commit and push if we have changes
+          git diff --quiet && git diff --staged --quiet || (git commit -m "${COMMIT_MSG}"; git push origin HEAD:${GITHUB_REF})

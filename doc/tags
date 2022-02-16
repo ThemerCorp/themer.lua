@@ -1,0 +1,8 @@
+alacritty	themer.txt	/*alacritty*
+alacritty.write_config()	themer.txt	/*alacritty.write_config()*
+api.get_cp()	themer.txt	/*api.get_cp()*
+import.write_colorscheme()	themer.txt	/*import.write_colorscheme()*
+init.setup()	themer.txt	/*init.setup()*
+reload.load_au()	themer.txt	/*reload.load_au()*
+xres	themer.txt	/*xres*
+xres.write_config()	themer.txt	/*xres.write_config()*

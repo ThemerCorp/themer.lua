@@ -1,10 +1,11 @@
-name: formatting
+name: format
 on:
   workflow_dispatch:
   push:
     paths-ignore:
       - ".github/**"
       - "*.md"
+      - "*.txt"
     branches: "**"
 
 jobs:

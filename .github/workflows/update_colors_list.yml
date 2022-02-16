@@ -1,0 +1,29 @@
+name: update colorscheme list (vim rtp colors)
+
+on: 
+  workflow_dispatch:
+  schedule:
+    - cron: '0 1 * * *'
+jobs:
+  update_list:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Update the list
+        run: |
+          for i in $(\ls lua/themer/modules/themes/); do if [ ! -f "colors/themer_$i" ]; then echo "require(\"themer\").setup({ colorscheme = \"$(echo $i | sed 's/\.lua//g')\" })" >> "colors/themer_$i"; fi; done
+      - name: Push Changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_MSG: |
+            [vim_rtp_bot] update colors in colors/
+            skip-checks: true
+        run: |
+          git config user.email "actions@github"
+          git config user.name "Github Actions"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          git add colors/
+          # Only commit and push if we have changes
+          git diff --quiet && git diff --staged --quiet || (git commit -m "${COMMIT_MSG}"; git push origin HEAD:${GITHUB_REF})
