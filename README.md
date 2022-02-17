@@ -365,6 +365,8 @@ Massive shoutouts to the people who supported the project! These are:
 - Max397574
   - [Github](https://github.com/max397574/)
   - [Reddit](https://www.reddit.com/u/m397574)
-- NvChad, for the new base16 palette
+  - Creators of all the themes, in themer.
+  - NvChad community (some themes are ported from nvchad's base16 plugin)
+  - All those who helped in porting the themes to themer
   - [GitHub](https://github.com/NvChad)
   - [Website](https://nvchad.github.io)
