@@ -1,0 +1,16 @@
+name: Feature request
+description: Request an enhancement for Themer
+labels: [enhancement]
+body:
+  - type: input
+    attributes:
+      label: "Feature already in some other plugin?"
+      description: "Does the feature already exist in some other neovim plugin?"
+      placeholder: "Yes, ..."
+
+  - type: textarea
+    attributes:
+      label: "Feature description"
+    validations:
+      required: true
+
