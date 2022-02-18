@@ -57,7 +57,9 @@ return {
   ["diff"] = { ["add"] = "#437019", ["text"] = "#0", ["change"] = "#2b5b77", ["remove"] = "#700009" },
   ["remaps"] = {
     ["base"] = {
+      ["ColorColumn"] = { bg = "#000000" },
       ["LineNr"] = { fg = "#606060" },
+      ["Visual"] = { bg = "#404040" },
     },
   },
 }
