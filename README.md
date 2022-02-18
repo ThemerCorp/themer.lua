@@ -363,8 +363,10 @@ Massive shoutouts to the people who supported the project! These are:
 - Gilfoyle
   - [Github](https://github.com/tamton-aquib/)
 - Max397574
-  - [Github](https://github.com/max397574/)
-  - [Reddit](https://www.reddit.com/u/m397574)
+    - [Github](https://github.com/max397574/)
+    - [Reddit](https://www.reddit.com/u/m397574)
+- bryant-the-coder
+    - [Github](https://github.com/bryant-the-coder)
   - Creators of all the themes, in themer.
   - NvChad community (some themes are ported from nvchad's base16 plugin)
   - All those who helped in porting the themes to themer
