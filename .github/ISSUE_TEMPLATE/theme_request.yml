@@ -15,5 +15,5 @@ body:
       label: "Is there already a vim/neovim plugin for the theme?"
       description: "If yes, please also specify the link of the plugin."
       placeholder: "Yes, ..."
-		validations:
-			required: true
+	validations:
+		required: true
