@@ -1,0 +1,19 @@
+name: Theme request
+description: Request a new theme
+labels: [theme-request]
+body:
+  - type: input
+    attributes:
+      label: "What is the name of the theme?"
+      description: "Please specify the name of the theme"
+      placeholder: "..."
+    validations:
+		  required: true
+
+  - type: input
+    attributes:
+      label: "Is there already a vim/neovim plugin for the theme?"
+      description: "If yes, please also specify the link of the plugin."
+      placeholder: "Yes, ..."
+		validations:
+			required: true
