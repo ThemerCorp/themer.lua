@@ -167,7 +167,7 @@ Heres the default config table
         --     }
         -- },
         -- remaps.highlights = {
-        --     rose_pine = { 
+        --     rose_pine = {
 	      --	base = {
         --     	  Normal = { bg = "#000000" }
        	--	},
@@ -214,7 +214,7 @@ Telescope themes
 ## Reload
 While developing your own colorscheme with themer, you can use the `reload` module to reload the colors on the fly.
 
-To start the reload module `:ThemerReload` and start editing. 
+To start the reload module `:ThemerReload` and start editing.
 Whenever you leave Insert mode, themer will try to load the theme as per table returned by the current buffer lua file.
 
 ## Installer
@@ -338,3 +338,5 @@ Massive shoutouts to the people who supported the project! These are:
 - Max397574
     - [Github](https://github.com/max397574/)
     - [Reddit](https://www.reddit.com/u/m397574)
+- bryant-the-coder
+    - [Github](https://github.com/bryant-the-coder)
