@@ -70,7 +70,7 @@ end
 local function themer(opts)
   local colors = get_theme()
   -- selene: allow(shadowing)
-  local opts = require("telescope.themes").get_dropdown({
+  local opts = require("telescope.themes").get_ivy({
     prompt_title = "Themer ColorScheme",
     results_title = "Change colorscheme",
     finder = finders.new_table({
@@ -96,7 +96,27 @@ local function themer(opts)
       return true
     end,
     sorter = require("telescope.config").values.generic_sorter({}),
-  })
+            layout_config = {
+            width = 0.99,
+            height = 0.5,
+            preview_cutoff = 20,
+            prompt_position = "top",
+            horizontal = {
+                preview_width = 0.65,
+            },
+            vertical = {
+                preview_width = 0.65,
+                width = 0.9,
+                height = 0.95,
+                preview_height = 0.5,
+            },
+
+            flex = {
+                preview_width = 0.65,
+                horizontal = {
+                },
+            },
+  }})
   local colorschemes = pickers.new(opts)
   colorschemes:find()
 end
