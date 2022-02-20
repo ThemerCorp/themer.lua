@@ -96,27 +96,27 @@ local function themer(opts)
       return true
     end,
     sorter = require("telescope.config").values.generic_sorter({}),
-            layout_config = {
-            width = 0.99,
-            height = 0.5,
-            preview_cutoff = 20,
-            prompt_position = "top",
-            horizontal = {
-                preview_width = 0.65,
-            },
-            vertical = {
-                preview_width = 0.65,
-                width = 0.9,
-                height = 0.95,
-                preview_height = 0.5,
-            },
+    layout_config = {
+      width = 0.99,
+      height = 0.5,
+      preview_cutoff = 20,
+      prompt_position = "top",
+      horizontal = {
+        preview_width = 0.65,
+      },
+      vertical = {
+        preview_width = 0.65,
+        width = 0.9,
+        height = 0.95,
+        preview_height = 0.5,
+      },
 
-            flex = {
-                preview_width = 0.65,
-                horizontal = {
-                },
-            },
-  }})
+      flex = {
+        preview_width = 0.65,
+        horizontal = {},
+      },
+    },
+  })
   local colorschemes = pickers.new(opts)
   colorschemes:find()
 end
