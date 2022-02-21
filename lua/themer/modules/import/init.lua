@@ -136,6 +136,11 @@ local generate_cp = function()
 end
 
 import.write_colorscheme = function()
+  local current_ft = vim.bo.filetype
+  vim.bo.filetype = "html"
+  vim.bo.filetype = "markdown"
+  vim.bo.filetype = current_ft
+  current_ft = nil
   local buf = vim.api.nvim_create_buf(true, true)
   vim.api.nvim_buf_set_name(buf, vim.g.colors_name)
   vim.api.nvim_buf_set_lines(buf, 0, 1, true, {
