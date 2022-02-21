@@ -124,7 +124,7 @@ local cp = {
     thumb = base.nord_blue,
     sel = {
       bg = base.pmenu_bg,
-      fg = base.base05,
+      fg = base.base02,
     },
   },
   heading = {
