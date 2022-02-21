@@ -31,17 +31,16 @@
     use({
         "themercorp/themer.lua",
         config = function()
-            require("themer").setup({
-                colorscheme = "kanagawa",
-                styles = {
-			comment = { style = 'italic' },
-                  	["function"] = { style = 'italic' },
-                   	functionbuiltin = { style = 'italic' },
-                   	variable = { style = 'italic' },
-                    	variableBuiltIn = { style = 'italic' },
-                  	parameter  = { style = 'italic' },
-                },
-            })
+	      require("themer").setup({
+	          colorscheme = "rose_pine",
+	          styles = {
+	            	["function"] = { style = 'italic' },
+	             	functionbuiltin = { style = 'italic' },
+	             	variable = { style = 'italic' },
+	              	variableBuiltIn = { style = 'italic' },
+	            	parameter  = { style = 'italic' },
+	          },
+	      })
         end
     })
 ```
@@ -56,16 +55,16 @@ Now you can place this base configuration in your `init.vim` file:
 
 ```vim
 lua << EOF
-            require("themer").setup({
-                colorscheme = "kanagawa",
-                styles = {
-                  	["function"] = { style = 'italic' },
-                   	functionbuiltin = { style = 'italic' },
-                   	variable = { style = 'italic' },
-                    	variableBuiltIn = { style = 'italic' },
-                  	parameter  = { style = 'italic' },
-                },
-            })
+	      require("themer").setup({
+	          colorscheme = "rose_pine",
+	          styles = {
+	            	["function"] = { style = 'italic' },
+	             	functionbuiltin = { style = 'italic' },
+	             	variable = { style = 'italic' },
+	              	variableBuiltIn = { style = 'italic' },
+	            	parameter  = { style = 'italic' },
+	          },
+	      })
 EOF
 ```
 
