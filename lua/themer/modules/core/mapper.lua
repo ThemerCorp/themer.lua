@@ -185,6 +185,7 @@ local function get_base(cp)
     -- SpellLocal = { style = "undercurl", sp = cp.subtle },
     -- SpellRare = { style = "undercurl", sp = cp.subtle },
     SignColumn = { link = "ThemerNormal" },
+    FoldColumn = { link = "ThemerNormal" },
     StatusLine = { link = "ThemerNormalFloat" },
     StatusLineNC = { link = "ThemerSubtleFloat" },
     -- StatusLineTerm = {},
