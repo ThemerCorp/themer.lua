@@ -67,5 +67,6 @@
     "tiagovla/tokyodark.nvim": "https://github.com/tiagovla/tokyodark.nvim",
     "tjdevries/gruvbuddy.nvim": "https://github.com/tjdevries/gruvbuddy.nvim",
     "ellisonleao/gruvbox.nvim": "https://github.com/ellisonleao/gruvbox.nvim",
-    "metalelf0/jellybeans-nvim": "https://github.com/metalelf0/jellybeans-nvim"
+    "metalelf0/jellybeans-nvim": "https://github.com/metalelf0/jellybeans-nvim",
+    "lalitmee/cobalt2.nvim": "https://github.com/lalitmee/cobalt2.nvim"
 }
