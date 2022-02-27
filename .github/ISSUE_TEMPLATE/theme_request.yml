@@ -16,4 +16,4 @@ body:
       description: "If yes, please also specify the link of the plugin."
       placeholder: "Yes, ..."
     validations:
-   	  required: true
+      required: true
