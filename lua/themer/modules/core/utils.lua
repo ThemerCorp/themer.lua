@@ -6,25 +6,18 @@ local exec = vim.api.nvim_command
 
 --- highlight using :highlight
 --- @param group string
---- @param color table
-utils.highlight_legacy = function(group, color)
-  local parts = { group }
-  parts[#parts + 1] = color.fg and "guifg=" .. color.fg or nil
-  parts[#parts + 1] = color.bg and "guibg=" .. color.bg or nil
-  parts[#parts + 1] = color.sp and "guisp=" .. color.sp or nil
-  parts[#parts + 1] = color.style and "gui=" .. color.style or nil
-  if #parts == 1 and color.link then
-    exec("highlight! link " .. group .. " " .. color.link)
-  elseif #parts ~= 1 then
-    exec("highlight " .. table.concat(parts, " "))
-  end
+--- @param val table
+utils.highlight = function(group, val)
+  val.fg = val.fg == "#0" and "NONE" or val.fg
+  val.bg = val.bg == "#0" and "NONE" or val.bg
+  vim.api.nvim_set_hl(0, group, val)
 end
 
 --- Highlight on basis of given group and color
 --- @param tbl table
 local function syntax(tbl)
   for hl_group, hl_value in pairs(tbl) do
-    utils.highlight_legacy(hl_group, hl_value)
+    utils.highlight(hl_group, hl_value)
   end
 end
 
@@ -87,7 +80,7 @@ utils.load_mapper_higs = function(theme, cs)
     end
   end
 
-  exec("do ColorScheme")
+  vim.cmd([[doautocmd ColorScheme]])
 
   vim.g.colors_name = cs
 end
