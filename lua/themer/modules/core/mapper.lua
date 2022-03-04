@@ -63,7 +63,7 @@ local function get_base(cp)
   -- Transparent
   cp.bg.base = config.transparent and "NONE" or cp.bg.base
   cp.bg.alt = config.transparent and "NONE" or cp.bg.alt
-  
+
   cp.diff.delete = cp.diff.delete or cp.diff.remove
 
   cp.gitsigns = cp.gitsigns or cp.diff
@@ -384,17 +384,17 @@ local function get_base(cp)
       commentTSNote = { link = "ThemerTodo" },
       commentTSWarning = { link = "DiagnosticWarn" },
     },
-    
+
     nvim_tree = {
       NvimTreeEmptyFolderName = { link = "ThemerDimmedFloat" },
-		  NvimTreeFolderIcon = { link = "ThemerSubtleFloat" },
-		  NvimTreeFolderName = { link = "ThemerNormalFloat" },
-		  NvimTreeImageFile = { link = "ThemerNormalFloat" },
-		  NvimTreeNormal = { link = "ThemerNormalFloat" },
-		  NvimTreeOpenedFile = { link = "ThemerSelected" },
-		  NvimTreeOpenedFolderName = { link = "ThemerAccentFloat" },
-		  NvimTreeSpecialFile = { link = 'NvimTreeNormal' },
-		  NvimTreeWindowPicker = { link = "ThemerNormalFloat" },
+      NvimTreeFolderIcon = { link = "ThemerSubtleFloat" },
+      NvimTreeFolderName = { link = "ThemerNormalFloat" },
+      NvimTreeImageFile = { link = "ThemerNormalFloat" },
+      NvimTreeNormal = { link = "ThemerNormalFloat" },
+      NvimTreeOpenedFile = { link = "ThemerSelected" },
+      NvimTreeOpenedFolderName = { link = "ThemerAccentFloat" },
+      NvimTreeSpecialFile = { link = "NvimTreeNormal" },
+      NvimTreeWindowPicker = { link = "ThemerNormalFloat" },
     },
   }
 
