@@ -54,12 +54,15 @@ return {
   ["cyan"] = "#0db9d7",
   ["fg"] = "#e8e8d3",
   ["blue"] = "#7aa2f7",
-  ["diff"] = { ["add"] = "#437019", ["text"] = "#0", ["change"] = "#2b5b77", ["remove"] = "#700009" },
+  ["diff"] = { ["add"] = "#437019", ["text"] = "#8fbfdc", ["change"] = "#2b5b77", ["remove"] = "#700009" },
   ["remaps"] = {
     ["base"] = {
       ["ColorColumn"] = { bg = "#000000" },
       ["LineNr"] = { fg = "#606060" },
       ["Visual"] = { bg = "#404040" },
+      ["DiffAdd"] = { fg = "#D2EBBE" },
+      ["DiffDelete"] = { fg = "#40000A" },
+      ["DiffText"] = { style = "reverse", bg = "#000000" }
     },
   },
 }
