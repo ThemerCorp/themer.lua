@@ -63,6 +63,8 @@ local function get_base(cp)
   -- Transparent
   cp.bg.base = config.transparent and "NONE" or cp.bg.base
   cp.bg.alt = config.transparent and "NONE" or cp.bg.alt
+  
+  cp.diff.delete = cp.diff.delete or cp.diff.remove
 
   cp.gitsigns = cp.gitsigns or cp.diff
 
@@ -85,7 +87,7 @@ local function get_base(cp)
     DiffAdd = { bg = cp.diff.add, fg = "NONE" },
     DiffChange = { bg = cp.diff.change, fg = "NONE" },
     DiffText = { bg = cp.diff.text or cp.fg, fg = "NONE" },
-    DiffDelete = { bg = cp.diff.remove or cp.diff.delete, fg = "NONE" },
+    DiffDelete = { bg = cp.diff.remove, fg = "NONE" },
     GitSignsAdd = { fg = cp.gitsigns.add, bg = "NONE" },
     GitSignsDelete = { fg = cp.gitsigns.delete or cp.gitsigns.remove, bg = "NONE" },
     GitSignsChange = { fg = cp.gitsigns.change, bg = "NONE" },
@@ -370,7 +372,7 @@ local function get_base(cp)
       -- TSSymbol = {},
       TSTag = { fg = cp.syntax.tag or cp.statement },
       TSTagDelimiter = { link = "ThemerSubtle" },
-      TSText = { link = "ThemerText" },
+      TSText = { link = "ThemerNormal" },
       TSTitle = { link = "ThemerHeadingH1" },
       TSType = { link = "ThemerType" },
       TSTypeBuiltin = { link = "ThemerTypeBuiltIn" },
@@ -381,6 +383,18 @@ local function get_base(cp)
       commentTSDanger = { link = "DiagnosticError" },
       commentTSNote = { link = "ThemerTodo" },
       commentTSWarning = { link = "DiagnosticWarn" },
+    },
+    
+    nvim_tree = {
+      NvimTreeEmptyFolderName = { link = "ThemerDimmedFloat" },
+		  NvimTreeFolderIcon = { link = "ThemerSubtleFloat" },
+		  NvimTreeFolderName = { link = "ThemerNormalFloat" },
+		  NvimTreeImageFile = { link = "ThemerNormalFloat" },
+		  NvimTreeNormal = { link = "ThemerNormalFloat" },
+		  NvimTreeOpenedFile = { link = "ThemerSelected" },
+		  NvimTreeOpenedFolderName = { link = "ThemerAccentFloat" },
+		  NvimTreeSpecialFile = { link = 'NvimTreeNormal' },
+		  NvimTreeWindowPicker = { link = "ThemerNormalFloat" },
     },
   }
 

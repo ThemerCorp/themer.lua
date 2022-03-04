@@ -85,6 +85,7 @@ local options = {
     gitsigns = true,
     lsp = true,
     telescope = true,
+    nvim_tree = true,
   },
 
   -- Default telescope picker mappings
