@@ -242,6 +242,8 @@ local function get_base(cp)
 
   local availablePlugins = {
     cmp = {
+      CmpScrollBar = { fg = cp.pum.sbar },
+      CmpScrollThumb = { fg = cp.pum.thumb },
       CmpDocumentation = { fg = cp.fg },
       CmpDocumentationBorder = { link = "ThemerBorder" },
 
