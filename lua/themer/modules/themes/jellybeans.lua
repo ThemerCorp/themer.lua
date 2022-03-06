@@ -62,7 +62,7 @@ return {
       ["Visual"] = { bg = "#404040" },
       ["DiffAdd"] = { fg = "#D2EBBE" },
       ["DiffDelete"] = { fg = "#40000A" },
-      ["DiffText"] = { style = "reverse", bg = "#000000" },
+      ["DiffText"] = { reverse = true, bg = "#000000" },
     },
   },
 }
