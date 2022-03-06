@@ -1,15 +1,15 @@
 --- Split strings
 --- @param inputstr string string to split
 --- @param sep string separator
-local function split (inputstr, sep)
-        if sep == nil then
-                sep = "%s"
-        end
-        local t={}
-        for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
-                table.insert(t, str)
-        end
-        return t
+local function split(inputstr, sep)
+  if sep == nil then
+    sep = "%s"
+  end
+  local t = {}
+  for str in string.gmatch(inputstr, "([^" .. sep .. "]+)") do
+    table.insert(t, str)
+  end
+  return t
 end
 
 local options = {
@@ -144,9 +144,9 @@ local setup = function(type, opts)
       for cs, cond in pairs(options.time) do
         for _, current_cond in ipairs(cond) do
           local from_to = split(current_cond, "-")
-            if _hr >= from_to[1] and _hr < from_to[2] then
-              options.colorscheme = cs
-            end
+          if _hr >= from_to[1] and _hr < from_to[2] then
+            options.colorscheme = cs
+          end
         end
       end
     end
