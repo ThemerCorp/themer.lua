@@ -27,7 +27,7 @@ local function remap_styles(cp)
     comment = { fg = cp.syntax.comment or cp.dimmed.subtle },
     punctuation = { fg = cp.syntax.punctuation },
     constructor = { fg = cp.syntax.constructor or cp.syntax.punctuation },
-    operator = { fg = cp.syntax.operator or cp.sytax.punctuation },
+    operator = { fg = cp.syntax.operator or cp.syntax.punctuation },
     constant = { fg = cp.syntax.constant },
     constantBuiltIn = { fg = cp.built_in.constant },
     todo = cp.syntax.todo,
