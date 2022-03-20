@@ -1,6 +1,6 @@
 local base = {
   white = "#D3C6AA",
-  darker_black = "#272f35",
+  darker_black = "#222a30",
   black = "#2b3339",
   black2 = "#323a40",
   one_bg = "#333b41",
