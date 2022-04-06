@@ -177,7 +177,7 @@ color_palette.remaps = {
       CmpItemKind = { fg = colors.blue },
       CmpItemKindVariable = { fg = colors.light_blue },
       CmpItemAbbr = { fg = colors.fg },
-      CmpItemAbbrMatch = { fg = colors.blue },
+      CmpItemAbbrMatch = { fg = colors.light_blue },
       CmpItemMenu = { fg = colors.blue }
     },
 
