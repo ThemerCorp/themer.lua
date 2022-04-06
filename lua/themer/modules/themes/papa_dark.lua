@@ -105,6 +105,7 @@ color_palette.remaps = {
     Normal = { fg = colors.fg, bg = colors.bg },
     ColorColumn = { fg = colors.red },
     CursorLine = { bg = colors.line_color },
+    CursorLineNr = { fg = colors.fg },
     Directory = { fg = colors.blue },
     EndOfBuffer = { fg = colors.bg },
     ErrorMsg = { fg = colors.fg, bg = colors.red },
@@ -174,6 +175,10 @@ color_palette.remaps = {
 
     cmp = {
       CmpItemKind = { fg = colors.blue },
+      CmpItemKindVariable = { fg = colors.light_blue },
+      CmpItemAbbr = { fg = colors.fg },
+      CmpItemAbbrMatch = { fg = colors.blue },
+      CmpItemMenu = { fg = colors.blue }
     },
 
     trouble = {
