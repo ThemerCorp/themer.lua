@@ -60,9 +60,9 @@ return {
       ["ColorColumn"] = { bg = "#000000" },
       ["LineNr"] = { fg = "#606060" },
       ["Visual"] = { bg = "#404040" },
-      ["DiffAdd"] = { fg = "#D2EBBE" },
-      ["DiffDelete"] = { fg = "#40000A" },
-      ["DiffText"] = { reverse = true, bg = "#000000" },
+      ["DiffAdd"] = { fg = "#D2EBBE", bg = "#437019" },
+      ["DiffDelete"] = { fg = "#40000A", bg = "#700009" },
+      ["DiffText"] = { bg = "#000000" },
     },
   },
 }

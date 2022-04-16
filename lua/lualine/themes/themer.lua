@@ -1,4 +1,4 @@
-local colors = require("themer.api.colors")(require("themer.config")("get").colorscheme)
+local colors = require("themer.modules.core.api").get_cp(require("themer.config")("get").colorscheme)
 local themer = {}
 
 themer.normal = {

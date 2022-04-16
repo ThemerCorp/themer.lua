@@ -199,6 +199,12 @@ Heres the default config table
         telescope = true,
     },
     enable_installer = false, -- enable installer module
+    
+    time = {}, -- Time based colorscheme switch
+    -- time = {
+    --   ["rose_pine"] = { "13-14", "15-16" }, -- syntax ["colorscheme"] = { "start-end", "start2-end2" },
+    -- Apply rose_pine from 1300 to 1400 hours and then from 1500 to 1600 hours, for rest of the day use the colorscheme in 'colorscheme' variable
+    -- },
 }
 ```
 
