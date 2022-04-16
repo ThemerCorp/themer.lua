@@ -203,8 +203,8 @@ color_palette.remaps = {
       TelescopeSelectionCaret = { fg = colors.bg_alt, bg = colors.bg_alt },
     },
     lsp = {
-      DiagnosticUnderlineWarn = { fg = "NONE", style = "underline", sp = colors.yellow },
-      DiagnosticUnderlineHint = { fg = "NONE", style = "underline", sp = colors.light_blue },
+      DiagnosticUnderlineWarn = { fg = "NONE", underline = true, sp = colors.yellow },
+      DiagnosticUnderlineHint = { fg = "NONE", underline = true, sp = colors.light_blue },
     },
   },
 

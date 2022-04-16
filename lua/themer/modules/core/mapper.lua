@@ -6,8 +6,8 @@ local config = require("themer.config")("get")
 local function remap_styles(cp)
   local groups = {
     heading = {
-      h1 = { style = "bold", fg = cp.heading.h1 or cp.fg },
-      h2 = { style = "bold", fg = cp.heading.h2 or cp.fg },
+      h1 = { bold = true, fg = cp.heading.h1 or cp.fg },
+      h2 = { bold = true, fg = cp.heading.h2 or cp.fg },
     },
     ["function"] = { fg = cp.syntax["function"] },
     functionBuiltIn = { fg = cp.built_in["function"] },
@@ -35,20 +35,20 @@ local function remap_styles(cp)
     conditional = { fg = cp.syntax.conditional },
     number = { fg = cp.syntax.number },
     statement = { fg = cp.syntax.statement or cp.accent },
-    uri = { fg = cp.uri, style = "underline" },
+    uri = { fg = cp.uri, underline = true },
     diagnostic = {
       underline = {
 
-        error = { fg = cp.diagnostic.error, style = "undercurl" },
-        warn = { fg = cp.diagnostic.warn, style = "undercurl" },
-        info = { fg = cp.diagnostic.info, style = "undercurl" },
-        hint = { fg = cp.diagnostic.hint, style = "undercurl" },
+        error = { fg = cp.diagnostic.error, undercurl = true },
+        warn = { fg = cp.diagnostic.warn, undercurl = true },
+        info = { fg = cp.diagnostic.info, undercurl = true },
+        hint = { fg = cp.diagnostic.hint, undercurl = true },
       },
       virtual_text = {
-        error = { fg = cp.diagnostic.error, style = "italic" },
-        warn = { fg = cp.diagnostic.warn, style = "italic" },
-        info = { fg = cp.diagnostic.info, style = "italic" },
-        hint = { fg = cp.diagnostic.hint, style = "italic" },
+        error = { fg = cp.diagnostic.error, italic = true },
+        warn = { fg = cp.diagnostic.warn, italic = true },
+        info = { fg = cp.diagnostic.info, italic = true },
+        hint = { fg = cp.diagnostic.hint, italic = true },
       },
     },
   }
@@ -75,7 +75,7 @@ local function get_base(cp)
     ThemerAccent = { fg = cp.accent },
     ThemerAccentFloat = { fg = cp.accent, bg = cp.bg.alt },
     ThemerFloat = { bg = cp.bg.alt },
-    ThemerMatch = { fg = cp.match, style = "bold" },
+    ThemerMatch = { fg = cp.match, bold = true },
     ThemerNormal = { fg = cp.fg, bg = cp.bg.base },
     ThemerNormalFloat = { fg = cp.fg, bg = cp.bg.alt },
     ThemerSelected = { bg = cp.bg.selected },
@@ -150,9 +150,9 @@ local function get_base(cp)
   local base = {
     ColorColumn = { link = "ThemerFloat" },
     Conceal = { bg = cp.conceal or "NONE" },
-    Cursor = { style = "reverse" },
+    Cursor = { reverse = true },
     CursorColumn = { link = "ThemerFloat" },
-    CursorIM = { style = "reverse" },
+    CursorIM = { reverse = true },
     CursorLine = { link = "ThemerSelected" },
     CursorLineNr = { fg = cp.cursorlinenr or cp.fg },
     DarkenedPanel = { link = "ThemerFloat" },
@@ -182,10 +182,10 @@ local function get_base(cp)
     -- QuickFixLine = {},
     Search = { link = "ThemerSearchResult" },
     SpecialKey = { link = "NonText" },
-    -- SpellBad = { style = "undercurl", sp = cp.red },
-    -- SpellCap = { style = "undercurl", sp = cp.subtle },
-    -- SpellLocal = { style = "undercurl", sp = cp.subtle },
-    -- SpellRare = { style = "undercurl", sp = cp.subtle },
+    -- SpellBad = { undercurl = true, sp = cp.red },
+    -- SpellCap = { undercurl = true, sp = cp.subtle },
+    -- SpellLocal = { undercurl = true, sp = cp.subtle },
+    -- SpellRare = { undercurl = true, sp = cp.subtle },
     SignColumn = { link = "ThemerNormal" },
     FoldColumn = { link = "ThemerNormal" },
     StatusLine = { link = "ThemerNormalFloat" },
@@ -223,7 +223,7 @@ local function get_base(cp)
     String = { link = "ThemerString" },
     Type = { link = "ThemerType" },
     Typedef = { link = "ThemerType" },
-    Underlined = { fg = cp.accent, style = "underline" },
+    Underlined = { fg = cp.accent, underline = true },
 
     -- Neovim
 
@@ -242,11 +242,13 @@ local function get_base(cp)
 
   local availablePlugins = {
     cmp = {
+      CmpScrollBar = { fg = cp.pum.sbar },
+      CmpScrollThumb = { fg = cp.pum.thumb },
       CmpDocumentation = { fg = cp.fg },
       CmpDocumentationBorder = { link = "ThemerBorder" },
 
       CmpItemAbbr = { fg = cp.fg },
-      CmpItemAbbrDeprecated = { fg = cp.fg, bg = "NONE", style = "strikethrough" },
+      CmpItemAbbrDeprecated = { fg = cp.fg, bg = "NONE", strikethrough = true },
       CmpItemAbbrMatch = { link = "ThemerMatch" },
       CmpItemAbbrMatchFuzzy = { link = "ThemerMatch" },
 
@@ -281,11 +283,11 @@ local function get_base(cp)
     },
 
     indentline = {
-      IndentBlanklineChar = { fg = cp.dimmed.subtle, style = "nocombine" },
-      IndentBlanklineContextChar = { fg = cp.accent, style = "nocombine" },
+      IndentBlanklineChar = { fg = cp.dimmed.subtle, nocombine = true },
+      IndentBlanklineContextChar = { fg = cp.accent, nocombine = true },
       IndentBlanklineSpaceChar = { link = "IndentBlanklineChar" },
       IndentBlanklineSpaceCharBlankline = { link = "IndentBlanklineChar" },
-      IndentBlanklineContextStart = { style = "underline", sp = cp.accent },
+      IndentBlanklineContextStart = { underline = true, sp = cp.accent },
     },
 
     lsp = {
