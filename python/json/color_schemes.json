@@ -65,6 +65,7 @@
     "phha/zenburn.nvim": "https://github.com/phha/zenburn.nvim",
     "kvrohit/rasmus.nvim": "https://github.com/kvrohit/rasmus.nvim",
     "chrsm/paramount-ng.nvim": "https://github.com/chrsm/paramount-ng.nvim",
+    "kaiuri/nvim-mariana": "https://github.com/kaiuri/nvim-mariana",
     "tjdevries/gruvbuddy.nvim": "https://github.com/tjdevries/gruvbuddy.nvim",
     "ellisonleao/gruvbox.nvim": "https://github.com/ellisonleao/gruvbox.nvim",
     "metalelf0/jellybeans-nvim": "https://github.com/metalelf0/jellybeans-nvim",
