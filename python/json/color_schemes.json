@@ -66,6 +66,7 @@
     "chrsm/paramount-ng.nvim": "https://github.com/chrsm/paramount-ng.nvim",
     "kaiuri/nvim-juliana": "https://github.com/kaiuri/nvim-juliana",
     "lmburns/kimbox": "https://github.com/lmburns/kimbox",
+    "rockyzhang24/arctic.nvim": "https://github.com/rockyzhang24/arctic.nvim",
     "tjdevries/gruvbuddy.nvim": "https://github.com/tjdevries/gruvbuddy.nvim",
     "ellisonleao/gruvbox.nvim": "https://github.com/ellisonleao/gruvbox.nvim",
     "metalelf0/jellybeans-nvim": "https://github.com/metalelf0/jellybeans-nvim",
