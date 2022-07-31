@@ -3,9 +3,8 @@ local data_path = vim.fn.stdpath("data") .. "/themer/"
 
 -- NOTE: temp solution
 M.parse_readme = function()
-  local path = debug.getinfo(1, "S").source
-    :sub(2)
-    :gsub("lua/themer/modules/installer/utils.lua", "python/json/color_schemes.json")
+  local path =
+    debug.getinfo(1, "S").source:sub(2):gsub("lua/themer/modules/installer/utils.lua", "python/json/color_schemes.json")
 
   local file = table.concat(vim.fn.readfile(path))
   local decoded = vim.json.decode(file)
