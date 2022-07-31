@@ -451,8 +451,8 @@ local function get_hig_groups(cp, cs)
     "force",
     hig_groups or {},
     cp.remaps or {},
-    config.remaps.highlights.globals or {},
-    config.remaps.highlights[cs] or {}
+    config.remaps.highlights.globals and config.remaps.highlights.globals(cp) or {},
+    config.remaps.highlights[cs] and config.remaps.highlights[cs](cp) or {}
   )
   return hig_groups
 end

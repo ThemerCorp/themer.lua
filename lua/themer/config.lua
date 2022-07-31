@@ -74,11 +74,11 @@ local options = {
     --     }
     -- },
     -- remaps.highlights = {
-    --     rose_pine = {
-    --     	base = {
-    --     	  Normal = { bg = "#000000" }
-    --      },
-    --     }
+    --     rose_pine = function(cp) -- cp is the color palette
+    --     	return { base = {
+    --     	  Normal = { bg = cp.fg }
+    --      },}
+    --     end,
     -- },
     --
     -- Also you can do remaps.highlights.globals  for global highlight remaps

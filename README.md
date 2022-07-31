@@ -172,10 +172,10 @@ Heres the default config table
         --     }
         -- },
         -- remaps.highlights = {
-        --     rose_pine = {
-	      --	base = {
+        --     rose_pine = function(cp) -- cp is theme color palette
+	      --	return { base = {
         --     	  Normal = { bg = "#000000" }
-       	--	},
+       	--	}, }
        	--     }
         -- },
         --
