@@ -115,6 +115,7 @@
     "xiyaowong/nvim-cursorword": "https://github.com/xiyaowong/nvim-cursorword",
     "RRethy/vim-illuminate": "https://github.com/RRethy/vim-illuminate",
     "echasnovski/mini.nvim#mini.cursorword": "https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-cursorword.md",
+    "melkster/modicator.nvim": "https://github.com/melkster/modicator.nvim",
     "glepnir/dashboard-nvim": "https://github.com/glepnir/dashboard-nvim",
     "goolord/alpha-nvim": "https://github.com/goolord/alpha-nvim",
     "echasnovski/mini.nvim#mini.starter": "https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-starter.md",
