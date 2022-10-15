@@ -1,3 +1,17 @@
+--- Split strings
+--- @param inputstr string string to split
+--- @param sep string separator
+local function split(inputstr, sep)
+  if sep == nil then
+    sep = "%s"
+  end
+  local t = {}
+  for str in string.gmatch(inputstr, "([^" .. sep .. "]+)") do
+    table.insert(t, str)
+  end
+  return t
+end
+
 local options = {
   colorscheme = nil, -- default colorscheme
   transparent = false,
@@ -60,11 +74,11 @@ local options = {
     --     }
     -- },
     -- remaps.highlights = {
-    --     rose_pine = {
-    --     	base = {
-    --     	  Normal = { bg = "#000000" }
-    --      },
-    --     }
+    --     rose_pine = function(cp) -- cp is the color palette
+    --     	return { base = {
+    --     	  Normal = { bg = cp.fg }
+    --      },}
+    --     end,
     -- },
     --
     -- Also you can do remaps.highlights.globals  for global highlight remaps
@@ -85,6 +99,7 @@ local options = {
     gitsigns = true,
     lsp = true,
     telescope = true,
+    nvim_tree = true,
   },
 
   -- Default telescope picker mappings
@@ -104,6 +119,12 @@ local options = {
   },
 
   enable_installer = false, -- toggle to enable installer
+
+  time = {}, -- Time based colorscheme switch
+  -- time = {
+  --   ["rose_pine"] = { "13-14", "15-16" }, -- syntax ["colorscheme"] = { "start-end", "start2-end2" },
+  -- Apply rose_pine from 1300 to 1400 hours and then from 1500 to 1600 hours, for rest of the day use the colorscheme in 'colorscheme' variable
+  -- },
 }
 
 --- [[
@@ -120,6 +141,17 @@ local setup = function(type, opts)
     options = vim.tbl_deep_extend("force", options, opts or {})
   elseif type == "user" then
     options = vim.tbl_deep_extend("force", options, opts or {})
+    if #options.time ~= 0 then
+      local _hr = tostring(os.date("*t").hour)
+      for cs, cond in pairs(options.time) do
+        for _, current_cond in ipairs(cond) do
+          local from_to = split(current_cond, "-")
+          if _hr >= from_to[1] and _hr < from_to[2] then
+            options.colorscheme = cs or options.colorscheme
+          end
+        end
+      end
+    end
     if options.colorscheme then
       require("themer.modules.core")(options.colorscheme)
     end

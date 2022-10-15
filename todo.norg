@@ -10,17 +10,17 @@
 * v0.1 release plans
   - [*] Better Plugin Support
     - [ ] modes.nvim
-    - [ ] nvim tree
+    - [x] nvim tree
     - [ ] which key
     - [ ] startup.nvim
-  - [_] Telescope picker
-    - [_] use random.lua stuff for that
+  - [x] Telescope picker
+    - [!] use random.lua stuff for that
   - [-] more themes
-    - [ ] fix doom one
+    - [x] fix doom one
     - [x] gruvbox
     - [x] remastered cpt
     - [x] more cpt versions
     - [x] issues/3
-  - [=] parse to a single no dep file
-  - [_] async loading (Pocco81)
-  - [-]  live reload
+  - [x] parse to a single no dep file
+  - [!] async loading (Pocco81)
+  - [x]  live reload

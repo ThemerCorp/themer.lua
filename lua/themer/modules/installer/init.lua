@@ -12,22 +12,24 @@ local action_state = require("telescope.actions.state")
 
 M.fuzzy_install = function(opts)
   local themes_list = utils.parse_readme()
-  pickers.new(opts, {
-    prompt_title = "Install Themes",
-    finder = finders.new_table({
-      results = vim.tbl_keys(themes_list),
-    }),
-    sorter = conf.generic_sorter(opts),
-    -- selene: allow(unused_variable)
-    attach_mappings = function(prompt_bufnr, _map)
-      actions.select_default:replace(function()
-        actions.close(prompt_bufnr)
-        local theme = action_state.get_selected_entry()[1]
-        utils.install(theme)
-      end)
-      return true
-    end,
-  }):find()
+  pickers
+    .new(opts, {
+      prompt_title = "Install Themes",
+      finder = finders.new_table({
+        results = vim.tbl_keys(themes_list),
+      }),
+      sorter = conf.generic_sorter(opts),
+      -- selene: allow(unused_variable)
+      attach_mappings = function(prompt_bufnr, _map)
+        actions.select_default:replace(function()
+          actions.close(prompt_bufnr)
+          local theme = action_state.get_selected_entry()[1]
+          utils.install(theme)
+        end)
+        return true
+      end,
+    })
+    :find()
 end
 
 M.fuzzy_uninstall = function(opts)
@@ -36,22 +38,24 @@ M.fuzzy_uninstall = function(opts)
     return
   end
 
-  pickers.new(opts, {
-    prompt_title = "Uninstall Theme",
-    finder = finders.new_table({
-      results = utils.installed_themes(),
-    }),
-    sorter = conf.generic_sorter(opts),
-    -- selene: allow(unused_variable)
-    attach_mappings = function(prompt_bufnr, _map)
-      actions.select_default:replace(function()
-        actions.close(prompt_bufnr)
-        local name = action_state.get_selected_entry()[1]
-        utils.uninstall(name)
-      end)
-      return true
-    end,
-  }):find()
+  pickers
+    .new(opts, {
+      prompt_title = "Uninstall Theme",
+      finder = finders.new_table({
+        results = utils.installed_themes(),
+      }),
+      sorter = conf.generic_sorter(opts),
+      -- selene: allow(unused_variable)
+      attach_mappings = function(prompt_bufnr, _map)
+        actions.select_default:replace(function()
+          actions.close(prompt_bufnr)
+          local name = action_state.get_selected_entry()[1]
+          utils.uninstall(name)
+        end)
+        return true
+      end,
+    })
+    :find()
 end
 
 return M
