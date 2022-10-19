@@ -8,6 +8,10 @@ local exec = vim.api.nvim_command
 --- @param group string
 --- @param color table
 utils.highlight_legacy = function(group, color)
+  if vim.fn.has("nvim-0.8") == 0 and group:find("@", 1, true) == 1 then
+    return
+  end
+
   local parts = { group }
   parts[#parts + 1] = color.fg and "guifg=" .. color.fg or nil
   parts[#parts + 1] = color.bg and "guibg=" .. color.bg or nil
