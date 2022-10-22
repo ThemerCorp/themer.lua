@@ -64,6 +64,9 @@ local function get_base(cp)
   cp.bg.base = config.transparent and "NONE" or cp.bg.base
   cp.bg.alt = config.transparent and "NONE" or cp.bg.alt
 
+  -- Remove IncSearch reverse as default
+  cp.inc_search.style = "NONE"
+
   cp.gitsigns = cp.gitsigns or cp.diff
 
   local groups = remap_styles(cp)
