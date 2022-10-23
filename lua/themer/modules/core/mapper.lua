@@ -38,11 +38,10 @@ local function remap_styles(cp)
     uri = { fg = cp.uri, style = "underline" },
     diagnostic = {
       underline = {
-
-        error = { fg = cp.diagnostic.error, style = "undercurl" },
-        warn = { fg = cp.diagnostic.warn, style = "undercurl" },
-        info = { fg = cp.diagnostic.info, style = "undercurl" },
-        hint = { fg = cp.diagnostic.hint, style = "undercurl" },
+        error = { fg = cp.diagnostic.error, style = config.diagnostic_underline or "undercurl" },
+        warn = { fg = cp.diagnostic.warn, style = config.diagnostic_underline or "undercurl" },
+        info = { fg = cp.diagnostic.info, style = config.diagnostic_underline or "undercurl" },
+        hint = { fg = cp.diagnostic.hint, style = config.diagnostic_underline or "undercurl" },
       },
       virtual_text = {
         error = { fg = cp.diagnostic.error, style = "italic" },
