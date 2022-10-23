@@ -1,7 +1,7 @@
 local utils = {}
 
 local g = vim.g
-local config = require("themer.config")("get")
+local config = require("themer.config").options
 local exec = vim.api.nvim_command
 
 --- highlight using :highlight
@@ -19,6 +19,16 @@ local function syntax(tbl)
   for hl_group, hl_value in pairs(tbl) do
     utils.highlight(hl_group, hl_value)
   end
+end
+
+--- Execute function if it exists
+--- @param fn any function
+--- @param ... any args
+local function exec_if_exists(fn, ...)
+  if fn then
+    return fn(...)
+  end
+  return false
 end
 
 --- set properties
@@ -53,7 +63,7 @@ end
 
 --- load a given theme
 --- @param theme table
-utils.load_mapper_higs = function(theme, cs)
+utils.load_mapper_higs = function(theme, cs, cp)
   exec("hi clear")
   if vim.fn.exists("syntax_on") then
     exec("syntax reset")
@@ -81,6 +91,11 @@ utils.load_mapper_higs = function(theme, cs)
   end
 
   vim.cmd([[doautocmd ColorScheme]])
+
+  vim.defer_fn(function()
+    syntax(exec_if_exists(config.remaps.highlights.globals, cp) or {})
+    syntax(exec_if_exists(config.remaps.highlights[cs], cp) or {})
+  end, 100)
 
   vim.g.colors_name = cs
 end

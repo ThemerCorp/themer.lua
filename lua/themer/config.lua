@@ -1,18 +1,6 @@
---- Split strings
---- @param inputstr string string to split
---- @param sep string separator
-local function split(inputstr, sep)
-  if sep == nil then
-    sep = "%s"
-  end
-  local t = {}
-  for str in string.gmatch(inputstr, "([^" .. sep .. "]+)") do
-    table.insert(t, str)
-  end
-  return t
-end
+local config = {}
 
-local options = {
+config.options = {
   colorscheme = nil, -- default colorscheme
   transparent = false,
   term_colors = true,
@@ -120,51 +108,30 @@ local options = {
 
   enable_installer = false, -- toggle to enable installer
 
-  time = {}, -- Time based colorscheme switch
+  time = { enable = false, }, -- Time based colorscheme switch
   -- time = {
   --   ["rose_pine"] = { "13-14", "15-16" }, -- syntax ["colorscheme"] = { "start-end", "start2-end2" },
   -- Apply rose_pine from 1300 to 1400 hours and then from 1500 to 1600 hours, for rest of the day use the colorscheme in 'colorscheme' variable
   -- },
 }
 
---- [[
---- internal: iterate given options over the default config (for internal purposes)
---- user: iterate given options over the default config and loads the colorscheme
---- get: returns the options
---- ]]
---- @param type string
 --- @param opts table
-local setup = function(type, opts)
-  if type == "get" then
-    return options
-  elseif type == "internal" then
-    options = vim.tbl_deep_extend("force", options, opts or {})
-  elseif type == "user" then
-    options = vim.tbl_deep_extend("force", options, opts or {})
-    if #options.time ~= 0 then
-      local _hr = tostring(os.date("*t").hour)
-      for cs, cond in pairs(options.time) do
-        for _, current_cond in ipairs(cond) do
-          local from_to = split(current_cond, "-")
-          if _hr >= from_to[1] and _hr < from_to[2] then
-            options.colorscheme = cs or options.colorscheme
-          end
-        end
-      end
+config.setup = function(opts)
+    config.options = vim.tbl_deep_extend("force", config.options, opts or {})
+    
+    -- time module
+    if config.options.time.enable then    
+      config.options.colorscheme = require("themer.modules.time")(config.options.colorscheme, config.options.time)
     end
-    if options.colorscheme then
-      require("themer.modules.core")(options.colorscheme)
+    
+    -- load colorscheme
+    if config.options.colorscheme then
+      require("themer.modules.core")(config.options.colorscheme)
     end
+    
     -- Load installed themes
-    if options.enable_installer then
-      if require("themer.utils.fs").exists(vim.fn.stdpath("data") .. "/themer") ~= true then
-        os.execute("mkdir " .. vim.fn.stdpath("data") .. "/themer")
-      end
-      vim.cmd([[command! -nargs=0 ThemerInstall :lua require("themer.modules.installer").fuzzy_install()]])
-      vim.cmd([[command! -nargs=0 ThemerUnInstall :lua require("themer.modules.installer").fuzzy_uninstall()]])
-      require("themer.modules.installer.load_installed").load_installed_themes()
-    end
-  end
+    if config.options.enable_installer then
+      vim.defer_fn(function()require("themer.modules.installer.utils").load_installer()  end, 10) end
 end
 
-return setup
+return config

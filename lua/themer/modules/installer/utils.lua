@@ -53,4 +53,15 @@ M.installed_themes = function()
   return vim.fn.readdir(data_path)
 end
 
+M.load_installer = function()
+  
+
+      if require("themer.utils.fs").exists(vim.fn.stdpath("data") .. "/themer") ~= true then
+        os.execute("mkdir " .. vim.fn.stdpath("data") .. "/themer")
+      end
+      vim.cmd([[command! -nargs=0 ThemerInstall :lua require("themer.modules.installer").fuzzy_install()]])
+      vim.cmd([[command! -nargs=0 ThemerUnInstall :lua require("themer.modules.installer").fuzzy_uninstall()]])
+      require("themer.modules.installer.load_installed").load_installed_themes()
+end
+
 return M

@@ -57,4 +57,5 @@ return {
   ["match"] = "#e0def4",
   ["green"] = "#31748f",
   ["inc_search"] = { ["bg"] = "#ebbcba", ["fg"] = "#191724" },
+  remaps = { core = { ["Visual"] = { bg = "# 403d52" } } },
 }

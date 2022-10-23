@@ -1,14 +1,12 @@
-local has_telescope, telescope = pcall(require, "telescope")
-if not has_telescope then
-  vim.notify("Themer: The themes picker needs nvim-telescope/telescope.nvim", vim.log.levels.ERROR)
-end
+local telescope = require("telescope")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
+local config = require("themer.config").options
 
 local function get_theme()
-  local disable_themes = require("themer.config")("get").disable_telescope_themes
+  local disable_themes = config.disable_telescope_themes
   -- local themes = {}
   -- local theme_dir = debug.getinfo(2, "S").source:sub(2)
   -- theme_dir = theme_dir:gsub("lua/telescope/_extensions/themes.lua", "")
@@ -78,7 +76,7 @@ local function themer(opts)
     }),
     previewer = false,
     attach_mappings = function(prompt_bufnr, map)
-      for type, value in pairs(require("themer.config")("get").telescope_mappings) do
+      for type, value in pairs(config.telescope_mappings) do
         for bind, method in pairs(value) do
           map(type, bind, function()
             if method == "enter" then

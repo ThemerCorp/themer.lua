@@ -1,4 +1,4 @@
-local config = require("themer.config")("get")
+local config = require("themer.config").options
 
 ---@return table a cleaned styles
 ---@param cp table
@@ -450,9 +450,7 @@ local function get_hig_groups(cp, cs)
   hig_groups = vim.tbl_deep_extend(
     "force",
     hig_groups or {},
-    cp.remaps or {},
-    config.remaps.highlights.globals and config.remaps.highlights.globals(cp) or {},
-    config.remaps.highlights[cs] and config.remaps.highlights[cs](cp) or {}
+    cp.remaps or {}
   )
   return hig_groups
 end

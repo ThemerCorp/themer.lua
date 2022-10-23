@@ -4,8 +4,9 @@ local api = {}
 ---@param cs string
 api.get_cp = function(cs)
   local ok, csc = pcall(require, "themer.modules.themes." .. cs)
-  local remaps = require("themer.config")("get").remaps.palette[cs] or {}
-  local remaps_global = require("themer.config")("get").remaps.palette.globals or {}
+  config = require("themer.config").options
+  local remaps = config.remaps.palette[cs] or {}
+  local remaps_global = config.remaps.palette.globals or {}
 
   if not ok then
     vim.notify(

@@ -4,7 +4,7 @@ local init = {}
 ---@param opts table
 init.setup = function(opts)
   opts = opts or {}
-  require("themer.config")("user", opts)
+  require("themer.config").setup(opts)
 end
 
 return init
