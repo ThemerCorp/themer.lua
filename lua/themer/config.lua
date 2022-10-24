@@ -108,7 +108,7 @@ config.options = {
 
   enable_installer = false, -- toggle to enable installer
 
-  time = { enable = false, }, -- Time based colorscheme switch
+  time = { enable = false }, -- Time based colorscheme switch
   -- time = {
   --   ["rose_pine"] = { "13-14", "15-16" }, -- syntax ["colorscheme"] = { "start-end", "start2-end2" },
   -- Apply rose_pine from 1300 to 1400 hours and then from 1500 to 1600 hours, for rest of the day use the colorscheme in 'colorscheme' variable
@@ -117,21 +117,24 @@ config.options = {
 
 --- @param opts table
 config.setup = function(opts)
-    config.options = vim.tbl_deep_extend("force", config.options, opts or {})
-    
-    -- time module
-    if config.options.time.enable then    
-      config.options.colorscheme = require("themer.modules.time")(config.options.colorscheme, config.options.time)
-    end
-    
-    -- load colorscheme
-    if config.options.colorscheme then
-      require("themer.modules.core")(config.options.colorscheme)
-    end
-    
-    -- Load installed themes
-    if config.options.enable_installer then
-      vim.defer_fn(function()require("themer.modules.installer.utils").load_installer()  end, 10) end
+  config.options = vim.tbl_deep_extend("force", config.options, opts or {})
+
+  -- time module
+  if config.options.time.enable then
+    config.options.colorscheme = require("themer.modules.time")(config.options.colorscheme, config.options.time)
+  end
+
+  -- load colorscheme
+  if config.options.colorscheme then
+    require("themer.modules.core")(config.options.colorscheme)
+  end
+
+  -- Load installed themes
+  if config.options.enable_installer then
+    vim.defer_fn(function()
+      require("themer.modules.installer.utils").load_installer()
+    end, 10)
+  end
 end
 
 return config

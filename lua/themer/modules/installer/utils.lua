@@ -3,8 +3,9 @@ local data_path = vim.fn.stdpath("data") .. "/themer/"
 
 -- NOTE: temp solution
 M.parse_readme = function()
-  local path =
-    debug.getinfo(1, "S").source:sub(2):gsub("lua/themer/modules/installer/utils.lua", "python/json/color_schemes.json")
+  local path = debug.getinfo(1, "S").source
+    :sub(2)
+    :gsub("lua/themer/modules/installer/utils.lua", "python/json/color_schemes.json")
 
   local file = table.concat(vim.fn.readfile(path))
   local decoded = vim.json.decode(file)
@@ -54,14 +55,12 @@ M.installed_themes = function()
 end
 
 M.load_installer = function()
-  
-
-      if require("themer.utils.fs").exists(vim.fn.stdpath("data") .. "/themer") ~= true then
-        os.execute("mkdir " .. vim.fn.stdpath("data") .. "/themer")
-      end
-      vim.cmd([[command! -nargs=0 ThemerInstall :lua require("themer.modules.installer").fuzzy_install()]])
-      vim.cmd([[command! -nargs=0 ThemerUnInstall :lua require("themer.modules.installer").fuzzy_uninstall()]])
-      require("themer.modules.installer.load_installed").load_installed_themes()
+  if require("themer.utils.fs").exists(vim.fn.stdpath("data") .. "/themer") ~= true then
+    os.execute("mkdir " .. vim.fn.stdpath("data") .. "/themer")
+  end
+  vim.cmd([[command! -nargs=0 ThemerInstall :lua require("themer.modules.installer").fuzzy_install()]])
+  vim.cmd([[command! -nargs=0 ThemerUnInstall :lua require("themer.modules.installer").fuzzy_uninstall()]])
+  require("themer.modules.installer.load_installed").load_installed_themes()
 end
 
 return M

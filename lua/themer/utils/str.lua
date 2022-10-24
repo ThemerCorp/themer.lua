@@ -20,15 +20,17 @@ end
 --- @param search_for string string to look for
 --- @param replacement string string to replace to
 str.deep_replace = function(table, search_for, replacement)
-    if not table then return end
+  if not table then
+    return
+  end
 
-    for key, value in pairs(table) do
-        if type(value) == "table" then
-            str.deep_replace(value, search_for, replacement)
-        else
-            table[key] = value:gsub(search_for, replacement)
-        end
+  for key, value in pairs(table) do
+    if type(value) == "table" then
+      str.deep_replace(value, search_for, replacement)
+    else
+      table[key] = value:gsub(search_for, replacement)
     end
+  end
 end
 
 return str
