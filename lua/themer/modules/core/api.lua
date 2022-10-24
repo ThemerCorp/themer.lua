@@ -4,7 +4,7 @@ local api = {}
 ---@param cs string
 api.get_cp = function(cs)
   local ok, csc = pcall(require, "themer.modules.themes." .. cs)
-  config = require("themer.config").options
+  local config = require("themer.config").options
   local remaps = config.remaps.palette[cs] or {}
   local remaps_global = config.remaps.palette.globals or {}
 
@@ -21,6 +21,10 @@ If this is a bug, report it at https://github.com/narutoxy/themer.lua]],
     )
     return false
   end
+
+  -- Expensive as fuck
+  -- TODO: look for better way
+  require("themer.utils.str").deep_replace(csc, "#0", csc.fg or "#ffffff")
 
   if not (next(remaps or remaps_global) == nil) then
     return vim.tbl_deep_extend("force", csc, remaps_global, remaps)

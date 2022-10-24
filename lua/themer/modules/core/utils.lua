@@ -8,8 +8,8 @@ local exec = vim.api.nvim_command
 --- @param group string
 --- @param val table
 utils.highlight = function(group, val)
-  val.fg = #(val.fg or "#0") ~= 7 and "NONE" or val.fg
-  val.bg = #(val.bg or "#0") ~= 7 and "NONE" or val.bg
+  val.fg = #(val.fg or "") ~= 7 and "NONE" or val.fg
+  val.bg = #(val.bg or "") ~= 7 and "NONE" or val.bg
   vim.api.nvim_set_hl(0, group, val)
 end
 
