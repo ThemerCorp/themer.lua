@@ -34,6 +34,7 @@ local color_palette = {
   blue = colors.blue,
   green = colors.green,
   cyan = colors.cyan,
+  fg = colors.fg,
 
   diff = {
     add = colors.green,
