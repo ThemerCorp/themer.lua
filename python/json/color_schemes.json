@@ -75,6 +75,7 @@
     "lewpoly/sherbet.nvim": "https://github.com/lewpoly/sherbet.nvim",
     "Mofiqul/adwaita.nvim": "https://github.com/Mofiqul/adwaita.nvim",
     "olivercederborg/poimandres.nvim": "https://github.com/olivercederborg/poimandres.nvim",
+    "kvrohit/mellow.nvim": "https://github.com/kvrohit/mellow.nvim",
     "tjdevries/gruvbuddy.nvim": "https://github.com/tjdevries/gruvbuddy.nvim",
     "ellisonleao/gruvbox.nvim": "https://github.com/ellisonleao/gruvbox.nvim",
     "metalelf0/jellybeans-nvim": "https://github.com/metalelf0/jellybeans-nvim",
