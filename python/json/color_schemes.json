@@ -4,7 +4,7 @@
     "tomasiser/vim-code-dark": "https://github.com/tomasiser/vim-code-dark",
     "Mofiqul/vscode.nvim": "https://github.com/Mofiqul/vscode.nvim",
     "marko-cerovac/material.nvim": "https://github.com/marko-cerovac/material.nvim",
-    "bluz71/vim-nightfly-guicolors": "https://github.com/bluz71/vim-nightfly-guicolors",
+    "bluz71/vim-nightfly-colors": "https://github.com/bluz71/vim-nightfly-colors",
     "bluz71/vim-moonfly-colors": "https://github.com/bluz71/vim-moonfly-colors",
     "ChristianChiarulli/nvcode-color-schemes.vim": "https://github.com/ChristianChiarulli/nvcode-color-schemes.vim",
     "folke/tokyonight.nvim": "https://github.com/folke/tokyonight.nvim",
