@@ -115,7 +115,7 @@ cp.remaps = {
     },
 
     treesitter = {
-      TSSymbol = { fg = colors.lBlue },
+      ["@symbol"] = { link = "ThemerType" },
     },
 
     telescope = {
