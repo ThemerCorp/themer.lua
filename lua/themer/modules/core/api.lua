@@ -21,7 +21,7 @@ If this is a bug, report it at https://github.com/narutoxy/themer.lua]],
     return false
   end
 
-  if not (next(remaps or remaps_global) == nil) then
+  if not (next(remaps) == nil and next(remaps_global) == nil) then
     return vim.tbl_deep_extend("force", csc, remaps_global, remaps)
   else
     return csc
