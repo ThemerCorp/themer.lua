@@ -330,6 +330,19 @@ return {
 
 Also add the theme name to `README` and add it to `colors/`
 
+### Local usage
+
+You can create new colorscheme file inside your config/colors directory (e.g. `stdpath('config')`/colors/my_colorscheme.lua).
+
+Load colorscheme:
+
+```lua
+require('themer').load('my_colorscheme', colorscheme)
+```
+
+After that you can use your colorscheme with `:colorscheme my_colorscheme`.
+
+
 ## Porting another vim/neovim theme
 
 You can use `lua/themer/modules/import/init.lua` to generate color palette and port that theme to themer

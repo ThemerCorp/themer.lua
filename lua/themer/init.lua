@@ -7,4 +7,6 @@ init.setup = function(opts)
   require("themer.config")("user", opts)
 end
 
+init.load = function(...) require('themer.modules.core')(...) end
+
 return init
