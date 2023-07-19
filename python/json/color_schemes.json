@@ -32,6 +32,7 @@
     "RRethy/nvim-base16": "https://github.com/RRethy/nvim-base16",
     "fenetikm/falcon": "https://github.com/fenetikm/falcon",
     "andersevenrud/nordic.nvim": "https://github.com/andersevenrud/nordic.nvim",
+    "AlexvZyl/nordic.nvim": "https://github.com/AlexvZyl/nordic.nvim",
     "shaunsingh/nord.nvim": "https://github.com/shaunsingh/nord.nvim",
     "svrana/neosolarized.nvim": "https://github.com/svrana/neosolarized.nvim",
     "ishan9299/nvim-solarized-lua": "https://github.com/ishan9299/nvim-solarized-lua",
