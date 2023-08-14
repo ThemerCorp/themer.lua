@@ -138,6 +138,7 @@
     "echasnovski/mini.nvim#mini.tabline": "https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-tabline.md",
     "rafcamlet/tabline-framework.nvim": "https://github.com/rafcamlet/tabline-framework.nvim",
     "nanozuki/tabby.nvim": "https://github.com/nanozuki/tabby.nvim",
+    "roobert/bufferline-cycle-windowless.nvim": "https://github.com/roobert/bufferline-cycle-windowless.nvim",
     "yamatsum/nvim-cursorline": "https://github.com/yamatsum/nvim-cursorline",
     "xiyaowong/nvim-cursorword": "https://github.com/xiyaowong/nvim-cursorword",
     "RRethy/vim-illuminate": "https://github.com/RRethy/vim-illuminate",
