@@ -165,6 +165,7 @@
     "krady21/compiler-explorer.nvim": "https://github.com/krady21/compiler-explorer.nvim",
     "samodostal/image.nvim": "https://github.com/samodostal/image.nvim",
     "adelarsq/image_preview.nvim": "https://github.com/adelarsq/image_preview.nvim",
+    "niuiic/code-shot.nvim": "https://github.com/niuiic/code-shot.nvim",
     "0styx0/abbreinder.nvim": "https://github.com/0styx0/abbreinder.nvim",
     "jakewvincent/mkdnflow.nvim": "https://github.com/jakewvincent/mkdnflow.nvim",
     "oberblastmeister/neuron.nvim": "https://github.com/oberblastmeister/neuron.nvim",
