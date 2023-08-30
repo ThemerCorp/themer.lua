@@ -182,6 +182,7 @@
     "mickael-menu/zk-nvim": "https://github.com/mickael-menu/zk-nvim",
     "chrsm/impulse.nvim": "https://github.com/chrsm/impulse.nvim",
     "epwalsh/obsidian.nvim": "https://github.com/epwalsh/obsidian.nvim",
+    "IlyasYOY/obs.nvim": "https://github.com/IlyasYOY/obs.nvim",
     "jghauser/papis.nvim": "https://github.com/jghauser/papis.nvim",
     "ostralyan/scribe.nvim": "https://github.com/ostralyan/scribe.nvim",
     "phaazon/mind.nvim": "https://github.com/phaazon/mind.nvim",
