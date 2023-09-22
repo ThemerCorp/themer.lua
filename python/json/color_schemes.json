@@ -138,7 +138,7 @@
     "alvarosevilla95/luatab.nvim": "https://github.com/alvarosevilla95/luatab.nvim",
     "johann2357/nvim-smartbufs": "https://github.com/johann2357/nvim-smartbufs",
     "kdheepak/tabline.nvim": "https://github.com/kdheepak/tabline.nvim",
-    "noib3/cokeline.nvim": "https://github.com/noib3/cokeline.nvim",
+    "willothy/nvim-cokeline": "https://github.com/willothy/nvim-cokeline",
     "tomiis4/BufferTabs.nvim": "https://github.com/tomiis4/BufferTabs.nvim",
     "echasnovski/mini.nvim#mini.tabline": "https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-tabline.md",
     "rafcamlet/tabline-framework.nvim": "https://github.com/rafcamlet/tabline-framework.nvim",
