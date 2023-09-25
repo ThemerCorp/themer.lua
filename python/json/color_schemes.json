@@ -147,6 +147,7 @@
     "mg979/tabline.nvim": "https://github.com/mg979/tabline.nvim",
     "yamatsum/nvim-cursorline": "https://github.com/yamatsum/nvim-cursorline",
     "xiyaowong/nvim-cursorword": "https://github.com/xiyaowong/nvim-cursorword",
+    "sontungexpt/stcursorword": "https://github.com/sontungexpt/stcursorword",
     "RRethy/vim-illuminate": "https://github.com/RRethy/vim-illuminate",
     "echasnovski/mini.nvim#mini.cursorword": "https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-cursorword.md",
     "mawkler/modicator.nvim": "https://github.com/mawkler/modicator.nvim",
