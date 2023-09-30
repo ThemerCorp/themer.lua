@@ -103,6 +103,7 @@
     "tjdevries/colorbuddy.nvim": "https://github.com/tjdevries/colorbuddy.nvim",
     "norcalli/nvim-base16.lua": "https://github.com/norcalli/nvim-base16.lua",
     "rktjmp/lush.nvim": "https://github.com/rktjmp/lush.nvim",
+    "roobert/palette.nvim": "https://github.com/roobert/palette.nvim",
     "Iron-E/nvim-highlite": "https://github.com/Iron-E/nvim-highlite",
     "echasnovski/mini.nvim#mini.base16": "https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-base16.md",
     "ThemerCorp/themer.lua": "https://github.com/themercorp/themer.lua",
