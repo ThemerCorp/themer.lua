@@ -134,6 +134,7 @@
     "b0o/incline.nvim": "https://github.com/b0o/incline.nvim",
     "rebelot/heirline.nvim": "https://github.com/rebelot/heirline.nvim",
     "yaocccc/nvim-lines.lua": "https://github.com/yaocccc/nvim-lines.lua",
+    "MunifTanjim/nougat.nvim": "https://github.com/MunifTanjim/nougat.nvim",
     "romgrk/barbar.nvim": "https://github.com/romgrk/barbar.nvim",
     "akinsho/bufferline.nvim": "https://github.com/akinsho/bufferline.nvim",
     "crispgm/nvim-tabline": "https://github.com/crispgm/nvim-tabline",
