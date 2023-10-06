@@ -112,7 +112,7 @@ local options = {
 --- get: returns the options
 --- ]]
 --- @param type string
---- @param opts table
+--- @param opts table | nil
 local setup = function(type, opts)
   if type == "get" then
     return options
