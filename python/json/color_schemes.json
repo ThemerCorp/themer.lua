@@ -195,5 +195,6 @@
     "phaazon/mind.nvim": "https://github.com/phaazon/mind.nvim",
     "RutaTang/quicknote.nvim": "https://github.com/RutaTang/quicknote.nvim",
     "serenevoid/kiwi.nvim": "https://github.com/serenevoid/kiwi.nvim",
-    "ada0l/obsidian/": "https://github.com/ada0l/obsidian"
+    "ada0l/obsidian/": "https://github.com/ada0l/obsidian",
+    "gsuuon/note.nvim": "https://github.com/gsuuon/note.nvim"
 }
