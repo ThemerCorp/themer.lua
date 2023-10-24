@@ -4,6 +4,17 @@ local g = vim.g
 local config = require("themer.config")("get")
 local exec = vim.api.nvim_command
 
+--- returns a Themer style object (fg, bg, style)
+--- @param element string | table
+--- @param extra_style table | nil
+utils.fg_or_style = function(element, extra_style)
+  if type(element) ~= "table" then
+    element = { fg = element }
+  end
+
+  return vim.tbl_extend("force", extra_style or {}, element)
+end
+
 --- highlight using :highlight
 --- @param group string
 --- @param color table
