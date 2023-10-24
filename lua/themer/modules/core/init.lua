@@ -1,12 +1,9 @@
---- loads the colorscheme
+--- loads the provided colorscheme or builtin colorscheme without second argument
 --- @param cs string colorscheme name
-local load = function(cs)
-  local color_palette
-  if type(cs) == "table" then
-    color_palette = cs
-  else
-    color_palette = require("themer.modules.core.api").get_cp(cs)
-  end
+--- @param cp table colorscheme
+local load = function(cs, cp)
+  local color_palette = cp or require("themer.modules.core.api").get_cp(cs)
+  if not cp then cs = 'themer_' .. cs end
   if color_palette then
     require("themer.modules.core.utils").load_mapper_higs(require("themer.modules.core.mapper")(color_palette, cs), cs)
   end
